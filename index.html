@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="bn" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>আমদানি–রপ্তানি সম্পূর্ণ গাইড</title>
+<meta name="description" content="আন্তর্জাতিক আমদানি–রপ্তানি, সমুদ্রবন্দর, ফ্রেইট ফরোয়ার্ডিং, কাস্টমস ও চীন থেকে আমদানির ছয়টি বাংলা গাইড — এক জায়গায়।">
+<meta name="theme-color" content="#0d9488">
+<style>
+:root{
+  --bg:#eef3fa;--fg:#0c1a2e;--mu:#4a5b75;--card:#ffffff;--line:rgba(12,26,46,.13);
+  --acc:#0d9488;--acc-d:#0b6f66;--accs:rgba(13,148,136,.11);--sh:0 14px 40px -18px rgba(12,26,46,.35);
+  --font:'Noto Sans Bengali','Solaimanlipi','Kalpurush','Nikosh','Vrinda','Segoe UI',system-ui,-apple-system,Roboto,Arial,sans-serif;
+  color-scheme:light}
+:root[data-theme=dark]{--bg:#0a1424;--fg:#e8eef8;--mu:#9db0c9;--card:#111d31;--line:rgba(232,238,248,.15);--acc:#2dd4bf;--acc-d:#5eead4;--accs:rgba(45,212,191,.12);--sh:0 14px 40px -18px rgba(0,0,0,.7);color-scheme:dark}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);background:var(--bg);color:var(--fg);line-height:1.7;min-height:100vh;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:44px 44px;background-position:-1px -1px}
+body::before{content:"";position:fixed;inset:0;background:radial-gradient(ellipse at 50% 0,transparent 0,var(--bg) 70%);pointer-events:none}
+.wrap{position:relative;max-width:1060px;margin:0 auto;padding:0 20px 60px}
+.top{display:flex;justify-content:space-between;align-items:center;padding:18px 0}
+.brand{font-weight:700;color:var(--acc-d);letter-spacing:.01em}
+.tg{border:1px solid var(--line);background:var(--card);color:var(--fg);border-radius:12px;padding:7px 14px;cursor:pointer;font:inherit;font-size:14px}
+.tg:hover{border-color:var(--acc)}
+.hero{padding:44px 0 30px;max-width:760px}
+.eyebrow{display:inline-block;font-size:13px;font-weight:700;color:var(--acc-d);background:var(--accs);border-radius:99px;padding:3px 14px}
+h1{font-size:clamp(30px,5.4vw,52px);line-height:1.25;margin:16px 0 14px;letter-spacing:-.01em}
+h1 em{font-style:normal;color:var(--acc)}
+.lead{font-size:clamp(16px,2.1vw,19px);color:var(--mu);max-width:640px}
+.resume{display:none;margin:26px 0 0;align-items:center;gap:16px;padding:14px 18px;border:1px solid var(--acc);background:var(--accs);border-radius:18px;text-decoration:none;color:inherit;max-width:560px}
+.resume.show{display:flex}
+.resume .go{margin-left:auto;background:var(--acc);color:#fff;border-radius:12px;padding:8px 16px;font-weight:700;white-space:nowrap}
+.resume small{display:block;color:var(--mu)}
+h2{font-size:15px;letter-spacing:.04em;color:var(--mu);margin:38px 0 14px;font-weight:700}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,420px),1fr));gap:16px}
+.card{position:relative;display:flex;flex-direction:column;gap:6px;padding:20px 20px 18px;background:var(--card);border:1px solid var(--line);border-radius:22px;text-decoration:none;color:inherit;box-shadow:var(--sh);transition:transform .2s,border-color .2s}
+.card:hover{transform:translateY(-3px);border-color:var(--acc)}
+.card:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+.n{width:42px;height:42px;border-radius:13px;background:var(--accs);color:var(--acc-d);display:grid;place-items:center;font-weight:800;font-size:19px;margin-bottom:6px}
+.k{font-size:13px;color:var(--mu);font-weight:600}
+.card h3{font-size:19px;line-height:1.4}
+.card p{color:var(--mu);font-size:15px;line-height:1.6}
+.pg{height:4px;border-radius:4px;background:var(--line);overflow:hidden;margin-top:auto}
+.pg i{display:block;height:100%;background:var(--acc)}
+.card .row{display:flex;justify-content:space-between;align-items:center;margin-top:10px;font-size:14px;color:var(--acc-d);font-weight:700}
+.tips{margin-top:42px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.tip{padding:16px 18px;border:1px dashed var(--line);border-radius:16px;color:var(--mu);font-size:15px}
+.tip b{color:var(--fg);display:block;margin-bottom:2px}
+kbd{font:inherit;font-size:13px;border:1px solid var(--line);border-bottom-width:2px;border-radius:6px;padding:0 7px;background:var(--card)}
+footer{margin-top:46px;color:var(--mu);font-size:14px;border-top:1px solid var(--line);padding-top:18px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top"><span class="brand">Import–Export Handbook</span><button class="tg" id="tg" aria-label="থিম বদলান">🌓 থিম</button></div>
+
+  <header class="hero">
+    <span class="eyebrow">ছয়টি বাংলা গাইড · এক জায়গায়</span>
+    <h1>আমদানি–রপ্তানি <em>সম্পূর্ণ গাইড</em></h1>
+    <p class="lead">সোর্সিং ও পেমেন্ট থেকে শুরু করে সমুদ্রবন্দর, ফ্রেইট ফরোয়ার্ডিং ও কাস্টমস পর্যন্ত — প্রতিটা বই আলাদা, কিন্তু যেকোনো বই থেকে এক ক্লিকে অন্য বইয়ে যাওয়া যায়।</p>
+    <a class="resume" id="resume" href="#"><span><small>যেখানে ছিলেন</small><b id="rt"></b></span><span class="go">চালিয়ে যান ›</span></a>
+  </header>
+
+  <main id="lib">
+    <noscript><p>এই পাতাটি ঠিকভাবে চালাতে JavaScript দরকার।</p></noscript>
+  </main>
+
+  <section class="tips" aria-label="ব্যবহারের টিপস">
+    <div class="tip"><b>ডানদিকের ফ্লোটিং বার</b>প্রতিটা বইয়ের ভেতরে ডানদিকে একটা ছোট বার থাকে। সেখান থেকে ইন্ট্রো, সব বই এবং আগের/পরের বইয়ে যেতে পারবেন।</div>
+    <div class="tip"><b>কিবোর্ড</b><kbd>M</kbd> চাপলে বইয়ের তালিকা খোলে, <kbd>Esc</kbd> চাপলে বন্ধ হয়।</div>
+    <div class="tip"><b>অগ্রগতি মনে থাকে</b>প্রতিটা বইয়ে কতটা পড়েছেন, তা এই ব্রাউজারেই সংরক্ষিত থাকে। এখানে ফিরে এলে "চালিয়ে যান" দেখা যাবে।</div>
+  </section>
+
+  <footer>শুল্কহার, নীতিমালা ও নিয়ম সময়ের সাথে বদলায়। সিদ্ধান্ত নেওয়ার আগে সংশ্লিষ্ট সরকারি/ব্যাংক/শিপিং লাইনের সর্বশেষ তথ্য যাচাই করুন।</footer>
+</div>
+
+<script src="./shell.js" data-home></script>
+<script>
+(function(){
+  var B=window.IEHShell.books, prog=window.IEHShell.read(), last=window.IEHShell.resume();
+  function card(b){
+    var p=Math.round((prog[b.id]||0)*100);
+    return '<a class="card" href="'+b.url+'"><span class="n">'+b.n+'</span><span class="k">'+b.kicker+'</span><h3>'+b.title+'</h3><p>'+b.desc+'</p>'+
+      (p>1?'<div class="pg" title="'+p+'% পড়া হয়েছে"><i style="width:'+p+'%"></i></div>':'')+
+      '<div class="row"><span>'+(p>1?p+'% পড়া হয়েছে':'পড়া শুরু করুন')+'</span><span aria-hidden="true">›</span></div></a>';
+  }
+  var main=B.filter(function(b){return b.group==='main'}), guide=B.filter(function(b){return b.group==='guide'});
+  document.getElementById('lib').innerHTML=
+    '<h2>মূল হ্যান্ডবুক · ক্রমানুসারে পড়ুন</h2><div class="grid">'+main.map(card).join('')+'</div>'+
+    '<h2>সহায়ক গাইড · যেকোনো সময় দেখুন</h2><div class="grid">'+guide.map(card).join('')+'</div>';
+  if(last){
+    var b=B.filter(function(x){return x.id===last.id})[0];
+    if(b&&last.y>300){var r=document.getElementById('resume');r.href=b.url+'?resume='+last.y;document.getElementById('rt').textContent=b.kicker+' — '+b.title;r.classList.add('show');}
+  }
+  /* থিম */
+  var root=document.documentElement,K='iehapp:theme';
+  function set(t){root.setAttribute('data-theme',t);try{localStorage.setItem(K,t)}catch(e){}}
+  var saved=null;try{saved=localStorage.getItem(K)}catch(e){}
+  set(saved||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'));
+  document.getElementById('tg').onclick=function(){set(root.getAttribute('data-theme')==='dark'?'light':'dark')};
+})();
+</script>
+</body>
+</html>

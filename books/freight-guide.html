@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="bn" data-t="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>ফ্রেইট ফরোয়ার্ডিং</title>
+<meta name="color-scheme" content="light dark">
+<script>
+(function(){var t=null;try{t=localStorage.getItem('imp-ff-theme')}catch(e){}
+if(t!=='dark'&&t!=='light')t=(matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light';
+document.documentElement.setAttribute('data-t',t);document.documentElement.className='js'})();
+</script>
+<style>
+@property --h{syntax:'<number>';inherits:true;initial-value:172}
+:root{--h:172;--a:hsl(var(--h) 75% 42%);--at:hsl(var(--h) 85% 28%);--bg:#eef3fa;--fg:#0c1a2e;--mu:#475569;--card:rgba(255,255,255,.74);--st:rgba(12,26,46,.15);--sh:0 14px 40px -16px rgba(12,26,46,.3);--side:300px;transition:--h .9s;
+--font:'Noto Sans Bengali','Solaimanlipi','Kalpurush','Nikosh','Vrinda','Segoe UI',system-ui,sans-serif}
+[data-t=dark]{--a:hsl(var(--h) 80% 60%);--at:hsl(var(--h) 90% 74%);--bg:#060c19;--fg:#e8eefc;--mu:#a9b8d6;--card:rgba(12,22,44,.68);--st:rgba(255,255,255,.15);--sh:0 16px 50px -16px #000}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:76px;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:clamp(1rem,.95rem + .3vw,1.12rem)/1.8 var(--font);overflow-x:clip;min-height:100dvh;transition:background .4s,color .4s}
+body.lock{overflow:hidden}
+button,input{font:inherit;color:inherit}
+a{color:var(--at)}
+:focus-visible{outline:3px solid var(--a);outline-offset:3px;border-radius:6px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+#bg{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;
+background:radial-gradient(40% 40% at 15% 20%,hsl(var(--h) 80% 55%/.28),transparent 70%),radial-gradient(36% 36% at 85% 25%,hsl(calc(var(--h) + 70) 80% 60%/.22),transparent 70%),radial-gradient(44% 44% at 60% 90%,hsl(calc(var(--h) - 60) 85% 60%/.16),transparent 70%)}
+#bg::before{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--st) 1px,transparent 1px),linear-gradient(90deg,var(--st) 1px,transparent 1px);background-size:56px 56px;opacity:.35;-webkit-mask-image:radial-gradient(ellipse at 50% 30%,#000 10%,transparent 75%);mask-image:radial-gradient(ellipse at 50% 30%,#000 10%,transparent 75%)}
+#bg::after{content:"";position:absolute;inset:0;opacity:.06;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence baseFrequency='.8' numOctaves='2'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+#cv{position:absolute;inset:0;width:100%;height:100%}
+#splash{position:fixed;inset:0;z-index:99;display:grid;place-items:center;background:var(--bg);transition:opacity .6s,visibility .6s;text-align:center}
+#splash.x{opacity:0;visibility:hidden}
+#splash i{display:block;width:180px;height:5px;border-radius:9px;background:var(--st);margin:14px auto 0;overflow:hidden}
+#splash i::after{content:"";display:block;height:100%;width:40%;background:var(--a);border-radius:9px;animation:ld 1.2s ease-in-out infinite}
+@keyframes ld{from{transform:translateX(-110%)}to{transform:translateX(260%)}}
+#pg{position:fixed;left:0;top:0;height:4px;width:0;background:linear-gradient(90deg,var(--a),hsl(calc(var(--h) + 70) 85% 60%));z-index:60}
+#side{position:fixed;z-index:50;top:0;left:0;bottom:0;width:min(88vw,var(--side));overflow:auto;padding:calc(18px + env(safe-area-inset-top)) 14px 90px;background:var(--card);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-right:1px solid var(--st);transform:translateX(-102%);transition:transform .35s}
+body.menu #side{transform:none}
+#side b{display:block;margin:0 8px 12px;font-size:1.05rem;line-height:1.5}
+#side a{display:flex;align-items:center;min-height:48px;padding:6px 12px;border-radius:12px;text-decoration:none;color:var(--fg);font-size:.95rem;line-height:1.45}
+#side a.sp{font-weight:700;margin-top:6px}
+#side a.sc{margin-left:12px;color:var(--mu);font-size:.88rem}
+#side a.on{background:hsl(var(--h) 80% 50%/.18);color:var(--at)}
+main{position:relative;z-index:1;max-width:900px;margin:0 auto;padding:0 clamp(14px,4vw,32px) 120px}
+.top{position:sticky;top:0;z-index:40;display:flex;gap:8px;align-items:center;padding:calc(8px + env(safe-area-inset-top)) 12px 8px;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);background:var(--card);border-bottom:1px solid var(--st)}
+.top span{flex:1;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.btn{min-width:48px;min-height:48px;padding:0 14px;border:1px solid var(--st);border-radius:14px;background:var(--card);cursor:pointer;display:inline-flex;gap:6px;align-items:center;justify-content:center;overflow:hidden;position:relative}
+.btn:hover{border-color:var(--a)}
+.btn .rp{position:absolute;border-radius:50%;background:var(--a);opacity:.35;transform:scale(0);animation:rp .6s linear forwards;pointer-events:none}
+@keyframes rp{to{transform:scale(4);opacity:0}}
+.hero{min-height:calc(100dvh - 70px);display:flex;flex-direction:column;justify-content:center;padding:40px 0}
+.eye{display:inline-block;align-self:flex-start;padding:4px 14px;border:1px solid var(--st);border-radius:99px;background:var(--card);color:var(--at);font-size:.9rem}
+h1{font-size:clamp(2rem,6vw + .5rem,4rem);line-height:1.3;margin:.5em 0 .2em;background:linear-gradient(100deg,var(--fg),var(--a));-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{font-size:clamp(1.05rem,2vw + .6rem,1.5rem);color:var(--mu);margin:0 0 1.2em}
+.stats{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:1.4em}
+.stats div{flex:1 1 120px;padding:14px;border-radius:18px;background:var(--card);border:1px solid var(--st);backdrop-filter:blur(10px);text-align:center}
+.stats b{display:block;font-size:1.8rem;color:var(--at)}
+.cta{align-self:flex-start;background:var(--a)!important;color:#04121a;font-weight:700;border:0}
+.route{width:100%;max-width:560px;height:auto;margin:0 0 14px;overflow:visible}
+.ic{vertical-align:-5px;color:var(--a)}
+.flow{margin:18px 0;max-width:460px}.flow svg{width:100%;height:auto}
+.flow .ln{stroke-dasharray:1;stroke-dashoffset:1}
+.flow.in .ln{animation:dr 1.6s ease forwards}
+.flow .nd{opacity:0}.flow.in .nd{animation:fi .5s ease forwards}
+@keyframes dr{to{stroke-dashoffset:0}}@keyframes fi{from{opacity:0;transform:translateX(-10px)}to{opacity:1;transform:none}}
+.i{flex:none}.ban{display:block;width:100%;height:auto;margin:-6px 0 14px;border-radius:16px}
+.prose ul{list-style:none;padding-left:.2em}.prose li{position:relative;padding-left:1.6em}
+.prose li::before{content:"";position:absolute;left:0;top:.62em;width:.9em;height:.9em;background:var(--a);-webkit-mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M5 12l4 4 10-10' fill='none' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/></svg>") center/contain no-repeat;mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M5 12l4 4 10-10' fill='none' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/></svg>") center/contain no-repeat}
+.prose h4::before{content:"";display:inline-block;width:.8em;height:.8em;margin-right:.5em;background:var(--a);-webkit-mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 2l10 10-10 10L2 12z'/></svg>") center/contain no-repeat;mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 2l10 10-10 10L2 12z'/></svg>") center/contain no-repeat}
+.prose blockquote{position:relative;padding-left:3em}
+.prose blockquote::before{content:"";position:absolute;left:.8em;top:.9em;width:1.4em;height:1.4em;background:var(--a);-webkit-mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 3a9 9 0 100 18 9 9 0 000-18zM12 11v6M12 7.5v.5' fill='none' stroke='black' stroke-width='2.4' stroke-linecap='round'/></svg>") center/contain no-repeat;mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 3a9 9 0 100 18 9 9 0 000-18zM12 11v6M12 7.5v.5' fill='none' stroke='black' stroke-width='2.4' stroke-linecap='round'/></svg>") center/contain no-repeat}
+.prose ol{padding-left:1.8em;list-style:bengali}.prose ol li{padding-left:.2em}.prose ol li::before{display:none}.prose table{border-collapse:collapse;display:block;overflow-x:auto;width:100%}.prose th,.prose td{padding:8px 12px;border-bottom:1px solid var(--st);text-align:left;vertical-align:top}.prose th{color:var(--at);white-space:nowrap}
+@media(max-width:600px){.prose thead{display:none}.prose tr{display:block;margin:8px 0;padding:8px;border:1px solid var(--st);border-radius:14px}.prose td{display:block;border:0;padding:2px 6px}.prose td:first-child{font-weight:700;color:var(--at)}}
+.wave{display:block;width:100%;height:50px;color:var(--st);margin:20px 0}
+.part{padding-top:24px}
+.part>h2{font-size:clamp(1.5rem,3vw + .6rem,2.4rem);line-height:1.4;margin:0 0 .6em;padding-left:14px;border-left:6px solid var(--a)}
+.card{background:var(--card);border:1px solid var(--st);border-radius:22px;padding:clamp(16px,3vw,30px);margin:0 0 22px;box-shadow:var(--sh);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.chap>h3{margin:0 0 .5em;font-size:clamp(1.25rem,2vw + .6rem,1.75rem);line-height:1.5;color:var(--at)}
+.prose h4{margin:1.6em 0 .4em;font-size:1.15rem;line-height:1.5}
+.prose p,.prose li{overflow-wrap:anywhere}
+.prose li{margin:.25em 0}
+.prose blockquote{margin:1.1em 0;border-left:5px solid var(--a);border-radius:0 14px 14px 0;background:hsl(var(--h) 80% 50%/.1)}
+.prose blockquote p{margin:.3em 0}
+.prose hr{border:0;border-top:1px dashed var(--st);margin:1.6em 0}
+.prose table{display:block;overflow-x:auto;max-width:100%}
+.mu{color:var(--mu)}
+.js .rv:not(.flow){opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}
+.js .rv.in:not(.flow){opacity:1;transform:none}
+.g{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.calc label{display:flex;flex-direction:column;font-size:.9rem;gap:4px}
+.calc input{min-height:48px;padding:6px 12px;border-radius:12px;border:1px solid var(--st);background:var(--bg)}
+.res{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:18px 0}
+.res div{padding:14px;border-radius:16px;background:hsl(var(--h) 80% 50%/.12);border:1px solid var(--st)}
+.res small{display:block;color:var(--mu)}.res b{font-size:1.35rem;color:var(--at)}
+#bn{position:fixed;z-index:55;left:0;right:0;bottom:0;display:flex;justify-content:space-around;gap:6px;padding:6px 8px calc(6px + env(safe-area-inset-bottom));background:var(--card);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-top:1px solid var(--st)}
+#bn .btn{flex:1;font-size:.85rem}
+#sr{position:fixed;inset:0;z-index:90;display:none;place-items:start center;padding:calc(8vh + env(safe-area-inset-top)) 12px 12px;background:rgba(2,6,16,.6);backdrop-filter:blur(6px)}
+#sr.o{display:grid}
+#sr>div{width:min(680px,100%);max-height:80dvh;display:flex;flex-direction:column;background:var(--bg);border:1px solid var(--st);border-radius:20px;overflow:hidden;box-shadow:var(--sh)}
+#qs{width:100%;min-height:56px;padding:10px 18px;border:0;border-bottom:1px solid var(--st);background:transparent}
+#rs{list-style:none;margin:0;padding:6px;overflow:auto}
+#rs li{padding:10px 14px;border-radius:12px;cursor:pointer;font-size:.95rem;line-height:1.6;min-height:48px}
+#rs li:hover,#rs li:focus{background:hsl(var(--h) 80% 50%/.16);outline:none}
+#rs small{display:block;color:var(--mu)}
+mark{background:hsl(50 100% 55%/.55);color:inherit;border-radius:3px}
+#up{display:none}
+@media(min-width:1024px){:root{--side:300px}#side{transform:none;width:var(--side)}main{margin-left:calc(var(--side) + max(0px,(100vw - var(--side) - 900px)/2))}.top .mb,#bn{display:none}main{padding-bottom:60px}}
+@media(max-width:1023px){.top .dt{display:none}body.menu #side{width:100vw;border:0}}
+@media(prefers-reduced-motion:reduce){.flow .ln{stroke-dashoffset:0}.flow .nd{opacity:1}*{animation:none!important;transition:none!important}html{scroll-behavior:auto}.js .rv{opacity:1;transform:none}}
+@media print{.ban,.route{display:none}#bg,#side,.top,#bn,#pg,#splash,#sr,.hero .cta,.wave{display:none!important}body,:root{background:#fff!important;color:#000!important}main{margin:0!important;max-width:none}.card{box-shadow:none;backdrop-filter:none;background:#fff;border:1px solid #ccc;break-inside:avoid-page}h1{color:#000;background:none}.js .rv{opacity:1;transform:none}a{color:#000}}
+</style>
+</head>
+<body>
+<div id="splash"><div><svg width="84" height="84" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" style="color:var(--a)" aria-hidden="true"><path d="M8 38h48l-6 12H14zM18 38V24h14v14M32 30h12v8M24 18v6"/><path d="M4 56q7-5 14 0t14 0 14 0 14 0"/></svg><p><b>ফ্রেইট ফরোয়ার্ডিং</b></p><i></i></div></div>
+<div id="pg" role="progressbar" aria-label="পড়ার অগ্রগতি"></div>
+<div id="bg" aria-hidden="true"><canvas id="cv"></canvas></div>
+<nav id="side" aria-label="সূচিপত্র"><b><svg class="i" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h12a2 2 0 012 2v14H7a2 2 0 01-2-2zM9 8h6M9 12h6"/></svg> সূচিপত্র</b>
+<a href="#p0" class="sp">ভূমিকা</a>
+<a href="#p1" class="sp">সূচি</a>
+<a href="#p2" class="sp">প্রথম খণ্ড: ভিত্তি</a>
+<a href="#c1" class="sc">অধ্যায় ১: Freight Forwarding আসলে কী?</a>
+<a href="#c2" class="sc">অধ্যায় ২: বিশ্ববাণিজ্য ও সাপ্লাই চেইনে ফরোয়ার্ডারের অবস্থান</a>
+<a href="#c3" class="sc">অধ্যায় ৩: বাংলাদেশের বাণিজ্য, বন্দর ও লজিস্টিকস চিত্র</a>
+<a href="#c4" class="sc">অধ্যায় ৪: ইন্ডাস্ট্রির অংশীদাররা কারা কারা?</a>
+<a href="#p3" class="sp">দ্বিতীয় খণ্ড: পরিবহন মাধ্যম ও কারিগরি জ্ঞান</a>
+<a href="#c5" class="sc">অধ্যায় ৫: Sea Freight: FCL, LCL ও কনটেইনারের জগৎ</a>
+<a href="#c6" class="sc">অধ্যায় ৬: Air Freight: ওজন, রেট ও এয়ারপোর্ট</a>
+<a href="#calc" class="sp">Chargeable Weight ক্যালকুলেটর</a>
+<a href="#p4" class="sp">পরিভাষা</a>
+<a href="#p5" class="sp">তথ্যসূত্র</a>
+</nav>
+<div class="top"><button class="btn mb" id="mn" aria-label="সূচিপত্র খুলুন" aria-expanded="false"><svg class="i" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button><span>ফ্রেইট ফরোয়ার্ডিং</span><button class="btn dt" id="sb" aria-label="সার্চ (Ctrl+K)"><svg class="i" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 4a7 7 0 100 14 7 7 0 000-14zM21 21l-5-5"/></svg> সার্চ</button><button class="btn dt" id="th" aria-label="থিম বদলান (T)"><svg class="i" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a9 9 0 100 18zM12 3v18"/></svg></button></div>
+<main id="top">
+<header class="hero"><span class="eye">আনুমানিক পড়ার সময়: <span id="rt">-</span> মিনিট</span>
+<h1>ফ্রেইট ফরোয়ার্ডিং</h1><p class="sub">বাংলাদেশের আন্তর্জাতিক লজিস্টিকস ব্যবসা: শেখার পূর্ণাঙ্গ গাইড</p>
+<svg class="route" viewBox="0 0 600 150" role="img" aria-label="প্রেরক থেকে প্রাপক পর্যন্ত কার্গো-রুট"><path id="rt1" d="M60 100Q200 10 330 80T540 70" fill="none" stroke="var(--a)" stroke-width="3" stroke-dasharray="4 10" stroke-linecap="round"><animate attributeName="stroke-dashoffset" from="140" to="0" dur="5s" repeatCount="indefinite"/></path><circle cx="60" cy="100" r="9" fill="var(--a)"/><circle cx="540" cy="70" r="9" fill="var(--a)"/><text x="60" y="130" text-anchor="middle" font-size="16" fill="var(--fg)">প্রেরক</text><text x="540" y="100" text-anchor="middle" font-size="16" fill="var(--fg)">প্রাপক</text><g fill="var(--at)"><path d="M-16 0h32l-5 9h-22zM-6 0v-9h10v9M-1-9v-6" stroke="var(--at)" stroke-width="2" stroke-linejoin="round"/><animateMotion dur="9s" repeatCount="indefinite" rotate="auto" path="M60 90Q200 0 330 70T540 60"/></g></svg>
+<div class="stats"><div><b data-n="6">0</b>পর্ব</div><div><b data-n="6">0</b>অধ্যায়</div><div><b id="wc">0</b>শব্দ</div></div>
+<a class="btn cta" href="#p0">পড়া শুরু করুন <svg class="i" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></header>
+<svg class="wave" viewBox="0 0 1200 50" preserveAspectRatio="none" aria-hidden="true"><path d="M0 25Q150 0 300 25T600 25 900 25 1200 25V50H0Z" fill="currentColor"/></svg>
+<section class="part" id="p0" data-h="172"><h2><svg class="ic" viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h14v16H5zM9 9h6M9 13h6"/></svg> ভূমিকা</h2><div class="prose"><p>আজ আপনার হাতের মোবাইল ফোন, পরনের পোশাক কিংবা কারখানার যন্ত্র, সবকিছুই কোনো না কোনো সময় জাহাজে বা বিমানে চেপে দেশ থেকে দেশে ঘুরে এসেছে। এই যাত্রার পেছনে যাঁরা কাজ করেন, তাঁদের একজন হলেন Freight Forwarder।</p>
+<p>এই বইটি তাঁদের জন্য, যাঁরা এই শিল্পটা বুঝতে চান: চাকরির জন্য, ব্যবসা শুরুর জন্য, কিংবা আমদানি-রপ্তানি ব্যবসায় আরও দক্ষ হওয়ার জন্য। বইয়ে সহজ ভাষায়, বাস্তব উদাহরণ দিয়ে বোঝানো হয়েছে কীভাবে আন্তর্জাতিক পণ্য-পরিবহন কাজ করে, কারা কারা এতে জড়িত, খরচ কীভাবে হিসাব হয় এবং বাংলাদেশের প্রেক্ষাপটে এর সুযোগ ও চ্যালেঞ্জ কী।</p>
+<h4>কীভাবে পড়বেন</h4>
+<p>প্রতিটি অধ্যায়ের শুরুতে "এই অধ্যায়ে যা শিখবেন" আছে। শেষে আছে "মূল কথা" এবং "নিজে করে দেখুন"। অনুশীলনগুলো নিজে করলে শেখা অনেক পাকা হবে। বইয়ের গাণিতিক উদাহরণের সংখ্যাগুলো প্রক্রিয়া বোঝানোর জন্য কাল্পনিক, বাজারদর নয়। শেষে আছে পরিভাষা ও তথ্যসূত্র।</p>
+<p>একটি কথা মনে রাখবেন: শুল্ক, ফি, লাইসেন্সের শর্ত ও বাণিজ্য-নীতি প্রায়ই বদলায়। বইয়ের পরিসংখ্যান ও নিয়মকানুন নভেম্বর ২০২৬ পর্যন্ত। বাস্তব কাজে নামার আগে সংশ্লিষ্ট সরকারি সংস্থার সর্বশেষ বিজ্ঞপ্তি দেখে নিন।</p></div></section>
+<svg class="wave" viewBox="0 0 1200 50" preserveAspectRatio="none" aria-hidden="true"><path d="M0 25Q150 0 300 25T600 25 900 25 1200 25V50H0Z" fill="currentColor"/></svg><section class="part" id="p1" data-h="215"><h2><svg class="ic" viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12l9-8 9 8v8H3zM9 20v-6h6v6"/></svg> সূচি</h2><div class="prose"><p><strong>প্রথম খণ্ড: ভিত্তি</strong></p>
+<ul>
+<li>অধ্যায় ১ : Freight Forwarding আসলে কী?</li>
+<li>অধ্যায় ২ : বিশ্ববাণিজ্য ও সাপ্লাই চেইনে ফরোয়ার্ডারের অবস্থান</li>
+<li>অধ্যায় ৩ : বাংলাদেশের বাণিজ্য, বন্দর ও লজিস্টিকস চিত্র</li>
+<li>অধ্যায় ৪ : ইন্ডাস্ট্রির অংশীদাররা কারা কারা?</li>
+</ul>
+<p><strong>দ্বিতীয় খণ্ড: পরিবহন মাধ্যম ও কারিগরি জ্ঞান</strong></p>
+<ul>
+<li>অধ্যায় ৫ : Sea Freight: FCL, LCL ও কনটেইনারের জগৎ</li>
+<li>
+<p>অধ্যায় ৬ : Air Freight: ওজন, রেট ও এয়ারপোর্ট</p>
+</li>
+<li>
+<p>পরিভাষা</p>
+</li>
+<li>তথ্যসূত্র</li>
+</ul></div></section>
+<svg class="wave" viewBox="0 0 1200 50" preserveAspectRatio="none" aria-hidden="true"><path d="M0 25Q150 0 300 25T600 25 900 25 1200 25V50H0Z" fill="currentColor"/></svg><section class="part" id="p2" data-h="265"><h2><svg class="ic" viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 4v5c0 5-4 8-8 9-4-1-8-4-8-9V7z"/></svg> প্রথম খণ্ড: ভিত্তি</h2><div class="prose"></div><article class="chap card" id="c1"><svg class="ban" viewBox="0 0 600 70" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="600" height="70" rx="16" fill="var(--a)" opacity=".10"/><g transform="translate(20 15) scale(1.7)" fill="none" stroke="var(--a)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l9-5 9 5v8l-9 5-9-5zM3 8l9 5 9-5M12 13v8"/></g><path d="M90 35Q150 5 210 35T330 35 450 35 570 35" fill="none" stroke="var(--a)" stroke-width="2" stroke-dasharray="6 8" opacity=".6"><animate attributeName="stroke-dashoffset" from="56" to="0" dur="3s" repeatCount="indefinite"/></path><circle cx="570" cy="35" r="5" fill="var(--a)"/><text x="560" y="62" text-anchor="end" font-size="44" font-weight="800" fill="var(--a)" opacity=".2">১</text></svg><h3>অধ্যায় ১: Freight Forwarding আসলে কী?</h3><div class="prose"><blockquote>
+<p><strong>এই অধ্যায়ে যা শিখবেন:</strong> Freight Forwarder-এর সংজ্ঞা ও মূল কাজ; Carrier, C&amp;F Agent ও ফরোয়ার্ডারের পার্থক্য; কেন এই পেশা দেখতে সহজ হলেও কঠিন।</p>
+</blockquote>
+<h4>১.১ একটি সহজ গল্প দিয়ে শুরু</h4>
+<p>ধরুন, ঢাকার মিরপুরে রাহাত নামের এক তরুণ ব্যবসায়ী অনলাইনে ইলেকট্রনিক গ্যাজেট বিক্রি করেন। তাঁর সরবরাহকারী চীনের শেনজেন শহরে। রাহাত পণ্যের দাম ঠিক করে ফেলেছেন, সরবরাহকারীও প্রস্তুত। কিন্তু একটা প্রশ্ন বাকি: এই পণ্য শেনজেনের কারখানা থেকে ঢাকার গুদাম পর্যন্ত আসবে কীভাবে?</p>
+<p>পণ্য আকাশপথে আসবে, নাকি সমুদ্রপথে? কোন এয়ারলাইন বা কোন জাহাজ কোম্পানি? কারখানা থেকে বিমানবন্দর বা বন্দর পর্যন্ত কে নেবে? রপ্তানি-কাগজপত্র কে বানাবে? বাংলাদেশে নামার পর কাস্টমস ছাড়ানো হবে কীভাবে? শুল্ক-কর কত হবে? শেষে গুদাম পর্যন্ত পণ্য পৌঁছাবে কীভাবে?</p>
+<p>রাহাত এই সবকিছু আলাদা আলাদা করে সামলাতে গেলে হিমশিম খাবেন। তখন তিনি যাঁর কাছে যান, তিনিই Freight Forwarder।</p>
+<h4>১.২ সংজ্ঞা</h4>
+<p>Freight Forwarder হলেন এমন একজন পেশাদার বা এমন একটি প্রতিষ্ঠান, যিনি আমদানিকারক বা রপ্তানিকারকের পক্ষে পণ্য এক স্থান থেকে অন্য স্থানে পাঠানোর পুরো ব্যবস্থা সাজিয়ে দেন এবং এই প্রক্রিয়ার বিভিন্ন পক্ষের মধ্যে সমন্বয় করেন।</p>
+<p>ফরোয়ার্ডার মূলত একজন মধ্যস্থতাকারী (Intermediary Agent)। শিপিং কোম্পানি, এয়ারলাইন ও আনুষঙ্গিক সেবাদাতাদের সঙ্গে কাজ করে তিনি গ্রাহকের প্রয়োজন অনুযায়ী পরিবহনের ব্যবস্থা করেন।</p>
+<p>সহজ ভাষায় বললে ফরোয়ার্ডার "পরিবহনের স্থপতি"। তিনি নিজে সবসময় জাহাজ বা বিমানের মালিক নন। তাঁর আসল পণ্য হলো জ্ঞান, নেটওয়ার্ক, সময়মতো সঠিক সমন্বয় এবং ঝামেলা কমানোর ক্ষমতা।</p>
+<h4>১.৩ ফরোয়ার্ডার কী করেন না</h4>
+<p>শুরুতেই কয়েকটি ভুল ধারণা পরিষ্কার করা দরকার।</p>
+<ul>
+<li>ফরোয়ার্ডার সবসময় Carrier নন। Carrier হলো যে প্রতিষ্ঠান বাস্তবে পণ্য বহন করে, যেমন জাহাজ কোম্পানি (Shipping Line) বা এয়ারলাইন। ফরোয়ার্ডার তাঁদের কাছ থেকে জায়গা (space) কিনে গ্রাহকের কাছে বিক্রি করেন।</li>
+<li>ফরোয়ার্ডার আর C&amp;F Agent এক নন। C&amp;F (Clearing &amp; Forwarding) Agent প্রধানত কাস্টমস ছাড়ানো ও পণ্য খালাসের কাজ করেন। অনেক প্রতিষ্ঠান দুটো কাজই করে, কিন্তু আইন ও দায়িত্বের দিক থেকে দুটি আলাদা ভূমিকা।</li>
+<li>ফরোয়ার্ডার সরকারি শুল্কের হিসাব বদলাতে পারেন না। ফ্রেইট ভাড়া (Freight) এবং Customs Duty/Tax সম্পূর্ণ আলাদা খরচের খাত।</li>
+</ul>
+<p>C&amp;F ও CNF শব্দ দুটি প্রায়ই গুলিয়ে যায়। পরিষ্কার করে জেনে রাখা ভালো:</p>
+<ul>
+<li>C&amp;F Agent = Clearing &amp; Forwarding Agent (কাস্টমস ক্লিয়ারেন্সের এজেন্ট)।</li>
+<li>CNF / C&amp;F (বাণিজ্যিক শর্ত হিসেবে) = Cost and Freight। আধুনিক Incoterms 2020-এ এর অফিসিয়াল সংক্ষেপ হলো CFR। এখানে বিক্রেতা পণ্যের দাম ও গন্তব্য-বন্দর পর্যন্ত সমুদ্র-ভাড়া বহন করে।</li>
+</ul>
+<p>বাংলাদেশের বাজারে "সিঅ্যান্ডএফ" শব্দটি দুই অর্থেই চালু আছে, তাই প্রসঙ্গ দেখে অর্থ বুঝে নিতে হয়।</p>
+<h4>১.৪ ফরোয়ার্ডারের মূল কাজগুলোর তালিকা</h4>
+<p>একজন ফরোয়ার্ডার সাধারণত যে কাজগুলো করেন (সব প্রতিষ্ঠান সবগুলো করে না):</p>
+<ol>
+<li>পরামর্শ: কোন পণ্যের জন্য কোন পরিবহন মাধ্যম ও রুট সবচেয়ে কার্যকর, তা ঠিক করে দেওয়া।</li>
+<li>Rate সংগ্রহ ও Quotation: Shipping Line/Airline/Agent থেকে ভাড়া সংগ্রহ করে গ্রাহককে দাম জানানো।</li>
+<li>Booking: জাহাজ বা বিমানে জায়গা নিশ্চিত করা।</li>
+<li>Consolidation: একাধিক ছোট চালান একত্র করে একটি কনটেইনার বা ইউনিটে ভরা।</li>
+<li>Documentation: Bill of Lading, Airway Bill, Packing List, Invoice, Certificate of Origin ইত্যাদি তৈরি ও যাচাই।</li>
+<li>Origin ও Destination Handling: পণ্য সংগ্রহ, গুদামজাতকরণ, লোডিং, খালাস।</li>
+<li>Customs সমন্বয়: C&amp;F Agent ও কাস্টমসের সঙ্গে যোগাযোগ।</li>
+<li>Tracking ও Reporting: চালান কোথায় আছে এবং কখন পৌঁছাবে, তা গ্রাহককে জানানো।</li>
+<li>Domestic Delivery: গন্তব্য-বন্দর/বিমানবন্দর থেকে চূড়ান্ত ঠিকানা পর্যন্ত পৌঁছানো।</li>
+<li>Problem Solving: বিলম্ব, ভুল ডকুমেন্ট, ক্ষতি বা বিরোধ হলে সমাধান করা।</li>
+</ol><div class="flow rv" aria-hidden="false"><svg viewBox="0 0 440 760" role="img" aria-label="আমদানির ধাপসমূহের ফ্লো-ডায়াগ্রাম"><path class="ln" pathLength="1" d="M32 40V716" fill="none" stroke="var(--a)" stroke-width="3" stroke-linecap="round"/><g class="nd" style="animation-delay:0.00s"><circle cx="32" cy="40" r="20" fill="var(--bg)" stroke="var(--a)" stroke-width="3"/><text x="32" y="46" text-anchor="middle" font-size="16" font-weight="700" fill="var(--at)">1</text><rect x="64" y="14" width="368" height="52" rx="14" fill="var(--card)" stroke="var(--st)"/><text x="78" y="45" font-size="14" fill="var(--fg)">পরামর্শ</text></g><g class="nd" style="animation-delay:0.15s"><circle cx="32" cy="114" r="20" fill="var(--bg)" stroke="var(--a)" stroke-width="3"/><text x="32" y="120" text-anchor="middle" font-size="16" font-weight="700" fill="var(--at)">2</text><rect x="64" y="88" width="368" height="52" rx="14" fill="var(--card)" stroke="var(--st)"/><text x="78" y="119" font-size="14" fill="var(--fg)">Rate সংগ্রহ ও Quotation</text></g><g class="nd" style="animation-delay:0.30s"><circle cx="32" cy="188" r="20" fill="var(--bg)" stroke="var(--a)" stroke-width="3"/><text x="32" y="194" text-anchor="middle" font-size="16" font-weight="700" fill="var(--at)">3</text><rect x="64" y="162" width="368" height="52" rx="14" fill="var(--card)" stroke="var(--st)"/><text x="78" y="193" font-size="14" fill="var(--fg)">Booking</text></g><g class="nd" style="animation-delay:0.45s"><circle cx="32" cy="262" r="20" fill="var(--bg)" stroke="var(--a)" stroke-width="3"/><text x="32" y="268" text-anchor="middle" font-size="16" font-weight="700" fill="var(--at)">4</text><rect x="64" y="236" width="368" height="52" rx="14" fill="var(--card)" stroke="var(--st)"/><text x="78" y="267" font-size="14" fill="var(--fg)">Consolidation</text></g><g class="nd" style="animation-delay:0.60s"><circle cx="32" cy="336" r="20" fill="var(--bg)" stroke="var(--a)" stroke-width="3"/><text x="32" y="342" text-anchor="middle" font-size="16" font-weight="700" fill="var(--at)">5</text><rect x="64" y="310" width="368" height="52" rx="14" fill="var(--card)" stroke="var(--st)"/><text x="78" y="341" font-size="14" fill="var(--fg)">Documentation</text></g><g class="nd" style="animation-delay:0.75s"><circle cx="32" cy="410" r="20" fill="var(--bg)" stroke="var(--a)" stroke-width="3"/><text x="32" y="416" text-anchor="middle" font-size="16" font-weight="700" fill="var(--at)">6</text><rect x="64" y="384" width="368" height="52" rx="14" fill="var(--card)" stroke="var(--st)"/><text x="78" y="415" font-size="14" fill="var(--fg)">Origin ও Destination Handling</text></g><g class="nd" style="animation-delay:0.90s"><circle cx="32" cy="484" r="20" fill="var(--bg)" stroke="var(--a)" stroke-width="3"/><text x="32" y="490" text-anchor="middle" font-size="16" font-weight="700" fill="var(--at)">7</text><rect x="64" y="458" width="368" height="52" rx="14" fill="var(--card)" stroke="var(--st)"/><text x="78" y="489" font-size="14" fill="var(--fg)">Customs সমন্বয়</text></g><g class="nd" style="animation-delay:1.05s"><circle cx="32" cy="558" r="20" fill="var(--bg)" stroke="var(--a)" stroke-width="3"/><text x="32" y="564" text-anchor="middle" font-size="16" font-weight="700" fill="var(--at)">8</text><rect x="64" y="532" width="368" height="52" rx="14" fill="var(--card)" stroke="var(--st)"/><text x="78" y="563" font-size="14" fill="var(--fg)">Tracking ও Reporting</text></g><g class="nd" style="animation-delay:1.20s"><circle cx="32" cy="632" r="20" fill="var(--bg)" stroke="var(--a)" stroke-width="3"/><text x="32" y="638" text-anchor="middle" font-size="16" font-weight="700" fill="var(--at)">9</text><rect x="64" y="606" width="368" height="52" rx="14" fill="var(--card)" stroke="var(--st)"/><text x="78" y="637" font-size="14" fill="var(--fg)">Domestic Delivery</text></g><g class="nd" style="animation-delay:1.35s"><circle cx="32" cy="706" r="20" fill="var(--bg)" stroke="var(--a)" stroke-width="3"/><text x="32" y="712" text-anchor="middle" font-size="16" font-weight="700" fill="var(--at)">10</text><rect x="64" y="680" width="368" height="52" rx="14" fill="var(--card)" stroke="var(--st)"/><text x="78" y="711" font-size="14" fill="var(--fg)">Problem Solving</text></g></svg></div>
+<h4>১.৫ কেন এই শিল্প "সহজ দেখায়, কিন্তু সহজ নয়"</h4>
+<p>অভিজ্ঞদের সবচেয়ে বড় কথা হলো: বাইরে থেকে Freight Forwarding যতটা সহজ মনে হয়, বাস্তবে এটি ততটা সহজ নয়। তাই নতুনদের জন্য পরামর্শ, সরাসরি ব্যবসা শুরু না করে অন্তত ৩–৪ বছর, সম্ভব হলে প্রায় ৫ বছর এই ইন্ডাস্ট্রিতে কাজ করার পর নিজের প্রতিষ্ঠান দেওয়া।</p>
+<p>কেন কঠিন? কারণ একটি সাধারণ আন্তর্জাতিক চালানে অন্তত সাত-আটটি আলাদা পক্ষ জড়িত থাকে: ক্রেতা, বিক্রেতা, ফরোয়ার্ডার, বিদেশি এজেন্ট, Carrier, বন্দর/টার্মিনাল, কাস্টমস ও C&amp;F Agent এবং ব্যাংক। এর যেকোনো একটিতে ভুল হলে পুরো চালান আটকে যেতে পারে। আবার প্রতিটি পক্ষের নিজস্ব সময়সূচি, নিয়ম, ফি ও ভাষা আছে।</p>
+<p>একটি উদাহরণ:</p>
+<p>পণ্যের Invoice-এ ওজন লেখা ১,২০০ কেজি, কিন্তু Packing List-এ লেখা ১,১৮০ কেজি। এই সামান্য অমিল শেষে কাস্টমস পরীক্ষায় ধরা পড়ে, চালান আটকায়, বন্দরে প্রতিদিন Demurrage চলতে থাকে, গ্রাহক রেগে যান, আর দোষ গিয়ে পড়ে ফরোয়ার্ডারের ওপর। যাঁর বাস্তব অভিজ্ঞতা আছে, তিনি এই ভুল আগেই ধরতে শেখেন। যাঁর নেই, তিনি টাকা দিয়ে শেখেন।</p>
+<h4>১.৬ এই অধ্যায়ের মূল কথা</h4>
+<ul>
+<li>Freight Forwarder = গ্রাহকের পক্ষে পরিবহনের স্থপতি ও সমন্বয়কারী।</li>
+<li>তিনি Carrier নন এবং শুধু C&amp;F Agentও নন।</li>
+<li>তাঁর মূল পুঁজি জ্ঞান, নেটওয়ার্ক ও নির্ভরযোগ্যতা।</li>
+<li>সহজ দেখালেও এটি অভিজ্ঞতা-নির্ভর কঠিন পেশা।</li>
+</ul>
+<h4>১.৭ নিজে করে দেখুন</h4>
+<ol>
+<li>আপনার চেনা কোনো আমদানিকৃত পণ্য বেছে নিন (যেমন একটি মোবাইল ফোন)। ভাবুন, সেটি কোন দেশ থেকে কোন পথে আপনার হাতে এসেছে। কতগুলো পক্ষ জড়িত থাকতে পারে, লিখে ফেলুন।</li>
+<li>C&amp;F Agent ও Freight Forwarder-এর কাজ আলাদা আলাদা দুই কলামে লিখুন।</li>
+</ol></div></article><article class="chap card" id="c2"><svg class="ban" viewBox="0 0 600 70" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="600" height="70" rx="16" fill="var(--a)" opacity=".10"/><g transform="translate(20 15) scale(1.7)" fill="none" stroke="var(--a)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l2-7h14l2 7M12 10V4h4M2 21q2.5-2 5 0t5 0 5 0 5 0"/></g><path d="M90 35Q150 5 210 35T330 35 450 35 570 35" fill="none" stroke="var(--a)" stroke-width="2" stroke-dasharray="6 8" opacity=".6"><animate attributeName="stroke-dashoffset" from="56" to="0" dur="3s" repeatCount="indefinite"/></path><circle cx="570" cy="35" r="5" fill="var(--a)"/><text x="560" y="62" text-anchor="end" font-size="44" font-weight="800" fill="var(--a)" opacity=".2">২</text></svg><h3>অধ্যায় ২: বিশ্ববাণিজ্য ও সাপ্লাই চেইনে ফরোয়ার্ডারের অবস্থান</h3><div class="prose"><blockquote>
+<p><strong>এই অধ্যায়ে যা শিখবেন:</strong> সাপ্লাই চেইনের ধাপ; Logistics, Freight Forwarding ও Supply Chain-এর সম্পর্ক; 3PL ও 4PL; ফরোয়ার্ডার কেন অপরিহার্য।</p>
+</blockquote>
+<h4>২.১ আজকের পণ্য একটি "বহুদেশীয়" জিনিস</h4>
+<p>কয়েক দশক আগে একটি পণ্য সাধারণত একটি দেশে তৈরি হয়ে সেই দেশেই বিক্রি হতো। আজ সেটি অনেক বদলে গেছে।</p>
+<p>একটি পণ্য এক দেশে তৈরি হলেও তার কাঁচামাল, যন্ত্রাংশ ও অন্যান্য উপাদান বিভিন্ন দেশ থেকে আসতে পারে, আবার তৈরি পণ্য অন্য দেশে বিক্রি হতে পারে। একে বৈশ্বিক উৎপাদন (Global Manufacturing) বলা হয়।</p>
+<p>একটি উদাহরণ: একটি স্মার্টফোনের চিপ হয়তো তাইওয়ানে তৈরি, ডিসপ্লে দক্ষিণ কোরিয়ায়, সংযোজন চীনে, আর বিক্রি হচ্ছে ইউরোপ, আমেরিকা ও বাংলাদেশে। এই প্রতিটি ধাপ জোড়া লাগাতে মালপত্র বারবার দেশ থেকে দেশে চলাচল করে। এই চলাচলের পেছনের মানুষটিই ফরোয়ার্ডার।</p>
+<h4>২.২ সাপ্লাই চেইনের ধাপ</h4>
+<p>একটি সাধারণ আন্তর্জাতিক সাপ্লাই চেইন:</p>
+<p>কাঁচামাল সরবরাহকারী → কারখানা (Manufacturer) → Origin Warehouse → Origin Port/Airport
+→ আন্তর্জাতিক পরিবহন (Sea/Air) → Destination Port/Airport → Customs Clearance
+→ Destination Warehouse → Distributor/Retailer → চূড়ান্ত ভোক্তা</p>
+<p>ফরোয়ার্ডার প্রধানত "Origin Warehouse" থেকে "Destination Warehouse" পর্যন্ত অংশে সক্রিয়, তবে অনেক আধুনিক ফরোয়ার্ডার কারখানার দরজা থেকে ক্রেতার দরজা (Door-to-Door) পর্যন্ত পুরো সেবা দেন।</p>
+<h4>২.৩ লজিস্টিকস বনাম ফ্রেইট ফরোয়ার্ডিং বনাম সাপ্লাই চেইন</h4>
+<p>এই তিনটি শব্দ প্রায়ই গুলিয়ে ফেলা হয়:</p>
+<ul>
+<li>Supply Chain Management: কাঁচামাল থেকে ভোক্তা পর্যন্ত সামগ্রিক প্রবাহের পরিকল্পনা ও ব্যবস্থাপনা। এটি সবচেয়ে বড় ছাতা।</li>
+<li>Logistics: পণ্য, তথ্য ও সম্পদের চলাচল, সংরক্ষণ ও বিতরণের পরিকল্পনা ও বাস্তবায়ন। এর মধ্যে আছে পরিবহন, গুদাম, প্যাকেজিং, ইনভেন্টরি ইত্যাদি।</li>
+<li>Freight Forwarding: লজিস্টিকসের ভেতরে আন্তর্জাতিক (এবং আন্তঃদেশীয়) পণ্য-পরিবহনের ব্যবস্থা ও সমন্বয় করার বিশেষায়িত সেবা।</li>
+</ul>
+<p>অর্থাৎ ফ্রেইট ফরোয়ার্ডিং লজিস্টিকসের একটি অংশ, আর লজিস্টিকস সাপ্লাই চেইনের একটি অংশ।</p>
+<h4>২.৪ ৩PL, ৪PL: ফরোয়ার্ডারের বিবর্তন</h4>
+<p>ইন্ডাস্ট্রিতে সেবার গভীরতা বোঝাতে 3PL ও 4PL শব্দ ব্যবহার হয়:</p>
+<ul>
+<li>1PL/2PL: নিজের পণ্য নিজে বহন (1PL) অথবা শুধু পরিবহন-সম্পদ (জাহাজ, বিমান, ট্রাক) পরিচালনা করা Carrier (2PL)।</li>
+<li>3PL (Third-Party Logistics): বাইরের প্রতিষ্ঠান যে পরিবহন, গুদাম, ডকুমেন্টেশন ও বিতরণসহ লজিস্টিকসের একাধিক সেবা দেয়। অনেক ফরোয়ার্ডার ক্রমে 3PL হয়ে ওঠে।</li>
+<li>4PL (Fourth-Party Logistics): পুরো সাপ্লাই চেইন পরিকল্পনা ও একাধিক 3PL সমন্বয় করে এমন পরামর্শ-ভিত্তিক সেবা।</li>
+</ul>
+<p>একটি ছোট নতুন প্রতিষ্ঠান সাধারণত শুধু ফরোয়ার্ডিং দিয়ে শুরু করে, তারপর ধীরে ধীরে সেবা বাড়ায়।</p>
+<h4>২.৫ কেন ফরোয়ার্ডার অপরিহার্য</h4>
+<p>কেউ প্রশ্ন করতে পারেন: আমি সরাসরি জাহাজ কোম্পানির সঙ্গে চুক্তি করে নিলেই তো হয়! বাস্তবে তা সবার জন্য ব্যবহারিক নয়:</p>
+<ol>
+<li>ছোট ও মাঝারি আমদানিকারকের চালান কম, তাই জাহাজ কোম্পানির কাছ থেকে ভালো রেট পাওয়া কঠিন। ফরোয়ার্ডার অনেক গ্রাহকের চালান একত্র করে বেশি দরকষাকষির ক্ষমতা পান।</li>
+<li>একাধিক দেশে নিজস্ব অফিস বা এজেন্ট রাখা ব্যয়বহুল। ফরোয়ার্ডার ইতিমধ্যে গড়ে তোলা Agent Network ভাড়ায় দেন।</li>
+<li>ডকুমেন্টেশন ও নিয়মকানুনের ভুল এড়াতে বিশেষজ্ঞ লাগে।</li>
+<li>LCL (কনটেইনারের ভগ্নাংশ) সেবা সাধারণত জাহাজ কোম্পানির কাছ থেকে সরাসরি পাওয়া যায় না; এটি সাধারণত Consolidator, ফরোয়ার্ডার বা NVOCC-র মাধ্যমে আসে।</li>
+</ol>
+<h4>২.৬ বৈশ্বিক অর্থনীতির ঝড় ও ফরোয়ার্ডারের ভূমিকা</h4>
+<p>বিশ্ব অর্থনীতি প্রায়ই অস্থির সময়ের মধ্য দিয়ে যায়, আর বাংলাদেশের মতো আমদানিনির্ভর দেশে এর প্রভাব লজিস্টিকস ও ফ্রেইট ফরোয়ার্ডিং ইন্ডাস্ট্রিতে সরাসরি পড়ে।</p>
+<p>ইন্ডাস্ট্রির ভাষায় যে ঘটনাগুলো প্রভাব ফেলে:</p>
+<ul>
+<li>আন্তর্জাতিক ফ্রেইট রেটের ওঠানামা।</li>
+<li>জ্বালানি-মূল্য বৃদ্ধি (Bunker Surcharge বেড়ে যায়)।</li>
+<li>জাহাজের সূচি পরিবর্তন বা রুট পরিবর্তন।</li>
+<li>বন্দরে জট (Port Congestion)।</li>
+<li>আন্তর্জাতিক রাজনৈতিক উত্তেজনা ও শুল্কনীতি।</li>
+<li>ডলারের বিনিময় হারে পরিবর্তন।</li>
+<li>আমদানি-সংক্রান্ত বিধিনিষেধ।</li>
+</ul>
+<p>একজন ভালো ফরোয়ার্ডার এই পরিবর্তনগুলো আগে থেকে নজরে রাখেন এবং গ্রাহককে আগাম সতর্ক করেন। এটাই "পেশাদার" আর "সাধারণ বুকিং-এজেন্টের" পার্থক্য।</p>
+<h4>২.৭ এই অধ্যায়ের মূল কথা</h4>
+<ul>
+<li>আজকের পণ্য বহুদেশীয় উৎপাদনের ফল, তাই পরিবহন-সমন্বয়কারীর চাহিদা অনিবার্য।</li>
+<li>Freight Forwarding ⊂ Logistics ⊂ Supply Chain।</li>
+<li>ছোট-মাঝারি ব্যবসার জন্য ফরোয়ার্ডার "বাইরে থেকে ভাড়া করা আন্তর্জাতিক অপারেশন বিভাগ"।</li>
+<li>বাজার পর্যবেক্ষণ ও আগাম পরিকল্পনা ছাড়া ফরোয়ার্ডিং ব্যবসা টেকে না।</li>
+</ul>
+<h4>২.৮ নিজে করে দেখুন</h4>
+<p>আপনার প্রিয় যেকোনো একটি ব্র্যান্ডের পণ্য ধরে চিন্তা করুন: কাঁচামাল কোথা থেকে এসেছে, কোথায় সংযোজন হয়েছে, কোথায় কোথায় বিক্রি হয়? একটি সরল ফ্লো-চার্ট আঁকুন।</p></div></article><article class="chap card" id="c3"><svg class="ban" viewBox="0 0 600 70" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="600" height="70" rx="16" fill="var(--a)" opacity=".10"/><g transform="translate(20 15) scale(1.7)" fill="none" stroke="var(--a)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10l9-6 9 6v10H3zM8 20v-6h8v6"/></g><path d="M90 35Q150 5 210 35T330 35 450 35 570 35" fill="none" stroke="var(--a)" stroke-width="2" stroke-dasharray="6 8" opacity=".6"><animate attributeName="stroke-dashoffset" from="56" to="0" dur="3s" repeatCount="indefinite"/></path><circle cx="570" cy="35" r="5" fill="var(--a)"/><text x="560" y="62" text-anchor="end" font-size="44" font-weight="800" fill="var(--a)" opacity=".2">৩</text></svg><h3>অধ্যায় ৩: বাংলাদেশের বাণিজ্য, বন্দর ও লজিস্টিকস চিত্র</h3><div class="prose"><blockquote>
+<p><strong>এই অধ্যায়ে যা শিখবেন:</strong> বাংলাদেশের রপ্তানি-আমদানির চিত্র; চট্টগ্রাম বন্দরের ভূমিকা; প্রধান নিয়ন্ত্রক সংস্থা; ২০২৬ সালের নতুন লাইসেন্সিং কাঠামো।</p>
+</blockquote>
+<h4>৩.১ আমদানিনির্ভর অর্থনীতি, রপ্তানিমুখী শিল্প</h4>
+<p>বাংলাদেশ আমদানিনির্ভর দেশ। বিভিন্ন শিল্পের কাঁচামাল, যন্ত্রপাতি, উৎপাদন-উপকরণ ও বিক্রয়যোগ্য পণ্য বিদেশ থেকে আসে। তাই আন্তর্জাতিক বাজারে পরিবর্তন হলে বাংলাদেশের আমদানি ও লজিস্টিকস দুটিই প্রভাবিত হয়।</p>
+<p>নিচের সংখ্যাগুলো ২০২৫–২৬ অর্থবছরের।</p>
+<h4>৩.২ সংখ্যায় বাংলাদেশের বাণিজ্য (২০২৫–২৬ অর্থবছর)</h4>
+<p>রপ্তানি:</p>
+<ul>
+<li>রপ্তানি উন্নয়ন ব্যুরোর (EPB) প্রাথমিক হিসাবে পণ্য-রপ্তানি আয় প্রায় ৪৮.০০ বিলিয়ন মার্কিন ডলার। আগের বছরের (প্রায় ৪৮.২৮ বিলিয়ন) তুলনায় প্রায় ০.৫৮% কম।</li>
+<li>তৈরি পোশাক (RMG) খাত প্রায় ৩৮.৭০ বিলিয়ন ডলার এনেছে, অর্থাৎ মোট পণ্য-রপ্তানির প্রায় ৮০%।</li>
+<li>একক দেশ হিসেবে যুক্তরাষ্ট্র সবচেয়ে বড় গন্তব্য (প্রায় ৯.০৪ বিলিয়ন ডলার)। এরপর জার্মানি ও যুক্তরাজ্য।</li>
+<li>পোশাকের ক্ষেত্রে ইউরোপীয় ইউনিয়ন সবচেয়ে বড় বাজার (প্রায় ১৯.০৬ বিলিয়ন ডলার, অর্থাৎ পোশাক-রপ্তানির প্রায় ৪৯%)।</li>
+</ul>
+<p>আমদানি ও বাণিজ্য-ঘাটতি:</p>
+<ul>
+<li>Bangladesh Bank-এর লেনদেন-ভারসাম্য (Balance of Payments) তথ্য অনুযায়ী ২০২৫–২৬ অর্থবছরে আমদানি প্রায় ৭১.১৪ বিলিয়ন ডলার (আগের বছরের চেয়ে প্রায় ১০.৫% বেশি)।</li>
+<li>একই হিসাবে রপ্তানি প্রায় ৪৩.৮৫ বিলিয়ন ডলার।</li>
+<li>LC settlement-এর পরিমাণ প্রায় ৭০.৪ বিলিয়ন ডলার, যা আগের বছরের প্রায় সমান।</li>
+<li>মূলধনী যন্ত্রপাতি আমদানি প্রায় ১০.৬৮% কমেছে, শিল্পের কাঁচামাল আমদানি কিছুটা কমেছে। অন্যদিকে পেট্রোলিয়াম আমদানি প্রায় ৬.৪২% বেড়ে ১০.৬৮ বিলিয়ন ডলারে পৌঁছেছে।</li>
+</ul>
+<p>টীকা: EPB-র রপ্তানির হিসাব (প্রায় ৪৮ বিলিয়ন) আর Bangladesh Bank-এর লেনদেন-ভারসাম্য অনুযায়ী রপ্তানির হিসাব (প্রায় ৪৩.৮৫ বিলিয়ন) আলাদা কারণ দুটি প্রতিষ্ঠানের পরিমাপ-পদ্ধতি আলাদা। তাই কোনো সংখ্যা ব্যবহার করার সময় উৎস ও সময়কাল উল্লেখ করা ভালো অভ্যাস।</p>
+<p>ফরোয়ার্ডারের জন্য এর অর্থ কী?</p>
+<ul>
+<li>রপ্তানি: পোশাক শিল্পের বিশাল আউটবাউন্ড কার্গো (কনটেইনার ও এয়ার) ফরোয়ার্ডারদের জন্য নিয়মিত কাজ তৈরি করে।</li>
+<li>আমদানি: কাঁচামাল, যন্ত্রপাতি, জ্বালানি-ভিন্ন পণ্য ও ভোগ্যপণ্য ইনবাউন্ড ফ্রেইটের বড় বাজার।</li>
+<li>আমদানি কমলে (যেমন ২০২৫–২৬-এ মূলধনী যন্ত্রপাতির ক্ষেত্রে) Project Cargo-র মতো বিশেষায়িত খাত কমে যেতে পারে। এই ঝুঁকি আগে থেকে বুঝে রাখা দরকার।</li>
+</ul>
+<h4>৩.৩ চট্টগ্রাম বন্দর: দেশের অর্থনীতির প্রধান প্রবেশদ্বার</h4>
+<ul>
+<li>চট্টগ্রাম বন্দর দেশের মোট আমদানি-রপ্তানি বাণিজ্যের প্রায় ৯২% এবং কনটেইনারজাত কার্গোর প্রায় ৯৮% সামলায়।</li>
+<li>২০২৫ সালে বন্দরটি ৩৪,০৯,০৬৯ TEU কনটেইনার হ্যান্ডল করেছে, যা ২০২৪ সালের ৩২,৭৫,৬২৭ TEU-এর চেয়ে প্রায় ৪.০৭–৪.১% বেশি। ১৯৭৭ সালে কনটেইনার-অপারেশন শুরুর পর এটাই প্রথম বছর যখন বার্ষিক ৩৪ লক্ষ TEU ছাড়িয়েছে।</li>
+<li>২০২৫–২৬ অর্থবছরে বন্দরের কনটেইনার হ্যান্ডলিং প্রায় ৩৫,১৮,৮৪১ TEU, আগের অর্থবছরের চেয়ে প্রায় ৬.৭৬% বেশি।</li>
+<li>Lloyd's List-এর "One Hundred Ports 2026" তালিকায় চট্টগ্রাম বিশ্বের ৬৮তম ব্যস্ত কনটেইনার বন্দর। তবে এর বৃদ্ধির হার বিশ্বের শীর্ষ ১০০ বন্দরের গড় বৃদ্ধির (প্রায় ৬.৩%) চেয়ে কম ছিল।</li>
+<li>সমুদ্রপথের কনটেইনার ট্রাফিকের বাকি প্রায় ১% মোংলা বন্দর সামলায়।</li>
+<li>বন্দরের সম্প্রসারণে APM Terminals, MSC ও Red Sea Gateway-র মতো আন্তর্জাতিক অপারেটরদের বিনিয়োগ নিয়ে আলোচনা চলছে। এ নিয়ে দেশে বিতর্কও আছে (টার্মিনাল বিদেশি অপারেটরদের দেওয়ার সময়, শর্ত ও নিয়ন্ত্রণ-কাঠামো নিয়ে)।</li>
+</ul>
+<p>TEU কী? Twenty-foot Equivalent Unit। ২০ ফুট কনটেইনার = ১ TEU, ৪০ ফুট কনটেইনার = ২ TEU। বন্দরের ব্যস্ততা মাপার আন্তর্জাতিক একক।</p>
+<h4>৩.৪ অন্যান্য প্রবেশপথ</h4>
+<ul>
+<li>বিমানপথ: হযরত শাহজালাল আন্তর্জাতিক বিমানবন্দর (ঢাকা, কোড DAC) এয়ার কার্গোর প্রধান কেন্দ্র। পোশাকের জরুরি চালান, ওষুধ, ইলেকট্রনিকস, নষ্টযোগ্য পণ্য ও ই-কমার্স পার্সেল এখান দিয়ে যায়। চট্টগ্রামের শাহ আমানত বিমানবন্দর (CGP) ও সিলেটের ওসমানী (ZYL) তুলনামূলক ছোট ভূমিকা রাখে।</li>
+<li>স্থলবন্দর: ভারত, মিয়ানমার সীমান্তে স্থলবন্দর (যেমন বেনাপোল, বুড়িমারী, আখাউড়া ইত্যাদি) আঞ্চলিক বাণিজ্যে ভূমিকা রাখে।</li>
+<li>অভ্যন্তরীণ কনটেইনার ডিপো (ICD): ঢাকার কমলাপুরসহ বিভিন্ন ICD বন্দর থেকে দূরে কনটেইনার খালাস ও রপ্তানি-কনটেইনার প্যাকিংয়ের কাজ করে। পানগাঁও কনটেইনার টার্মিনাল নদীপথে ঢাকার কাছাকাছি কনটেইনার চলাচলের একটি উদাহরণ।</li>
+<li>নদীবন্দর ও Inland Waterways: দেশের অভ্যন্তরে পণ্য পরিবহনে নদীপথ গুরুত্বপূর্ণ।</li>
+</ul>
+<h4>৩.৫ নিয়ন্ত্রক কাঠামো: কারা নিয়ম বানায়?</h4>
+<ul>
+<li>National Board of Revenue (NBR) ও কাস্টমস: শুল্ক-কর, কাস্টমস ক্লিয়ারেন্স, এবং C&amp;F ও Shipping Agent-এর লাইসেন্সিং।</li>
+<li>Customs Act, 2023: কাস্টমস-সংক্রান্ত প্রধান আইন।</li>
+<li>Bangladesh Bank: বৈদেশিক মুদ্রা লেনদেন, আমদানি-পেমেন্ট, LC ও সংশ্লিষ্ট নিয়ম।</li>
+<li>Export Promotion Bureau (EPB), Chief Controller of Imports &amp; Exports (CCI&amp;E): রপ্তানি ও আমদানি-নিবন্ধন/নীতির দিক।</li>
+<li>Chittagong Port Authority (CPA) ও Mongla Port Authority: বন্দর-পরিচালনা।</li>
+<li>Civil Aviation Authority of Bangladesh (CAAB) ও Biman: বিমানবন্দর ও এয়ার কার্গো পরিকাঠামোর সঙ্গে সম্পর্কিত।</li>
+<li>Bangladesh Freight Forwarders Association (BAFFA): ফরোয়ার্ডারদের জাতীয় বাণিজ্য-সংগঠন।</li>
+</ul>
+<h4>৩.৬ ২০২৬ সালের নতুন লাইসেন্সিং কাঠামো: কী বদলেছে?</h4>
+<ul>
+<li>২০২৬ সালের ৮ জানুয়ারি NBR "Customs Clearing and Forwarding (C&amp;F) Agent Licensing Rules, 2026" গেজেট আকারে প্রকাশ করে (SRO নং ০৪-আইন/২০২৬/কাস্টমস)। এটি Customs Act, 2023-এর ধারা ২৪৩-এর অধীনে প্রণীত এবং আগের Customs Agent Licensing Rules, 2020 বাতিল করেছে।</li>
+<li>আগে C&amp;F ও Shipping Agent একই বিধির আওতায় ছিল। নতুন কাঠামোতে দুটি আলাদা হয়েছে।</li>
+<li>Shipping Agent Licensing Rules, 2025 আলাদাভাবে জারি হয়েছে। এর একটি বৈশিষ্ট্য: একটি কাস্টম হাউস থেকে নেওয়া Shipping Agent লাইসেন্স দেশের যেকোনো সমুদ্র বা নদীবন্দরে ব্যবহার করা যাবে।</li>
+<li>নতুন বিধিমালায় C&amp;F Agent লাইসেন্সের আবেদন আহ্বান করা হয়েছে (প্রথম দফার সময়সীমা ছিল ৩১ মার্চ ২০২৬)। পরীক্ষা ও যাচাইয়ের পর সংশ্লিষ্ট কাস্টমস স্টেশনের লাইসেন্সিং কর্তৃপক্ষ লাইসেন্স দেয়।</li>
+<li>কাস্টমস স্টেশনভিত্তিক লাইসেন্সের সংখ্যা ঠিক করতে আগে NBR-এর পূর্বানুমতি লাগত, নতুন নিয়মে তা আর লাগে না।</li>
+</ul>
+<p>ফ্রেইট ফরোয়ার্ডারদের নিজস্ব লাইসেন্সিং:</p>
+<ul>
+<li>ফরোয়ার্ডারদের আইনি ভিত্তি হিসেবে Freight Forwarding Agents (Licensing and Operations) Rules, 2008 এবং Customs Act-এর সংশ্লিষ্ট ধারা উল্লেখ করা হয়। সাধারণভাবে কাস্টমস বিভাগ থেকে লাইসেন্স এবং Bangladesh Bank-এর অনুমতির প্রয়োজন হয়।</li>
+<li>সম্পূর্ণ বিদেশি মালিকানাধীন প্রতিষ্ঠানকে ফরোয়ার্ডিং লাইসেন্স দেওয়া হবে কি না, তা নিয়ে সংশ্লিষ্ট পক্ষগুলোর মধ্যে আলোচনা চলছে। এ বিষয়ে সর্বশেষ নীতি দেখে নিন।</li>
+</ul>
+<p>পাঠকের জন্য নোট: ফি, শর্ত ও আবশ্যিক কাগজপত্র প্রায়ই বদলায়। ব্যবসা শুরুর আগে NBR, কাস্টম হাউস ও BAFFA-র সর্বশেষ বিজ্ঞপ্তি দেখে নিন।</p>
+<h4>৩.৭ এই অধ্যায়ের মূল কথা</h4>
+<ul>
+<li>বাংলাদেশের বাণিজ্য রপ্তানিতে পোশাকনির্ভর, আমদানিতে কাঁচামাল, জ্বালানি ও বিভিন্ন পণ্যনির্ভর।</li>
+<li>সমুদ্রপথের বাণিজ্যের প্রায় পুরোটাই চট্টগ্রাম বন্দর দিয়ে যায়, তাই এই বন্দরের সক্ষমতা ও জট ফরোয়ার্ডারের দৈনন্দিন কাজকে সরাসরি প্রভাবিত করে।</li>
+<li>নিয়ন্ত্রক কাঠামো ২০২৫–২৬ সালে বড় পরিবর্তনের মধ্য দিয়ে যাচ্ছে।</li>
+<li>সংখ্যা ব্যবহারের সময় উৎস ও সময়কাল উল্লেখ করা বাধ্যতামূলক।</li>
+</ul>
+<h4>৩.৮ নিজে করে দেখুন</h4>
+<p>NBR, Bangladesh Bank, CPA ও BAFFA-র ওয়েবসাইট ঘুরে দেখে প্রতিটি থেকে একটি করে সাম্প্রতিক বিজ্ঞপ্তি বের করুন এবং ফরোয়ার্ডারের ওপর এর প্রভাব এক অনুচ্ছেদে লিখুন।</p></div></article><article class="chap card" id="c4"><svg class="ban" viewBox="0 0 600 70" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="600" height="70" rx="16" fill="var(--a)" opacity=".10"/><g transform="translate(20 15) scale(1.7)" fill="none" stroke="var(--a)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4v5c0 5-4 8-8 9-4-1-8-4-8-9V7zM9 12l2 2 4-4"/></g><path d="M90 35Q150 5 210 35T330 35 450 35 570 35" fill="none" stroke="var(--a)" stroke-width="2" stroke-dasharray="6 8" opacity=".6"><animate attributeName="stroke-dashoffset" from="56" to="0" dur="3s" repeatCount="indefinite"/></path><circle cx="570" cy="35" r="5" fill="var(--a)"/><text x="560" y="62" text-anchor="end" font-size="44" font-weight="800" fill="var(--a)" opacity=".2">৪</text></svg><h3>অধ্যায় ৪: ইন্ডাস্ট্রির অংশীদাররা কারা কারা?</h3><div class="prose"><blockquote>
+<p><strong>এই অধ্যায়ে যা শিখবেন:</strong> একটি চালানের সব পক্ষের ভূমিকা; NVOCC, Consolidator ও Agent-এর পরিচয়; বিশ্বস্ততার ব্যবহারিক রূপ; Overseas Agent যাচাইয়ের ধাপ।</p>
+</blockquote>
+<h4>৪.১ একটি চালানের মঞ্চে কারা কারা থাকেন?</h4>
+<p>একটি চালানে একই সঙ্গে অনেক পক্ষের সঙ্গে কাজ করতে হয়: Importer ও Exporter, Overseas Freight Forwarder, Shipping Line, Airline, Origin Agent, Destination Agent, C&amp;F Agent এবং Port ও Cargo Handling সংশ্লিষ্ট প্রতিষ্ঠান। এই পক্ষগুলোর মধ্যে যোগাযোগ, দায়িত্ব-বণ্টন ও আর্থিক লেনদেন থাকে। এ কারণেই বিশ্বস্ততা ছাড়া এই ব্যবসা চলে না।</p>
+<p>এই অধ্যায়ে প্রত্যেকের ভূমিকা সহজ করে বোঝানো হলো।</p>
+<h4>৪.২ প্রধান পক্ষগুলো</h4>
+<p>১) Shipper (প্রেরক / রপ্তানিকারক)
+যে পণ্য পাঠায়। বিল অব লেডিংয়ে "Shipper" হিসেবে নাম থাকে।</p>
+<p>২) Consignee (প্রাপক / আমদানিকারক)
+যাঁর কাছে পণ্য পৌঁছাবে। পণ্য ছাড়ানোর অধিকার তাঁর (বা তাঁর নির্ধারিত ব্যাংক/প্রতিনিধির)।</p>
+<p>৩) Notify Party
+যাঁকে পণ্য পৌঁছানোর খবর জানাতে হবে। অনেক সময় Consignee-ই, কখনো ভিন্ন কেউ।</p>
+<p>৪) Freight Forwarder
+গ্রাহকের পক্ষে পরিবহনের ব্যবস্থাপক (আগের অধ্যায়ে বিস্তারিত)।</p>
+<p>৫) Carrier</p>
+<ul>
+<li>Shipping Line / Ocean Carrier (জাহাজ কোম্পানি), যেমন Maersk, MSC, CMA CGM ইত্যাদি বৈশ্বিক বড় লাইন।</li>
+<li>Airline (বিমান কোম্পানি), পণ্যবাহী বা যাত্রীবাহী বিমানের কার্গো-জায়গা বিক্রি করে।</li>
+<li>Trucking/Rail/Barge অপারেটর।</li>
+</ul>
+<p>৬) NVOCC (Non-Vessel Operating Common Carrier)
+যে জাহাজের মালিক নয়, কিন্তু নিজের নামে বিল অব লেডিং ইস্যু করে এবং Carrier-দের কাছ থেকে জায়গা কিনে খুচরা গ্রাহকের কাছে বিক্রি করে। ফরোয়ার্ডাররা প্রায়ই NVOCC হিসেবেও কাজ করেন।</p>
+<p>৭) Consolidator / Co-loader
+একাধিক গ্রাহকের LCL বা ছোট চালান একত্র করে কনটেইনার বা ইউনিট তৈরি করে।</p>
+<p>৮) Overseas Agent / Partner
+অন্য দেশে আপনার প্রতিনিধি ফরোয়ার্ডার। গন্তব্য বা উৎস-দেশের হ্যান্ডলিং, কাগজ ও ডেলিভারির কাজ করে। ফরোয়ার্ডিং একটি "নেটওয়ার্ক-নির্ভর শিল্প"।</p>
+<p>৯) GSA (General Sales Agent)
+এয়ারলাইনের পক্ষে একটি নির্দিষ্ট বাজারে কার্গো বিক্রির দায়িত্ব পাওয়া এজেন্ট।</p>
+<p>১০) Port / Terminal Operator ও CFS/ICD অপারেটর
+বন্দরের ভেতরে ও বাইরে কনটেইনার ও কার্গো ওঠানামা, সংরক্ষণ ও খোলাপ্যাক (devanning/stripping) করে।</p>
+<p>১১) Customs ও C&amp;F Agent
+পণ্যের শুল্কায়ন, পরীক্ষা ও ছাড়ের সরকারি কর্তৃপক্ষ এবং আমদানিকারকের পক্ষে সেই কাজ করা লাইসেন্সপ্রাপ্ত এজেন্ট।</p>
+<p>১২) ব্যাংক
+LC ইস্যু, পেমেন্ট ও বৈদেশিক মুদ্রা লেনদেন।</p>
+<p>১৩) বীমা কোম্পানি
+পণ্যের ক্ষতি বা হারানোর ঝুঁকিতে সুরক্ষা।</p>
+<p>১৪) Inland Transporter / Courier / Last-Mile Provider
+চূড়ান্ত ঠিকানা পর্যন্ত পণ্য পৌঁছানোর পরিবহন-সংস্থা।</p>
+<h4>৪.৩ সম্পর্কের জাল: একটি আমদানি-উদাহরণ</h4>
+<p>শেনজেন থেকে ঢাকায় সমুদ্রপথে এলসিএল চালান:</p>
+<p>Supplier (শেনজেন) → চীনা Origin Agent → Consolidator (CFS-এ খোলা ও প্যাকিং)
+→ Shipping Line (সিঙ্গাপুরে ট্রান্সশিপ) → চট্টগ্রাম বন্দর → বাংলাদেশি ফরোয়ার্ডার (আপনার প্রতিষ্ঠান)
+→ C&amp;F Agent (কাস্টমস ছাড়) → ডিপো/CFS (খালাস) → ট্রাক → আমদানিকারকের গুদাম।</p>
+<p>এই চেইনে অন্তত ৮–১০টি সংস্থা ও কয়েক ডজন মানুষ জড়িত। প্রতিটি হাতবদলে ভুল বা বিলম্বের ঝুঁকি আছে।</p>
+<h4>৪.৪ বিশ্বাসই আসল মুদ্রা</h4>
+<p>বিশ্বস্ততা বা নির্ভরযোগ্যতা ছাড়া এই ইন্ডাস্ট্রিতে কার্যক্রম পরিচালনা সম্ভব নয়। কাস্টমার ফরোয়ার্ডারের ওপর নির্ভর করেন, আর ফরোয়ার্ডার নির্ভর করেন বিদেশি এজেন্ট ও সেবাদাতাদের ওপর।</p>
+<p>বিশ্বস্ততার ব্যবহারিক রূপগুলো:</p>
+<ul>
+<li>সঠিক তথ্য দেওয়া (সম্ভাব্য সময়, খরচ, ঝুঁকি)।</li>
+<li>প্রতিশ্রুতি রক্ষা: যে রেট বলেছেন, তা বদলাতে হলে আগেই জানানো।</li>
+<li>আর্থিক স্বচ্ছতা: কী কী চার্জ কেন লাগছে, তার হিসাব দেখানো।</li>
+<li>সময়মতো পেমেন্ট করা (এজেন্টদের কাছে) ও সময়মতো বিল করা (গ্রাহকের কাছে)।</li>
+<li>খারাপ খবর দ্রুত জানানো: বিলম্ব বা ক্ষতি হলে লুকিয়ে না রেখে সমাধান-সহ জানানো।</li>
+</ul>
+<p>দীর্ঘমেয়াদে প্রতিষ্ঠানের সুনাম ও Customer Relationship এই আচরণের ওপরই গড়ে ওঠে।</p>
+<h4>৪.৫ কীভাবে নির্ভরযোগ্য Overseas Agent বাছাই করবেন</h4>
+<p>নতুন ফরোয়ার্ডারদের একটি বড় ভুল হলো যাচাই না করে Overseas Agent বেছে নেওয়া। যাচাইয়ের ধাপ:</p>
+<ol>
+<li>কোম্পানির নিবন্ধন, ঠিকানা ও অফিসের অস্তিত্ব যাচাই (ওয়েবসাইট, ভিডিও কল, রেফারেন্স)।</li>
+<li>আন্তর্জাতিক নেটওয়ার্কের সদস্যপদ আছে কি না দেখা (বিভিন্ন গ্লোবাল ফরোয়ার্ডার-নেটওয়ার্ক ও শিল্প-সংগঠন)।</li>
+<li>পরিচিত ফরোয়ার্ডারদের কাছ থেকে রেফারেন্স নেওয়া।</li>
+<li>ছোট চালান দিয়ে পরীক্ষা করা।</li>
+<li>পেমেন্ট-শর্ত ও ক্রেডিট-সীমা লিখিতভাবে ঠিক করা।</li>
+<li>ব্যাংক-অ্যাকাউন্টের তথ্য সবসময় আলাদা মাধ্যমে (যেমন ফোনে) নিশ্চিত করা। অর্থ পাঠানোর নির্দেশ হঠাৎ বদলে গেলে সতর্ক হওয়া।</li>
+</ol>
+<h4>৪.৬ এই অধ্যায়ের মূল কথা</h4>
+<ul>
+<li>একটি চালানে ৮–১৪টি পক্ষ জড়িত থাকতে পারে।</li>
+<li>ফরোয়ার্ডিং নেটওয়ার্ক-নির্ভর ব্যবসা; Agent বাছাই সাফল্যের গোড়ার কথা।</li>
+<li>বিশ্বস্ততা এখানে ঐচ্ছিক গুণ নয়, ব্যবসার শর্ত।</li>
+</ul>
+<h4>৪.৭ নিজে করে দেখুন</h4>
+<p>আপনার পছন্দের কোনো রুট (যেমন গুয়াংজু → ঢাকা, এয়ার) ধরে চেইনের প্রতিটি পক্ষের নাম ও ভূমিকা এক পাতায় এঁকে ফেলুন, এবং প্রতি জোড়া পক্ষের মধ্যে কী কী তথ্য ও টাকা আদান-প্রদান হয় তা লিখুন।</p></div></article></section>
+<svg class="wave" viewBox="0 0 1200 50" preserveAspectRatio="none" aria-hidden="true"><path d="M0 25Q150 0 300 25T600 25 900 25 1200 25V50H0Z" fill="currentColor"/></svg><section class="part" id="p3" data-h="32"><h2><svg class="ic" viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17l3-8h12l3 8zM7 17v3M17 17v3"/></svg> দ্বিতীয় খণ্ড: পরিবহন মাধ্যম ও কারিগরি জ্ঞান</h2><div class="prose"><p>ফ্রেইট ফরোয়ার্ডিং ও লজিস্টিকস পাঁচটি প্রধান মাধ্যমের ওপর দাঁড়িয়ে আছে: সমুদ্রপথ (By Sea), আকাশপথ (By Air), দেশের অভ্যন্তরীণ পরিবহন (Inland Transportation), সীমান্ত-পারাপার পরিবহন (Cross-border Transportation) এবং অভ্যন্তরীণ কুরিয়ার (Domestic Courier)। প্রতিটির কার্যক্রম ও প্রয়োজনীয়তা আলাদা। পণ্যের ধরন, গন্তব্য ও জরুরি-ভাব দেখে মাধ্যম বেছে নিতে হয়। এই খণ্ডে সমুদ্র ও আকাশপথ বিস্তারিতভাবে বোঝানো হয়েছে।</p></div><article class="chap card" id="c5"><svg class="ban" viewBox="0 0 600 70" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="600" height="70" rx="16" fill="var(--a)" opacity=".10"/><g transform="translate(20 15) scale(1.7)" fill="none" stroke="var(--a)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l2-7h14l2 7M12 10V4h4M2 21q2.5-2 5 0t5 0 5 0 5 0"/></g><path d="M90 35Q150 5 210 35T330 35 450 35 570 35" fill="none" stroke="var(--a)" stroke-width="2" stroke-dasharray="6 8" opacity=".6"><animate attributeName="stroke-dashoffset" from="56" to="0" dur="3s" repeatCount="indefinite"/></path><circle cx="570" cy="35" r="5" fill="var(--a)"/><text x="560" y="62" text-anchor="end" font-size="44" font-weight="800" fill="var(--a)" opacity=".2">৫</text></svg><h3>অধ্যায় ৫: Sea Freight: FCL, LCL ও কনটেইনারের জগৎ</h3><div class="prose"><blockquote>
+<p><strong>এই অধ্যায়ে যা শিখবেন:</strong> কনটেইনারের প্রকার; FCL ও LCL; সমুদ্রপথের চার্জ-কাঠামো; Demurrage ও Detention; B/L-এর মৌলিক ধারণা; LCL চালানের হিসাব।</p>
+</blockquote>
+<h4>৫.১ কেন সমুদ্রপথ?</h4>
+<p>আন্তর্জাতিক বাণিজ্যের সিংহভাগ পণ্য, আয়তনের হিসাবে, সমুদ্রপথে চলাচল করে। কারণ:</p>
+<ul>
+<li>প্রতি কেজি বা প্রতি ঘনমিটারে খরচ সবচেয়ে কম।</li>
+<li>বিশাল পরিমাণ পণ্য একসঙ্গে বহন করা যায়।</li>
+<li>ভারী ও বড় আকারের পণ্যের জন্য প্রায় একমাত্র বাস্তব বিকল্প।</li>
+</ul>
+<p>দুর্বলতা:</p>
+<ul>
+<li>সময় বেশি লাগে এবং সূচির অনিশ্চয়তা আছে (আবহাওয়া, বন্দর-জট, ট্রান্সশিপমেন্ট বিলম্ব)।</li>
+<li>জরুরি বা উচ্চমূল্যের হালকা পণ্যের জন্য প্রায়ই অনুপযুক্ত।</li>
+</ul>
+<p>চীন থেকে যুক্তরাষ্ট্রের মতো রুটে বড় পরিমাণ ও কম জরুরি চালান সাধারণত সমুদ্রপথে যায়, আর দ্রুত পরিবহন দরকার হলে বিমানপথ ব্যবহৃত হয়।</p>
+<h4>৫.২ কনটেইনারের প্রকার</h4>
+<p>(মাপগুলো আনুমানিক; ক্যারিয়ার ও কনটেইনার-নির্মাতাভেদে সামান্য ভিন্ন হয়)</p>
+<ul>
+<li>20' General Purpose (20GP): ভেতরের আয়তন প্রায় ৩৩ ঘনমিটার (CBM)।</li>
+<li>40' General Purpose (40GP): প্রায় ৬৭ CBM।</li>
+<li>40' High Cube (40HC): উচ্চতা বেশি, প্রায় ৭৬ CBM। হালকা কিন্তু আয়তনে বড় পণ্যের জন্য জনপ্রিয়।</li>
+<li>Reefer (শীতল): তাপমাত্রা নিয়ন্ত্রিত। ফল, মাছ, ওষুধ, ফ্রোজেন খাদ্য।</li>
+<li>Open Top: ওপর খোলা, উঁচু বা ক্রেনে ওঠানো পণ্যের জন্য।</li>
+<li>Flat Rack / Platform: দুই পাশ বা পুরো পাশ খোলা, ভারী যন্ত্রাংশ ও অতিবড় পণ্যের জন্য।</li>
+<li>Tank Container: তরল ও রাসায়নিক।</li>
+</ul>
+<p>মনে রাখবেন: কনটেইনারের ওজন-সীমা ও রুট-ভিত্তিক সড়ক-সীমা আছে। লোড করার আগে অবশ্যই ক্যারিয়ার ও ট্রাকিং-কোম্পানির সঙ্গে ওজন নিশ্চিত করুন।</p>
+<h4>৫.৩ FCL বনাম LCL</h4>
+<p>FCL (Full Container Load):
+একজন গ্রাহকের পণ্যে পুরো কনটেইনার ভরা। দাম কনটেইনারভিত্তিক (প্রতি 20' বা 40' হিসেবে)। নিরাপত্তা ও ডেলিভারির গতি সাধারণত ভালো।</p>
+<p>LCL (Less than Container Load):
+একাধিক গ্রাহকের ছোট চালান একত্র করে (Consolidation) একটি কনটেইনারে পাঠানো হয়। দাম প্রতি CBM বা প্রতি টনের হিসাবে। ছোট ব্যবসায়ীর জন্য সুবিধাজনক। তবে পণ্য হাতবদল বেশি হয়, তাই সময় বেশি লাগতে পারে এবং হ্যান্ডলিংয়ের ঝুঁকি বাড়ে।</p>
+<p>LCL-এ "W/M" নিয়ম:
+সাধারণ রীতিতে ১ ঘনমিটার (CBM) বা ১ মেট্রিক টনের মধ্যে যেটি বেশি, সেটিকে চার্জযোগ্য ধরা হয়। অধিকাংশ হালকা পণ্য CBM-এ চার্জ হয়।</p>
+<p>কখন কোনটি?</p>
+<ul>
+<li>ছোট, নিয়মিত বা পরীক্ষামূলক চালান → LCL।</li>
+<li>একটি কনটেইনারের কাছাকাছি পরিমাণ হলে FCL প্রায়ই সস্তা পড়ে এবং নিরাপদ।</li>
+<li>একই চালানে মূল্যবান বা নষ্টযোগ্য পণ্য থাকলে FCL বিবেচনা করুন।</li>
+</ul>
+<h4>৫.৪ রুট ও ট্রান্সশিপমেন্ট</h4>
+<p>বাংলাদেশে বড় মাদার ভেসেলের সরাসরি আগমনের সীমাবদ্ধতা থাকায় বহু সার্ভিস সিঙ্গাপুর, কলম্বো বা পোর্ট ক্লাং-জাতীয় হাবে ট্রান্সশিপমেন্ট হয়ে ফিডার জাহাজে চট্টগ্রামে আসে। এর অর্থ:</p>
+<ul>
+<li>মোট ট্রানজিট সময় সরাসরি সার্ভিসের চেয়ে বেশি হতে পারে।</li>
+<li>হাবে বিলম্ব হলে পুরো চালান পিছিয়ে যায়।</li>
+<li>সার্ভিস, রুট ও সময়সূচি ক্যারিয়ারভেদে ও সময়ভেদে বদলায়, তাই কখনো স্থায়ী "ট্রানজিট-দিন" প্রতিশ্রুতি দেবেন না।</li>
+</ul>
+<p>ডেলিভারির সময় সম্পর্কে অতিরিক্ত নিশ্চয়তা দেওয়া নতুন ফরোয়ার্ডারদের একটি সাধারণ ভুল।</p>
+<h4>৫.৫ সমুদ্রপথের চার্জ: বিল কীভাবে গঠিত হয়</h4>
+<p>নামগুলো ক্যারিয়ার ও দেশভেদে ভিন্ন হতে পারে, তবে কাঠামো মোটামুটি এই রকম:</p>
+<p>Origin (উৎস-দেশের) চার্জ:</p>
+<ul>
+<li>Pick-up / Trucking: কারখানা থেকে বন্দর বা CFS পর্যন্ত।</li>
+<li>Origin THC (Terminal Handling Charge)।</li>
+<li>Export Customs Clearance ও Documentation ফি।</li>
+<li>VGM (Verified Gross Mass) ও সিল ফি।</li>
+<li>(LCL-এর ক্ষেত্রে) CFS হ্যান্ডলিং/কনসোলিডেশন চার্জ।</li>
+</ul>
+<p>Main Freight (মূল সমুদ্র-ভাড়া):</p>
+<ul>
+<li>Basic Ocean Freight।</li>
+<li>BAF (Bunker Adjustment Factor): জ্বালানি-সংশোধন।</li>
+<li>CAF (Currency Adjustment Factor): মুদ্রা-সংশোধন।</li>
+<li>Peak Season Surcharge, Emergency/War Risk Surcharge: পরিস্থিতিভেদে।</li>
+</ul>
+<p>Destination (গন্তব্য-দেশের) চার্জ:</p>
+<ul>
+<li>Destination THC।</li>
+<li>Delivery Order (D/O) ফি।</li>
+<li>CFS বা ডিপো চার্জ।</li>
+<li>Port Storage / Demurrage ও Detention (যদি ফ্রি টাইম পার হয়)।</li>
+<li>Customs Clearance (C&amp;F Agent-এর ফি), শুল্ক-কর (এগুলো ফ্রেইট থেকে আলাদা)।</li>
+<li>Local Delivery / Trucking।</li>
+</ul>
+<p>গুরুত্বপূর্ণ ভেদ:</p>
+<ul>
+<li>Demurrage: কনটেইনার বন্দর বা টার্মিনালের ভেতরে ফ্রি টাইম ছাড়িয়ে পড়ে থাকলে চার্জ।</li>
+<li>Detention: কনটেইনার ক্যারিয়ারের হেফাজতের বাইরে (গ্রাহকের কাছে) ফ্রি টাইম ছাড়িয়ে রাখলে চার্জ।</li>
+<li>Storage: বন্দর বা ডিপোর গুদামে পণ্য রাখার ভাড়া।</li>
+</ul>
+<p>Shipment Delay, Port Congestion, Documentation Error ও অতিরিক্ত Handling Cost ব্যবসার বড় ঝুঁকি। এই চার্জগুলো ঠিক সেই ঝুঁকির টাকার রূপ।</p>
+<h4>৫.৬ গুরুত্বপূর্ণ সমুদ্র-ডকুমেন্ট (সংক্ষেপে)</h4>
+<p>ডকুমেন্ট নিয়ে এখানে শুধু মৌলিক ধারণা দেওয়া হলো।</p>
+<ul>
+<li>Bill of Lading (B/L): সবচেয়ে গুরুত্বপূর্ণ ডকুমেন্ট। এটি একসঙ্গে (১) পণ্য গ্রহণের রসিদ, (২) পরিবহন-চুক্তির প্রমাণ, এবং (৩) অনেক ক্ষেত্রে পণ্যের মালিকানার দলিল।</li>
+<li>MBL (Master B/L): ক্যারিয়ার ইস্যু করে ফরোয়ার্ডারকে।</li>
+<li>HBL (House B/L): ফরোয়ার্ডার/NVOCC ইস্যু করে প্রকৃত গ্রাহককে।</li>
+<li>Original B/L, Telex Release ও Sea Waybill: পণ্য ছাড়ার তিনটি পদ্ধতি। Original B/L লাগলে কাগজ দেখাতে হয়, Telex Release-এ ইলেকট্রনিকভাবে ছাড় দেওয়া হয়, Sea Waybill মালিকানার দলিল নয় এবং দ্রুত ছাড়ের জন্য ব্যবহার হয়।</li>
+</ul>
+<h4>৫.৭ একটি কাল্পনিক উদাহরণ: LCL চালানের হিসাব</h4>
+<p>(সংখ্যাগুলো পাঠককে প্রক্রিয়া বোঝানোর জন্য কাল্পনিক, বাজারদর নয়।)</p>
+<p>ধরুন ১০টি কার্টন, প্রতিটির মাপ ৬০×৪০×৫০ সেমি, ওজন ১৫ কেজি।</p>
+<ul>
+<li>একটি কার্টনের আয়তন = ০.৬ × ০.৪ × ০.৫ = ০.১২ CBM।</li>
+<li>১০টির মোট আয়তন = ১.২ CBM।</li>
+<li>মোট ওজন = ১৫০ কেজি = ০.১৫ টন।</li>
+<li>যেহেতু ১.২ CBM &gt; ০.১৫ টন, চার্জযোগ্য একক হলো ১.২ CBM।</li>
+</ul>
+<p>কাল্পনিক রেট ধরলে: প্রতি CBM-এ ৬০ ডলার সমুদ্র-ভাড়া → ৭২ ডলার। এর সঙ্গে Origin ও Destination-এর নির্দিষ্ট চার্জ (ডকুমেন্টেশন, THC/CFS, D/O ইত্যাদি) যোগ হবে। দেখা যাবে, ছোট চালানে নির্দিষ্ট চার্জই মোট খরচের বড় অংশ। এ কারণে খুব ছোট চালানে "ফ্রেইটের দাম কম" মানে "মোট খরচ কম" নয়।</p>
+<h4>৫.৮ এই অধ্যায়ের মূল কথা</h4>
+<ul>
+<li>সমুদ্রপথ সস্তা, ধীর ও বড় আয়তনের জন্য উপযুক্ত।</li>
+<li>FCL/LCL-এর সিদ্ধান্ত আয়তন, মূল্য ও সময়ের ওপর নির্ভর করে।</li>
+<li>বিলের প্রতিটি অংশ (Origin, Freight, Destination) আলাদা করে গ্রাহককে দেখানো পেশাদারিত্বের লক্ষণ।</li>
+<li>ট্রানজিট সময় সম্পর্কে কখনো নিশ্চয়তা দেবেন না, শুধু আনুমানিক সময় বলুন।</li>
+</ul>
+<h4>৫.৯ নিজে করে দেখুন</h4>
+<ol>
+<li>একটি ২০ ফুট কনটেইনারে ০.১২ CBM-এর কার্টন সর্বোচ্চ কতগুলো ঢোকে, ধারণা করুন (আয়তনের হিসাবে, ফাঁক বাদ দিয়ে প্রায়)।</li>
+<li>Demurrage ও Detention-এর পার্থক্য আপনার নিজের ভাষায় ৫ লাইনে লিখুন।</li>
+</ol></div></article><article class="chap card" id="c6"><svg class="ban" viewBox="0 0 600 70" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="600" height="70" rx="16" fill="var(--a)" opacity=".10"/><g transform="translate(20 15) scale(1.7)" fill="none" stroke="var(--a)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 14l20-8-6 15-3-6zM13 15l-4 6"/></g><path d="M90 35Q150 5 210 35T330 35 450 35 570 35" fill="none" stroke="var(--a)" stroke-width="2" stroke-dasharray="6 8" opacity=".6"><animate attributeName="stroke-dashoffset" from="56" to="0" dur="3s" repeatCount="indefinite"/></path><circle cx="570" cy="35" r="5" fill="var(--a)"/><text x="560" y="62" text-anchor="end" font-size="44" font-weight="800" fill="var(--a)" opacity=".2">৬</text></svg><h3>অধ্যায় ৬: Air Freight: ওজন, রেট ও এয়ারপোর্ট</h3><div class="prose"><blockquote>
+<p><strong>এই অধ্যায়ে যা শিখবেন:</strong> IATA এয়ারপোর্ট কোড; Air Waybill; Chargeable Weight-এর হিসাব; এয়ার রেটের ধরন; Dangerous Goods-এর সতর্কতা।</p>
+</blockquote>
+<h4>৬.১ বিমানপথ কখন?</h4>
+<p>বিমানপথ দ্রুত, তবে ব্যয়বহুল। সাধারণত এই পণ্যগুলো বিমানে যায়:</p>
+<ul>
+<li>জরুরি চালান (যেমন পোশাকের শেষ মুহূর্তের চালান, যন্ত্রাংশ)।</li>
+<li>উচ্চমূল্যের হালকা পণ্য (ইলেকট্রনিকস, ওষুধ, গয়না)।</li>
+<li>নষ্টযোগ্য পণ্য (তাজা ফল, ফুল, সামুদ্রিক খাদ্য, কিছু ওষুধ)।</li>
+<li>ই-কমার্সের ছোট পার্সেল ও নমুনা চালান।</li>
+</ul>
+<p>দ্রুত পরিবহন দরকার হলে বিমানপথ ব্যবহার হয়, তবে পণ্যের ধরন, ওজন ও অন্যান্য শর্ত অনুযায়ী খরচ ভিন্ন হয়।</p>
+<h4>৬.২ এয়ারপোর্ট কোড: ফরোয়ার্ডারের ভাষা</h4>
+<p>ভৌগোলিক জ্ঞান ফরোয়ার্ডারের মৌলিক দক্ষতা। উদাহরণ: DXB হলো দুবাই আন্তর্জাতিক বিমানবন্দরের IATA কোড। আন্তর্জাতিক এয়ার ফ্রেইটে এই ধরনের কোড নিয়মিত ব্যবহার হয়।</p>
+<p>প্রাথমিক তালিকা:</p>
+<p>DAC — Hazrat Shahjalal International Airport, ঢাকা
+CGP — Shah Amanat International Airport, চট্টগ্রাম
+DXB — Dubai International Airport
+SIN — Singapore Changi Airport
+HKG — Hong Kong International Airport
+LHR — London Heathrow Airport
+JFK — John F. Kennedy International Airport, নিউ ইয়র্ক
+PVG — Shanghai Pudong International Airport
+CAN — Guangzhou Baiyun International Airport</p>
+<p>IATA কোড ৩ অক্ষরের এবং বিমানবন্দর-নির্দিষ্ট। শহরের নামের সঙ্গে সবসময় মিলে না (যেমন ঢাকা DAC, চট্টগ্রাম CGP)। কার্গো বুকিং, AWB ও ই-মেইলে কোড ভুল হলে মাল ভুল শহরে চলে যেতে পারে। তাই কোড লেখার সময় দুবার মিলিয়ে নেওয়া অভ্যাসে পরিণত করুন।</p>
+<p>একটি উদাহরণ: গ্রাহক DXB থেকে DAC-এ পণ্য পাঠাতে চান। ফরোয়ার্ডারকে বুঝতে হবে DXB কোন বিমানবন্দর, DAC কোনটি, এবং এই দুই গন্তব্যের মধ্যে কীভাবে চালান পরিচালনা করা যায়।</p>
+<h4>৬.৩ Air Waybill (AWB)</h4>
+<p>AWB হলো বিমানপথের মূল ডকুমেন্ট। এটি Bill of Lading-এর মতো একই ধরনের ভূমিকা রাখে, তবে প্রধান পার্থক্য হলো AWB সাধারণত মালিকানার দলিল নয় (non-negotiable)। এটি পণ্য গ্রহণের রসিদ ও পরিবহন-চুক্তির প্রমাণ।</p>
+<ul>
+<li>MAWB (Master AWB): এয়ারলাইন বা তার এজেন্ট ইস্যু করে ফরোয়ার্ডারের নামে।</li>
+<li>HAWB (House AWB): ফরোয়ার্ডার ইস্যু করে প্রকৃত গ্রাহকের নামে।</li>
+<li>AWB নম্বর ১১ সংখ্যার: প্রথম ৩ সংখ্যা এয়ারলাইনের কোড-প্রিফিক্স, পরের ৮ সংখ্যা সিরিয়াল ও চেক-ডিজিট।</li>
+</ul>
+<h4>৬.৪ Chargeable Weight: এয়ার ফ্রেইটের সবচেয়ে গুরুত্বপূর্ণ হিসাব</h4>
+<p>বিমানে জায়গা সীমিত, তাই ভাড়া শুধু ওজনে নয়, আয়তনেও নির্ধারিত হয়।</p>
+<ul>
+<li>Actual Weight: পণ্যের প্রকৃত ওজন (কেজি)।</li>
+<li>Volumetric Weight: (দৈর্ঘ্য × প্রস্থ × উচ্চতা, সেমি) ÷ ৬০০০ (সাধারণত IATA-র প্রচলিত ভাগ-গুণক; কিছু কুরিয়ার ও এজেন্ট ৫০০০ ব্যবহার করে)।</li>
+<li>Chargeable Weight: প্রকৃত ওজন ও আয়তনিক ওজনের মধ্যে যেটি বেশি।</li>
+</ul>
+<p>উদাহরণ (অধ্যায় ৫-এর সেই ১০টি কার্টন):</p>
+<ul>
+<li>একটি কার্টনের আয়তনিক ওজন = (৬০ × ৪০ × ৫০) ÷ ৬০০০ = ১২০,০০০ ÷ ৬০০০ = ২০ কেজি।</li>
+<li>১০টির আয়তনিক ওজন = ২০০ কেজি।</li>
+<li>প্রকৃত ওজন = ১৫০ কেজি।</li>
+<li>Chargeable Weight = ২০০ কেজি (কারণ ২০০ &gt; ১৫০)।</li>
+</ul>
+<p>কাল্পনিক রেট: প্রতি কেজি ৫ ডলার ধরলে ২০০ কেজি × ৫ = ১,০০০ ডলার (সঙ্গে ফুয়েল ও সিকিউরিটি সারচার্জ, এজেন্ট ও হ্যান্ডলিং ফি)।</p>
+<p>একই ১০টি কার্টন LCL সমুদ্রপথে গেলে (অধ্যায় ৫-এর কাল্পনিক হিসাব) সমুদ্র-ভাড়া ৭২ ডলার। তুলনা থেকে বোঝা যায়, কেন জরুরি নয় এমন পণ্য সমুদ্রপথে যাওয়া লাভজনক, আর কেন সময় বাঁচানোর মূল্য ক্রেতাকে বুঝিয়ে বলা জরুরি।</p>
+<h4>৬.৫ এয়ার রেটের ধরন</h4>
+<ul>
+<li>General Cargo Rate (GCR): সাধারণ পণ্যের জন্য ওজনের ধাপে (weight break) দাম কমে। বেশি ওজন, কম প্রতি-কেজি রেট।</li>
+<li>Minimum Charge: খুব হালকা চালানের জন্য সর্বনিম্ন ভাড়া।</li>
+<li>Specific Commodity Rate (SCR): নির্দিষ্ট পণ্যে বিশেষ ছাড়-রেট।</li>
+<li>Class Rate: কিছু পণ্যের (যেমন জীবন্ত প্রাণী, সংবাদপত্র) জন্য নির্ধারিত শতাংশভিত্তিক।</li>
+<li>Surcharges: জ্বালানি, নিরাপত্তা-স্ক্রিনিং ও ঝুঁকি-সংক্রান্ত।</li>
+</ul>
+<h4>৬.৬ কার্গো-সীমা ও নিয়ম</h4>
+<ul>
+<li>Dangerous Goods (DG): লিথিয়াম ব্যাটারি, রাসায়নিক, দাহ্য পদার্থ ইত্যাদির জন্য কঠোর নিয়ম (IATA Dangerous Goods Regulations)। ভুল ঘোষণা গুরুতর আইনি ও নিরাপত্তা-ঝুঁকি তৈরি করে।</li>
+<li>মাত্রা-সীমা: বিমানের দরজা, ULD (Unit Load Device) ও ডেক-উচ্চতা অনুযায়ী পণ্যের আকারের সীমা থাকে।</li>
+<li>পণ্যের প্যাকেজিং ও লেবেল: ক্ষতি ও নিরাপত্তা-যাচাই এড়ানোর জন্য মানসম্পন্ন হতে হয়।</li>
+<li>Security Screening: আন্তর্জাতিক এয়ার কার্গো কঠোর নিরাপত্তা-যাচাইয়ের আওতায়।</li>
+</ul>
+<p>(লিথিয়াম ব্যাটারি সংবলিত পণ্য ই-কমার্সে খুব সাধারণ, তাই নতুন ফরোয়ার্ডারদের এই বিষয়ে বিশেষ সতর্ক থাকতে হবে।)</p>
+<h4>৬.৭ এয়ার ফ্রেইটে সময় ও সমন্বয়</h4>
+<p>বিমানের সময়সূচি দেশে দেশে ভিন্ন টাইম-জোনে চলে। কাট-অফ টাইমের ঘণ্টাখানেক দেরিও চালানকে পরের ফ্লাইটে পাঠাতে পারে।</p>
+<p>বাংলাদেশে অফিস বন্ধ হলেও অন্য দেশে কাজের সময় চলতে পারে, তাই কখনো কখনো কর্মঘণ্টার বাইরে সমন্বয় করতে হয়। এ কারণেই ফরোয়ার্ডিংয়ে স্পষ্ট দায়িত্ব-বণ্টন ও রোস্টার-ব্যবস্থা প্রয়োজন।</p>
+<h4>৬.৮ এই অধ্যায়ের মূল কথা</h4>
+<ul>
+<li>বিমানপথ দ্রুত কিন্তু ব্যয়বহুল, চার্জ হয় Chargeable Weight-এ।</li>
+<li>IATA কোড নির্ভুলভাবে ব্যবহার করা ফরোয়ার্ডারের মৌলিক দক্ষতা।</li>
+<li>ডেঞ্জারাস গুডস ও লিথিয়াম ব্যাটারির ক্ষেত্রে ভুল ঘোষণা ভয়ংকর ঝুঁকি।</li>
+</ul>
+<h4>৬.৯ নিজে করে দেখুন</h4>
+<ol>
+<li>একটি বাক্স ৭০×৫০×৪০ সেমি, ওজন ১২ কেজি। Volumetric Weight ও Chargeable Weight বের করুন। (উত্তর: ৭০×৫০×৪০ = ১৪০,০০০; ÷৬০০০ ≈ ২৩.৩ কেজি। Chargeable ≈ ২৩.৩ কেজি।)</li>
+<li>DAC, CGP, DXB, SIN, HKG, LHR, JFK কোডগুলো মুখস্থ না করে প্রতিটির জন্য একটি শহর-দেশ-মানচিত্র-ছবি বানান।</li>
+</ol></div></article></section>
+<section class="part" id="calc" data-h="45"><h2>Chargeable Weight ও CBM ক্যালকুলেটর</h2>
+<div class="card calc"><p class="mu">বইয়ের নিয়ম: Volumetric Weight = (দৈর্ঘ্য × প্রস্থ × উচ্চতা, সেমি) ÷ ৬০০০, আর Chargeable Weight হলো প্রকৃত ও আয়তনিক ওজনের মধ্যে যেটি বেশি। ভাগ-গুণক কিছু কুরিয়ার/এজেন্টের ক্ষেত্রে আলাদা হতে পারে, তাই বদলানো যায়।</p>
+<div class="g">
+<label>দৈর্ঘ্য (সেমি)<input id="dl" inputmode="decimal" value="70"></label>
+<label>প্রস্থ (সেমি)<input id="dw" inputmode="decimal" value="50"></label>
+<label>উচ্চতা (সেমি)<input id="dh" inputmode="decimal" value="40"></label>
+<label>প্রতি বাক্সের প্রকৃত ওজন (কেজি)<input id="aw" inputmode="decimal" value="12"></label>
+<label>বাক্সের সংখ্যা<input id="pc" inputmode="decimal" value="1"></label>
+<label>ভাগ-গুণক (cm³/কেজি)<input id="dv" inputmode="decimal" value="6000"></label>
+</div>
+<div class="res" aria-live="polite"><div><small>প্রকৃত ওজন (কেজি)</small><b id="s1">-</b></div><div><small>Volumetric Weight (কেজি)</small><b id="s2">-</b></div><div><small>Chargeable Weight (কেজি)</small><b id="s3">-</b></div><div><small>মোট CBM</small><b id="s4">-</b></div></div>
+<p class="mu" id="s5"></p></div></section>
+
+<svg class="wave" viewBox="0 0 1200 50" preserveAspectRatio="none" aria-hidden="true"><path d="M0 25Q150 0 300 25T600 25 900 25 1200 25V50H0Z" fill="currentColor"/></svg><section class="part" id="p4" data-h="330"><h2><svg class="ic" viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-8M22 20V8"/></svg> পরিভাষা</h2><div class="prose"><table>
+<thead>
+<tr>
+<th>শব্দ</th>
+<th>অর্থ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AWB (Air Waybill)</td>
+<td>বিমানপথের পরিবহন-ডকুমেন্ট; মালিকানার দলিল নয়।</td>
+</tr>
+<tr>
+<td>BAF</td>
+<td>Bunker Adjustment Factor; জ্বালানি-মূল্যজনিত সারচার্জ।</td>
+</tr>
+<tr>
+<td>B/L (Bill of Lading)</td>
+<td>সমুদ্রপথের মূল ডকুমেন্ট; রসিদ, চুক্তির প্রমাণ ও (অনেক ক্ষেত্রে) মালিকানার দলিল।</td>
+</tr>
+<tr>
+<td>CBM</td>
+<td>Cubic Meter; ঘনমিটার।</td>
+</tr>
+<tr>
+<td>C&amp;F Agent</td>
+<td>Clearing &amp; Forwarding Agent; কাস্টমস ক্লিয়ারেন্সের লাইসেন্সপ্রাপ্ত এজেন্ট।</td>
+</tr>
+<tr>
+<td>CFR (CNF)</td>
+<td>Cost and Freight; Incoterms 2020-এর শর্ত (সমুদ্র/অভ্যন্তরীণ জলপথ)।</td>
+</tr>
+<tr>
+<td>CFS</td>
+<td>Container Freight Station; LCL কার্গো খোলা/ভরার স্থান।</td>
+</tr>
+<tr>
+<td>Carrier</td>
+<td>যে প্রতিষ্ঠান প্রকৃতপক্ষে পণ্য বহন করে (জাহাজ/বিমান কোম্পানি)।</td>
+</tr>
+<tr>
+<td>Chargeable Weight</td>
+<td>এয়ারে প্রকৃত ও আয়তনিক ওজনের মধ্যে যেটি বেশি।</td>
+</tr>
+<tr>
+<td>Consignee</td>
+<td>পণ্যের প্রাপক।</td>
+</tr>
+<tr>
+<td>Consolidation</td>
+<td>একাধিক ছোট চালান একত্র করা।</td>
+</tr>
+<tr>
+<td>Demurrage</td>
+<td>বন্দর/টার্মিনালে কনটেইনার ফ্রি টাইম ছাড়ালে চার্জ।</td>
+</tr>
+<tr>
+<td>Detention</td>
+<td>ক্যারিয়ারের কনটেইনার গ্রাহকের হেফাজতে ফ্রি টাইম ছাড়ালে চার্জ।</td>
+</tr>
+<tr>
+<td>D/O (Delivery Order)</td>
+<td>গন্তব্যে পণ্য ছাড়ার অনুমোদন-ডকুমেন্ট।</td>
+</tr>
+<tr>
+<td>ETA / ETD</td>
+<td>আনুমানিক পৌঁছানো / ছাড়ার সময়।</td>
+</tr>
+<tr>
+<td>FCL / LCL</td>
+<td>পূর্ণ কনটেইনার / খণ্ডিত কনটেইনার।</td>
+</tr>
+<tr>
+<td>Freight Forwarder</td>
+<td>গ্রাহকের পক্ষে পরিবহনের ব্যবস্থাপক।</td>
+</tr>
+<tr>
+<td>HAWB / HBL</td>
+<td>ফরোয়ার্ডার ইস্যু করা House AWB / House B/L।</td>
+</tr>
+<tr>
+<td>HS Code</td>
+<td>পণ্যের আন্তর্জাতিক শ্রেণিবিন্যাস-কোড; শুল্ক-হার এর ওপর নির্ভর করে।</td>
+</tr>
+<tr>
+<td>IATA Code</td>
+<td>বিমানবন্দরের ৩ অক্ষরের আন্তর্জাতিক কোড (DAC, DXB ইত্যাদি)।</td>
+</tr>
+<tr>
+<td>ICD</td>
+<td>Inland Container Depot; দেশের অভ্যন্তরের কনটেইনার ডিপো।</td>
+</tr>
+<tr>
+<td>Incoterms</td>
+<td>আন্তর্জাতিক বাণিজ্যের দায়িত্ব-বণ্টনের মানক শর্ত (বর্তমান সংস্করণ Incoterms 2020)।</td>
+</tr>
+<tr>
+<td>MAWB / MBL</td>
+<td>ক্যারিয়ার/এয়ারলাইন ইস্যু করা Master AWB / Master B/L।</td>
+</tr>
+<tr>
+<td>NVOCC</td>
+<td>জাহাজের মালিক নয় এমন Common Carrier, যে নিজের B/L ইস্যু করে।</td>
+</tr>
+<tr>
+<td>Notify Party</td>
+<td>যাকে পণ্য পৌঁছানোর খবর দিতে হবে।</td>
+</tr>
+<tr>
+<td>Project Cargo</td>
+<td>ভারী, বড় বা বিশেষ পরিকল্পনা-নির্ভর শিল্প/প্রকল্পের পণ্য।</td>
+</tr>
+<tr>
+<td>TEU</td>
+<td>Twenty-foot Equivalent Unit; ২০ ফুট কনটেইনার = ১ TEU।</td>
+</tr>
+<tr>
+<td>THC</td>
+<td>Terminal Handling Charge; টার্মিনালে হ্যান্ডলিং চার্জ।</td>
+</tr>
+<tr>
+<td>ULD</td>
+<td>Unit Load Device; বিমানের কার্গো-পাত্র/প্যালেট।</td>
+</tr>
+<tr>
+<td>VGM</td>
+<td>Verified Gross Mass; কনটেইনারের যাচাইকৃত মোট ওজন।</td>
+</tr>
+</tbody>
+</table></div></section>
+<svg class="wave" viewBox="0 0 1200 50" preserveAspectRatio="none" aria-hidden="true"><path d="M0 25Q150 0 300 25T600 25 900 25 1200 25V50H0Z" fill="currentColor"/></svg><section class="part" id="p5" data-h="150"><h2><svg class="ic" viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a9 9 0 100 18 9 9 0 000-18zM3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg> তথ্যসূত্র</h2><div class="prose"><p><strong>বইয়ের পরিসংখ্যান ও নিয়মকানুন নিচের উৎসগুলোর ভিত্তিতে (নভেম্বর ২০২৬ পর্যন্ত):</strong></p>
+<p><strong>চট্টগ্রাম বন্দর:</strong></p>
+<ul>
+<li>Dhaka Tribune: Ctg port retains 68th position in the world's top 100 container ports</li>
+<li>The Daily Ittefaq: Chittagong Port achieved historic milestone in 2025</li>
+<li>Apparel Resources: Chattogram Port sets new records in 2025</li>
+<li>Prothom Alo (English): Chittagong Port remains 68th among 100 busiest ports</li>
+<li>The Financial Express: Chittagong Port stays at 68th spot; Ctg port handles record 3.52m TEUs in FY26</li>
+</ul>
+<p><strong>রপ্তানি, আমদানি ও বাণিজ্য-ঘাটতি:</strong></p>
+<ul>
+<li>Export Promotion Bureau (EPB) প্রাথমিক তথ্য, জুন ২০২৬ (Prothom Alo ও UNB-র প্রতিবেদনের মাধ্যমে)</li>
+<li>Textalks: Bangladesh ends FY2025–26 with US$48 billion in exports</li>
+<li>bdnews24: Bangladesh's trade deficit widens sharply as imports rise and exports slip</li>
+<li>The Financial Express: Trade deficit widens 24pc in FY26</li>
+<li>Dhaka Tribune: Industrial capital slump challenges Bangladesh's trade outlook</li>
+</ul>
+<p><strong>লাইসেন্সিং ও নিয়ন্ত্রক কাঠামো:</strong></p>
+<ul>
+<li>National Board of Revenue (NBR): কাস্টমস-সংক্রান্ত SRO-তালিকা (nbr.gov.bd)</li>
+<li>BSS: NBR issues C&amp;F Agent Licensing Rules 2026 (১৪ জানুয়ারি ২০২৬)</li>
+<li>BSS: NBR introduces new Shipping Agent Licensing Rules 2025 (২ জানুয়ারি ২০২৬)</li>
+<li>The Daily Ittefaq: NBR launches new licensing rules for C&amp;F agents</li>
+<li>Bangladesh Trade Portal / eRegulations: Freight Forwarding Agents (Licensing and Operations) Rules, 2008</li>
+</ul>
+<p>কনটেইনারের প্রকার, চার্জ-কাঠামো, Incoterms, IATA ও AWB-সংক্রান্ত নিয়ম আন্তর্জাতিক শিল্পের প্রচলিত মান অনুযায়ী লেখা।</p></div></section>
+</main>
+<div id="bn"><button class="btn" id="mn2" aria-label="সূচিপত্র"><svg class="i" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg> সূচি</button><button class="btn" id="sb2" aria-label="সার্চ"><svg class="i" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 4a7 7 0 100 14 7 7 0 000-14zM21 21l-5-5"/></svg> সার্চ</button><button class="btn" id="th2" aria-label="থিম"><svg class="i" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a9 9 0 100 18zM12 3v18"/></svg> থিম</button><button class="btn" id="tp" aria-label="উপরে যান"><svg class="i" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg> উপরে</button></div>
+<div id="sr" role="dialog" aria-modal="true" aria-label="সার্চ"><div><input id="qs" type="search" placeholder="কীওয়ার্ড লিখুন, Enter চাপুন… (Esc দিয়ে বন্ধ)" aria-label="সার্চ"><ul id="rs"></ul></div></div>
+<script>
+(function(){
+var D=document,R=D.documentElement,B=D.body,$=function(s){return D.querySelector(s)},A=function(s,r){return[].slice.call((r||D).querySelectorAll(s))};
+var RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+function setT(t){R.setAttribute('data-t',t);try{localStorage.setItem('imp-ff-theme',t)}catch(e){}}
+function tog(){setT(R.getAttribute('data-t')==='dark'?'light':'dark')}
+['th','th2'].forEach(function(i){$('#'+i).onclick=tog});
+function menu(o){B.classList.toggle('menu',o);B.classList.toggle('lock',o&&innerWidth<1024);$('#mn').setAttribute('aria-expanded',o)}
+$('#mn').onclick=function(){menu(!B.classList.contains('menu'))};$('#mn2').onclick=$('#mn').onclick;
+A('#side a').forEach(function(a){a.onclick=function(){menu(false)}});
+D.addEventListener('click',function(e){if(B.classList.contains('menu')&&innerWidth<1024&&!e.target.closest('#side,#mn,#mn2'))menu(false)});
+$('#tp').onclick=function(){scrollTo({top:0})};
+A('.btn').forEach(function(b){b.addEventListener('pointerdown',function(e){var r=b.getBoundingClientRect(),s=D.createElement('span');s.className='rp';var z=Math.max(r.width,r.height);s.style.cssText='width:'+z+'px;height:'+z+'px;left:'+(e.clientX-r.left-z/2)+'px;top:'+(e.clientY-r.top-z/2)+'px';b.appendChild(s);setTimeout(function(){s.remove()},650)})});
+var pg=$('#pg');function prog(){var h=R.scrollHeight-innerHeight;pg.style.width=(h>0?scrollY/h*100:0)+'%'}
+addEventListener('scroll',prog,{passive:true});prog();
+var words=($('main').innerText||'').trim().split(/\s+/).length;$('#rt').textContent=Math.max(1,Math.round(words/180));
+function cnt(el,n){if(RM){el.textContent=n;return}var t0=performance.now();(function f(t){var p=Math.min(1,(t-t0)/1200);el.textContent=Math.round(n*p);if(p<1)requestAnimationFrame(f)})(t0)}
+setTimeout(function(){D.getElementById('splash').classList.add('x');A('[data-n]').forEach(function(e){cnt(e,+e.dataset.n)});cnt($('#wc'),words)},900);
+A('.chap,.part>h2,.calc,.flow').forEach(function(e){e.classList.add('rv')});
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px'});A('.rv').forEach(function(e){io.observe(e)});
+var links={};A('#side a').forEach(function(a){links[a.getAttribute('href').slice(1)]=a});
+var cur=null,so=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var id=e.target.id,a=links[id];if(!a)return;if(cur)cur.classList.remove('on');a.classList.add('on');cur=a;a.scrollIntoView({block:'nearest'});var p=e.target.closest('.part');if(p&&p.dataset.h)R.style.setProperty('--h',p.dataset.h)}})},{rootMargin:'-20% 0px -70% 0px'});
+A('.part,.chap').forEach(function(e){so.observe(e)});
+function nz(s){return s.normalize('NFC').replace(/[\u200b-\u200d\ufeff]/g,'')}
+var idx=[];A('main h3,main h4,main p,main li').forEach(function(n){var t=nz(n.textContent.replace(/\s+/g,' ').trim());if(t.length>1&&!n.closest('.calc')){var s=n.closest('article,section');idx.push({n:n,t:t,l:t.toLowerCase(),s:s?nz((s.querySelector('h3,h2')||{}).textContent||''):''})}});
+var sr=$('#sr'),q=$("#qs"),rs=$('#rs');
+function esc(s){return s.replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function openS(){sr.classList.add('o');B.classList.add('lock');q.value='';rs.innerHTML='';q.focus()}
+function closeS(){sr.classList.remove('o');B.classList.remove('lock')}
+$('#sb').onclick=openS;$('#sb2').onclick=function(){menu(false);openS()};
+sr.addEventListener('click',function(e){if(e.target===sr)closeS()});
+function srch(){var ws=nz(q.value).toLowerCase().split(/\s+/).filter(Boolean);if(!ws.length){rs.innerHTML='';return}
+var re=new RegExp('('+ws.map(function(w){return w.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')}).join('|')+')','ig'),h='',c=0;
+for(var i=0;i<idx.length&&c<50;i++){var x=idx[i],ok=true;for(var k=0;k<ws.length;k++)if(x.l.indexOf(ws[k])<0){ok=false;break}if(!ok)continue;c++;var p=x.l.indexOf(ws[0]),a=Math.max(0,p-50),sn=x.t.slice(a,p+ws[0].length+90);h+='<li tabindex="0" data-i="'+i+'"><small>'+esc(x.s)+'</small>'+(a?'…':'')+esc(sn).replace(re,'<mark>$1</mark>')+'</li>'}
+rs.innerHTML=h||'<li>কিছু পাওয়া যায়নি</li>'}
+['input','keyup','change','search','compositionend'].forEach(function(ev){q.addEventListener(ev,srch)});
+q.addEventListener('keydown',function(e){if(e.key==='Enter'){var f=rs.querySelector('li[data-i]');if(f)go(f)}else if(e.key==='ArrowDown'){var g=rs.querySelector('li[data-i]');if(g){e.preventDefault();g.focus()}}});
+function go(li){var x=idx[+li.dataset.i];if(!x)return;closeS();x.n.scrollIntoView({behavior:RM?'auto':'smooth',block:'center'})}
+rs.onclick=function(e){var li=e.target.closest('li');if(li)go(li)};
+rs.onkeydown=function(e){if(e.key==='Enter'&&e.target.dataset.i)go(e.target);else if(e.key==='ArrowDown'&&e.target.nextElementSibling){e.preventDefault();e.target.nextElementSibling.focus()}else if(e.key==='ArrowUp'){e.preventDefault();(e.target.previousElementSibling||q).focus()}};
+D.addEventListener('keydown',function(e){var ty=/INPUT|TEXTAREA/.test((e.target||{}).tagName);
+if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'){e.preventDefault();openS()}
+else if(e.key==='Escape'){closeS();menu(false)}
+else if(!ty&&e.key==='/'){e.preventDefault();openS()}
+else if(!ty&&!e.ctrlKey&&!e.metaKey&&e.key.toLowerCase()==='t')tog()});
+var ids=['cp','q2','fx','lt','fr','ins','du','ot','sp'];
+function calc(){function v(i){return parseFloat(D.getElementById(i).value)||0}
+var n=v('q'),g=v('cp')*n*v('fx'),l=v('lt')*v('fx'),fr=v('fr'),ins=g*v('ins')/100,tax=(g+fr+ins)*v('du')/100,tot=g+l+fr+ins+tax+v('ot'),u=n?tot/n:0,pr=v('sp')-u,f=function(x){return '৳ '+Math.round(x).toLocaleString('bn-BD')};
+$('#r1').textContent=f(tot);$('#r2').textContent=f(u);$('#r3').textContent=f(pr);$('#r4').textContent=v('sp')?(pr/v('sp')*100).toFixed(1)+'%':'-'}
+A('.calc input').forEach(function(i){i.addEventListener('input',function(){D.getElementById('cp')?calc():calc2()})});
+function calc2(){function v(i){return parseFloat(D.getElementById(i).value)||0}var vol=v('dl')*v('dw')*v('dh')*v('pc'),act=v('aw')*v('pc'),vw=v('dv')?vol/v('dv'):0,cw=Math.max(act,vw),f=function(x){return x.toLocaleString('bn-BD',{maximumFractionDigits:2})};
+$('#s1').textContent=f(act);$('#s2').textContent=f(vw);$('#s3').textContent=f(cw);$('#s4').textContent=f(vol/1e6);$('#s5').textContent=vw>act?'আয়তনিক ওজন বেশি, তাই এটিই Chargeable Weight।':act>vw?'প্রকৃত ওজন বেশি, তাই এটিই Chargeable Weight।':''}
+if(D.getElementById('cp'))calc();else if(D.getElementById('dl'))calc2();
+var cv=$('#cv'),cx=cv.getContext('2d'),P=[],W=0,H=0,mx=-999,my=-999,run=true,fr0=0,col='60,200,180';
+function sz(){var d=Math.min(devicePixelRatio||1,2);W=innerWidth;H=innerHeight;cv.width=W*d;cv.height=H*d;cx.setTransform(d,0,0,d,0,0);var n=Math.round(Math.min(90,W*H/16000)*(W<768?.5:1));P=[];for(var i=0;i<n;i++)P.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.4,vy:(Math.random()-.5)*.4})}
+function draw(){cx.clearRect(0,0,W,H);for(var i=0;i<P.length;i++){var p=P[i];if(!RM){p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>H)p.vy*=-1;var dx=p.x-mx,dy=p.y-my,d=dx*dx+dy*dy;if(d<14000){p.x+=dx*.02;p.y+=dy*.02}}
+cx.fillStyle='rgba('+col+',.7)';cx.beginPath();cx.arc(p.x,p.y,1.8,0,6.3);cx.fill();for(var j=i+1;j<P.length;j++){var q=P[j],a=p.x-q.x,b=p.y-q.y,e=a*a+b*b;if(e<15000){cx.strokeStyle='rgba('+col+','+(.28*(1-e/15000))+')';cx.beginPath();cx.moveTo(p.x,p.y);cx.lineTo(q.x,q.y);cx.stroke()}}}}
+function loop(){if(!run)return;if(++fr0%20===0){var h=parseFloat(getComputedStyle(R).getPropertyValue('--h'))||172,dk=R.getAttribute('data-t')==='dark',c=D.createElement('canvas').getContext('2d');c.fillStyle='hsl('+h+','+(dk?80:70)+'%,'+(dk?62:38)+'%)';var m=c.fillStyle.match(/\d+/g);if(m)col=m[0]+','+m[1]+','+m[2]}draw();if(!RM)requestAnimationFrame(loop)}
+sz();addEventListener('resize',sz);
+addEventListener('pointermove',function(e){mx=e.clientX;my=e.clientY},{passive:true});
+D.addEventListener('visibilitychange',function(){run=!D.hidden;if(run)loop()});
+loop();
+})();
+</script>
+<script src="../shell.js" defer></script>
+</body>
+</html>

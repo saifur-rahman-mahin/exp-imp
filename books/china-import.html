@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="bn" data-t="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>চীন থেকে বাংলাদেশে পণ্য আমদানি</title>
+<meta name="color-scheme" content="light dark">
+<script>
+(function(){var t=null;try{t=localStorage.getItem('imp-theme')}catch(e){}
+if(t!=='dark'&&t!=='light')t=(matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light';
+document.documentElement.setAttribute('data-t',t);document.documentElement.className='js'})();
+</script>
+<style>
+@property --h{syntax:'<number>';inherits:true;initial-value:172}
+:root{--h:172;--a:hsl(var(--h) 75% 42%);--at:hsl(var(--h) 85% 28%);--bg:#eef3fa;--fg:#0c1a2e;--mu:#475569;--card:rgba(255,255,255,.74);--st:rgba(12,26,46,.15);--sh:0 14px 40px -16px rgba(12,26,46,.3);--side:300px;transition:--h .9s;
+--font:'Noto Sans Bengali','Solaimanlipi','Kalpurush','Nikosh','Vrinda','Segoe UI',system-ui,sans-serif}
+[data-t=dark]{--a:hsl(var(--h) 80% 60%);--at:hsl(var(--h) 90% 74%);--bg:#060c19;--fg:#e8eefc;--mu:#a9b8d6;--card:rgba(12,22,44,.68);--st:rgba(255,255,255,.15);--sh:0 16px 50px -16px #000}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:76px;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:clamp(1rem,.95rem + .3vw,1.12rem)/1.8 var(--font);overflow-x:clip;min-height:100dvh;transition:background .4s,color .4s}
+body.lock{overflow:hidden}
+button,input{font:inherit;color:inherit}
+a{color:var(--at)}
+:focus-visible{outline:3px solid var(--a);outline-offset:3px;border-radius:6px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+#bg{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;
+background:radial-gradient(40% 40% at 15% 20%,hsl(var(--h) 80% 55%/.28),transparent 70%),radial-gradient(36% 36% at 85% 25%,hsl(calc(var(--h) + 70) 80% 60%/.22),transparent 70%),radial-gradient(44% 44% at 60% 90%,hsl(calc(var(--h) - 60) 85% 60%/.16),transparent 70%)}
+#bg::before{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--st) 1px,transparent 1px),linear-gradient(90deg,var(--st) 1px,transparent 1px);background-size:56px 56px;opacity:.35;-webkit-mask-image:radial-gradient(ellipse at 50% 30%,#000 10%,transparent 75%);mask-image:radial-gradient(ellipse at 50% 30%,#000 10%,transparent 75%)}
+#bg::after{content:"";position:absolute;inset:0;opacity:.06;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence baseFrequency='.8' numOctaves='2'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+#cv{position:absolute;inset:0;width:100%;height:100%}
+#splash{position:fixed;inset:0;z-index:99;display:grid;place-items:center;background:var(--bg);transition:opacity .6s,visibility .6s;text-align:center}
+#splash.x{opacity:0;visibility:hidden}
+#splash i{display:block;width:180px;height:5px;border-radius:9px;background:var(--st);margin:14px auto 0;overflow:hidden}
+#splash i::after{content:"";display:block;height:100%;width:40%;background:var(--a);border-radius:9px;animation:ld 1.2s ease-in-out infinite}
+@keyframes ld{from{transform:translateX(-110%)}to{transform:translateX(260%)}}
+#pg{position:fixed;left:0;top:0;height:4px;width:0;background:linear-gradient(90deg,var(--a),hsl(calc(var(--h) + 70) 85% 60%));z-index:60}
+#side{position:fixed;z-index:50;top:0;left:0;bottom:0;width:min(88vw,var(--side));overflow:auto;padding:calc(18px + env(safe-area-inset-top)) 14px 90px;background:var(--card);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-right:1px solid var(--st);transform:translateX(-102%);transition:transform .35s}
+body.menu #side{transform:none}
+#side b{display:block;margin:0 8px 12px;font-size:1.05rem;line-height:1.5}
+#side a{display:flex;align-items:center;min-height:48px;padding:6px 12px;border-radius:12px;text-decoration:none;color:var(--fg);font-size:.95rem;line-height:1.45}
+#side a.sp{font-weight:700;margin-top:6px}
+#side a.sc{margin-left:12px;color:var(--mu);font-size:.88rem}
+#side a.on{background:hsl(var(--h) 80% 50%/.18);color:var(--at)}
+main{position:relative;z-index:1;max-width:900px;margin:0 auto;padding:0 clamp(14px,4vw,32px) 120px}
+.top{position:sticky;top:0;z-index:40;display:flex;gap:8px;align-items:center;padding:calc(8px + env(safe-area-inset-top)) 12px 8px;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);background:var(--card);border-bottom:1px solid var(--st)}
+.top span{flex:1;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.btn{min-width:48px;min-height:48px;padding:0 14px;border:1px solid var(--st);border-radius:14px;background:var(--card);cursor:pointer;display:inline-flex;gap:6px;align-items:center;justify-content:center;overflow:hidden;position:relative}
+.btn:hover{border-color:var(--a)}
+.btn .rp{position:absolute;border-radius:50%;background:var(--a);opacity:.35;transform:scale(0);animation:rp .6s linear forwards;pointer-events:none}
+@keyframes rp{to{transform:scale(4);opacity:0}}
+.hero{min-height:calc(100dvh - 70px);display:flex;flex-direction:column;justify-content:center;padding:40px 0}
+.eye{display:inline-block;align-self:flex-start;padding:4px 14px;border:1px solid var(--st);border-radius:99px;background:var(--card);color:var(--at);font-size:.9rem}
+h1{font-size:clamp(2rem,6vw + .5rem,4rem);line-height:1.3;margin:.5em 0 .2em;background:linear-gradient(100deg,var(--fg),var(--a));-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{font-size:clamp(1.05rem,2vw + .6rem,1.5rem);color:var(--mu);margin:0 0 1.2em}
+.stats{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:1.4em}
+.stats div{flex:1 1 120px;padding:14px;border-radius:18px;background:var(--card);border:1px solid var(--st);backdrop-filter:blur(10px);text-align:center}
+.stats b{display:block;font-size:1.8rem;color:var(--at)}
+.cta{align-self:flex-start;background:var(--a)!important;color:#04121a;font-weight:700;border:0}
+.route{width:100%;max-width:560px;height:auto;margin:0 0 14px;overflow:visible}
+.ic{vertical-align:-5px;color:var(--a)}
+.flow{margin:18px 0;max-width:460px}.flow svg{width:100%;height:auto}
+.flow .ln{stroke-dasharray:1;stroke-dashoffset:1}
+.flow.in .ln{animation:dr 1.6s ease forwards}
+.flow .nd{opacity:0}.flow.in .nd{animation:fi .5s ease forwards}
+@keyframes dr{to{stroke-dashoffset:0}}@keyframes fi{from{opacity:0;transform:translateX(-10px)}to{opacity:1;transform:none}}
+.i{flex:none}.ban{display:block;width:100%;height:auto;margin:-6px 0 14px;border-radius:16px}
+.prose ul{list-style:none;padding-left:.2em}.prose li{position:relative;padding-left:1.6em}
+.prose li::before{content:"";position:absolute;left:0;top:.62em;width:.9em;height:.9em;background:var(--a);-webkit-mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M5 12l4 4 10-10' fill='none' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/></svg>") center/contain no-repeat;mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M5 12l4 4 10-10' fill='none' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/></svg>") center/contain no-repeat}
+.prose h4::before{content:"";display:inline-block;width:.8em;height:.8em;margin-right:.5em;background:var(--a);-webkit-mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 2l10 10-10 10L2 12z'/></svg>") center/contain no-repeat;mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 2l10 10-10 10L2 12z'/></svg>") center/contain no-repeat}
+.prose blockquote{position:relative;padding-left:3em}
+.prose blockquote::before{content:"";position:absolute;left:.8em;top:.9em;width:1.4em;height:1.4em;background:var(--a);-webkit-mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 3a9 9 0 100 18 9 9 0 000-18zM12 11v6M12 7.5v.5' fill='none' stroke='black' stroke-width='2.4' stroke-linecap='round'/></svg>") center/contain no-repeat;mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 3a9 9 0 100 18 9 9 0 000-18zM12 11v6M12 7.5v.5' fill='none' stroke='black' stroke-width='2.4' stroke-linecap='round'/></svg>") center/contain no-repeat}
+.wave{display:block;width:100%;height:50px;color:var(--st);margin:20px 0}
+.part{padding-top:24px}
+.part>h2{font-size:clamp(1.5rem,3vw + .6rem,2.4rem);line-height:1.4;margin:0 0 .6em;padding-left:14px;border-left:6px solid var(--a)}
+.card{background:var(--card);border:1px solid var(--st);border-radius:22px;padding:clamp(16px,3vw,30px);margin:0 0 22px;box-shadow:var(--sh);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.chap>h3{margin:0 0 .5em;font-size:clamp(1.25rem,2vw + .6rem,1.75rem);line-height:1.5;color:var(--at)}
+.prose h4{margin:1.6em 0 .4em;font-size:1.15rem;line-height:1.5}
+.prose p,.prose li{overflow-wrap:anywhere}
+.prose li{margin:.25em 0}
+.prose blockquote{margin:1.1em 0;border-left:5px solid var(--a);border-radius:0 14px 14px 0;background:hsl(var(--h) 80% 50%/.1)}
+.prose blockquote p{margin:.3em 0}
+.prose hr{border:0;border-top:1px dashed var(--st);margin:1.6em 0}
+.prose table{display:block;overflow-x:auto;max-width:100%}
+.mu{color:var(--mu)}
+.js .rv:not(.flow){opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}
+.js .rv.in:not(.flow){opacity:1;transform:none}
+.g{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.calc label{display:flex;flex-direction:column;font-size:.9rem;gap:4px}
+.calc input{min-height:48px;padding:6px 12px;border-radius:12px;border:1px solid var(--st);background:var(--bg)}
+.res{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:18px 0}
+.res div{padding:14px;border-radius:16px;background:hsl(var(--h) 80% 50%/.12);border:1px solid var(--st)}
+.res small{display:block;color:var(--mu)}.res b{font-size:1.35rem;color:var(--at)}
+#bn{position:fixed;z-index:55;left:0;right:0;bottom:0;display:flex;justify-content:space-around;gap:6px;padding:6px 8px calc(6px + env(safe-area-inset-bottom));background:var(--card);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-top:1px solid var(--st)}
+#bn .btn{flex:1;font-size:.85rem}
+#sr{position:fixed;inset:0;z-index:90;display:none;place-items:start center;padding:calc(8vh + env(safe-area-inset-top)) 12px 12px;background:rgba(2,6,16,.6);backdrop-filter:blur(6px)}
+#sr.o{display:grid}
+#sr>div{width:min(680px,100%);max-height:80dvh;display:flex;flex-direction:column;background:var(--bg);border:1px solid var(--st);border-radius:20px;overflow:hidden;box-shadow:var(--sh)}
+#qs{width:100%;min-height:56px;padding:10px 18px;border:0;border-bottom:1px solid var(--st);background:transparent}
+#rs{list-style:none;margin:0;padding:6px;overflow:auto}
+#rs li{padding:10px 14px;border-radius:12px;cursor:pointer;font-size:.95rem;line-height:1.6;min-height:48px}
+#rs li:hover,#rs li:focus{background:hsl(var(--h) 80% 50%/.16);outline:none}
+#rs small{display:block;color:var(--mu)}
+mark{background:hsl(50 100% 55%/.55);color:inherit;border-radius:3px}
+#up{display:none}
+@media(min-width:1024px){:root{--side:300px}#side{transform:none;width:var(--side)}main{margin-left:calc(var(--side) + max(0px,(100vw - var(--side) - 900px)/2))}.top .mb,#bn{display:none}main{padding-bottom:60px}}
+@media(max-width:1023px){.top .dt{display:none}body.menu #side{width:100vw;border:0}}
+@media(prefers-reduced-motion:reduce){.flow .ln{stroke-dashoffset:0}.flow .nd{opacity:1}*{animation:none!important;transition:none!important}html{scroll-behavior:auto}.js .rv{opacity:1;transform:none}}
+@media print{.ban,.route{display:none}#bg,#side,.top,#bn,#pg,#splash,#sr,.hero .cta,.wave{display:none!important}body,:root{background:#fff!important;color:#000!important}main{margin:0!important;max-width:none}.card{box-shadow:none;backdrop-filter:none;background:#fff;border:1px solid #ccc;break-inside:avoid-page}h1{color:#000;background:none}.js .rv{opacity:1;transform:none}a{color:#000}}
+</style>
+</head>
+<body>
+<div id="splash"><div><svg width="84" height="84" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" style="color:var(--a)" aria-hidden="true"><path d="M8 38h48l-6 12H14zM18 38V24h14v14M32 30h12v8M24 18v6"/><path d="M4 56q7-5 14 0t14 0 14 0 14 0"/></svg><p><b>চীন থেকে বাংলাদেশে পণ্য আমদানি</b></p><i></i></div></div>
+<div id="pg" role="progressbar" aria-label="পড়ার অগ্রগতি"></div>
+<div id="bg" aria-hidden="true"><canvas id="cv"></canvas></div>
+<nav id="side" aria-label="সূচিপত্র"><b><svg class="i" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h12a2 2 0 012 2v14H7a2 2 0 01-2-2zM9 8h6M9 12h6"/></svg> সূচিপত্র</b>
+<a href="#p0" class="sp">এই বই কীভাবে ব্যবহার করবেন</a>
+<a href="#p1" class="sp">সূচিপত্র</a>
+<a href="#p2" class="sp">প্রথম পর্ব: প্রস্তুতি</a>
+<a href="#c1" class="sc">অধ্যায় ১: আমদানি ব্যবসার পূর্ণ চিত্র</a>
+<a href="#c2" class="sc">অধ্যায় ২: পরিকল্পনা ও পণ্য নির্বাচন</a>
+<a href="#c3" class="sc">অধ্যায় ৩: বাংলাদেশে আমদানির আইনি প্রস্তুতি</a>
+<a href="#p3" class="sp">দ্বিতীয় পর্ব: সরবরাহকারী ও ক্রয়</a>
+<a href="#c4" class="sc">অধ্যায় ৪: পণ্যের Specification Sheet</a>
+<a href="#c5" class="sc">অধ্যায় ৫: সরবরাহকারী যাচাই ও কোটেশন তুলনা</a>
+<a href="#c6" class="sc">অধ্যায় ৬: দর-কষাকষি, Purchase Order ও পরিবর্তন নিয়ন্ত্রণ</a>
+<a href="#c7" class="sc">অধ্যায় ৭: পেমেন্ট, ব্যাংকিং ও প্রতারণা প্রতিরোধ</a>
+<a href="#p4" class="sp">তৃতীয় পর্ব: মান, প্যাকেজিং ও পরিবহন</a>
+<a href="#c8" class="sc">অধ্যায় ৮: মান নিয়ন্ত্রণ (QC)</a>
+<a href="#c9" class="sc">অধ্যায় ৯: প্যাকেজিং, ওজন ও CBM</a>
+<a href="#c10" class="sc">অধ্যায় ১০: Air Freight, Sea Freight ও Consolidation</a>
+<a href="#c11" class="sc">অধ্যায় ১১: ক্ষতির ঝুঁকি, Insurance ও Claim</a>
+<a href="#p5" class="sp">চতুর্থ পর্ব: ডকুমেন্ট, শ্রেণিবিন্যাস ও কাস্টমস</a>
+<a href="#c12" class="sc">অধ্যায় ১২: শিপিং ডকুমেন্ট</a>
+<a href="#c13" class="sc">অধ্যায় ১৩: HS Code ও পণ্য শ্রেণিবিন্যাস</a>
+<a href="#c14" class="sc">অধ্যায় ১৪: কাস্টমস প্রক্রিয়া, Valuation ও শুল্ক-কর</a>
+<a href="#p6" class="sp">পঞ্চম পর্ব: খরচ, গুদাম ও বিক্রি</a>
+<a href="#c15" class="sc">অধ্যায় ১৫: Landed Cost ও Break-even</a>
+<a href="#c16" class="sc">অধ্যায় ১৬: গুদাম ব্যবস্থাপনা ও Stock Accuracy</a>
+<a href="#c17" class="sc">অধ্যায় ১৭: বিক্রয়, লাভ বিশ্লেষণ ও গ্রাহকসেবা</a>
+<a href="#c18" class="sc">অধ্যায় ১৮: ঝুঁকি ব্যবস্থাপনা ও সংকট পরিকল্পনা</a>
+<a href="#c19" class="sc">অধ্যায় ১৯: পেশাদারদের সঙ্গে কাজ ও নথি ব্যবস্থাপনা</a>
+<a href="#calc" class="sp">Landed Cost ক্যালকুলেটর</a>
+<a href="#p7" class="sp">ষষ্ঠ পর্ব: প্রয়োগ ও অনুশীলন</a>
+<a href="#c20" class="sc">অধ্যায় ২০: নতুন আমদানিকারকের জন্য ৯০ দিনের পরিকল্পনা</a>
+<a href="#c21" class="sc">অধ্যায় ২১: ব্যবহারিক কেস স্টাডি: একটি ছোট চালানের পরিকল্পনা</a>
+<a href="#c22" class="sc">অধ্যায় ২২: সাধারণ ভুল ধারণা ও সঠিক বোঝাপড়া</a>
+<a href="#c23" class="sc">অধ্যায় ২৩: দায়িত্বশীল ও দীর্ঘমেয়াদি আমদানি ব্যবসা গড়ে তোলা</a>
+<a href="#p8" class="sp">পরিশিষ্ট ক: ব্যবহারযোগ্য টেমপ্লেট</a>
+<a href="#c24" class="sc">Supplier quotation comparison</a>
+<a href="#c25" class="sc">Purchase Order checklist</a>
+<a href="#c26" class="sc">Shipment document checklist</a>
+<a href="#c27" class="sc">Landed cost sheet-এর ঘর</a>
+<a href="#p9" class="sp">পরিশিষ্ট খ: শব্দকোষ</a>
+<a href="#p10" class="sp">পরিশিষ্ট গ: যাচাইয়ের উৎস</a>
+</nav>
+<div class="top"><button class="btn mb" id="mn" aria-label="সূচিপত্র খুলুন" aria-expanded="false"><svg class="i" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button><span>চীন থেকে বাংলাদেশে পণ্য আমদানি</span><button class="btn dt" id="sb" aria-label="সার্চ (Ctrl+K)"><svg class="i" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 4a7 7 0 100 14 7 7 0 000-14zM21 21l-5-5"/></svg> সার্চ</button><button class="btn dt" id="th" aria-label="থিম বদলান (T)"><svg class="i" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a9 9 0 100 18zM12 3v18"/></svg></button></div>
+<main id="top">
+<header class="hero"><span class="eye">আনুমানিক পড়ার সময়: <span id="rt">-</span> মিনিট</span>
+<h1>চীন থেকে বাংলাদেশে পণ্য আমদানি</h1><p class="sub">ধাপে ধাপে ব্যবহারিক শিক্ষা-নির্দেশিকা</p>
+<svg class="route" viewBox="0 0 600 150" role="img" aria-label="চীন থেকে বাংলাদেশের জাহাজ-রুট"><path id="rt1" d="M60 100Q200 10 330 80T540 70" fill="none" stroke="var(--a)" stroke-width="3" stroke-dasharray="4 10" stroke-linecap="round"><animate attributeName="stroke-dashoffset" from="140" to="0" dur="5s" repeatCount="indefinite"/></path><circle cx="60" cy="100" r="9" fill="var(--a)"/><circle cx="540" cy="70" r="9" fill="var(--a)"/><text x="60" y="130" text-anchor="middle" font-size="16" fill="var(--fg)">চীন</text><text x="540" y="100" text-anchor="middle" font-size="16" fill="var(--fg)">বাংলাদেশ</text><g fill="var(--at)"><path d="M-16 0h32l-5 9h-22zM-6 0v-9h10v9M-1-9v-6" stroke="var(--at)" stroke-width="2" stroke-linejoin="round"/><animateMotion dur="9s" repeatCount="indefinite" rotate="auto" path="M60 90Q200 0 330 70T540 60"/></g></svg>
+<div class="stats"><div><b data-n="11">0</b>পর্ব</div><div><b data-n="27">0</b>অধ্যায়</div><div><b id="wc">0</b>শব্দ</div></div>
+<a class="btn cta" href="#p0">পড়া শুরু করুন <svg class="i" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></header>
+<svg class="wave" viewBox="0 0 1200 50" preserveAspectRatio="none" aria-hidden="true"><path d="M0 25Q150 0 300 25T600 25 900 25 1200 25V50H0Z" fill="currentColor"/></svg>
+<section class="part" id="p0" data-h="172"><h2><svg class="ic" viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h14v16H5zM9 9h6M9 13h6"/></svg> এই বই কীভাবে ব্যবহার করবেন</h2><div class="prose"><p>এই বইটি আমদানিকারক হতে চাওয়া বা নতুন আমদানিকারকদের জন্য। এখানে চীন থেকে বাংলাদেশে পণ্য আনার প্রতিটি ধাপ—পরিকল্পনা, supplier যাচাই, পেমেন্ট, মান নিয়ন্ত্রণ, পরিবহন, কাস্টমস, খরচ হিসাব ও বিক্রি—ধারাবাহিকভাবে ব্যাখ্যা করা হয়েছে।</p>
+<p>প্রতিটি অধ্যায়ের শুরুতে “এই অধ্যায়ে যা শিখবেন” এবং শেষে “নিজে করে দেখুন” অংশ আছে। বইয়ের শেষে ব্যবহারযোগ্য টেমপ্লেট, শব্দকোষ ও যাচাইয়ের সরকারি উৎসের তালিকা পাবেন।</p>
+<blockquote>
+<p><strong>গুরুত্বপূর্ণ নোট:</strong> আমদানি-সংক্রান্ত আইন, শুল্ক, কর, বৈদেশিক মুদ্রা ও ব্যাংকিং বিধি পরিবর্তনশীল। প্রতিটি প্রকৃত চালানের আগে সরকারি উৎস, অনুমোদিত ব্যাংক, C&amp;F agent এবং প্রাসঙ্গিক যোগ্য পেশাজীবীর মাধ্যমে সর্বশেষ নিয়ম যাচাই করুন। এই বই শিক্ষামূলক নির্দেশিকা; এটি আইনগত বা কর-সংক্রান্ত ব্যক্তিগত পরামর্শের বিকল্প নয়।</p>
+</blockquote></div></section>
+<svg class="wave" viewBox="0 0 1200 50" preserveAspectRatio="none" aria-hidden="true"><path d="M0 25Q150 0 300 25T600 25 900 25 1200 25V50H0Z" fill="currentColor"/></svg><section class="part" id="p1" data-h="215"><h2><svg class="ic" viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12l9-8 9 8v8H3zM9 20v-6h6v6"/></svg> সূচিপত্র</h2><div class="prose"><ul>
+<li><strong>প্রথম পর্ব: প্রস্তুতি</strong><ul>
+<li>অধ্যায় ১: আমদানি ব্যবসার পূর্ণ চিত্র</li>
+<li>অধ্যায় ২: পরিকল্পনা ও পণ্য নির্বাচন</li>
+<li>অধ্যায় ৩: বাংলাদেশে আমদানির আইনি প্রস্তুতি</li>
+</ul>
+</li>
+<li><strong>দ্বিতীয় পর্ব: সরবরাহকারী ও ক্রয়</strong><ul>
+<li>অধ্যায় ৪: পণ্যের Specification Sheet</li>
+<li>অধ্যায় ৫: সরবরাহকারী যাচাই ও কোটেশন তুলনা</li>
+<li>অধ্যায় ৬: দর-কষাকষি, Purchase Order ও পরিবর্তন নিয়ন্ত্রণ</li>
+<li>অধ্যায় ৭: পেমেন্ট, ব্যাংকিং ও প্রতারণা প্রতিরোধ</li>
+</ul>
+</li>
+<li><strong>তৃতীয় পর্ব: মান, প্যাকেজিং ও পরিবহন</strong><ul>
+<li>অধ্যায় ৮: মান নিয়ন্ত্রণ (QC)</li>
+<li>অধ্যায় ৯: প্যাকেজিং, ওজন ও CBM</li>
+<li>অধ্যায় ১০: Air Freight, Sea Freight ও Consolidation</li>
+<li>অধ্যায় ১১: ক্ষতির ঝুঁকি, Insurance ও Claim</li>
+</ul>
+</li>
+<li><strong>চতুর্থ পর্ব: ডকুমেন্ট, শ্রেণিবিন্যাস ও কাস্টমস</strong><ul>
+<li>অধ্যায় ১২: শিপিং ডকুমেন্ট</li>
+<li>অধ্যায় ১৩: HS Code ও পণ্য শ্রেণিবিন্যাস</li>
+<li>অধ্যায় ১৪: কাস্টমস প্রক্রিয়া, Valuation ও শুল্ক-কর</li>
+</ul>
+</li>
+<li><strong>পঞ্চম পর্ব: খরচ, গুদাম ও বিক্রি</strong><ul>
+<li>অধ্যায় ১৫: Landed Cost ও Break-even</li>
+<li>অধ্যায় ১৬: গুদাম ব্যবস্থাপনা ও Stock Accuracy</li>
+<li>অধ্যায় ১৭: বিক্রয়, লাভ বিশ্লেষণ ও গ্রাহকসেবা</li>
+<li>অধ্যায় ১৮: ঝুঁকি ব্যবস্থাপনা ও সংকট পরিকল্পনা</li>
+<li>অধ্যায় ১৯: পেশাদারদের সঙ্গে কাজ ও নথি ব্যবস্থাপনা</li>
+</ul>
+</li>
+<li><strong>ষষ্ঠ পর্ব: প্রয়োগ ও অনুশীলন</strong><ul>
+<li>অধ্যায় ২০: নতুন আমদানিকারকের জন্য ৯০ দিনের পরিকল্পনা</li>
+<li>অধ্যায় ২১: ব্যবহারিক কেস স্টাডি: একটি ছোট চালানের পরিকল্পনা</li>
+<li>অধ্যায় ২২: সাধারণ ভুল ধারণা ও সঠিক বোঝাপড়া</li>
+<li>অধ্যায় ২৩: দায়িত্বশীল ও দীর্ঘমেয়াদি আমদানি ব্যবসা গড়ে তোলা</li>
+</ul>
+</li>
+<li><strong>পরিশিষ্ট</strong><ul>
+<li>পরিশিষ্ট ক: ব্যবহারযোগ্য টেমপ্লেট</li>
+<li>পরিশিষ্ট খ: শব্দকোষ</li>
+<li>পরিশিষ্ট গ: যাচাইয়ের উৎস</li>
+</ul>
+</li>
+</ul>
+<hr /></div></section>
+<svg class="wave" viewBox="0 0 1200 50" preserveAspectRatio="none" aria-hidden="true"><path d="M0 25Q150 0 300 25T600 25 900 25 1200 25V50H0Z" fill="currentColor"/></svg><section class="part" id="p2" data-h="265"><h2><svg class="ic" viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 4v5c0 5-4 8-8 9-4-1-8-4-8-9V7z"/></svg> প্রথম পর্ব: প্রস্তুতি</h2><div class="prose"></div><article class="chap card" id="c1"><svg class="ban" viewBox="0 0 600 70" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="600" height="70" rx="16" fill="var(--a)" opacity=".10"/><g transform="translate(20 15) scale(1.7)" fill="none" stroke="var(--a)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l2-7h14l2 7M12 10V4h4M2 21q2.5-2 5 0t5 0 5 0 5 0"/></g><path d="M90 35Q150 5 210 35T330 35 450 35 570 35" fill="none" stroke="var(--a)" stroke-width="2" stroke-dasharray="6 8" opacity=".6"><animate attributeName="stroke-dashoffset" from="56" to="0" dur="3s" repeatCount="indefinite"/></path><circle cx="570" cy="35" r="5" fill="var(--a)"/><text x="560" y="62" text-anchor="end" font-size="44" font-weight="800" fill="var(--a)" opacity=".2">১</text></svg><h3>অধ্যায় ১: আমদানি ব্যবসার পূর্ণ চিত্র</h3><div class="prose"><blockquote>
+<p><strong>এই অধ্যায়ে যা শিখবেন</strong>
+- আমদানির সম্পূর্ণ ধাপগুলো চিনতে পারবেন
+- কেন শুধু ক্রয়মূল্য দেখে সিদ্ধান্ত নেওয়া ঠিক নয়, তা ব্যাখ্যা করতে পারবেন</p>
+</blockquote>
+<h4>১.১ আমদানি ব্যবসা কী?</h4>
+<p>আমদানি মানে শুধু বিদেশ থেকে পণ্য কিনে দেশে আনা নয়। এর মধ্যে পণ্য নির্বাচন, সাপ্লায়ার যাচাই, মূল্য ও শর্ত নিয়ে আলোচনা, অর্থ পরিশোধ, গুদামে পণ্য গ্রহণ, গুণগত মান যাচাই, আন্তর্জাতিক পরিবহন, কাস্টমস ঘোষণা, কর-শুল্ক পরিশোধ এবং স্থানীয় ডেলিভারি অন্তর্ভুক্ত। প্রতিটি ধাপ পরস্পরের সঙ্গে যুক্ত। এক জায়গায় ভুল হলে পুরো চালানের খরচ, সময় এবং লাভের ওপর প্রভাব পড়তে পারে।</p>
+<h4>১.২ আমদানির ধাপগুলো এক নজরে</h4>
+<p>এই বইয়ে আমদানিকে নিচের ধাপে ভাগ করে আলোচনা করা হয়েছে। প্রতিটি ধাপ পরের ধাপের সঙ্গে যুক্ত।</p>
+<ul>
+<li>পরিকল্পনা ও পণ্য নির্বাচন</li>
+<li>আইনি প্রস্তুতি ও অনুমতি যাচাই</li>
+<li>supplier যাচাই, quotation তুলনা ও দর-কষাকষি</li>
+<li>PO ও পেমেন্ট</li>
+<li>মান নিয়ন্ত্রণ</li>
+<li>প্যাকেজিং ও আন্তর্জাতিক পরিবহন</li>
+<li>শিপিং ডকুমেন্ট ও কাস্টমস clearance</li>
+<li>landed cost হিসাব</li>
+<li>গুদাম গ্রহণ ও বিক্রি</li>
+<li>চালান-পরবর্তী পর্যালোচনা</li>
+</ul><div class="flow rv" aria-hidden="false"><svg viewBox="0 0 440 760" role="img" aria-label="আমদানির ধাপসমূহের ফ্লো-ডায়াগ্রাম"><path class="ln" pathLength="1" d="M32 40V716" fill="none" stroke="var(--a)" stroke-width="3" stroke-linecap="round"/><g class="nd" style="animation-delay:0.00s"><circle cx="32" cy="40" r="20" fill="var(--bg)" stroke="var(--a)" stroke-width="3"/><text x="32" y="46" text-anchor="middle" font-size="16" font-weight="700" fill="var(--at)">1</text><rect x="64" y="14" width="368" height="52" rx="14" fill="var(--card)" stroke="var(--st)"/><text x="78" y="45" font-size="14" fill="var(--fg)">পরিকল্পনা ও পণ্য নির্বাচন</text></g><g class="nd" style="animation-delay:0.15s"><circle cx="32" cy="114" r="20" fill="var(--bg)" stroke="var(--a)" stroke-width="3"/><text x="32" y="120" text-anchor="middle" font-size="16" font-weight="700" fill="var(--at)">2</text><rect x="64" y="88" width="368" height="52" rx="14" fill="var(--card)" stroke="var(--st)"/><text x="78" y="119" font-size="14" fill="var(--fg)">আইনি প্রস্তুতি ও অনুমতি যাচাই</text></g><g class="nd" style="animation-delay:0.30s"><circle cx="32" cy="188" r="20" fill="var(--bg)" stroke="var(--a)" stroke-width="3"/><text x="32" y="194" text-anchor="middle" font-size="16" font-weight="700" fill="var(--at)">3</text><rect x="64" y="162" width="368" height="52" rx="14" fill="var(--card)" stroke="var(--st)"/><text x="78" y="186" font-size="14" fill="var(--fg)">supplier যাচাই, quotation</text><text x="78" y="203" font-size="14" fill="var(--fg)">তুলনা ও দর-কষাকষি</text></g><g class="nd" style="animation-delay:0.45s"><circle cx="32" cy="262" r="20" fill="var(--bg)" stroke="var(--a)" stroke-width="3"/><text x="32" y="268" text-anchor="middle" font-size="16" font-weight="700" fill="var(--at)">4</text><rect x="64" y="236" width="368" height="52" rx="14" fill="var(--card)" stroke="var(--st)"/><text x="78" y="267" font-size="14" fill="var(--fg)">PO ও পেমেন্ট</text></g><g class="nd" style="animation-delay:0.60s"><circle cx="32" cy="336" r="20" fill="var(--bg)" stroke="var(--a)" stroke-width="3"/><text x="32" y="342" text-anchor="middle" font-size="16" font-weight="700" fill="var(--at)">5</text><rect x="64" y="310" width="368" height="52" rx="14" fill="var(--card)" stroke="var(--st)"/><text x="78" y="341" font-size="14" fill="var(--fg)">মান নিয়ন্ত্রণ</text></g><g class="nd" style="animation-delay:0.75s"><circle cx="32" cy="410" r="20" fill="var(--bg)" stroke="var(--a)" stroke-width="3"/><text x="32" y="416" text-anchor="middle" font-size="16" font-weight="700" fill="var(--at)">6</text><rect x="64" y="384" width="368" height="52" rx="14" fill="var(--card)" stroke="var(--st)"/><text x="78" y="415" font-size="14" fill="var(--fg)">প্যাকেজিং ও আন্তর্জাতিক পরিবহন</text></g><g class="nd" style="animation-delay:0.90s"><circle cx="32" cy="484" r="20" fill="var(--bg)" stroke="var(--a)" stroke-width="3"/><text x="32" y="490" text-anchor="middle" font-size="16" font-weight="700" fill="var(--at)">7</text><rect x="64" y="458" width="368" height="52" rx="14" fill="var(--card)" stroke="var(--st)"/><text x="78" y="482" font-size="14" fill="var(--fg)">শিপিং ডকুমেন্ট ও কাস্টমস</text><text x="78" y="499" font-size="14" fill="var(--fg)">clearance</text></g><g class="nd" style="animation-delay:1.05s"><circle cx="32" cy="558" r="20" fill="var(--bg)" stroke="var(--a)" stroke-width="3"/><text x="32" y="564" text-anchor="middle" font-size="16" font-weight="700" fill="var(--at)">8</text><rect x="64" y="532" width="368" height="52" rx="14" fill="var(--card)" stroke="var(--st)"/><text x="78" y="563" font-size="14" fill="var(--fg)">landed cost হিসাব</text></g><g class="nd" style="animation-delay:1.20s"><circle cx="32" cy="632" r="20" fill="var(--bg)" stroke="var(--a)" stroke-width="3"/><text x="32" y="638" text-anchor="middle" font-size="16" font-weight="700" fill="var(--at)">9</text><rect x="64" y="606" width="368" height="52" rx="14" fill="var(--card)" stroke="var(--st)"/><text x="78" y="637" font-size="14" fill="var(--fg)">গুদাম গ্রহণ ও বিক্রি</text></g><g class="nd" style="animation-delay:1.35s"><circle cx="32" cy="706" r="20" fill="var(--bg)" stroke="var(--a)" stroke-width="3"/><text x="32" y="712" text-anchor="middle" font-size="16" font-weight="700" fill="var(--at)">10</text><rect x="64" y="680" width="368" height="52" rx="14" fill="var(--card)" stroke="var(--st)"/><text x="78" y="711" font-size="14" fill="var(--fg)">চালান-পরবর্তী পর্যালোচনা</text></g></svg></div>
+<h4>১.৩ কেন পণ্যের দামই সব নয়?</h4>
+<p>চীনের ক্রয়মূল্যের সঙ্গে চীনের স্থানীয় পরিবহন, গুদাম, QC, প্যাকেজিং, আন্তর্জাতিক freight, insurance, ব্যাংকিং খরচ, শুল্ক-কর, বন্দর চার্জ, C&amp;F agent-এর ফি এবং বাংলাদেশের স্থানীয় পরিবহন যোগ হতে পারে। তাই আমদানির আগে landed cost হিসাব করা জরুরি।</p>
+<blockquote>
+<p><strong>নিজে করে দেখুন:</strong> আপনার পছন্দের একটি পণ্য ধরে আমদানির সব ধাপ লিখুন এবং প্রতিটি ধাপে কোন খরচ বা ঝুঁকি যুক্ত হতে পারে তা তালিকাভুক্ত করুন।</p>
+</blockquote></div></article><article class="chap card" id="c2"><svg class="ban" viewBox="0 0 600 70" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="600" height="70" rx="16" fill="var(--a)" opacity=".10"/><g transform="translate(20 15) scale(1.7)" fill="none" stroke="var(--a)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4M12 3a6 6 0 00-4 10.5c.7.7 1 1.5 1 2.5h6c0-1 .3-1.8 1-2.5A6 6 0 0012 3z"/></g><path d="M90 35Q150 5 210 35T330 35 450 35 570 35" fill="none" stroke="var(--a)" stroke-width="2" stroke-dasharray="6 8" opacity=".6"><animate attributeName="stroke-dashoffset" from="56" to="0" dur="3s" repeatCount="indefinite"/></path><circle cx="570" cy="35" r="5" fill="var(--a)"/><text x="560" y="62" text-anchor="end" font-size="44" font-weight="800" fill="var(--a)" opacity=".2">২</text></svg><h3>অধ্যায় ২: পরিকল্পনা ও পণ্য নির্বাচন</h3><div class="prose"><blockquote>
+<p><strong>এই অধ্যায়ে যা শিখবেন</strong>
+- একটি সংক্ষিপ্ত লিখিত আমদানি পরিকল্পনা তৈরি করতে পারবেন
+- আশাবাদী, বাস্তবসম্মত ও সতর্কতামূলক—তিন ধরনের হিসাব করতে পারবেন
+- ছোট pilot order দিয়ে বাজারের চাহিদা যাচাই করতে পারবেন</p>
+</blockquote>
+<h4>২.১ পণ্য নির্বাচনের মূল প্রশ্ন</h4>
+<p>প্রথমে বুঝতে হবে পণ্যটি কে কিনবে, বাজারে কী চাহিদা আছে, প্রতিযোগী কারা, সম্ভাব্য বিক্রয়মূল্য কত এবং পণ্যটি আইনগতভাবে আমদানি করা যাবে কি না। শুধু সামাজিক মাধ্যমে জনপ্রিয়তা দেখে বড় অর্ডার দেওয়া উচিত নয়। সম্ভব হলে নমুনা যাচাই এবং সীমিত বাজার পরীক্ষা করুন।</p>
+<h4>২.২ আমদানির আগে পরিকল্পনা: ব্যবসার নকশা তৈরি</h4>
+<p>আমদানি শুরু করার আগে একটি ছোট লিখিত পরিকল্পনা তৈরি করুন। সেখানে পণ্যের নাম, সম্ভাব্য ক্রেতা, কেন এই পণ্যটি বাজারে প্রয়োজন, আনুমানিক বিক্রয়মূল্য, প্রাথমিক অর্ডারের পরিমাণ, মোট বিনিয়োগ এবং কত দিনের মধ্যে পণ্য বিক্রির লক্ষ্য রয়েছে—এসব লিখুন। পরিকল্পনা নিখুঁত ভবিষ্যদ্বাণী হতে হবে না; এর কাজ হলো অনুমানগুলোকে কাগজে এনে যাচাইযোগ্য করা।</p>
+<p>ধরা যাক, আপনি একটি রান্নাঘরের পণ্য আমদানি করতে চান। প্রথমে স্থানীয় দোকান, অনলাইন মার্কেটপ্লেস এবং সম্ভাব্য গ্রাহকদের কাছ থেকে মূল্য ও চাহিদার তথ্য সংগ্রহ করুন। পণ্যটি শুধু দেখতে আকর্ষণীয় কি না তা নয়, মানুষ কেন কিনবে এবং বর্তমানে ব্যবহৃত বিকল্পের চেয়ে এটি কীভাবে ভালো—সেটি বোঝার চেষ্টা করুন। যদি পণ্যটির কোনো স্পষ্ট সুবিধা না থাকে, তবে কেবল কম দামের ওপর ব্যবসা দাঁড় করানো কঠিন হতে পারে।</p>
+<p>প্রাথমিক পরিকল্পনায় তিনটি হিসাব রাখুন: আশাবাদী, বাস্তবসম্মত এবং সতর্কতামূলক। আশাবাদী হিসাব ধরে নিতে পারে যে পণ্য দ্রুত বিক্রি হবে; সতর্কতামূলক হিসাবে ধরে নিন বিক্রি ধীর হবে, কিছু পণ্য ত্রুটিপূর্ণ হবে এবং খরচ প্রত্যাশার চেয়ে কিছুটা বাড়বে। ব্যবসাটি কেবল আশাবাদী হিসাবেই লাভজনক হলে সিদ্ধান্তটি ঝুঁকিপূর্ণ।</p>
+<h4>২.৩ বাজার যাচাই</h4>
+<p>পণ্য কেনার আগে সম্ভাব্য ক্রেতা, প্রতিযোগী, বাজারদর, বিক্রির মাধ্যম এবং মৌসুমি চাহিদা যাচাই করুন। শুধু সামাজিক যোগাযোগমাধ্যমে কয়েকটি পোস্ট দেখে বাজারের আকার অনুমান করবেন না। প্রতিযোগীদের দাম, review, warranty, delivery time, product variation এবং customer complaint বিশ্লেষণ করুন। ছোট pilot order দিয়ে বাস্তব চাহিদা পরীক্ষা করা অনেক সময় বড় অর্ডারের চেয়ে নিরাপদ।</p>
+<blockquote>
+<p><strong>নিজে করে দেখুন:</strong> একটি পণ্যের জন্য এক পৃষ্ঠার পরিকল্পনা লিখুন, তারপর শুধু সতর্কতামূলক হিসাবেও ব্যবসাটি টিকে থাকে কি না দেখুন।</p>
+</blockquote></div></article><article class="chap card" id="c3"><svg class="ban" viewBox="0 0 600 70" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="600" height="70" rx="16" fill="var(--a)" opacity=".10"/><g transform="translate(20 15) scale(1.7)" fill="none" stroke="var(--a)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M5 7h14M5 7l-3 7a3 3 0 006 0zM19 7l-3 7a3 3 0 006 0z"/></g><path d="M90 35Q150 5 210 35T330 35 450 35 570 35" fill="none" stroke="var(--a)" stroke-width="2" stroke-dasharray="6 8" opacity=".6"><animate attributeName="stroke-dashoffset" from="56" to="0" dur="3s" repeatCount="indefinite"/></path><circle cx="570" cy="35" r="5" fill="var(--a)"/><text x="560" y="62" text-anchor="end" font-size="44" font-weight="800" fill="var(--a)" opacity=".2">৩</text></svg><h3>অধ্যায় ৩: বাংলাদেশে আমদানির আইনি প্রস্তুতি</h3><div class="prose"><blockquote>
+<p><strong>এই অধ্যায়ে যা শিখবেন</strong>
+- ব্যক্তিগত ও বাণিজ্যিক আমদানির পার্থক্য বুঝতে পারবেন
+- আমদানিকারক, C&amp;F agent ও freight forwarder-এর ভূমিকা আলাদা করতে পারবেন
+- অর্ডারের আগে সাত ধাপের compliance gate অনুসরণ করতে পারবেন</p>
+</blockquote>
+<p>বাংলাদেশে বাণিজ্যিকভাবে পণ্য আমদানির আগে আমদানিকারকের ব্যবসার ধরন, নিবন্ধন, কর-সংক্রান্ত অবস্থা, ব্যাংকিং সম্পর্ক এবং পণ্যের আমদানি-যোগ্যতা যাচাই করা জরুরি। সব পণ্যের জন্য একই অনুমতি বা একই নথি লাগে না। পণ্যের ধরন, ব্যবহার, আমদানিকারকের শ্রেণি এবং তখনকার কার্যকর বিধি অনুযায়ী শর্ত পরিবর্তিত হতে পারে।</p>
+<h4>৩.১ Importer হিসেবে প্রস্তুতি</h4>
+<p>প্রথমে নির্ধারণ করুন আপনি ব্যক্তি হিসেবে কোনো অনুমোদিত ব্যবস্থায় পণ্য আনছেন, নাকি বাণিজ্যিক আমদানিকারক হিসেবে ব্যবসা পরিচালনা করবেন। বাণিজ্যিক আমদানির ক্ষেত্রে সাধারণত ব্যবসায়িক নিবন্ধন, TIN, BIN/VAT সংক্রান্ত বিষয়, ব্যাংক হিসাব এবং Import Registration Certificate বা IRC-সহ প্রযোজ্য নথি বিবেচনায় আসে। নির্দিষ্ট ক্ষেত্রে কী কী প্রয়োজন তা CCI&amp;E, NBR, বাংলাদেশ ব্যাংক এবং আপনার ব্যাংকের বর্তমান নির্দেশনা থেকে যাচাই করুন। পুরোনো কোনো তালিকাকে চূড়ান্ত ধরে নেবেন না।</p>
+<h4>৩.২ পণ্য আমদানির অনুমতি ও নিয়ন্ত্রণ</h4>
+<p>কিছু পণ্য সাধারণভাবে আমদানিযোগ্য হলেও নির্দিষ্ট মান, লেবেল, পরীক্ষা, ছাড়পত্র বা নিয়ন্ত্রক সংস্থার অনুমতি প্রয়োজন হতে পারে। খাদ্য, প্রসাধনী, চিকিৎসা-সংশ্লিষ্ট পণ্য, বৈদ্যুতিক সরঞ্জাম, রাসায়নিক, টেলিযোগাযোগ যন্ত্র, শিশুদের পণ্য এবং নিয়ন্ত্রিত পণ্যের ক্ষেত্রে অতিরিক্ত নিয়ম থাকতে পারে। অর্ডার দেওয়ার আগে পণ্যের সঠিক পরিচয়, উপাদান, ব্যবহার এবং HS classification দিয়ে Import Policy Order ও সংশ্লিষ্ট নিয়ন্ত্রক সংস্থার শর্ত যাচাই করুন।</p>
+<h4>৩.৩ আমদানিকারক, C&amp;F এবং Freight Forwarder-এর ভূমিকা</h4>
+<p>আমদানিকারক পণ্যের তথ্য, বৈধতা, অর্থ পরিশোধ এবং প্রয়োজনীয় নথির জন্য দায়বদ্ধ। Freight Forwarder আন্তর্জাতিক পরিবহনের বুকিং, carrier coordination এবং shipment tracking-এ সহায়তা করে। C&amp;F agent কাস্টমস-সংক্রান্ত প্রক্রিয়া ও নথি প্রস্তুত/দাখিলে সহায়তা করতে পারেন। তবে এদের কাউকে নিয়োগ করলেই আমদানিকারকের নিজের দায়িত্ব শেষ হয়ে যায় না। প্রতিটি পক্ষের কাজ, ফি, সময়সীমা এবং দায় লিখিতভাবে নির্ধারণ করুন।</p>
+<h4>৩.৪ অর্ডারের আগে একটি compliance gate</h4>
+<p>প্রতিটি নতুন পণ্যের জন্য অর্ডার দেওয়ার আগে একটি বাধ্যতামূলক যাচাইধাপ রাখুন:</p>
+<ul>
+<li>
+<ol start="১">
+<li>পণ্যের সঠিক commercial description নির্ধারণ।</li>
+</ol>
+</li>
+<li>
+<ol start="২">
+<li>সম্ভাব্য HS Code যাচাই এবং প্রয়োজনে লিখিত পেশাগত মতামত নেওয়া।</li>
+</ol>
+</li>
+<li>
+<ol start="৩">
+<li>পণ্যটি নিষিদ্ধ, শর্তযুক্ত বা বিশেষ অনুমতিনির্ভর কি না পরীক্ষা।</li>
+</ol>
+</li>
+<li>
+<ol start="৪">
+<li>প্রয়োজনীয় certificate, test report, label বা registration চিহ্নিত করা।</li>
+</ol>
+</li>
+<li>
+<ol start="৫">
+<li>সম্ভাব্য শুল্ক, VAT, supplementary duty, regulatory duty এবং অন্যান্য প্রযোজ্য কর যাচাই।</li>
+</ol>
+</li>
+<li>
+<ol start="৬">
+<li>ব্যাংকের মাধ্যমে পেমেন্ট পদ্ধতি ও প্রয়োজনীয় নথি নিশ্চিত করা।</li>
+</ol>
+</li>
+<li>
+<ol start="৭">
+<li>মোট landed cost ও সম্ভাব্য বিক্রয়মূল্য হিসাব করা।</li>
+</ol>
+</li>
+</ul>
+<p>এই সাতটি ধাপ সম্পন্ন না হলে শুধু supplier-এর কম দামের কারণে অর্ডার নিশ্চিত করবেন না।</p>
+<blockquote>
+<p><strong>নিজে করে দেখুন:</strong> একটি পণ্য বেছে নিয়ে compliance gate-এর সাতটি ধাপে কোন তথ্য আপনার কাছে আছে আর কোনটি এখনো নেই, তা লিখুন।</p>
+</blockquote>
+<hr /></div></article></section>
+<svg class="wave" viewBox="0 0 1200 50" preserveAspectRatio="none" aria-hidden="true"><path d="M0 25Q150 0 300 25T600 25 900 25 1200 25V50H0Z" fill="currentColor"/></svg><section class="part" id="p3" data-h="32"><h2><svg class="ic" viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17l3-8h12l3 8zM7 17v3M17 17v3"/></svg> দ্বিতীয় পর্ব: সরবরাহকারী ও ক্রয়</h2><div class="prose"></div><article class="chap card" id="c4"><svg class="ban" viewBox="0 0 600 70" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="600" height="70" rx="16" fill="var(--a)" opacity=".10"/><g transform="translate(20 15) scale(1.7)" fill="none" stroke="var(--a)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l4 4v14H6zM14 3v5h5M9 13h7M9 17h7"/></g><path d="M90 35Q150 5 210 35T330 35 450 35 570 35" fill="none" stroke="var(--a)" stroke-width="2" stroke-dasharray="6 8" opacity=".6"><animate attributeName="stroke-dashoffset" from="56" to="0" dur="3s" repeatCount="indefinite"/></path><circle cx="570" cy="35" r="5" fill="var(--a)"/><text x="560" y="62" text-anchor="end" font-size="44" font-weight="800" fill="var(--a)" opacity=".2">৪</text></svg><h3>অধ্যায় ৪: পণ্যের Specification Sheet</h3><div class="prose"><blockquote>
+<p><strong>এই অধ্যায়ে যা শিখবেন</strong>
+- লিখিত specification sheet তৈরি করতে পারবেন
+- পণ্যের ধরন অনুযায়ী প্রয়োজনীয় ঘর নির্বাচন করতে পারবেন</p>
+</blockquote>
+<p>একটি specification sheet হলো পণ্যের প্রত্যাশিত বৈশিষ্ট্যের লিখিত নথি। এর মাধ্যমে ক্রেতা ও সাপ্লায়ার একই পণ্য সম্পর্কে কথা বলছেন কি না তা নিশ্চিত করা যায়। পণ্যের নামের পাশাপাশি model number, dimensions, weight, material, colour, power rating, included accessories, packaging, label, logo, test requirement এবং acceptance criteria—যা প্রযোজ্য, তা লিখুন।</p>
+<p>সব পণ্যের জন্য সব ঘর প্রয়োজন হবে না। একটি প্লাস্টিকের রান্নাঘরের সরঞ্জামের ক্ষেত্রে উপাদান, মাপ, রং, তাপ-সহনশীলতা এবং খাদ্যের সংস্পর্শে ব্যবহারের উপযোগিতা গুরুত্বপূর্ণ হতে পারে। একটি ইলেকট্রনিক পণ্যের ক্ষেত্রে ভোল্টেজ, ক্ষমতা, plug type, battery specification, safety testing এবং ব্যবহারবিধি বেশি গুরুত্বপূর্ণ হতে পারে। পণ্যের প্রকৃতি অনুযায়ী তালিকা তৈরি করুন।</p>
+<p>স্পেসিফিকেশনের সঙ্গে অনুমোদিত নমুনার ছবি রাখুন। শুধু ছবি যথেষ্ট নয়, কারণ ছবিতে মাপ, উপাদানের গুণমান বা কার্যকারিতা বোঝা নাও যেতে পারে। তাই যেখানে সম্ভব, লিখিত পরিমাপ ও পরীক্ষা-পদ্ধতি যোগ করুন। সাপ্লায়ার যদি কোনো পরিবর্তন প্রস্তাব করেন, তা অনুমোদন ছাড়া উৎপাদনে প্রয়োগ করা যাবে কি না—চুক্তিতে স্পষ্ট করুন।</p>
+<blockquote>
+<p><strong>নিজে করে দেখুন:</strong> একটি প্লাস্টিক পণ্য ও একটি ইলেকট্রনিক পণ্যের জন্য আলাদা specification sheet-এর ঘরের তালিকা তৈরি করুন।</p>
+</blockquote></div></article><article class="chap card" id="c5"><svg class="ban" viewBox="0 0 600 70" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="600" height="70" rx="16" fill="var(--a)" opacity=".10"/><g transform="translate(20 15) scale(1.7)" fill="none" stroke="var(--a)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4v5c0 5-4 8-8 9-4-1-8-4-8-9V7zM9 12l2 2 4-4"/></g><path d="M90 35Q150 5 210 35T330 35 450 35 570 35" fill="none" stroke="var(--a)" stroke-width="2" stroke-dasharray="6 8" opacity=".6"><animate attributeName="stroke-dashoffset" from="56" to="0" dur="3s" repeatCount="indefinite"/></path><circle cx="570" cy="35" r="5" fill="var(--a)"/><text x="560" y="62" text-anchor="end" font-size="44" font-weight="800" fill="var(--a)" opacity=".2">৫</text></svg><h3>অধ্যায় ৫: সরবরাহকারী যাচাই ও কোটেশন তুলনা</h3><div class="prose"><blockquote>
+<p><strong>এই অধ্যায়ে যা শিখবেন</strong>
+- supplier-এর পরিচয় যাচাইয়ের ধাপগুলো অনুসরণ করতে পারবেন
+- একই ভিত্তিতে একাধিক quotation তুলনা করতে পারবেন</p>
+</blockquote>
+<h4>৫.১ সরবরাহকারী যাচাইয়ের মূল বিষয়</h4>
+<p>সাপ্লায়ারের আইনগত নাম, যোগাযোগ, প্রস্তুতকারক নাকি ট্রেডিং কোম্পানি, পণ্যের specification, MOQ, sample price, উৎপাদন সময়, packaging, defect policy এবং payment terms যাচাই করুন। অস্বাভাবিক কম দাম বা অযৌক্তিক তাড়াহুড়ার ক্ষেত্রে সতর্ক থাকুন। চূড়ান্ত শর্ত লিখিতভাবে নিশ্চিত করুন।</p>
+<h4>৫.২ Supplier verification</h4>
+<p>প্রথম অর্ডারের আগে supplier-এর ব্যবসায়িক পরিচয় যাচাই করুন। প্রতিষ্ঠানের আইনগত নাম, নিবন্ধনের তথ্য, কারখানা বা অফিসের ঠিকানা, যোগাযোগের নম্বর, ওয়েবসাইট, ব্যবসায়িক ইমেইল এবং ব্যাংক beneficiary name মিলিয়ে দেখুন। অনলাইন প্ল্যাটফর্মে কোনো supplier-এর প্রোফাইল থাকা মানেই সব ঝুঁকি দূর হয়েছে—এমন নয়। সম্ভব হলে ভিডিও কলে কারখানা, পণ্য এবং উৎপাদন প্রক্রিয়া দেখুন। বড় অর্ডারের আগে স্বাধীন inspection বা third-party verification বিবেচনা করুন।</p>
+<h4>৫.৩ কোটেশন তুলনা: একই ভিত্তিতে হিসাব</h4>
+<p>দুটি সাপ্লায়ারের মূল্য তুলনা করার আগে নিশ্চিত করুন যে দুজন একই স্পেসিফিকেশন, একই পরিমাণ, একই প্যাকেজিং এবং তুলনীয় delivery term অনুযায়ী দাম দিয়েছেন। একজনের দাম যদি factory pickup ভিত্তিতে হয় আর অন্যজনের দাম যদি গুদাম পর্যন্ত পরিবহনসহ হয়, তবে শুধু ইউনিট প্রাইস তুলনা করলে ভুল সিদ্ধান্ত হতে পারে।</p>
+<p>একটি তুলনামূলক ছকে supplier name, unit price, MOQ, sample cost, production lead time, packaging cost, payment terms, defect policy, carton size, gross weight, quote validity এবং Incoterm লিখুন। এরপর যে খরচগুলো অফারের বাইরে, সেগুলো আলাদা করুন। এতে সবচেয়ে কম দাম নয়, বরং সবচেয়ে উপযুক্ত মোট অফার চিহ্নিত করা যায়।</p>
+<p>দর-কষাকষির সময় একবারে শুধু দাম কমানোর চেষ্টা না করে পুরো চুক্তির মূল্য দেখুন। সাপ্লায়ার হয়তো দাম কমাতে পারবেন না, কিন্তু উন্নত প্যাকেজিং, অতিরিক্ত spare parts, নির্দিষ্ট inspection বা আরও উপযোগী payment schedule দিতে পারেন। অন্যদিকে অস্বাভাবিক কম দাম পেলে জিজ্ঞেস করুন—কোন specification বা service বাদ দেওয়া হয়েছে কি না।</p>
+<blockquote>
+<p><strong>নিজে করে দেখুন:</strong> তিনটি কাল্পনিক quotation (একটি factory pickup ভিত্তিতে, একটি গুদাম পর্যন্ত) একই ছকে বসিয়ে তুলনা করুন।</p>
+</blockquote></div></article><article class="chap card" id="c6"><svg class="ban" viewBox="0 0 600 70" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="600" height="70" rx="16" fill="var(--a)" opacity=".10"/><g transform="translate(20 15) scale(1.7)" fill="none" stroke="var(--a)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h18v10H3zM12 9v6M9 11h5M3 4h6"/></g><path d="M90 35Q150 5 210 35T330 35 450 35 570 35" fill="none" stroke="var(--a)" stroke-width="2" stroke-dasharray="6 8" opacity=".6"><animate attributeName="stroke-dashoffset" from="56" to="0" dur="3s" repeatCount="indefinite"/></path><circle cx="570" cy="35" r="5" fill="var(--a)"/><text x="560" y="62" text-anchor="end" font-size="44" font-weight="800" fill="var(--a)" opacity=".2">৬</text></svg><h3>অধ্যায় ৬: দর-কষাকষি, Purchase Order ও পরিবর্তন নিয়ন্ত্রণ</h3><div class="prose"><blockquote>
+<p><strong>এই অধ্যায়ে যা শিখবেন</strong>
+- কোন কোন বিষয়ে আলোচনা করতে হয় তা জানবেন
+- Purchase Order-এ কী কী লিখতে হয় তা শিখবেন
+- অর্ডার নিশ্চিত হওয়ার পর পরিবর্তন লিখিতভাবে নিয়ন্ত্রণ করতে পারবেন</p>
+</blockquote>
+<p>চীন থেকে পণ্য আমদানির ক্ষেত্রে দর-কষাকষি মানে শুধু কম দাম আদায় করা নয়। একজন দক্ষ আমদানিকারক এমন একটি চুক্তি তৈরি করেন, যেখানে পণ্যের মান, পরিমাণ, প্যাকেজিং, উৎপাদনের সময়, অর্থ পরিশোধ, ত্রুটি সংশোধন এবং পরিবহনের দায়িত্ব—সবকিছু পরিষ্কার থাকে। কোনো সরবরাহকারী প্রথমে যে দাম বলেন, সেটিই যে চূড়ান্ত বা বাজারের সবচেয়ে ভালো দাম হবে, এমন নয়। আবার অস্বাভাবিক কম দাম দেখেই সেটিকে ভালো সুযোগ মনে করাও বিপজ্জনক।</p>
+<h4>৬.১ আলোচনার আগে নিজের অবস্থান তৈরি করুন</h4>
+<p>সরবরাহকারীর সঙ্গে কথা বলার আগে পণ্যের একটি পূর্ণ specification sheet তৈরি করুন। সেখানে পণ্যের নাম, মডেল, উপাদান, মাপ, রং, ওজন, কার্যক্ষমতা, প্যাকেজিং, লোগো, প্রয়োজনীয় সার্টিফিকেট, গ্রহণযোগ্য ত্রুটির সীমা এবং অর্ডারের পরিমাণ লিখুন। একই specification দিয়ে একাধিক সরবরাহকারীর কাছ থেকে quotation নিলে তুলনা করা সহজ হয়। একজনকে এক রকম এবং অন্যজনকে আরেক রকম পণ্যের বিবরণ দিলে দামের তুলনা অর্থহীন হয়ে যায়।</p>
+<h4>৬.২ কোন কোন বিষয়ে আলোচনা করবেন</h4>
+<p>শুধু unit price নয়, অন্তত নিচের বিষয়গুলো নিয়ে আলোচনা করুন:</p>
+<ul>
+<li>Minimum Order Quantity বা MOQ: সর্বনিম্ন কত পিস অর্ডার করতে হবে।</li>
+<li>Sample price: নমুনার দাম এবং bulk order দিলে নমুনার মূল্য সমন্বয় হবে কি না।</li>
+<li>Production lead time: অর্ডার নিশ্চিত হওয়ার পর উৎপাদনে কত দিন লাগবে।</li>
+<li>Packaging: প্রতিটি পণ্যের প্যাকেট, master carton এবং carton marking কেমন হবে।</li>
+<li>Defect policy: ত্রুটিপূর্ণ পণ্যের ক্ষেত্রে replacement, refund বা credit কোন পদ্ধতিতে হবে।</li>
+<li>Payment terms: অগ্রিম কত, বাকি অর্থ কখন এবং কোন প্রমাণের ভিত্তিতে দিতে হবে।</li>
+<li>Delivery terms: পণ্য কার গুদাম পর্যন্ত বা কোন নির্দিষ্ট স্থানে সরবরাহ করা হবে।</li>
+<li>Price validity: quotation কত দিন কার্যকর থাকবে।</li>
+</ul>
+<h4>৬.৩ দর কমানোর কৌশল</h4>
+<p>একই পণ্যের জন্য একাধিক সরবরাহকারীর quotation সংগ্রহ করুন। এরপর শুধু সর্বনিম্ন দাম নয়, পণ্যের specification, মান, উৎপাদনক্ষমতা, যোগাযোগের মান এবং ডেলিভারি সময় তুলনা করুন। আপনি যদি নিয়মিত অর্ডারের সম্ভাবনা দেখাতে পারেন, তাহলে supplier-এর কাছে tiered pricing চাইতে পারেন—যেমন ১০০, ৩০০ এবং ৫০০ পিসের জন্য আলাদা unit price। তবে যে পরিমাণ বিক্রি করতে পারবেন না, শুধু কম দাম পাওয়ার জন্য সেই পরিমাণ অর্ডার করবেন না।</p>
+<p>দর-কষাকষিতে ভদ্র ও নির্দিষ্ট ভাষা ব্যবহার করুন। “দাম কমান” বলার পরিবর্তে লিখুন: “এই specification ও পরিমাণে আপনার best price কত? ভবিষ্যতে নিয়মিত অর্ডার হলে মূল্য কীভাবে পরিবর্তিত হবে?” এতে আলোচনা বাস্তবভিত্তিক হয়।</p>
+<h4>৬.৪ Purchase Order কেন জরুরি</h4>
+<p>মৌখিক কথাবার্তার ওপর নির্ভর করে বড় অর্ডার দেওয়া উচিত নয়। Purchase Order বা PO-তে পণ্যের বিবরণ, পরিমাণ, একক মূল্য, মোট মূল্য, মুদ্রা, প্যাকেজিং, উৎপাদনের সময়, ডেলিভারি শর্ত, payment schedule এবং quality acceptance criteria লিখুন। Supplier-এর অনুমোদন বা স্বাক্ষরসহ PO সংরক্ষণ করুন। PI বা Proforma Invoice-এর সঙ্গে PO মিলিয়ে দেখুন। দুই নথিতে পণ্যের মডেল, পরিমাণ, মূল্য বা শর্তে অমিল থাকলে টাকা পাঠানোর আগে সংশোধন করান।</p>
+<h4>৬.৫ পরিবর্তন নিয়ন্ত্রণ</h4>
+<p>অর্ডার নিশ্চিত হওয়ার পর পণ্যের রং, উপাদান, মাপ বা প্যাকেজিং বদলাতে হলে লিখিতভাবে পরিবর্তন অনুমোদন করুন। প্রতিটি পরিবর্তনের তারিখ, কারণ, অতিরিক্ত খরচ এবং উৎপাদনের সময়ের প্রভাব লিখে রাখুন। পুরোনো specification বাতিল না করে নতুন version নম্বর দিন। এতে supplier ভুল version অনুসরণ করার ঝুঁকি কমে।</p>
+<blockquote>
+<p><strong>নিজে করে দেখুন:</strong> একটি পণ্যের জন্য PO-এর খসড়া তৈরি করে পরিশিষ্ট ক-এর PO checklist দিয়ে মিলিয়ে নিন।</p>
+</blockquote></div></article><article class="chap card" id="c7"><svg class="ban" viewBox="0 0 600 70" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="600" height="70" rx="16" fill="var(--a)" opacity=".10"/><g transform="translate(20 15) scale(1.7)" fill="none" stroke="var(--a)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18v12H3zM3 10h18M7 15h3"/></g><path d="M90 35Q150 5 210 35T330 35 450 35 570 35" fill="none" stroke="var(--a)" stroke-width="2" stroke-dasharray="6 8" opacity=".6"><animate attributeName="stroke-dashoffset" from="56" to="0" dur="3s" repeatCount="indefinite"/></path><circle cx="570" cy="35" r="5" fill="var(--a)"/><text x="560" y="62" text-anchor="end" font-size="44" font-weight="800" fill="var(--a)" opacity=".2">৭</text></svg><h3>অধ্যায় ৭: পেমেন্ট, ব্যাংকিং ও প্রতারণা প্রতিরোধ</h3><div class="prose"><blockquote>
+<p><strong>এই অধ্যায়ে যা শিখবেন</strong>
+- bank detail পরিবর্তনের প্রতারণা শনাক্ত ও যাচাই করতে পারবেন
+- LC ও TT-এর মৌলিক পার্থক্য বুঝতে পারবেন
+- নিজের পেমেন্ট রেকর্ড গুছিয়ে রাখতে পারবেন</p>
+</blockquote>
+<p>আন্তর্জাতিক বাণিজ্যে পেমেন্টের ঝুঁকি দুই দিকেই থাকে। আমদানিকারক অর্থ পাঠিয়ে পণ্য না পেতে পারেন; আবার সরবরাহকারী পণ্য পাঠিয়ে অর্থ না পাওয়ার ঝুঁকিতে থাকেন। তাই পেমেন্টের পদ্ধতি নির্বাচন করতে হবে লেনদেনের আকার, supplier-এর পরিচিতি, ব্যাংকিং নিয়ম, পণ্যের ধরন এবং চুক্তির শর্ত বিবেচনা করে।</p>
+<h4>৭.১ Bank detail পরিবর্তনের প্রতারণা</h4>
+<p>ইমেইল বা মেসেজে হঠাৎ ব্যাংক হিসাব পরিবর্তনের অনুরোধ এলে সেটিকে উচ্চ ঝুঁকির ঘটনা হিসেবে ধরুন। প্রতারক কখনো supplier-এর ইমেইল অ্যাকাউন্টের মতো দেখতে ঠিকানা ব্যবহার করতে পারে, আবার আসল কথোপকথনে ঢুকে নতুন beneficiary পাঠাতে পারে। আগের পরিচিত ফোন নম্বরে আলাদাভাবে যোগাযোগ করে পরিবর্তন যাচাই না করে টাকা পাঠাবেন না। নতুন ব্যাংক হিসাবের নাম supplier-এর আইনগত নামের সঙ্গে মেলে কি না, ব্যাংক ও আপনার অনুমোদিত আর্থিক প্রতিষ্ঠানের মাধ্যমে যাচাই করুন।</p>
+<h4>৭.২ তৃতীয় পক্ষের হিসাব ও রেকর্ড সংরক্ষণ</h4>
+<p>চুক্তির পক্ষ, invoice-এর seller এবং অর্থ গ্রহণকারী প্রতিষ্ঠানের নামের মধ্যে সম্পর্ক পরিষ্কার থাকা দরকার। তৃতীয় পক্ষের হিসাবে অর্থ পাঠাতে বলা হলে কেন তা প্রয়োজন, কী আইনগত ভিত্তি রয়েছে এবং ব্যাংক সেটি অনুমোদন করে কি না—এসব যাচাই না করে টাকা পাঠাবেন না। পেমেন্টের রসিদ, purchase order, invoice এবং যোগাযোগের রেকর্ড নিরাপদভাবে সংরক্ষণ করুন।</p>
+<h4>৭.৩ পেমেন্ট ভাগ করে দেওয়া</h4>
+<p>কিছু বাণিজ্যিক চুক্তিতে অগ্রিম ও shipment-এর আগে বাকি অর্থ দেওয়ার ব্যবস্থা থাকতে পারে। কিন্তু কত শতাংশ অগ্রিম নিরাপদ হবে, তার কোনো একক নিয়ম নেই। এটি supplier-এর বিশ্বাসযোগ্যতা, পণ্যের কাস্টমাইজেশন, inspection অধিকার, ব্যাংকিং ব্যবস্থা এবং চুক্তির ওপর নির্ভর করে। বড় অঙ্কের অর্থ দেওয়ার আগে স্থানীয় ব্যাংকের বৈদেশিক মুদ্রা বিভাগ বা যোগ্য trade finance পেশাজীবীর পরামর্শ নিন।</p>
+<h4>৭.৪ LC, TT এবং অন্যান্য পদ্ধতি</h4>
+<p>Letter of Credit বা LC-তে ব্যাংক নির্দিষ্ট শর্ত ও নথির ভিত্তিতে অর্থ পরিশোধের প্রতিশ্রুতি দেয়। তবে LC থাকলেই পণ্যের গুণগত মান নিশ্চিত হয় না; ব্যাংক সাধারণত নথি পরীক্ষা করে, পণ্য নিজে পরীক্ষা করে না। Telegraphic Transfer বা TT ব্যাংকিং চ্যানেলে অর্থ পাঠানোর একটি প্রচলিত পদ্ধতি, কিন্তু এতে চুক্তি ও supplier verification গুরুত্বপূর্ণ। কোন পদ্ধতি ব্যবহার করা যাবে, কী কাগজ লাগবে এবং কী সীমাবদ্ধতা আছে—তা আমদানির সময়কার বাংলাদেশ ব্যাংকের বৈদেশিক মুদ্রা বিধি ও অনুমোদিত ডিলার ব্যাংকের নির্দেশনা অনুযায়ী নিশ্চিত করতে হবে।</p>
+<p>সব আমদানিতে LC বাধ্যতামূলক—এমন ধারণাও ঠিক নয়; কার্যকর Import Policy Order এবং Bangladesh Bank-এর নিয়ম অনুযায়ী অনুমোদিত payment method যাচাই করতে হবে।</p>
+<h4>৭.৫ নিজের হিসাবরক্ষণ</h4>
+<p>প্রতিটি পেমেন্টের জন্য আলাদা transaction reference রাখুন। Invoice number, PO number, payment date, amount, currency, exchange rate, bank charge এবং beneficiary তথ্য লিখুন। supplier-কে পাঠানো অর্থ, freight forwarder-এর চার্জ, inspection fee এবং স্থানীয় কর-শুল্ক আলাদা ledger-এ রাখলে প্রকৃত খরচ বোঝা যায়। ব্যক্তিগত ও ব্যবসায়িক লেনদেন মিশিয়ে ফেলবেন না।</p>
+<blockquote>
+<p><strong>নিজে করে দেখুন:</strong> একটি পেমেন্ট রেকর্ডের ছক বানান (invoice number, PO number, তারিখ, পরিমাণ, currency, exchange rate, bank charge, beneficiary) এবং দুটি কাল্পনিক লেনদেন লিখুন।</p>
+</blockquote>
+<hr /></div></article></section>
+<svg class="wave" viewBox="0 0 1200 50" preserveAspectRatio="none" aria-hidden="true"><path d="M0 25Q150 0 300 25T600 25 900 25 1200 25V50H0Z" fill="currentColor"/></svg><section class="part" id="p4" data-h="330"><h2><svg class="ic" viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-8M22 20V8"/></svg> তৃতীয় পর্ব: মান, প্যাকেজিং ও পরিবহন</h2><div class="prose"></div><article class="chap card" id="c8"><svg class="ban" viewBox="0 0 600 70" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="600" height="70" rx="16" fill="var(--a)" opacity=".10"/><g transform="translate(20 15) scale(1.7)" fill="none" stroke="var(--a)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4a7 7 0 100 14 7 7 0 000-14zM21 21l-5-5M8 11l2 2 3-4"/></g><path d="M90 35Q150 5 210 35T330 35 450 35 570 35" fill="none" stroke="var(--a)" stroke-width="2" stroke-dasharray="6 8" opacity=".6"><animate attributeName="stroke-dashoffset" from="56" to="0" dur="3s" repeatCount="indefinite"/></path><circle cx="570" cy="35" r="5" fill="var(--a)"/><text x="560" y="62" text-anchor="end" font-size="44" font-weight="800" fill="var(--a)" opacity=".2">৮</text></svg><h3>অধ্যায় ৮: মান নিয়ন্ত্রণ (QC)</h3><div class="prose"><blockquote>
+<p><strong>এই অধ্যায়ে যা শিখবেন</strong>
+- Golden Sample ও inspection checklist তৈরি করতে পারবেন
+- AQL-এর সীমাবদ্ধতা বুঝতে পারবেন
+- ত্রুটি পাওয়া গেলে কী করতে হয় তা জানবেন</p>
+</blockquote>
+<h4>৮.১ চীনের ওয়্যারহাউসে পণ্য গ্রহণ</h4>
+<p>পণ্য গুদামে এলে order ID, supplier, carton count, quantity, ওজন, মাপ এবং প্যাকেজের অবস্থা রেকর্ড করা উচিত। বারকোড স্ক্যানিং অর্ডার শনাক্ত করতে সাহায্য করে, কিন্তু স্ক্যান করলেই ভেতরের সব পণ্য সঠিক প্রমাণিত হয় না। প্রয়োজন অনুযায়ী পণ্য খুলে পরীক্ষা এবং ছবি সংরক্ষণ করতে হবে।</p>
+<h4>৮.২ Quality Control (QC) কী</h4>
+<p>QC হলো সম্মত মানদণ্ড অনুযায়ী পণ্য পরীক্ষা। এর মধ্যে model, colour, quantity, visible damage, specification এবং packaging যাচাই থাকতে পারে। বাহ্যিক পরীক্ষা সবসময় পণ্যের অভ্যন্তরীণ কার্যকারিতা বা নিরাপত্তা প্রমাণ করে না। পণ্যের ঝুঁকি অনুযায়ী sample inspection, functional test বা independent inspection প্রয়োজন হতে পারে।</p>
+<p>মান নিয়ন্ত্রণকে শুধু পণ্য হাতে পাওয়ার পরের কাজ হিসেবে দেখা ভুল। মান নিয়ন্ত্রণ শুরু হয় supplier নির্বাচন ও specification তৈরির সময়। অর্ডারের আগে নমুনা পরীক্ষা, উৎপাদনের সময় পর্যবেক্ষণ এবং shipment-এর আগে inspection—এই তিন ধাপে কাজ করলে ঝুঁকি কমে।</p>
+<h4>৮.৩ Golden Sample</h4>
+<p>যে নমুনা পরীক্ষা করে আপনি bulk production অনুমোদন করবেন, সেটিকে Golden Sample হিসেবে চিহ্নিত করুন। নমুনার ছবি, মাপ, ওজন, উপাদান, রং, কার্যকারিতা এবং প্যাকেজিংয়ের তথ্য লিখিতভাবে সংরক্ষণ করুন। Supplier-কে জানান যে bulk production এই অনুমোদিত নমুনা ও specification অনুসরণ করবে। সম্ভব হলে নমুনায় তারিখ ও sample reference যুক্ত করুন।</p>
+<h4>৮.৪ Inspection checklist</h4>
+<p>পণ্যের ধরন অনুযায়ী checklist আলাদা হবে। সাধারণ checklist-এ থাকতে পারে:</p>
+<ul>
+<li>quantity ও model verification;</li>
+<li>visual defect, scratch, dent বা colour variation;</li>
+<li>dimension ও weight measurement;</li>
+<li>functional test;</li>
+<li>electrical safety বা performance test, যেখানে প্রযোজ্য;</li>
+<li>accessories ও manual-এর completeness;</li>
+<li>label, barcode ও serial number;</li>
+<li>inner packaging ও carton strength;</li>
+<li>carton marking এবং shipping label।</li>
+</ul>
+<h4>৮.৫ AQL ও sampling</h4>
+<p>বড় চালানে প্রতিটি পণ্য পরীক্ষা করা সবসময় সম্ভব হয় না। Sampling plan ব্যবহার করা যেতে পারে। AQL বা Acceptable Quality Limit একটি inspection sampling ধারণা, কিন্তু এটি কোনো পণ্যে ত্রুটি থাকার অনুমোদন নয় এবং সব ব্যবসার জন্য একই সীমা উপযুক্ত নয়। পণ্যের ঝুঁকি, নিরাপত্তা, মূল্য এবং ব্যবহার বিবেচনা করে inspection plan ঠিক করুন। নিরাপত্তা-গুরুত্বপূর্ণ পণ্যে শুধু সাধারণ visual sampling যথেষ্ট নাও হতে পারে।</p>
+<h4>৮.৬ ত্রুটি পাওয়া গেলে কী করবেন</h4>
+<p>Inspection report-এ defect-এর ছবি, ভিডিও, সংখ্যা, severity এবং সংশ্লিষ্ট carton বা batch নম্বর রাখুন। Supplier-কে নির্দিষ্ট সময়ের মধ্যে corrective action দিতে বলুন। পণ্য rework, replacement, partial refund বা shipment hold—কোন সমাধান হবে তা চুক্তি ও পরিস্থিতি অনুযায়ী নির্ধারণ করুন। সমস্যা সমাধানের আগে shipment release করবেন কি না, সে সিদ্ধান্ত লিখিতভাবে নিন।</p>
+<blockquote>
+<p><strong>নিজে করে দেখুন:</strong> একটি পণ্যের জন্য ১০টি ঘরের inspection checklist লিখুন।</p>
+</blockquote></div></article><article class="chap card" id="c9"><svg class="ban" viewBox="0 0 600 70" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="600" height="70" rx="16" fill="var(--a)" opacity=".10"/><g transform="translate(20 15) scale(1.7)" fill="none" stroke="var(--a)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l9-5 9 5v8l-9 5-9-5zM3 8l9 5 9-5M12 13v8"/></g><path d="M90 35Q150 5 210 35T330 35 450 35 570 35" fill="none" stroke="var(--a)" stroke-width="2" stroke-dasharray="6 8" opacity=".6"><animate attributeName="stroke-dashoffset" from="56" to="0" dur="3s" repeatCount="indefinite"/></path><circle cx="570" cy="35" r="5" fill="var(--a)"/><text x="560" y="62" text-anchor="end" font-size="44" font-weight="800" fill="var(--a)" opacity=".2">৯</text></svg><h3>অধ্যায় ৯: প্যাকেজিং, ওজন ও CBM</h3><div class="prose"><blockquote>
+<p><strong>এই অধ্যায়ে যা শিখবেন</strong>
+- কার্টনের মাপ থেকে CBM হিসাব করতে পারবেন
+- net weight ও gross weight-এর পার্থক্য বুঝতে পারবেন
+- প্যাকেজিং খরচ ও ক্ষতির ঝুঁকির ভারসাম্য বিবেচনা করতে পারবেন</p>
+</blockquote>
+<p>শিপিং খরচ অনুমান করতে পণ্যের সংখ্যা জানলেই হয় না। প্রতিটি কার্টনের দৈর্ঘ্য, প্রস্থ ও উচ্চতা এবং gross weight জানতে হয়। সমুদ্রপথে ভলিউমের হিসাব করতে প্রায়ই cubic metre বা CBM ব্যবহৃত হয়। সাধারণভাবে কার্টনের দৈর্ঘ্য, প্রস্থ ও উচ্চতা মিটারে রূপান্তর করে গুণ করলে এক কার্টনের CBM পাওয়া যায়। একাধিক কার্টন হলে এক কার্টনের CBM-কে কার্টনের সংখ্যা দিয়ে গুণ করে মোট ভলিউম পাওয়া যায়।</p>
+<p>উদাহরণ: একটি কার্টনের মাপ ০.৫০ মিটার × ০.৪০ মিটার × ০.৩০ মিটার হলে ভলিউম ০.০৬ ঘনমিটার। এমন ২০টি কার্টনের মোট ভলিউম ১.২০ CBM। এই হিসাবটি কেবল প্যাকেজের বাহ্যিক আয়তন বোঝায়; freight quotation-এর চূড়ান্ত chargeable basis, minimum charge, handling এবং অন্যান্য চার্জ আলাদা হতে পারে।</p>
+<p>সাপ্লায়ারের কাছ থেকে শুধু net weight নয়, gross weight এবং carton dimensions-ও নিন। প্যাকেজিং পরিবর্তন হলে এগুলো বদলে যেতে পারে। পণ্য ভঙ্গুর হলে cushioning, inner box, moisture protection এবং stacking requirements সম্পর্কে আগেই আলোচনা করুন। অতিরিক্ত প্যাকেজিং খরচ বাড়ায়, আবার অপর্যাপ্ত প্যাকেজিং ক্ষতি ও claim-এর ঝুঁকি বাড়ায়—সঠিক ভারসাম্য দরকার।</p>
+<blockquote>
+<p><strong>নিজে করে দেখুন:</strong> একটি কার্টনের মাপ ০.৬০ × ০.৪০ × ০.৩৫ মিটার এবং কার্টন ৩০টি হলে মোট ভলিউম কত CBM? (উত্তর: ০.০৮৪ × ৩০ = ২.৫২ CBM)</p>
+</blockquote></div></article><article class="chap card" id="c10"><svg class="ban" viewBox="0 0 600 70" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="600" height="70" rx="16" fill="var(--a)" opacity=".10"/><g transform="translate(20 15) scale(1.7)" fill="none" stroke="var(--a)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l2-7h14l2 7M12 10V4h4M2 21q2.5-2 5 0t5 0 5 0 5 0"/></g><path d="M90 35Q150 5 210 35T330 35 450 35 570 35" fill="none" stroke="var(--a)" stroke-width="2" stroke-dasharray="6 8" opacity=".6"><animate attributeName="stroke-dashoffset" from="56" to="0" dur="3s" repeatCount="indefinite"/></path><circle cx="570" cy="35" r="5" fill="var(--a)"/><text x="560" y="62" text-anchor="end" font-size="44" font-weight="800" fill="var(--a)" opacity=".2">১০</text></svg><h3>অধ্যায় ১০: Air Freight, Sea Freight ও Consolidation</h3><div class="prose"><blockquote>
+<p><strong>এই অধ্যায়ে যা শিখবেন</strong>
+- air ও sea freight-এর তুলনা করতে পারবেন
+- chargeable weight, LCL ও FCL বুঝতে পারবেন
+- lead time ধাপে ধাপে ভাগ করে পরিকল্পনা করতে পারবেন</p>
+</blockquote>
+<h4>১০.১ Air ও Sea Freight: প্রাথমিক ধারণা</h4>
+<p>Air freight সাধারণত দ্রুত, কিন্তু চার্জ বেশি হতে পারে। Sea freight বড় বা ভারী চালানে তুলনামূলক সাশ্রয়ী হতে পারে, তবে মোট lead time শুধু জাহাজের যাত্রার সময় নয়। উৎপাদন, warehouse receiving, QC, export clearance, sailing schedule, port handling, customs clearance এবং local delivery-ও সময় নেয়। Freight quotation-এ origin charge, destination charge, handling, storage, insurance ও excluded charges লিখিতভাবে বুঝে নিন।</p>
+<p>পরিবহন পদ্ধতি নির্বাচন শুধু কেজিপ্রতি দামের ওপর নির্ভর করে না। পণ্যের আয়তন, ওজন, মূল্য, জরুরি প্রয়োজন, নষ্ট হওয়ার ঝুঁকি, মৌসুমি চাহিদা, গুদামের সক্ষমতা এবং নগদ প্রবাহ বিবেচনা করতে হয়।</p>
+<h4>১০.২ Chargeable Weight</h4>
+<p>আকাশপথে freight charge নির্ধারণে actual weight এবং volumetric weight-এর মধ্যে যেটি বেশি, সেটি প্রযোজ্য হতে পারে। Volumetric weight গণনার divisor ও একক carrier বা service provider অনুযায়ী ভিন্ন হতে পারে। তাই শুধু gross weight জেনে freight quote গ্রহণ করবেন না। প্রতিটি carton-এর দৈর্ঘ্য, প্রস্থ ও উচ্চতা দিন এবং forwarder-এর ব্যবহৃত volumetric divisor লিখিতভাবে জেনে নিন।</p>
+<h4>১০.৩ CBM ও সমুদ্রপথ</h4>
+<p>CBM মানে cubic metre; carton-এর দৈর্ঘ্য × প্রস্থ × উচ্চতা মিটার এককে গুণ করলে আয়তন পাওয়া যায়। একাধিক carton হলে সবগুলোর CBM যোগ করতে হয়। LCL shipment-এ পণ্য অন্য আমদানিকারকের পণ্যের সঙ্গে container-এ যায়। FCL-এ সাধারণত পুরো container নির্দিষ্ট shipment-এর জন্য ব্যবহৃত হয়। কোন পদ্ধতি সাশ্রয়ী হবে তা শুধু freight rate দিয়ে নয়, origin charge, destination charge, handling, documentation, port charge এবং সম্ভাব্য delay মিলিয়ে হিসাব করতে হবে।</p>
+<h4>১০.৪ Consolidation warehouse</h4>
+<p>একাধিক supplier-এর পণ্য একটি warehouse-এ এনে এক shipment করা যেতে পারে। এতে কিছু ক্ষেত্রে পরিবহন খরচ কমে, তবে consolidation fee, storage, receiving, repacking এবং অপেক্ষার খরচ যুক্ত হয়। প্রতিটি supplier-এর carton-এ buyer reference, order number ও carton number স্পষ্টভাবে লিখুন। Warehouse-এ পণ্য পৌঁছানোর পর receiving report নিন এবং missing carton থাকলে দ্রুত supplier-এর সঙ্গে যোগাযোগ করুন।</p>
+<h4>১০.৫ সময় পরিকল্পনা</h4>
+<p>Lead time-কে একটিমাত্র সংখ্যা হিসেবে ধরবেন না। Supplier production, factory-to-warehouse transport, warehouse receiving, consolidation, export clearance, flight বা vessel schedule, transit, port handling, customs clearance এবং final delivery—প্রতিটি ধাপের জন্য আলাদা সময় ধরুন। ছুটির মৌসুম, peak season, আবহাওয়া, port congestion এবং সরকারি ছুটিতে সময় বাড়তে পারে। বিক্রির মৌসুমের ঠিক আগে অর্ডার দিলে বিলম্বের ঝুঁকি বেশি থাকে।</p>
+<blockquote>
+<p><strong>নিজে করে দেখুন:</strong> একটি পণ্যের lead time-এর প্রতিটি ধাপে আনুমানিক সময় ধরে মোট সময়ের পরিকল্পনা করুন।</p>
+</blockquote></div></article><article class="chap card" id="c11"><svg class="ban" viewBox="0 0 600 70" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="600" height="70" rx="16" fill="var(--a)" opacity=".10"/><g transform="translate(20 15) scale(1.7)" fill="none" stroke="var(--a)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0118 0zM12 12v7a2 2 0 004 0"/></g><path d="M90 35Q150 5 210 35T330 35 450 35 570 35" fill="none" stroke="var(--a)" stroke-width="2" stroke-dasharray="6 8" opacity=".6"><animate attributeName="stroke-dashoffset" from="56" to="0" dur="3s" repeatCount="indefinite"/></path><circle cx="570" cy="35" r="5" fill="var(--a)"/><text x="560" y="62" text-anchor="end" font-size="44" font-weight="800" fill="var(--a)" opacity=".2">১১</text></svg><h3>অধ্যায় ১১: ক্ষতির ঝুঁকি, Insurance ও Claim</h3><div class="prose"><blockquote>
+<p><strong>এই অধ্যায়ে যা শিখবেন</strong>
+- insurance policy-র coverage ও exclusions দেখে বুঝতে পারবেন
+- ক্ষতিগ্রস্ত পণ্য পেলে প্রমাণ সংরক্ষণ ও claim-এর ধাপ অনুসরণ করতে পারবেন</p>
+</blockquote>
+<h4>১১.১ Insurance Certificate</h4>
+<p>চুক্তিতে কার ওপর বীমার দায়িত্ব আছে তা Incoterms ও অন্যান্য চুক্তির শর্ত দেখে বুঝতে হবে। বীমা থাকলে policy বা certificate-এ insured party, insured value, coverage, voyage, exclusions এবং claim procedure যাচাই করুন। ভঙ্গুর পণ্য, আর্দ্রতাসংবেদনশীল পণ্য বা উচ্চমূল্যের পণ্যের ক্ষেত্রে সাধারণ coverage যথেষ্ট কি না তা বিশেষভাবে দেখুন।</p>
+<h4>১১.২ Insurance এবং ক্ষতির দাবি</h4>
+<p>Cargo insurance পরিবহনের নির্দিষ্ট ঝুঁকির বিরুদ্ধে আর্থিক সুরক্ষা দিতে পারে, কিন্তু প্রতিটি ক্ষতি স্বয়ংক্রিয়ভাবে কভার করে না। পলিসির coverage, exclusions, deductible, claim deadline এবং প্রমাণের শর্ত পড়া জরুরি। পণ্য পাঠানোর আগে insurance certificate বা policy document সংগ্রহ করুন এবং insured value কীভাবে নির্ধারিত হয়েছে তা বুঝুন।</p>
+<p>পণ্য ক্ষতিগ্রস্ত অবস্থায় পৌঁছালে প্যাকেজিং ফেলে দেওয়ার আগে ছবি তুলুন, delivery note-এ ক্ষতির উল্লেখ করার সুযোগ থাকলে তা করুন, carrier বা সংশ্লিষ্ট পক্ষকে দ্রুত জানান এবং প্যাকেজ, invoice, packing list, transport document ও inspection report সংরক্ষণ করুন। ক্ষতির কারণ ও দায় নির্ধারণের জন্য সময়মতো নোটিশ গুরুত্বপূর্ণ হতে পারে। নির্দিষ্ট claim procedure বীমাকারী ও পরিবহন চুক্তি অনুযায়ী অনুসরণ করতে হবে।</p>
+<blockquote>
+<p><strong>নিজে করে দেখুন:</strong> একটি কাল্পনিক ভাঙা কার্টনের ক্ষেত্রে ক্ষতি ধরা পড়ার পর কী কী করবেন, তা ক্রমানুসারে লিখুন।</p>
+</blockquote>
+<hr /></div></article></section>
+<svg class="wave" viewBox="0 0 1200 50" preserveAspectRatio="none" aria-hidden="true"><path d="M0 25Q150 0 300 25T600 25 900 25 1200 25V50H0Z" fill="currentColor"/></svg><section class="part" id="p5" data-h="150"><h2><svg class="ic" viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a9 9 0 100 18 9 9 0 000-18zM3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg> চতুর্থ পর্ব: ডকুমেন্ট, শ্রেণিবিন্যাস ও কাস্টমস</h2><div class="prose"></div><article class="chap card" id="c12"><svg class="ban" viewBox="0 0 600 70" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="600" height="70" rx="16" fill="var(--a)" opacity=".10"/><g transform="translate(20 15) scale(1.7)" fill="none" stroke="var(--a)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l4 4v14H6zM14 3v5h5M9 13h7M9 17h7"/></g><path d="M90 35Q150 5 210 35T330 35 450 35 570 35" fill="none" stroke="var(--a)" stroke-width="2" stroke-dasharray="6 8" opacity=".6"><animate attributeName="stroke-dashoffset" from="56" to="0" dur="3s" repeatCount="indefinite"/></path><circle cx="570" cy="35" r="5" fill="var(--a)"/><text x="560" y="62" text-anchor="end" font-size="44" font-weight="800" fill="var(--a)" opacity=".2">১২</text></svg><h3>অধ্যায় ১২: শিপিং ডকুমেন্ট</h3><div class="prose"><blockquote>
+<p><strong>এই অধ্যায়ে যা শিখবেন</strong>
+- কোন নথি কেন প্রয়োজন তা বুঝতে পারবেন
+- নথিগুলোর মধ্যে সামঞ্জস্য যাচাই করতে পারবেন</p>
+</blockquote>
+<h4>১২.১ PI, Commercial Invoice ও Packing List: প্রাথমিক ধারণা</h4>
+<p>Proforma Invoice প্রাথমিক বাণিজ্যিক প্রস্তাব ও শর্তের নথি। Commercial Invoice বিক্রয়ের বাণিজ্যিক মূল্য ও পণ্যের বিবরণ দেয়। Packing List প্যাকেজের সংখ্যা, প্যাকেজভিত্তিক বিবরণ, ওজন ও মাপ দেখায়। এই নথিগুলোর তথ্যের মধ্যে সামঞ্জস্য থাকা জরুরি।</p>
+<p>আন্তর্জাতিক পণ্য পরিবহনে নথি শুধু আনুষ্ঠানিকতা নয়; এগুলো পণ্যের পরিচয়, মূল্য, পরিমাণ, পরিবহন চুক্তি, মালিকানা বা পণ্য গ্রহণের প্রমাণ এবং কাস্টমস মূল্যায়নের ভিত্তি হতে পারে। নথির নাম একই হলেও পরিবহনের ধরন ও চুক্তি অনুযায়ী তার ব্যবহার আলাদা হতে পারে।</p>
+<h4>১২.২ Commercial Invoice</h4>
+<p>Commercial Invoice-এ বিক্রেতা ও ক্রেতার পরিচয়, invoice number, তারিখ, পণ্যের বর্ণনা, quantity, unit price, total value, currency, country of origin এবং প্রযোজ্য delivery term উল্লেখ থাকে। পণ্যের বর্ণনা এমন হতে হবে যাতে কাস্টমস কর্মকর্তা বুঝতে পারেন আসলে কী আমদানি হচ্ছে। শুধু “gift item”, “accessory” বা “machine parts” লিখলে অনেক ক্ষেত্রে পণ্য শনাক্ত করা কঠিন হতে পারে। সুনির্দিষ্ট বর্ণনা ব্যবহার করুন, তবে বাস্তব পণ্যের সঙ্গে অসামঞ্জস্যপূর্ণ কোনো নাম লিখবেন না।</p>
+<h4>১২.৩ Packing List</h4>
+<p>Packing List-এ carton সংখ্যা, প্রতিটি carton-এর প্যাকিং বিবরণ, gross weight, net weight, dimension এবং পণ্যভিত্তিক পরিমাণ উল্লেখ থাকে। Invoice-এর সঙ্গে Packing List-এর পরিমাণ ও পণ্যের পরিচয় মিলিয়ে দেখুন। carton number দিলে warehouse receiving এবং inspection সহজ হয়। একটি shipment-এ বিভিন্ন SKU থাকলে carton-wise breakdown খুবই কার্যকর।</p>
+<h4>১২.৪ Bill of Lading ও Air Waybill</h4>
+<p>সমুদ্রপথে Bill of Lading বা B/L এবং আকাশপথে Air Waybill বা AWB ব্যবহৃত হয়। এগুলো পরিবহন-সংক্রান্ত গুরুত্বপূর্ণ নথি। B/L-এর ধরন ও endorsement-এর নিয়মের ওপর পণ্য ছাড়ের প্রক্রিয়া নির্ভর করতে পারে। AWB সাধারণত সমুদ্রপথের negotiable title document-এর মতো কাজ করে না। তাই কোন নথি ইস্যু হবে, consignee কে হবে, notify party কে হবে এবং original নথি লাগবে কি না—shipment-এর আগেই forwarder ও ব্যাংকের সঙ্গে মিলিয়ে নিন।</p>
+<h4>১২.৫ Certificate of Origin</h4>
+<p>Certificate of Origin বা COO পণ্যের উৎপত্তির দেশ সম্পর্কে নির্দিষ্ট প্রমাণ দেয়। কোনো পণ্য চীনে তৈরি, অন্য দেশে তৈরি, অথবা একাধিক দেশে প্রক্রিয়াজাত—এ ধরনের পরিস্থিতিতে origin নির্ধারণের নিয়ম গুরুত্বপূর্ণ হতে পারে। উৎপত্তির দেশ এবং shipment-এর দেশ এক বিষয় নয়। চীন থেকে পাঠানো হলেই প্রতিটি পণ্যের origin স্বয়ংক্রিয়ভাবে China হবে না। প্রযোজ্য নিয়ম অনুযায়ী নথি সংগ্রহ করুন।</p>
+<h4>১২.৬ নথির consistency check</h4>
+<p>Commercial Invoice, Packing List, transport document, COO, insurance এবং ব্যাংকে জমা দেওয়া নথির মধ্যে নাম, ঠিকানা, invoice number, পণ্যের বিবরণ, পরিমাণ, মূল্য, currency ও shipment details মিলিয়ে দেখুন। বানান বা সংখ্যার ছোট ভুলও clearance বিলম্বিত করতে পারে। নথি সংশোধনের প্রয়োজন হলে কে সংশোধন করবেন এবং সংশোধিত কপি কবে পাওয়া যাবে তা লিখিতভাবে ঠিক করুন।</p>
+<blockquote>
+<p><strong>নিজে করে দেখুন:</strong> একটি Commercial Invoice ও Packing List-এর পারস্পরিক সামঞ্জস্য যাচাইয়ের তালিকা তৈরি করুন।</p>
+</blockquote></div></article><article class="chap card" id="c13"><svg class="ban" viewBox="0 0 600 70" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="600" height="70" rx="16" fill="var(--a)" opacity=".10"/><g transform="translate(20 15) scale(1.7)" fill="none" stroke="var(--a)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4zM8 8h8M8 12h8M8 16h4"/></g><path d="M90 35Q150 5 210 35T330 35 450 35 570 35" fill="none" stroke="var(--a)" stroke-width="2" stroke-dasharray="6 8" opacity=".6"><animate attributeName="stroke-dashoffset" from="56" to="0" dur="3s" repeatCount="indefinite"/></path><circle cx="570" cy="35" r="5" fill="var(--a)"/><text x="560" y="62" text-anchor="end" font-size="44" font-weight="800" fill="var(--a)" opacity=".2">১৩</text></svg><h3>অধ্যায় ১৩: HS Code ও পণ্য শ্রেণিবিন্যাস</h3><div class="prose"><blockquote>
+<p><strong>এই অধ্যায়ে যা শিখবেন</strong>
+- HS Code কী ও কেন গুরুত্বপূর্ণ তা বুঝতে পারবেন
+- supplier-এর দেওয়া কোডকে কেন চূড়ান্ত ধরা যায় না তা ব্যাখ্যা করতে পারবেন
+- একটি classification file তৈরি করতে পারবেন</p>
+</blockquote>
+<h4>১৩.১ HS Code কী</h4>
+<p>HS Code পণ্য শ্রেণিবিন্যাসের আন্তর্জাতিক ব্যবস্থা। সঠিক শ্রেণিবিন্যাস পণ্যের গঠন, উপাদান, কাজ ও প্রযুক্তিগত বৈশিষ্ট্যের ওপর নির্ভর করে। শুধু supplier-এর দেওয়া code কপি করবেন না। বাংলাদেশের জাতীয় tariff schedule, Section/Chapter Notes এবং সংশ্লিষ্ট নিয়ম দেখে যাচাই করুন। ভুল শ্রেণিবিন্যাসে অতিরিক্ত শুল্ক, বিলম্ব, জরিমানা বা অন্যান্য ব্যবস্থা হতে পারে; নির্দিষ্ট ফল প্রযোজ্য আইন ও ঘটনার ওপর নির্ভর করে।</p>
+<p>HS Code হলো পণ্য শ্রেণিবিন্যাসের একটি আন্তর্জাতিক কাঠামো। কিন্তু কোনো পণ্যের কোড নির্ধারণ সবসময় সহজ নয়। পণ্যের উপাদান, কাজ, গঠন, ব্যবহার, সম্পূর্ণ বা অসম্পূর্ণ অবস্থায় আমদানি, সেট বা composite product হওয়া—এসব বিষয় শ্রেণিবিন্যাসে প্রভাব ফেলতে পারে। একই রকম দেখতে দুটি পণ্যের HS Code আলাদা হতে পারে, আবার আলাদা বাণিজ্যিক নামে বিক্রি হওয়া পণ্য একই শ্রেণিতে পড়তে পারে।</p>
+<h4>১৩.২ শুধু supplier-এর দেওয়া কোডের ওপর নির্ভর করবেন না</h4>
+<p>Supplier চীনের নিজস্ব export classification বা HS code দিতে পারেন। কিন্তু বাংলাদেশের আমদানি শুল্ক নির্ধারণে বাংলাদেশের কার্যকর tariff schedule ও জাতীয় উপবিভাগ অনুসরণ করতে হবে। বিদেশি supplier-এর কোডকে প্রাথমিক সূত্র হিসেবে নিন, চূড়ান্ত সিদ্ধান্ত হিসেবে নয়। পণ্যের technical datasheet, catalogue, composition, function এবং ছবি সংগ্রহ করে বাংলাদেশি tariff-এর সঙ্গে মিলিয়ে দেখুন।</p>
+<h4>১৩.৩ HS Code যাচাইয়ের নথিপত্র</h4>
+<p>একটি classification file তৈরি করুন। এতে রাখুন:</p>
+<ul>
+<li>পণ্যের পূর্ণ technical description;</li>
+<li>উপাদান ও composition;</li>
+<li>পণ্যের প্রধান কাজ ও ব্যবহার;</li>
+<li>ছবি, catalogue ও manufacturer datasheet;</li>
+<li>supplier-এর প্রস্তাবিত HS Code;</li>
+<li>বাংলাদেশের tariff schedule-এ পাওয়া সম্ভাব্য heading;</li>
+<li>সংশ্লিষ্ট legal note বা explanatory note;</li>
+<li>C&amp;F agent বা customs specialist-এর মতামত;</li>
+<li>চূড়ান্ত সিদ্ধান্তের তারিখ ও ভিত্তি।</li>
+</ul>
+<p>ভবিষ্যতে একই পণ্য পুনরায় আমদানি করলে এই ফাইল কাজে লাগবে। তবে আইন, tariff বা পণ্যের specification বদলালে পুনরায় যাচাই করতে হবে।</p>
+<blockquote>
+<p><strong>নিজে করে দেখুন:</strong> একটি পণ্যের জন্য classification file-এর ঘরগুলো পূরণ করুন; যে তথ্য এখনো নেই সেখানে “সংগ্রহ করতে হবে” লিখুন।</p>
+</blockquote></div></article><article class="chap card" id="c14"><svg class="ban" viewBox="0 0 600 70" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="600" height="70" rx="16" fill="var(--a)" opacity=".10"/><g transform="translate(20 15) scale(1.7)" fill="none" stroke="var(--a)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4zM8 8h8M8 12h8M8 16h4"/></g><path d="M90 35Q150 5 210 35T330 35 450 35 570 35" fill="none" stroke="var(--a)" stroke-width="2" stroke-dasharray="6 8" opacity=".6"><animate attributeName="stroke-dashoffset" from="56" to="0" dur="3s" repeatCount="indefinite"/></path><circle cx="570" cy="35" r="5" fill="var(--a)"/><text x="560" y="62" text-anchor="end" font-size="44" font-weight="800" fill="var(--a)" opacity=".2">১৪</text></svg><h3>অধ্যায় ১৪: কাস্টমস প্রক্রিয়া, Valuation ও শুল্ক-কর</h3><div class="prose"><blockquote>
+<p><strong>এই অধ্যায়ে যা শিখবেন</strong>
+- কাস্টমস clearance-এর ধাপগুলো বুঝতে পারবেন
+- customs value ও শুল্ক-করের কাঠামো সম্পর্কে ধারণা পাবেন</p>
+</blockquote>
+<h4>১৪.১ বাংলাদেশ কাস্টমসে পণ্য ছাড়ের প্রক্রিয়া</h4>
+<p>পণ্য বন্দরে পৌঁছালে প্রযোজ্য import declaration বা Bill of Entry দাখিল, ডকুমেন্ট যাচাই, প্রয়োজন হলে physical examination, customs valuation, শুল্ক-কর নির্ধারণ ও release প্রক্রিয়া সম্পন্ন হয়। পণ্যের HS Code, customs value, প্রকৃতি এবং কার্যকর tariff অনুযায়ী শুল্ক-কর নির্ধারিত হয়। পুরোনো হিসাব বা অন্য ব্যবসায়ীর তথ্য দেখে নিজের পণ্যের কর নির্ধারণ করা উচিত নয়।</p>
+<h4>১৪.২ Customs value কীভাবে বিবেচিত হয়</h4>
+<p>কাস্টমস মূল্যায়নে transaction value এবং প্রযোজ্য valuation rules গুরুত্বপূর্ণ। Invoice-এ লেখা মূল্য সব পরিস্থিতিতে স্বয়ংক্রিয়ভাবে গ্রহণ করা হবে—এমন নিশ্চয়তা নেই। সম্পর্কিত পক্ষের মধ্যে লেনদেন, অস্বাভাবিক কম মূল্য, freight/insurance, royalty বা অন্যান্য প্রাসঙ্গিক উপাদান থাকলে মূল্যায়নে প্রশ্ন উঠতে পারে। ভুল মূল্য ঘোষণা, কৃত্রিমভাবে invoice কমানো বা পণ্যের প্রকৃত পরিচয় গোপন করা আইনগত ও আর্থিক ঝুঁকি তৈরি করে।</p>
+<h4>১৪.৩ শুল্ক-কর গণনার কাঠামো</h4>
+<p>একটি পণ্যের landed cost হিসাব করার সময় অন্তত পণ্যের মূল্য, আন্তর্জাতিক freight, insurance, customs-assessed value, প্রযোজ্য customs duty, regulatory duty, supplementary duty, VAT, advance tax বা advance income tax এবং অন্যান্য প্রযোজ্য চার্জ বিবেচনা করতে হতে পারে। সব পণ্যে সব ধরনের কর প্রযোজ্য নয়। করের হার ও হিসাবের ভিত্তি পণ্যের HS Code এবং কার্যকর অর্থবছরের tariff অনুযায়ী নির্ধারিত হয়। তাই একটি সাধারণ শতাংশ ধরে সব পণ্যের শুল্ক হিসাব করবেন না।</p>
+<blockquote>
+<p><strong>নিজে করে দেখুন:</strong> কাস্টমস clearance-এর ধাপগুলো নিজের ভাষায় ক্রমানুসারে লিখুন এবং প্রতিটি ধাপে কোন নথি লাগতে পারে তা চিহ্নিত করুন।</p>
+</blockquote>
+<hr /></div></article></section>
+<svg class="wave" viewBox="0 0 1200 50" preserveAspectRatio="none" aria-hidden="true"><path d="M0 25Q150 0 300 25T600 25 900 25 1200 25V50H0Z" fill="currentColor"/></svg><section class="part" id="p6" data-h="45"><h2><svg class="ic" viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h14v16H5zM9 9h6M9 13h6"/></svg> পঞ্চম পর্ব: খরচ, গুদাম ও বিক্রি</h2><div class="prose"></div><article class="chap card" id="c15"><svg class="ban" viewBox="0 0 600 70" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="600" height="70" rx="16" fill="var(--a)" opacity=".10"/><g transform="translate(20 15) scale(1.7)" fill="none" stroke="var(--a)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-8M22 20V8"/></g><path d="M90 35Q150 5 210 35T330 35 450 35 570 35" fill="none" stroke="var(--a)" stroke-width="2" stroke-dasharray="6 8" opacity=".6"><animate attributeName="stroke-dashoffset" from="56" to="0" dur="3s" repeatCount="indefinite"/></path><circle cx="570" cy="35" r="5" fill="var(--a)"/><text x="560" y="62" text-anchor="end" font-size="44" font-weight="800" fill="var(--a)" opacity=".2">১৫</text></svg><h3>অধ্যায় ১৫: Landed Cost ও Break-even</h3><div class="prose"><blockquote>
+<p><strong>এই অধ্যায়ে যা শিখবেন</strong>
+- landed cost sheet তৈরি করতে পারবেন
+- প্রতি বিক্রয়যোগ্য পিসের খরচ ও break-even হিসাব করতে পারবেন
+- sensitivity analysis-এর ধারণা বুঝতে পারবেন</p>
+</blockquote>
+<h4>১৫.১ Landed cost কী</h4>
+<p>Landed cost হলো পণ্যকে নির্দিষ্ট গন্তব্যে বিক্রয়যোগ্য অবস্থায় আনতে সংশ্লিষ্ট মোট খরচ। এতে product cost, local transport, warehouse, QC, freight, insurance, customs duties and taxes, port charges, C&amp;F fees এবং local delivery অন্তর্ভুক্ত হতে পারে। মোট খরচকে বিক্রয়যোগ্য ইউনিট দিয়ে ভাগ করলে প্রতি ইউনিটের খরচ পাওয়া যায়। ভাঙা বা ত্রুটিপূর্ণ পণ্য থাকলে বিক্রয়যোগ্য পরিমাণ ব্যবহার করা জরুরি।</p>
+<p>পণ্যের supplier price কখনোই ব্যবসার সম্পূর্ণ খরচ নয়। প্রকৃত খরচ বুঝতে প্রতিটি চালানের জন্য landed cost sheet তৈরি করুন।</p>
+<h4>১৫.২ খরচের স্তর</h4>
+<ul>
+<li>প্রথম স্তর: পণ্যের মূল্য, sample cost, tooling বা customization cost।</li>
+<li>দ্বিতীয় স্তর: China-side transport, warehouse receiving, consolidation, inspection, export documentation এবং origin handling।</li>
+<li>তৃতীয় স্তর: international freight, insurance এবং সংশ্লিষ্ট surcharge।</li>
+<li>চতুর্থ স্তর: customs duty ও অন্যান্য কর, port/airport charge, C&amp;F fee, scanning বা examination-সংক্রান্ত বৈধ খরচ এবং স্থানীয় পরিবহন।</li>
+<li>পঞ্চম স্তর: warehouse handling, packaging, damage allowance, payment fee, currency conversion এবং অন্যান্য প্রাসঙ্গিক ব্যয়।</li>
+</ul>
+<h4>১৫.৩ প্রতি পিসের landed cost</h4>
+<p>মোট প্রযোজ্য landed cost-কে বিক্রয়যোগ্য ভালো পণ্যের সংখ্যা দিয়ে ভাগ করলে প্রতি পিসের গড় landed cost পাওয়া যায়। উদাহরণস্বরূপ, ১,০০০ পিস আমদানি করলেও inspection-এ ২০ পিস ত্রুটিপূর্ণ পাওয়া গেল এবং সেগুলো বিক্রিযোগ্য নয়—তাহলে হিসাবের denominator ১,০০০ নয়, ৯৮০ হতে পারে। তবে ত্রুটিপূর্ণ পণ্য পরে repair বা claim-এর মাধ্যমে উদ্ধার হলে তার হিসাব আলাদা করে দেখাতে হবে।</p>
+<h4>১৫.৪ Break-even হিসাব</h4>
+<p>ধরা যাক একটি পণ্যের প্রতি পিস landed cost ৫০০ টাকা। বিক্রির সঙ্গে যুক্ত packaging, payment fee, delivery subsidy ও অন্যান্য variable cost ৭০ টাকা। তাহলে প্রতি পিসে মোট খরচ (landed cost ও পরিবর্তনশীল ব্যয় মিলিয়ে) ৫৭০ টাকা। যদি বিক্রয়মূল্য ৭৫০ টাকা হয়, তবে contribution ১৮০ টাকা। মাসিক স্থায়ী ব্যয় ৩৬,০০০ টাকা হলে break-even quantity হবে ৩৬,০০০ ÷ ১৮০ = ২০০ পিস। এটি একটি সরল উদাহরণ; বাস্তবে discount, return, tax treatment, marketplace commission এবং product mix বিবেচনা করতে হবে।</p>
+<h4>১৫.৫ Sensitivity analysis</h4>
+<p>বিনিময় হার ৩ শতাংশ বাড়লে, freight ১০ শতাংশ বাড়লে, customs value পরিবর্তিত হলে অথবা বিক্রয়মূল্য কমাতে হলে লাভ কতটা বদলাবে—আগেই হিসাব করুন। একটি optimistic, base এবং pessimistic scenario তৈরি করুন। ব্যবসার সিদ্ধান্ত সবচেয়ে আশাবাদী scenario-এর ওপর নির্ভর করাবেন না।</p>
+<blockquote>
+<p><strong>নিজে করে দেখুন:</strong> এই অধ্যায়ের break-even উদাহরণে বিক্রয়মূল্য ৭০০ টাকা হলে break-even quantity কত হবে? (উত্তর: contribution ১৩০ টাকা; ৩৬,০০০ ÷ ১৩০ ≈ ২৭৭ পিস)</p>
+</blockquote></div></article><article class="chap card" id="c16"><svg class="ban" viewBox="0 0 600 70" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="600" height="70" rx="16" fill="var(--a)" opacity=".10"/><g transform="translate(20 15) scale(1.7)" fill="none" stroke="var(--a)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10l9-6 9 6v10H3zM8 20v-6h8v6"/></g><path d="M90 35Q150 5 210 35T330 35 450 35 570 35" fill="none" stroke="var(--a)" stroke-width="2" stroke-dasharray="6 8" opacity=".6"><animate attributeName="stroke-dashoffset" from="56" to="0" dur="3s" repeatCount="indefinite"/></path><circle cx="570" cy="35" r="5" fill="var(--a)"/><text x="560" y="62" text-anchor="end" font-size="44" font-weight="800" fill="var(--a)" opacity=".2">১৬</text></svg><h3>অধ্যায় ১৬: গুদাম ব্যবস্থাপনা ও Stock Accuracy</h3><div class="prose"><blockquote>
+<p><strong>এই অধ্যায়ে যা শিখবেন</strong>
+- inventory record রাখার নিয়ম জানবেন
+- SKU ও storage location নির্ধারণ করতে পারবেন
+- physical count ও সফটওয়্যারের হিসাব মেলাতে পারবেন</p>
+</blockquote>
+<p>আমদানি করা পণ্য গুদামে পৌঁছানোর পর inventory record তৈরি না করলে ব্যবসায়ী সহজেই ভুল হিসাবের মধ্যে পড়ে যেতে পারেন। কত পণ্য এসেছে, কত বিক্রি হয়েছে, কত ফেরত এসেছে, কতটি নষ্ট হয়েছে এবং বর্তমানে কতটি বিক্রির উপযোগী—এসব তথ্য আলাদা করে রাখতে হবে। গুদামের physical count এবং সফটওয়্যারের হিসাব নিয়মিত মিলিয়ে দেখুন।</p>
+<p>প্রতিটি SKU-এর জন্য নির্দিষ্ট নাম, কোড এবং storage location নির্ধারণ করুন। একই রকম দেখতে দুই মডেলকে একই নামে রাখলে picking error হতে পারে। বারকোড ব্যবহার করলে কর্মীদের ভুল কমতে পারে, তবে barcode data ও বাস্তব পণ্যের mapping সঠিক রাখতে হবে। ফেরত আসা পণ্যকে বিক্রয়যোগ্য stock-এ ফেরত দেওয়ার আগে পরীক্ষা করুন।</p>
+<blockquote>
+<p><strong>নিজে করে দেখুন:</strong> নিজের পণ্যের জন্য SKU নামকরণের একটি নিয়ম লিখুন।</p>
+</blockquote></div></article><article class="chap card" id="c17"><svg class="ban" viewBox="0 0 600 70" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="600" height="70" rx="16" fill="var(--a)" opacity=".10"/><g transform="translate(20 15) scale(1.7)" fill="none" stroke="var(--a)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8M15 7h6v6"/></g><path d="M90 35Q150 5 210 35T330 35 450 35 570 35" fill="none" stroke="var(--a)" stroke-width="2" stroke-dasharray="6 8" opacity=".6"><animate attributeName="stroke-dashoffset" from="56" to="0" dur="3s" repeatCount="indefinite"/></path><circle cx="570" cy="35" r="5" fill="var(--a)"/><text x="560" y="62" text-anchor="end" font-size="44" font-weight="800" fill="var(--a)" opacity=".2">১৭</text></svg><h3>অধ্যায় ১৭: বিক্রয়, লাভ বিশ্লেষণ ও গ্রাহকসেবা</h3><div class="prose"><blockquote>
+<p><strong>এই অধ্যায়ে যা শিখবেন</strong>
+- বিক্রির পর gross profit থেকে net contribution পর্যন্ত লাভ বিশ্লেষণ করতে পারবেন
+- পণ্যের বর্ণনা, warranty ও return policy স্বচ্ছভাবে লিখতে পারবেন
+- গ্রাহকের অভিযোগ থেকে supplier improvement-এর তথ্য নিতে পারবেন</p>
+</blockquote>
+<h4>১৭.১ বিক্রির পর প্রকৃত লাভ বিশ্লেষণ</h4>
+<p>একটি পণ্য ভালো বিক্রি হচ্ছে—এটি ভালো খবর; কিন্তু বিক্রির পর প্রকৃত অবদান কত, সেটি জানা আরও গুরুত্বপূর্ণ। বিক্রয়মূল্য থেকে landed cost বাদ দিলে প্রাথমিক gross profit পাওয়া যায়। এরপর বিজ্ঞাপন, বিক্রয় কমিশন, প্যাকেজিং, ডেলিভারি ভর্তুকি, payment fee, ফেরত এবং অন্যান্য পরিবর্তনশীল ব্যয় বিবেচনা করলে contribution আরও স্পষ্ট হয়। শেষে ভাড়া, বেতন, সফটওয়্যার, হিসাবরক্ষণ এবং অন্যান্য পরিচালন ব্যয় বাদ দিয়ে ব্যবসার প্রকৃত ফল বোঝা যায়।</p>
+<p>একই পণ্যের জন্য মাসভিত্তিক রিপোর্ট রাখুন: মোট বিক্রি, গড় বিক্রয়মূল্য, ফেরতের হার, defect rate, বিজ্ঞাপন ব্যয়, stock-out দিন, অবিক্রীত মজুত এবং net contribution। এসব তথ্য পরবর্তী অর্ডারের পরিমাণ নির্ধারণে সাহায্য করবে। দ্রুত বিক্রি হওয়া পণ্যে পুনরায় অর্ডার দেওয়া যেতে পারে, কিন্তু আগের চালানের সমস্যাগুলো না বুঝে একই ভুল পুনরাবৃত্তি করবেন না।</p>
+<p>পণ্য দেশে পৌঁছানোই ব্যবসার শেষ নয়; বরং এখান থেকেই বাজারে বিক্রির কাজ শুরু হয়। ভালো পণ্যও ভুল positioning, দুর্বল ছবি, অস্পষ্ট description বা খারাপ after-sales service-এর কারণে বিক্রি নাও হতে পারে।</p>
+<h4>১৭.২ পণ্যের বর্ণনা ও দাবি</h4>
+<p>পণ্যের বর্ণনায় উপাদান, মাপ, ব্যবহার, compatibility, package contents, warranty এবং সীমাবদ্ধতা পরিষ্কারভাবে লিখুন। পরীক্ষিত নয় এমন performance claim, স্বাস্থ্যগত দাবি বা ভুয়া certification ব্যবহার করবেন না। পণ্যের ছবি বাস্তব পণ্যের সঙ্গে মিলতে হবে। কোনো feature না থাকলে বিজ্ঞাপনে সেটি আছে বলে দেখাবেন না।</p>
+<h4>১৭.৩ Warranty ও Return Policy</h4>
+<p>পণ্যের ধরন অনুযায়ী warranty, replacement, repair এবং return policy লিখিতভাবে নির্ধারণ করুন। কোন সমস্যা manufacturing defect হিসেবে গণ্য হবে, ব্যবহারজনিত ক্ষতি কীভাবে বিবেচিত হবে, claim করার সময়সীমা কত এবং গ্রাহক কী প্রমাণ দেবেন—এসব পরিষ্কার রাখুন। Supplier-এর warranty থাকলেও বাংলাদেশের ক্রেতার কাছে আপনার দায়িত্ব কী হবে তা স্থানীয় আইন ও ব্যবসার নীতি অনুযায়ী ঠিক করতে হবে।</p>
+<h4>১৭.৪ Customer feedback থেকে supplier improvement</h4>
+<p>গ্রাহকের অভিযোগকে শুধু নেতিবাচক মন্তব্য হিসেবে দেখবেন না। একই ধরনের সমস্যা বারবার এলে তা supplier-এর specification বা quality control-এ ফিরিয়ে নিন। যেমন চার্জার গরম হয়, কাপড়ের মাপ ছোট, প্যাকেজিং ভাঙে বা রঙ ছবির সঙ্গে মেলে না—এসব তথ্য পরবর্তী অর্ডারে পরিবর্তনের ভিত্তি হতে পারে।</p>
+<blockquote>
+<p><strong>নিজে করে দেখুন:</strong> একটি পণ্যের জন্য মাসিক রিপোর্টের ছক বানান (মোট বিক্রি, গড় বিক্রয়মূল্য, ফেরতের হার, defect rate ইত্যাদি)।</p>
+</blockquote></div></article><article class="chap card" id="c18"><svg class="ban" viewBox="0 0 600 70" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="600" height="70" rx="16" fill="var(--a)" opacity=".10"/><g transform="translate(20 15) scale(1.7)" fill="none" stroke="var(--a)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4M12 3a6 6 0 00-4 10.5c.7.7 1 1.5 1 2.5h6c0-1 .3-1.8 1-2.5A6 6 0 0012 3z"/></g><path d="M90 35Q150 5 210 35T330 35 450 35 570 35" fill="none" stroke="var(--a)" stroke-width="2" stroke-dasharray="6 8" opacity=".6"><animate attributeName="stroke-dashoffset" from="56" to="0" dur="3s" repeatCount="indefinite"/></path><circle cx="570" cy="35" r="5" fill="var(--a)"/><text x="560" y="62" text-anchor="end" font-size="44" font-weight="800" fill="var(--a)" opacity=".2">১৮</text></svg><h3>অধ্যায় ১৮: ঝুঁকি ব্যবস্থাপনা ও সংকট পরিকল্পনা</h3><div class="prose"><blockquote>
+<p><strong>এই অধ্যায়ে যা শিখবেন</strong>
+- আমদানির প্রধান ঝুঁকিগুলো চিহ্নিত করতে পারবেন
+- risk register তৈরি করতে পারবেন
+- জরুরি তহবিল ও সমস্যার সময় যোগাযোগের ক্রম বুঝতে পারবেন</p>
+</blockquote>
+<h4>১৮.১ ঝুঁকি ব্যবস্থাপনার মূল কথা</h4>
+<p>সাপ্লায়ার যাচাই, লিখিত specification, উপযুক্ত QC, সঠিক ডকুমেন্ট, insurance, freight quotation এবং cash-flow planning ঝুঁকি কমাতে সাহায্য করে। একটি risk register-এ ঝুঁকি, সম্ভাবনা, সম্ভাব্য ক্ষতি এবং দায়িত্বপ্রাপ্ত ব্যক্তি লিখে রাখুন।</p>
+<p>প্রতিটি আমদানি চালানে কিছু অনিশ্চয়তা থাকে। লক্ষ্য ঝুঁকি পুরোপুরি দূর করা নয়; বরং আগে থেকে শনাক্ত করা, প্রভাব কমানো এবং সমস্যা হলে দ্রুত সিদ্ধান্ত নেওয়ার ব্যবস্থা তৈরি করা।</p>
+<h4>১৮.২ প্রধান ঝুঁকির তালিকা</h4>
+<ul>
+<li>Supplier fraud বা পণ্য না পাঠানো;</li>
+<li>Specification mismatch;</li>
+<li>নিম্নমান বা অতিরিক্ত defect;</li>
+<li>ভুল HS Code বা ভুল product declaration;</li>
+<li>নীতিমালা বা শুল্ক পরিবর্তন;</li>
+<li>ব্যাংকিং বা foreign exchange বিলম্ব;</li>
+<li>Freight rate বৃদ্ধি;</li>
+<li>Vessel/flight delay;</li>
+<li>Customs query বা অতিরিক্ত পরীক্ষা;</li>
+<li>পণ্য ক্ষতি, চুরি বা আর্দ্রতার ক্ষতি;</li>
+<li>বাজারে চাহিদা কমে যাওয়া;</li>
+<li>বিনিময় হার ও নগদ প্রবাহের চাপ।</li>
+</ul>
+<h4>১৮.৩ Risk register</h4>
+<p>প্রতিটি ঝুঁকির জন্য সম্ভাবনা, আর্থিক প্রভাব, আগাম সংকেত, প্রতিরোধ ব্যবস্থা, দায়িত্বপ্রাপ্ত ব্যক্তি এবং contingency plan লিখুন। উদাহরণ: “supplier production delay”—আগাম সংকেত হতে পারে নির্ধারিত সময়ে production photo না পাওয়া। প্রতিরোধ: PO-তে milestone ও inspection date। বিকল্প পরিকল্পনা: বিকল্প supplier বা বিক্রির সময়সূচি পরিবর্তন।</p>
+<h4>১৮.৪ জরুরি তহবিল</h4>
+<p>শুধু পণ্য কেনার টাকা হাতে থাকলেই অর্ডার দেওয়া উচিত নয়। সম্ভাব্য অতিরিক্ত freight, customs-related legitimate cost, storage, delay, currency movement এবং damaged goods-এর জন্য contingency reserve রাখুন। কত reserve প্রয়োজন তা ব্যবসার আকার ও পণ্যের ঝুঁকির ওপর নির্ভর করে। ধার করা অর্থ দিয়ে পুরো চালান চালালে বিলম্বের সময় সুদ ও নগদ প্রবাহের চাপ বাড়তে পারে।</p>
+<h4>১৮.৫ সমস্যা হলে যোগাযোগের ক্রম</h4>
+<p>প্রথমে প্রমাণ সংগ্রহ করুন: ছবি, ভিডিও, নথি, তারিখ, tracking record এবং সংশ্লিষ্ট ব্যক্তির বক্তব্য। এরপর supplier বা service provider-কে লিখিতভাবে জানান। প্রয়োজন হলে freight forwarder, insurer, bank, C&amp;F agent বা আইনগত পরামর্শকের সঙ্গে যোগাযোগ করুন। গুরুত্বপূর্ণ যোগাযোগ ফোনে হলেও পরে ইমেইল বা লিখিত নোটে সিদ্ধান্ত নিশ্চিত করুন।</p>
+<blockquote>
+<p><strong>নিজে করে দেখুন:</strong> তিনটি ঝুঁকি বেছে নিয়ে risk register-এর ছক পূরণ করুন।</p>
+</blockquote></div></article><article class="chap card" id="c19"><svg class="ban" viewBox="0 0 600 70" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="600" height="70" rx="16" fill="var(--a)" opacity=".10"/><g transform="translate(20 15) scale(1.7)" fill="none" stroke="var(--a)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18v12H3zM3 10h18M7 15h3"/></g><path d="M90 35Q150 5 210 35T330 35 450 35 570 35" fill="none" stroke="var(--a)" stroke-width="2" stroke-dasharray="6 8" opacity=".6"><animate attributeName="stroke-dashoffset" from="56" to="0" dur="3s" repeatCount="indefinite"/></path><circle cx="570" cy="35" r="5" fill="var(--a)"/><text x="560" y="62" text-anchor="end" font-size="44" font-weight="800" fill="var(--a)" opacity=".2">১৯</text></svg><h3>অধ্যায় ১৯: পেশাদারদের সঙ্গে কাজ ও নথি ব্যবস্থাপনা</h3><div class="prose"><blockquote>
+<p><strong>এই অধ্যায়ে যা শিখবেন</strong>
+- C&amp;F agent, forwarder, ব্যাংকার ও supplier-এর দায়িত্ব লিখিতভাবে ঠিক করতে পারবেন
+- প্রতিটি চালানের জন্য digital folder সাজাতে পারবেন
+- চালান শেষে review লিখতে পারবেন</p>
+</blockquote>
+<h4>১৯.১ পেশাদারদের সঙ্গে কাজের নিয়ম</h4>
+<p>C&amp;F agent, freight forwarder, ব্যাংকার, inspection company এবং supplier—প্রত্যেকের দায়িত্ব ও যোগাযোগের সীমা লিখিতভাবে পরিষ্কার রাখুন। কোন নথি কে তৈরি করবেন, কোন তারিখে দেবেন, কোন চার্জ কার দায়িত্ব, কোনো সমস্যা হলে কাকে জানাতে হবে এবং সিদ্ধান্ত অনুমোদন করবেন কে—এসব নির্ধারণ করলে ভুল বোঝাবুঝি কমে।</p>
+<p>কোনো পেশাজীবীর অভিজ্ঞতা গুরুত্বপূর্ণ, কিন্তু নিজের ব্যবসার মৌলিক তথ্য তাঁর কাছেও পরিষ্কারভাবে দিতে হবে। পণ্যের অস্পষ্ট নাম, অসম্পূর্ণ invoice বা ভুল ওজন দিলে সঠিক পরামর্শ পাওয়া কঠিন। ভালো কাজের সম্পর্ক মানে সব দায়িত্ব অন্যের ওপর ফেলে দেওয়া নয়; বরং প্রত্যেকের কাজকে সঠিক তথ্য দিয়ে সহজ করা।</p>
+<h4>১৯.২ চূড়ান্ত কর্মপদ্ধতি</h4>
+<p>প্রতিটি চালানের জন্য একটি digital folder তৈরি করুন। সেখানে quotation, purchase order, approved specification, sample images, PI, payment record, QC report, packing list, commercial invoice, transport document, insurance, customs documents, duty payment record, warehouse receiving report এবং final cost sheet রাখুন। ফাইলের নাম এমনভাবে দিন যাতে অর্ডার নম্বর ও তারিখ দেখে সহজে খুঁজে পাওয়া যায়। সংবেদনশীল আর্থিক নথিতে প্রবেশাধিকার সীমিত রাখুন এবং backup সংরক্ষণ করুন।</p>
+<p>চালান শেষ হওয়ার পর একটি review meeting বা নিজের জন্য লিখিত পর্যালোচনা করুন। কোন অনুমান ঠিক ছিল, কোন খরচ বাদ পড়েছিল, কত দিন দেরি হয়েছে, কী ধরনের ত্রুটি পাওয়া গেছে এবং পরের অর্ডারে কী বদলানো দরকার—এসব লিখুন। এই ছোট অভ্যাস সময়ের সঙ্গে ব্যবসার সিদ্ধান্তকে আরও বাস্তবসম্মত করে তুলবে।</p>
+<blockquote>
+<p><strong>নিজে করে দেখুন:</strong> একটি চালানের জন্য digital folder-এর ফাইল-নামকরণের নিয়ম লিখুন, যাতে অর্ডার নম্বর ও তারিখ দেখে খুঁজে পাওয়া যায়।</p>
+</blockquote>
+<hr /></div></article></section>
+<section class="part" id="calc" data-h="45"><h2>Landed Cost ক্যালকুলেটর</h2>
+<div class="card calc"><p class="mu">নিচের মানগুলো শুধু উদাহরণ। আপনার নিজের হিসাব ও সর্বশেষ শুল্ক-কর হার দিয়ে বদলান। ফলাফল লাইভ বদলাবে।</p>
+<div class="g">
+<label>প্রতি পিসের দাম (¥)<input id="cp" inputmode="decimal" value="25"></label>
+<label>পরিমাণ (পিস)<input id="q" inputmode="decimal" value="500"></label>
+<label>বিনিময় হার (৳ প্রতি ¥)<input id="fx" inputmode="decimal" value="17"></label>
+<label>চীনে স্থানীয় খরচ মোট (¥)<input id="lt" inputmode="decimal" value="800"></label>
+<label>আন্তর্জাতিক freight মোট (৳)<input id="fr" inputmode="decimal" value="45000"></label>
+<label>Insurance (% পণ্যমূল্যের)<input id="ins" inputmode="decimal" value="0.5"></label>
+<label>শুল্ক-কর মিলিয়ে (% CIF-এর)<input id="du" inputmode="decimal" value="40"></label>
+<label>অন্যান্য খরচ মোট (৳)<input id="ot" inputmode="decimal" value="15000"></label>
+<label>বিক্রয়মূল্য প্রতি পিস (৳)<input id="sp" inputmode="decimal" value="900"></label>
+</div>
+<div class="res" aria-live="polite"><div><small>মোট landed cost</small><b id="r1">-</b></div><div><small>প্রতি পিস landed cost</small><b id="r2">-</b></div><div><small>প্রতি পিস লাভ</small><b id="r3">-</b></div><div><small>মার্জিন</small><b id="r4">-</b></div></div>
+<p class="mu">CIF = পণ্যমূল্য + freight + insurance ধরা হয়েছে (আনুমানিক)। নিজের কাস্টমস হিসাব যাচাই করুন।</p></div></section>
+
+<svg class="wave" viewBox="0 0 1200 50" preserveAspectRatio="none" aria-hidden="true"><path d="M0 25Q150 0 300 25T600 25 900 25 1200 25V50H0Z" fill="currentColor"/></svg><section class="part" id="p7" data-h="200"><h2><svg class="ic" viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12l9-8 9 8v8H3zM9 20v-6h6v6"/></svg> ষষ্ঠ পর্ব: প্রয়োগ ও অনুশীলন</h2><div class="prose"></div><article class="chap card" id="c20"><svg class="ban" viewBox="0 0 600 70" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="600" height="70" rx="16" fill="var(--a)" opacity=".10"/><g transform="translate(20 15) scale(1.7)" fill="none" stroke="var(--a)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4M12 3a6 6 0 00-4 10.5c.7.7 1 1.5 1 2.5h6c0-1 .3-1.8 1-2.5A6 6 0 0012 3z"/></g><path d="M90 35Q150 5 210 35T330 35 450 35 570 35" fill="none" stroke="var(--a)" stroke-width="2" stroke-dasharray="6 8" opacity=".6"><animate attributeName="stroke-dashoffset" from="56" to="0" dur="3s" repeatCount="indefinite"/></path><circle cx="570" cy="35" r="5" fill="var(--a)"/><text x="560" y="62" text-anchor="end" font-size="44" font-weight="800" fill="var(--a)" opacity=".2">২০</text></svg><h3>অধ্যায় ২০: নতুন আমদানিকারকের জন্য ৯০ দিনের পরিকল্পনা</h3><div class="prose"><blockquote>
+<p><strong>এই অধ্যায়ে যা শিখবেন</strong>
+- আমদানির কাজ ৯০ দিনের ধাপে ভাগ করতে পারবেন</p>
+</blockquote>
+<p>নতুন ব্যবসায়ী একসঙ্গে সবকিছু শেখার চেষ্টা করলে বিভ্রান্ত হতে পারেন। ৯০ দিনের একটি ধাপে ধাপে পরিকল্পনা কাজকে বাস্তবসম্মত করতে পারে। এটি একটি নমুনা পরিকল্পনা; পণ্য ও ব্যবসার ধরন অনুযায়ী সময় পরিবর্তন হবে।</p>
+<p><strong>দিন ১–১৫: বাজার ও পণ্য গবেষণা</strong></p>
+<p>একটি নির্দিষ্ট পণ্যশ্রেণি বেছে নিন। সম্ভাব্য ক্রেতা, প্রতিযোগী, বাজারদর এবং পণ্যের বৈশিষ্ট্য লিখুন। অন্তত তিনটি supplier-এর তথ্য সংগ্রহ করুন। পণ্যের অনুমতি, নিয়ন্ত্রণ, HS Code এবং সম্ভাব্য শুল্ক যাচাইয়ের কাজ শুরু করুন।</p>
+<p><strong>দিন ১৬–৩০: Supplier যাচাই ও নমুনা</strong></p>
+<p>Supplier-এর পরিচয় যাচাই করুন, একই specification দিয়ে quotation নিন, sample order-এর শর্ত নির্ধারণ করুন এবং নমুনা পরীক্ষা করুন। নমুনা অনুমোদনের আগে bulk order দেবেন না।</p>
+<p><strong>দিন ৩১–৪৫: আমদানি ও অর্থায়ন প্রস্তুতি</strong></p>
+<p>ব্যবসায়িক কাগজপত্র, ব্যাংকিং প্রক্রিয়া, IRC ও অন্যান্য প্রযোজ্য অনুমতি যাচাই করুন। freight forwarder ও C&amp;F agent-এর কাছ থেকে লিখিত quotation নিন। landed cost sheet তৈরি করুন এবং pessimistic scenario পরীক্ষা করুন।</p>
+<p><strong>দিন ৪৬–৬০: অর্ডার ও উৎপাদন পর্যবেক্ষণ</strong></p>
+<p>PO অনুমোদন, payment schedule, production milestone এবং inspection plan চূড়ান্ত করুন। উৎপাদনের অগ্রগতি লিখিতভাবে সংগ্রহ করুন। পরিবর্তন হলে version control বজায় রাখুন।</p>
+<p><strong>দিন ৬১–৭৫: QC ও shipment</strong></p>
+<p>Pre-shipment inspection সম্পন্ন করুন। invoice, packing list, transport instruction, COO এবং প্রয়োজনীয় অন্যান্য নথির তথ্য মিলিয়ে নিন। freight booking, insurance এবং shipment tracking নিশ্চিত করুন।</p>
+<p><strong>দিন ৭৬–৯০: Clearance, receiving ও review</strong></p>
+<p>বাংলাদেশে পৌঁছানোর পর নথি ও কাস্টমস প্রক্রিয়া সম্পন্ন করুন। পণ্য গুদামে গ্রহণের সময় carton count, damage এবং quantity যাচাই করুন। landed cost finalise করুন। বিক্রি শুরু করে customer feedback সংগ্রহ করুন এবং পরবর্তী অর্ডারের জন্য review লিখুন।</p>
+<blockquote>
+<p><strong>নিজে করে দেখুন:</strong> নিজের পণ্যের জন্য ৯০ দিনের একটি সময়সূচি বানান।</p>
+</blockquote></div></article><article class="chap card" id="c21"><svg class="ban" viewBox="0 0 600 70" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="600" height="70" rx="16" fill="var(--a)" opacity=".10"/><g transform="translate(20 15) scale(1.7)" fill="none" stroke="var(--a)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4M12 3a6 6 0 00-4 10.5c.7.7 1 1.5 1 2.5h6c0-1 .3-1.8 1-2.5A6 6 0 0012 3z"/></g><path d="M90 35Q150 5 210 35T330 35 450 35 570 35" fill="none" stroke="var(--a)" stroke-width="2" stroke-dasharray="6 8" opacity=".6"><animate attributeName="stroke-dashoffset" from="56" to="0" dur="3s" repeatCount="indefinite"/></path><circle cx="570" cy="35" r="5" fill="var(--a)"/><text x="560" y="62" text-anchor="end" font-size="44" font-weight="800" fill="var(--a)" opacity=".2">২১</text></svg><h3>অধ্যায় ২১: ব্যবহারিক কেস স্টাডি: একটি ছোট চালানের পরিকল্পনা</h3><div class="prose"><blockquote>
+<p><strong>এই অধ্যায়ে যা শিখবেন</strong>
+- পুরো আমদানি প্রক্রিয়া একটি উদাহরণের মাধ্যমে একসঙ্গে দেখতে পারবেন</p>
+</blockquote>
+<p>নিচের কেসটি শিক্ষামূলক কাল্পনিক উদাহরণ। এটি কোনো নির্দিষ্ট পণ্যের প্রকৃত বাজারদর, শুল্কহার বা ব্যাংকিং অনুমোদনের নিশ্চয়তা নয়।</p>
+<p>ধরা যাক, একজন নতুন উদ্যোক্তা চীন থেকে ৩০০টি সাধারণ household organizer আমদানি করতে চান। তিনি প্রথমে স্থানীয় বাজারে ১০টি দোকান ও অনলাইন বিক্রেতার দাম পর্যবেক্ষণ করেন। এরপর পণ্যের মাপ, উপাদান, রং, ওজন, ভাঁজ করা যায় কি না এবং প্রতিটি প্যাকেটে কী থাকবে—এসব লিখে specification তৈরি করেন।</p>
+<p>তিনি চারজন supplier-এর কাছ থেকে quotation নেন। প্রথম supplier-এর দাম সবচেয়ে কম, কিন্তু sample দিতে অনীহা। দ্বিতীয় supplier-এর দাম কিছুটা বেশি, তবে sample ও factory video দিতে রাজি। তৃতীয় supplier দ্রুত উত্তর দিলেও specification-এর কয়েকটি প্রশ্ন এড়িয়ে যায়। চতুর্থ supplier MOQ ৫০০ পিস নির্ধারণ করে। উদ্যোক্তা শুধু unit price দেখে সিদ্ধান্ত না নিয়ে দ্বিতীয় supplier-এর sample পরীক্ষা করেন।</p>
+<p>নমুনা পাওয়ার পর তিনি মাপ, প্লাস্টিকের গন্ধ, hinge-এর স্থায়িত্ব, রঙের সামঞ্জস্য এবং carton packaging পরীক্ষা করেন। একটি সমস্যা পাওয়া যায়: organizer-এর ঢাকনা ঠিকমতো lock হচ্ছে না। Supplier-এর সঙ্গে ছবি ও ভিডিও ভাগ করে সংশোধিত sample চান। দ্বিতীয় নমুনা অনুমোদনের পর PO তৈরি করেন।</p>
+<p>এরপর তিনি পণ্যের সঠিক description দিয়ে HS Code ও আমদানি-যোগ্যতা যাচাই করেন। ব্যাংকের সঙ্গে payment method এবং প্রয়োজনীয় নথি নিশ্চিত করেন। Freight forwarder-এর কাছে carton dimension, gross weight ও quantity দিয়ে air এবং sea—দুই ধরনের quote নেন। তিনি দেখতে পান air freight দ্রুত হলেও প্রতি পিসে খরচ বেশি; sea freight তুলনামূলক সাশ্রয়ী হলেও সময় বেশি লাগে। বাজারে পণ্যের জরুরি চাহিদা না থাকায় তিনি sea freight বিবেচনা করেন।</p>
+<p>পণ্য shipment-এর আগে inspection করানো হয়। ৩০০টির মধ্যে নির্ধারিত sample থেকে কয়েকটি পরীক্ষা করা হয়; carton count ও packaging যাচাই করা হয়। Shipment-এর নথিতে description, quantity ও invoice value মিলিয়ে দেখা হয়। বাংলাদেশে পৌঁছানোর পর C&amp;F agent-এর মাধ্যমে প্রযোজ্য কাস্টমস প্রক্রিয়া সম্পন্ন হয়। পণ্য গুদামে নেওয়ার সময় আবার carton count করা হয় এবং কয়েকটি প্যাকেট ক্ষতিগ্রস্ত পাওয়া যায়। ছবি তুলে claim process শুরু করা হয়।</p>
+<p>সবশেষে উদ্যোক্তা প্রকৃত landed cost হিসাব করেন। তিনি বুঝতে পারেন, প্রথম quotation-এ local delivery, warehouse handling এবং কিছু bank charge অন্তর্ভুক্ত ছিল না। ফলে প্রত্যাশিত লাভ কমে যায়। তিনি পরবর্তী চালানে quotation comparison sheet আরও উন্নত করার সিদ্ধান্ত নেন। এই কেসের শিক্ষা হলো: একটি ভালো আমদানি চালান শুধু সস্তায় পণ্য কেনার ফল নয়; বরং তথ্য যাচাই, নথি, মান নিয়ন্ত্রণ এবং পূর্ণ খরচ হিসাবের সম্মিলিত ফল।</p>
+<blockquote>
+<p><strong>নিজে করে দেখুন:</strong> কেসটিতে প্রথম quotation থেকে কোন কোন খরচ বাদ পড়েছিল তা চিহ্নিত করুন। আপনি হলে কীভাবে তা আগেই ধরতেন?</p>
+</blockquote></div></article><article class="chap card" id="c22"><svg class="ban" viewBox="0 0 600 70" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="600" height="70" rx="16" fill="var(--a)" opacity=".10"/><g transform="translate(20 15) scale(1.7)" fill="none" stroke="var(--a)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l2-7h14l2 7M12 10V4h4M2 21q2.5-2 5 0t5 0 5 0 5 0"/></g><path d="M90 35Q150 5 210 35T330 35 450 35 570 35" fill="none" stroke="var(--a)" stroke-width="2" stroke-dasharray="6 8" opacity=".6"><animate attributeName="stroke-dashoffset" from="56" to="0" dur="3s" repeatCount="indefinite"/></path><circle cx="570" cy="35" r="5" fill="var(--a)"/><text x="560" y="62" text-anchor="end" font-size="44" font-weight="800" fill="var(--a)" opacity=".2">২২</text></svg><h3>অধ্যায় ২২: সাধারণ ভুল ধারণা ও সঠিক বোঝাপড়া</h3><div class="prose"><blockquote>
+<p><strong>এই অধ্যায়ে যা শিখবেন</strong>
+- আমদানি ব্যবসার প্রচলিত ভুল ধারণাগুলো চিনতে পারবেন</p>
+</blockquote>
+<p><strong>ভুল ধারণা ১:</strong> চীনে দাম কম, তাই আমদানি করলেই লাভ হবে।</p>
+<p><strong>সঠিক বোঝাপড়া:</strong> লাভ নির্ভর করে landed cost, বাজারদর, defect, বিক্রয় ব্যয়, return এবং stock turnover-এর ওপর।</p>
+<p><strong>ভুল ধারণা ২:</strong> Supplier যে HS Code দিয়েছে সেটিই বাংলাদেশে ব্যবহার করতে হবে।</p>
+<p><strong>সঠিক বোঝাপড়া:</strong> বাংলাদেশের কার্যকর tariff ও classification rules অনুযায়ী কোড যাচাই করতে হবে।</p>
+<p><strong>ভুল ধারণা ৩:</strong> LC থাকলে পণ্যের মান নিশ্চিত।</p>
+<p><strong>সঠিক বোঝাপড়া:</strong> LC নথিভিত্তিক ব্যাংকিং ব্যবস্থা; পণ্যের গুণগত মানের জন্য আলাদা inspection ও contract দরকার।</p>
+<p><strong>ভুল ধারণা ৪:</strong> Freight quote-ই মোট shipping cost।</p>
+<p><strong>সঠিক বোঝাপড়া:</strong> origin ও destination charge, handling, documentation, customs-related cost এবং local delivery আলাদা হতে পারে।</p>
+<p><strong>ভুল ধারণা ৫:</strong> পণ্য warehouse-এ পৌঁছালেই কাজ শেষ।</p>
+<p><strong>সঠিক বোঝাপড়া:</strong> receiving, quantity check, damage report, stock entry, costing, marketing এবং customer service বাকি থাকে।</p>
+<p><strong>ভুল ধারণা ৬:</strong> বেশি পণ্য আনলে প্রতি পিসের খরচ কমে, তাই বেশি অর্ডারই ভালো।</p>
+<p><strong>সঠিক বোঝাপড়া:</strong> কম unit cost-এর বিনিময়ে অতিরিক্ত stock, storage cost, capital lock-up এবং obsolescence risk বাড়তে পারে।</p>
+<blockquote>
+<p><strong>নিজে করে দেখুন:</strong> যেকোনো একটি ভুল ধারণা বেছে নিয়ে একটি বাস্তব পরিস্থিতির উদাহরণসহ ব্যাখ্যা করুন।</p>
+</blockquote></div></article><article class="chap card" id="c23"><svg class="ban" viewBox="0 0 600 70" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="600" height="70" rx="16" fill="var(--a)" opacity=".10"/><g transform="translate(20 15) scale(1.7)" fill="none" stroke="var(--a)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0118 0zM12 12v7a2 2 0 004 0"/></g><path d="M90 35Q150 5 210 35T330 35 450 35 570 35" fill="none" stroke="var(--a)" stroke-width="2" stroke-dasharray="6 8" opacity=".6"><animate attributeName="stroke-dashoffset" from="56" to="0" dur="3s" repeatCount="indefinite"/></path><circle cx="570" cy="35" r="5" fill="var(--a)"/><text x="560" y="62" text-anchor="end" font-size="44" font-weight="800" fill="var(--a)" opacity=".2">২৩</text></svg><h3>অধ্যায় ২৩: দায়িত্বশীল ও দীর্ঘমেয়াদি আমদানি ব্যবসা গড়ে তোলা</h3><div class="prose"><blockquote>
+<p><strong>এই অধ্যায়ে যা শিখবেন</strong>
+- স্বচ্ছ ও নিয়মমাফিক ব্যবসার মূলনীতি বুঝতে পারবেন
+- supplier scorecard তৈরির ধারণা পাবেন</p>
+</blockquote>
+<p>একটি টেকসই আমদানি ব্যবসা গড়ে ওঠে স্বচ্ছতা, নথিপত্র, মান নিয়ন্ত্রণ এবং গ্রাহকের আস্থার ওপর। পণ্যের প্রকৃত পরিচয় গোপন করা, ভুল মূল্য ঘোষণা, নিষিদ্ধ বা নিয়ন্ত্রিত পণ্যকে অন্য নামে দেখানো, ভুয়া certificate ব্যবহার করা কিংবা কর ফাঁকি দেওয়ার চেষ্টা সাময়িকভাবে লাভজনক মনে হলেও তা ব্যবসাকে বড় ঝুঁকিতে ফেলতে পারে।</p>
+<p>ব্যবসার শুরু থেকেই একটি নিয়ম তৈরি করুন: কোনো পণ্য অর্ডার দেওয়ার আগে তার বৈধতা, শ্রেণিবিন্যাস, শুল্ক, ব্যাংকিং শর্ত এবং বাজারের চাহিদা যাচাই করা হবে। কোনো নথিতে ভুল থাকলে সেটি সংশোধন করা হবে; ভুল তথ্য দিয়ে clearance দ্রুত করার চেষ্টা করা হবে না। কোনো supplier বা intermediary অস্বচ্ছ পদ্ধতির প্রস্তাব দিলে বিকল্প খুঁজুন এবং প্রয়োজনে পেশাগত পরামর্শ নিন।</p>
+<p>প্রতিটি চালান থেকে শিক্ষা সংগ্রহ করুন। কোন supplier সময়মতো পণ্য দিয়েছে, কার মান ভালো, কোন forwarder-এর quote স্বচ্ছ, কোন পণ্যে defect বেশি, কোন খরচ আগে অনুমান করা যায়নি—এসব তথ্যের ভিত্তিতে supplier scorecard তৈরি করুন। পরবর্তী অর্ডারে শুধু কম দামের supplier নয়, বরং মোট মূল্য, নির্ভরযোগ্যতা ও মানের ভিত্তিতে সিদ্ধান্ত নিন।</p>
+<p>দীর্ঘমেয়াদে লক্ষ্য হওয়া উচিত এমন একটি ব্যবস্থা তৈরি করা, যেখানে একজন ব্যক্তি অনুপস্থিত থাকলেও অন্য কর্মী নথি দেখে চালানের অবস্থা বুঝতে পারেন। প্রতিটি কাজের দায়িত্ব, অনুমোদনের স্তর, ফাইল সংরক্ষণের নিয়ম এবং জরুরি যোগাযোগের তালিকা লিখিত রাখুন। এভাবেই ছোট আমদানি উদ্যোগ ধীরে ধীরে একটি পেশাদার, নিয়মমাফিক ও সম্প্রসারণযোগ্য ব্যবসায় পরিণত হতে পারে।</p>
+<blockquote>
+<p><strong>নিজে করে দেখুন:</strong> একটি supplier scorecard-এর ছক বানান (সময়মতো ডেলিভারি, মান, যোগাযোগ, ত্রুটির হার ইত্যাদি)।</p>
+</blockquote>
+<hr /></div></article></section>
+<svg class="wave" viewBox="0 0 1200 50" preserveAspectRatio="none" aria-hidden="true"><path d="M0 25Q150 0 300 25T600 25 900 25 1200 25V50H0Z" fill="currentColor"/></svg><section class="part" id="p8" data-h="290"><h2><svg class="ic" viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 4v5c0 5-4 8-8 9-4-1-8-4-8-9V7z"/></svg> পরিশিষ্ট ক: ব্যবহারযোগ্য টেমপ্লেট</h2><div class="prose"></div><article class="chap card" id="c24"><svg class="ban" viewBox="0 0 600 70" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="600" height="70" rx="16" fill="var(--a)" opacity=".10"/><g transform="translate(20 15) scale(1.7)" fill="none" stroke="var(--a)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4zM8 8h8M8 12h8M8 16h4"/></g><path d="M90 35Q150 5 210 35T330 35 450 35 570 35" fill="none" stroke="var(--a)" stroke-width="2" stroke-dasharray="6 8" opacity=".6"><animate attributeName="stroke-dashoffset" from="56" to="0" dur="3s" repeatCount="indefinite"/></path><circle cx="570" cy="35" r="5" fill="var(--a)"/><text x="560" y="62" text-anchor="end" font-size="44" font-weight="800" fill="var(--a)" opacity=".2">২৪</text></svg><h3>Supplier quotation comparison</h3><div class="prose"><p>Supplier name:</p>
+<ul>
+<li>Product name/model:</li>
+<li>Specification version:</li>
+<li>Unit price and currency:</li>
+<li>MOQ:</li>
+<li>Sample cost:</li>
+<li>Production lead time:</li>
+<li>Packaging details:</li>
+<li>Defect/replacement policy:</li>
+<li>Payment terms:</li>
+<li>Delivery term and named place:</li>
+<li>Quotation validity:</li>
+<li>Documents/certificates:</li>
+<li>Verification notes:</li>
+<li>Overall assessment:</li>
+</ul></div></article><article class="chap card" id="c25"><svg class="ban" viewBox="0 0 600 70" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="600" height="70" rx="16" fill="var(--a)" opacity=".10"/><g transform="translate(20 15) scale(1.7)" fill="none" stroke="var(--a)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-8M22 20V8"/></g><path d="M90 35Q150 5 210 35T330 35 450 35 570 35" fill="none" stroke="var(--a)" stroke-width="2" stroke-dasharray="6 8" opacity=".6"><animate attributeName="stroke-dashoffset" from="56" to="0" dur="3s" repeatCount="indefinite"/></path><circle cx="570" cy="35" r="5" fill="var(--a)"/><text x="560" y="62" text-anchor="end" font-size="44" font-weight="800" fill="var(--a)" opacity=".2">২৫</text></svg><h3>Purchase Order checklist</h3><div class="prose"><ul>
+<li>[ ] Buyer ও seller-এর আইনগত নাম ঠিক আছে</li>
+<li>[ ] পণ্যের commercial description নির্দিষ্ট</li>
+<li>[ ] Model, SKU, material, size ও colour লেখা আছে</li>
+<li>[ ] Quantity ও unit price মিলেছে</li>
+<li>[ ] Currency ও total value সঠিক</li>
+<li>[ ] Packaging ও carton marking নির্ধারিত</li>
+<li>[ ] Production deadline উল্লেখ আছে</li>
+<li>[ ] Inspection ও acceptance criteria আছে</li>
+<li>[ ] Defect remedy লিখিত আছে</li>
+<li>[ ] Payment schedule পরিষ্কার</li>
+<li>[ ] Incoterm-এর সঠিক rule ও named place আছে</li>
+<li>[ ] অনুমোদিত ব্যক্তির সম্মতি আছে</li>
+</ul></div></article><article class="chap card" id="c26"><svg class="ban" viewBox="0 0 600 70" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="600" height="70" rx="16" fill="var(--a)" opacity=".10"/><g transform="translate(20 15) scale(1.7)" fill="none" stroke="var(--a)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10l9-6 9 6v10H3zM8 20v-6h8v6"/></g><path d="M90 35Q150 5 210 35T330 35 450 35 570 35" fill="none" stroke="var(--a)" stroke-width="2" stroke-dasharray="6 8" opacity=".6"><animate attributeName="stroke-dashoffset" from="56" to="0" dur="3s" repeatCount="indefinite"/></path><circle cx="570" cy="35" r="5" fill="var(--a)"/><text x="560" y="62" text-anchor="end" font-size="44" font-weight="800" fill="var(--a)" opacity=".2">২৬</text></svg><h3>Shipment document checklist</h3><div class="prose"><ul>
+<li>[ ] Commercial Invoice</li>
+<li>[ ] Packing List</li>
+<li>[ ] Bill of Lading অথবা Air Waybill</li>
+<li>[ ] Certificate of Origin, যেখানে প্রয়োজন</li>
+<li>[ ] Insurance document, যেখানে প্রযোজ্য</li>
+<li>[ ] ব্যাংকিং নথি</li>
+<li>[ ] পণ্যভিত্তিক অনুমতি বা certificate</li>
+<li>[ ] Inspection report, যদি করা হয়ে থাকে</li>
+<li>[ ] Customs declaration ও clearance record</li>
+<li>[ ] Duty/tax payment evidence</li>
+<li>[ ] Warehouse receiving report</li>
+</ul></div></article><article class="chap card" id="c27"><svg class="ban" viewBox="0 0 600 70" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="600" height="70" rx="16" fill="var(--a)" opacity=".10"/><g transform="translate(20 15) scale(1.7)" fill="none" stroke="var(--a)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-8M22 20V8"/></g><path d="M90 35Q150 5 210 35T330 35 450 35 570 35" fill="none" stroke="var(--a)" stroke-width="2" stroke-dasharray="6 8" opacity=".6"><animate attributeName="stroke-dashoffset" from="56" to="0" dur="3s" repeatCount="indefinite"/></path><circle cx="570" cy="35" r="5" fill="var(--a)"/><text x="560" y="62" text-anchor="end" font-size="44" font-weight="800" fill="var(--a)" opacity=".2">২৭</text></svg><h3>Landed cost sheet-এর ঘর</h3><div class="prose"><p>Product purchase value:</p>
+<ul>
+<li>Sample/tooling/customisation:</li>
+<li>Origin transport:</li>
+<li>Warehouse/consolidation:</li>
+<li>Inspection:</li>
+<li>Export handling/documentation:</li>
+<li>International freight:</li>
+<li>Insurance:</li>
+<li>Customs-assessed value:</li>
+<li>Customs duty and other taxes:</li>
+<li>Port/airport and handling:</li>
+<li>C&amp;F service fee:</li>
+<li>Local transport:</li>
+<li>Bank and currency charges:</li>
+<li>Other documented cost:</li>
+<li>Total landed cost:</li>
+<li>Saleable quantity:</li>
+<li>Average landed cost per saleable unit:</li>
+</ul>
+<hr /></div></article></section>
+<svg class="wave" viewBox="0 0 1200 50" preserveAspectRatio="none" aria-hidden="true"><path d="M0 25Q150 0 300 25T600 25 900 25 1200 25V50H0Z" fill="currentColor"/></svg><section class="part" id="p9" data-h="10"><h2><svg class="ic" viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17l3-8h12l3 8zM7 17v3M17 17v3"/></svg> পরিশিষ্ট খ: শব্দকোষ</h2><div class="prose"><ul>
+<li><strong>AQL (Acceptable Quality Limit):</strong> inspection-এ ব্যবহৃত একটি sampling ধারণা। এটি ত্রুটি থাকার অনুমোদন নয়।</li>
+<li><strong>AWB (Air Waybill):</strong> আকাশপথে পণ্য পরিবহনের নথি।</li>
+<li><strong>B/L (Bill of Lading):</strong> সমুদ্রপথে পণ্য পরিবহনের নথি।</li>
+<li><strong>C&amp;F agent:</strong> কাস্টমস-সংক্রান্ত প্রক্রিয়া ও নথি প্রস্তুত বা দাখিলে সহায়তাকারী প্রতিষ্ঠান বা ব্যক্তি।</li>
+<li><strong>CBM (Cubic Metre):</strong> ঘনমিটার; কার্টনের দৈর্ঘ্য × প্রস্থ × উচ্চতা মিটার এককে গুণ করে পাওয়া আয়তন।</li>
+<li><strong>Commercial Invoice:</strong> বিক্রয়ের বাণিজ্যিক মূল্য ও পণ্যের বিবরণ দেওয়া নথি।</li>
+<li><strong>COO (Certificate of Origin):</strong> পণ্যের উৎপত্তির দেশ সম্পর্কে প্রমাণ দেয় এমন নথি।</li>
+<li><strong>FCL / LCL:</strong> FCL-এ সাধারণত পুরো container একটি shipment-এর জন্য ব্যবহৃত হয়; LCL-এ পণ্য অন্য আমদানিকারকের পণ্যের সঙ্গে container ভাগ করে যায়।</li>
+<li><strong>Golden Sample:</strong> যে নমুনা পরীক্ষা করে bulk production অনুমোদন করা হয়।</li>
+<li><strong>HS Code:</strong> পণ্য শ্রেণিবিন্যাসের আন্তর্জাতিক ব্যবস্থা।</li>
+<li><strong>Incoterms:</strong> পরিবহনে ক্রেতা ও বিক্রেতার দায়িত্ব ও খরচের বিভাজন নির্ধারণকারী আন্তর্জাতিক বাণিজ্য-শর্ত (এই বইয়ে ICC Incoterms 2020 উল্লেখ আছে)।</li>
+<li><strong>IRC (Import Registration Certificate):</strong> বাণিজ্যিক আমদানির ক্ষেত্রে প্রযোজ্য নিবন্ধন-সনদ।</li>
+<li><strong>Landed cost:</strong> পণ্যকে গন্তব্যে বিক্রয়যোগ্য অবস্থায় আনতে সংশ্লিষ্ট মোট খরচ।</li>
+<li><strong>LC (Letter of Credit):</strong> ব্যাংক-ভিত্তিক documentary payment mechanism।</li>
+<li><strong>MOQ (Minimum Order Quantity):</strong> সর্বনিম্ন যত পিস অর্ডার করতে হয়।</li>
+<li><strong>Packing List:</strong> প্যাকেজের সংখ্যা, প্যাকেজভিত্তিক বিবরণ, ওজন ও মাপ দেখানো নথি।</li>
+<li><strong>PI (Proforma Invoice):</strong> প্রাথমিক বাণিজ্যিক প্রস্তাব ও শর্তের নথি।</li>
+<li><strong>PO (Purchase Order):</strong> ক্রেতার পক্ষ থেকে পণ্যের বিবরণ, পরিমাণ, মূল্য ও শর্তসহ লিখিত অর্ডার।</li>
+<li><strong>QC (Quality Control):</strong> সম্মত মানদণ্ড অনুযায়ী পণ্য পরীক্ষা।</li>
+<li><strong>SKU:</strong> প্রতিটি পণ্য-ধরনের জন্য নির্দিষ্ট নাম ও কোড।</li>
+<li><strong>TT (Telegraphic Transfer):</strong> ব্যাংকিং চ্যানেলে অর্থ পাঠানোর একটি প্রচলিত পদ্ধতি।</li>
+</ul>
+<hr /></div></section>
+<svg class="wave" viewBox="0 0 1200 50" preserveAspectRatio="none" aria-hidden="true"><path d="M0 25Q150 0 300 25T600 25 900 25 1200 25V50H0Z" fill="currentColor"/></svg><section class="part" id="p10" data-h="172"><h2><svg class="ic" viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-8M22 20V8"/></svg> পরিশিষ্ট গ: যাচাইয়ের উৎস</h2><div class="prose"><p>এই বইয়ের বিষয়বস্তু শেখার সহায়ক নির্দেশিকা। আমদানি নীতি, শুল্কহার, ব্যাংকিং বিধি, পণ্যভিত্তিক অনুমতি এবং কাস্টমস প্রক্রিয়া সময়ের সঙ্গে পরিবর্তিত হতে পারে। কোনো চালানের ক্ষেত্রে চূড়ান্ত সিদ্ধান্ত নেওয়ার আগে সংশ্লিষ্ট সরকারি কর্তৃপক্ষ ও অনুমোদিত পেশাজীবীর কাছ থেকে হালনাগাদ তথ্য যাচাই করতে হবে।</p>
+<ul>
+<li>
+<ol start="১">
+<li>Bangladesh Customs-এর Import Procedure ও Customs Clearance নির্দেশনা।
+  https://bangladeshcustoms.gov.bd/procedures/p_import/123
+  https://bangladeshcustoms.gov.bd/trade_info/customs_clearance</li>
+</ol>
+</li>
+<li>
+<ol start="২">
+<li>Bangladesh Customs Import Export Hub-এর পণ্যভিত্তিক তথ্য।
+  https://hub.bangladeshcustoms.gov.bd/</li>
+</ol>
+</li>
+<li>
+<ol start="৩">
+<li>National Board of Revenue-এর কার্যকর Customs Tariff ও সংশ্লিষ্ট SRO।</li>
+</ol>
+</li>
+<li>
+<ol start="৪">
+<li>Chief Controller of Imports and Exports (CCI&amp;E)-এর বর্তমান নির্দেশনা।</li>
+</ol>
+</li>
+<li>
+<ol start="৫">
+<li>Bangladesh Bank-এর Foreign Exchange Guidelines ও সংশ্লিষ্ট circular।
+  https://www.bb.org.bd/</li>
+</ol>
+</li>
+<li>
+<ol start="৬">
+<li>World Customs Organization-এর Harmonized System সম্পর্কিত ব্যাখ্যা।
+  https://www.wcoomd.org/en/faq/harmonized_system_faq.aspx</li>
+</ol>
+</li>
+<li>
+<ol start="৭">
+<li>International Chamber of Commerce-এর Incoterms 2020 ব্যাখ্যা।
+  https://iccwbo.org/business-solutions/incoterms-rules/incoterms-2020/</li>
+</ol>
+</li>
+<li>
+<ol start="৮">
+<li>পণ্যের ধরন অনুযায়ী সংশ্লিষ্ট নিয়ন্ত্রক সংস্থা ও মান নিয়ন্ত্রণ প্রতিষ্ঠানের নির্দেশনা।</li>
+</ol>
+</li>
+</ul></div></section>
+</main>
+<div id="bn"><button class="btn" id="mn2" aria-label="সূচিপত্র"><svg class="i" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg> সূচি</button><button class="btn" id="sb2" aria-label="সার্চ"><svg class="i" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 4a7 7 0 100 14 7 7 0 000-14zM21 21l-5-5"/></svg> সার্চ</button><button class="btn" id="th2" aria-label="থিম"><svg class="i" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a9 9 0 100 18zM12 3v18"/></svg> থিম</button><button class="btn" id="tp" aria-label="উপরে যান"><svg class="i" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg> উপরে</button></div>
+<div id="sr" role="dialog" aria-modal="true" aria-label="সার্চ"><div><input id="qs" type="search" placeholder="কীওয়ার্ড লিখুন, Enter চাপুন… (Esc দিয়ে বন্ধ)" aria-label="সার্চ"><ul id="rs"></ul></div></div>
+<script>
+(function(){
+var D=document,R=D.documentElement,B=D.body,$=function(s){return D.querySelector(s)},A=function(s,r){return[].slice.call((r||D).querySelectorAll(s))};
+var RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+function setT(t){R.setAttribute('data-t',t);try{localStorage.setItem('imp-theme',t)}catch(e){}}
+function tog(){setT(R.getAttribute('data-t')==='dark'?'light':'dark')}
+['th','th2'].forEach(function(i){$('#'+i).onclick=tog});
+function menu(o){B.classList.toggle('menu',o);B.classList.toggle('lock',o&&innerWidth<1024);$('#mn').setAttribute('aria-expanded',o)}
+$('#mn').onclick=function(){menu(!B.classList.contains('menu'))};$('#mn2').onclick=$('#mn').onclick;
+A('#side a').forEach(function(a){a.onclick=function(){menu(false)}});
+D.addEventListener('click',function(e){if(B.classList.contains('menu')&&innerWidth<1024&&!e.target.closest('#side,#mn,#mn2'))menu(false)});
+$('#tp').onclick=function(){scrollTo({top:0})};
+A('.btn').forEach(function(b){b.addEventListener('pointerdown',function(e){var r=b.getBoundingClientRect(),s=D.createElement('span');s.className='rp';var z=Math.max(r.width,r.height);s.style.cssText='width:'+z+'px;height:'+z+'px;left:'+(e.clientX-r.left-z/2)+'px;top:'+(e.clientY-r.top-z/2)+'px';b.appendChild(s);setTimeout(function(){s.remove()},650)})});
+var pg=$('#pg');function prog(){var h=R.scrollHeight-innerHeight;pg.style.width=(h>0?scrollY/h*100:0)+'%'}
+addEventListener('scroll',prog,{passive:true});prog();
+var words=($('main').innerText||'').trim().split(/\s+/).length;$('#rt').textContent=Math.max(1,Math.round(words/180));
+function cnt(el,n){if(RM){el.textContent=n;return}var t0=performance.now();(function f(t){var p=Math.min(1,(t-t0)/1200);el.textContent=Math.round(n*p);if(p<1)requestAnimationFrame(f)})(t0)}
+setTimeout(function(){D.getElementById('splash').classList.add('x');A('[data-n]').forEach(function(e){cnt(e,+e.dataset.n)});cnt($('#wc'),words)},900);
+A('.chap,.part>h2,.calc,.flow').forEach(function(e){e.classList.add('rv')});
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px'});A('.rv').forEach(function(e){io.observe(e)});
+var links={};A('#side a').forEach(function(a){links[a.getAttribute('href').slice(1)]=a});
+var cur=null,so=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var id=e.target.id,a=links[id];if(!a)return;if(cur)cur.classList.remove('on');a.classList.add('on');cur=a;a.scrollIntoView({block:'nearest'});var p=e.target.closest('.part');if(p&&p.dataset.h)R.style.setProperty('--h',p.dataset.h)}})},{rootMargin:'-20% 0px -70% 0px'});
+A('.part,.chap').forEach(function(e){so.observe(e)});
+function nz(s){return s.normalize('NFC').replace(/[\u200b-\u200d\ufeff]/g,'')}
+var idx=[];A('main h3,main h4,main p,main li').forEach(function(n){var t=nz(n.textContent.replace(/\s+/g,' ').trim());if(t.length>1&&!n.closest('.calc')){var s=n.closest('article,section');idx.push({n:n,t:t,l:t.toLowerCase(),s:s?nz((s.querySelector('h3,h2')||{}).textContent||''):''})}});
+var sr=$('#sr'),q=$("#qs"),rs=$('#rs');
+function esc(s){return s.replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function openS(){sr.classList.add('o');B.classList.add('lock');q.value='';rs.innerHTML='';q.focus()}
+function closeS(){sr.classList.remove('o');B.classList.remove('lock')}
+$('#sb').onclick=openS;$('#sb2').onclick=function(){menu(false);openS()};
+sr.addEventListener('click',function(e){if(e.target===sr)closeS()});
+function srch(){var ws=nz(q.value).toLowerCase().split(/\s+/).filter(Boolean);if(!ws.length){rs.innerHTML='';return}
+var re=new RegExp('('+ws.map(function(w){return w.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')}).join('|')+')','ig'),h='',c=0;
+for(var i=0;i<idx.length&&c<50;i++){var x=idx[i],ok=true;for(var k=0;k<ws.length;k++)if(x.l.indexOf(ws[k])<0){ok=false;break}if(!ok)continue;c++;var p=x.l.indexOf(ws[0]),a=Math.max(0,p-50),sn=x.t.slice(a,p+ws[0].length+90);h+='<li tabindex="0" data-i="'+i+'"><small>'+esc(x.s)+'</small>'+(a?'…':'')+esc(sn).replace(re,'<mark>$1</mark>')+'</li>'}
+rs.innerHTML=h||'<li>কিছু পাওয়া যায়নি</li>'}
+['input','keyup','change','search','compositionend'].forEach(function(ev){q.addEventListener(ev,srch)});
+q.addEventListener('keydown',function(e){if(e.key==='Enter'){var f=rs.querySelector('li[data-i]');if(f)go(f)}else if(e.key==='ArrowDown'){var g=rs.querySelector('li[data-i]');if(g){e.preventDefault();g.focus()}}});
+function go(li){var x=idx[+li.dataset.i];if(!x)return;closeS();x.n.scrollIntoView({behavior:RM?'auto':'smooth',block:'center'})}
+rs.onclick=function(e){var li=e.target.closest('li');if(li)go(li)};
+rs.onkeydown=function(e){if(e.key==='Enter'&&e.target.dataset.i)go(e.target);else if(e.key==='ArrowDown'&&e.target.nextElementSibling){e.preventDefault();e.target.nextElementSibling.focus()}else if(e.key==='ArrowUp'){e.preventDefault();(e.target.previousElementSibling||q).focus()}};
+D.addEventListener('keydown',function(e){var ty=/INPUT|TEXTAREA/.test((e.target||{}).tagName);
+if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'){e.preventDefault();openS()}
+else if(e.key==='Escape'){closeS();menu(false)}
+else if(!ty&&e.key==='/'){e.preventDefault();openS()}
+else if(!ty&&!e.ctrlKey&&!e.metaKey&&e.key.toLowerCase()==='t')tog()});
+var ids=['cp','q2','fx','lt','fr','ins','du','ot','sp'];
+function calc(){function v(i){return parseFloat(D.getElementById(i).value)||0}
+var n=v('q'),g=v('cp')*n*v('fx'),l=v('lt')*v('fx'),fr=v('fr'),ins=g*v('ins')/100,tax=(g+fr+ins)*v('du')/100,tot=g+l+fr+ins+tax+v('ot'),u=n?tot/n:0,pr=v('sp')-u,f=function(x){return '৳ '+Math.round(x).toLocaleString('bn-BD')};
+$('#r1').textContent=f(tot);$('#r2').textContent=f(u);$('#r3').textContent=f(pr);$('#r4').textContent=v('sp')?(pr/v('sp')*100).toFixed(1)+'%':'-'}
+A('.calc input').forEach(function(i){i.addEventListener('input',calc)});calc();
+var cv=$('#cv'),cx=cv.getContext('2d'),P=[],W=0,H=0,mx=-999,my=-999,run=true,fr0=0,col='60,200,180';
+function sz(){var d=Math.min(devicePixelRatio||1,2);W=innerWidth;H=innerHeight;cv.width=W*d;cv.height=H*d;cx.setTransform(d,0,0,d,0,0);var n=Math.round(Math.min(90,W*H/16000)*(W<768?.5:1));P=[];for(var i=0;i<n;i++)P.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.4,vy:(Math.random()-.5)*.4})}
+function draw(){cx.clearRect(0,0,W,H);for(var i=0;i<P.length;i++){var p=P[i];if(!RM){p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>H)p.vy*=-1;var dx=p.x-mx,dy=p.y-my,d=dx*dx+dy*dy;if(d<14000){p.x+=dx*.02;p.y+=dy*.02}}
+cx.fillStyle='rgba('+col+',.7)';cx.beginPath();cx.arc(p.x,p.y,1.8,0,6.3);cx.fill();for(var j=i+1;j<P.length;j++){var q=P[j],a=p.x-q.x,b=p.y-q.y,e=a*a+b*b;if(e<15000){cx.strokeStyle='rgba('+col+','+(.28*(1-e/15000))+')';cx.beginPath();cx.moveTo(p.x,p.y);cx.lineTo(q.x,q.y);cx.stroke()}}}}
+function loop(){if(!run)return;if(++fr0%20===0){var h=parseFloat(getComputedStyle(R).getPropertyValue('--h'))||172,dk=R.getAttribute('data-t')==='dark',c=D.createElement('canvas').getContext('2d');c.fillStyle='hsl('+h+','+(dk?80:70)+'%,'+(dk?62:38)+'%)';var m=c.fillStyle.match(/\d+/g);if(m)col=m[0]+','+m[1]+','+m[2]}draw();if(!RM)requestAnimationFrame(loop)}
+sz();addEventListener('resize',sz);
+addEventListener('pointermove',function(e){mx=e.clientX;my=e.clientY},{passive:true});
+D.addEventListener('visibilitychange',function(){run=!D.hidden;if(run)loop()});
+loop();
+})();
+</script>
+<script src="../shell.js" defer></script>
+</body>
+</html>

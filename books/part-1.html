@@ -1,0 +1,1891 @@
+<!DOCTYPE html>
+<html lang="bn" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>The Complete Import–Export Handbook — প্রথম অংশ</title>
+<meta name="description" content="আন্তর্জাতিক আমদানি-রপ্তানি ব্যবসার ভিত্তি: কাঠামো, সোর্সিং, দরদাম, ডকুমেন্টেশন, পেমেন্ট, LC ও Incoterms 2020।">
+<meta name="color-scheme" content="light dark">
+<script>
+(function(){
+  var t=null;
+  try{t=localStorage.getItem('ieh-theme');}catch(e){}
+  if(t!=='dark'&&t!=='light'){t=(window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light';}
+  document.documentElement.setAttribute('data-theme',t);
+  setTimeout(function(){document.documentElement.classList.add('ready');},5500);
+})();
+</script>
+<style>
+:root{
+  color-scheme:light;
+  --ar:13;--ag:148;--ab:136;
+  --accent:rgb(var(--ar),var(--ag),var(--ab));
+  --accent-soft:rgba(var(--ar),var(--ag),var(--ab),.12);
+  --accent-mid:rgba(var(--ar),var(--ag),var(--ab),.35);
+  --accent-text:color-mix(in srgb,var(--accent) 55%,var(--fg));
+  --accent-dark:color-mix(in srgb,var(--accent) 58%,#000);
+  --bg:#eef3fa;--fg:#0c1a2e;--muted:#46566f;
+  --card:rgba(255,255,255,.82);--card-solid:#ffffff;--stroke:rgba(12,26,46,.13);
+  --code:#0f2742;--code-fg:#e8f1ff;
+  --grid:rgba(12,26,46,.06);
+  --shadow:0 12px 40px -14px rgba(12,26,46,.28);
+  --blob-o:.5;--noise-o:.05;
+  --font:'Noto Sans Bengali','Solaimanlipi','Kalpurush','Nikosh','Vrinda','Segoe UI',system-ui,-apple-system,Roboto,'Helvetica Neue',Arial,sans-serif;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,'Noto Sans Bengali',monospace;
+  --side:300px;--topbar:56px;--bottom:64px;
+  --safe-t:env(safe-area-inset-top,0px);--safe-b:env(safe-area-inset-bottom,0px);
+}
+:root[data-theme=dark]{
+  color-scheme:dark;
+  --bg:#050b18;--fg:#e9f0ff;--muted:#a9b9d7;
+  --card:rgba(10,21,42,.76);--card-solid:#0b1730;--stroke:rgba(255,255,255,.13);
+  --code:#030814;--grid:rgba(255,255,255,.05);
+  --shadow:0 16px 50px -16px rgba(0,0,0,.75);
+  --blob-o:.5;--noise-o:.07;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;scroll-padding-top:80px}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font);font-size:clamp(1rem,.95rem + .3vw,1.125rem);line-height:1.8;overflow-x:clip;min-height:100dvh;transition:background-color .5s,color .5s}
+body.lock{overflow:hidden}
+img,svg{max-width:100%}
+a{color:var(--accent-text)}
+button{font-family:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:6px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.skip{position:fixed;left:.75rem;top:-4rem;z-index:1000;background:var(--accent-dark);color:#fff;padding:.7rem 1rem;border-radius:10px;transition:top .2s;text-decoration:none}
+.skip:focus{top:calc(.75rem + var(--safe-t))}
+
+/* ---------- Splash ---------- */
+#splash{position:fixed;inset:0;z-index:2000;display:grid;place-items:center;background:var(--bg);transition:opacity .7s,visibility .7s}
+html.ready #splash{opacity:0;visibility:hidden;pointer-events:none}
+.sp-in{text-align:center;padding:1rem}
+.sp-ship{width:min(260px,64vw);height:auto;color:var(--accent)}
+.sp-ship .wv{animation:spwave 2.2s linear infinite}
+.sp-ship .sh{animation:spbob 2.2s ease-in-out infinite;transform-origin:center}
+.sp-title{font-weight:700;font-size:clamp(1.1rem,3.5vw,1.6rem);margin:.8rem 0 .2rem;letter-spacing:.02em}
+.sp-sub{color:var(--muted);font-size:.95rem;margin:0 0 1rem}
+.sp-bar{width:min(260px,64vw);height:5px;border-radius:99px;background:var(--stroke);overflow:hidden;margin:0 auto}
+.sp-bar i{display:block;height:100%;width:40%;border-radius:99px;background:linear-gradient(90deg,var(--accent),#f59e0b);animation:spload 1.4s ease-in-out infinite}
+@keyframes spwave{to{transform:translateX(-40px)}}
+@keyframes spbob{50%{transform:translateY(-4px) rotate(-1.5deg)}}
+@keyframes spload{0%{transform:translateX(-110%)}100%{transform:translateX(260%)}}
+
+/* ---------- Background layers ---------- */
+#bg{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.bg-mesh{position:absolute;inset:-25%;background:
+  radial-gradient(38% 38% at 18% 22%,rgba(var(--ar),var(--ag),var(--ab),.30),transparent 70%),
+  radial-gradient(34% 34% at 82% 28%,rgba(99,102,241,.24),transparent 70%),
+  radial-gradient(44% 44% at 62% 86%,rgba(245,158,11,.17),transparent 70%),
+  radial-gradient(30% 30% at 10% 85%,rgba(14,165,233,.18),transparent 70%);
+  animation:mesh 38s ease-in-out infinite alternate}
+:root[data-theme=light] .bg-mesh{opacity:.85}
+.blob{position:absolute;border-radius:50%;filter:blur(72px);opacity:var(--blob-o);will-change:transform}
+.b1{width:46vmax;height:46vmax;left:-14vmax;top:-12vmax;background:radial-gradient(circle,rgba(var(--ar),var(--ag),var(--ab),.75),transparent 68%);animation:drift1 30s ease-in-out infinite alternate}
+.b2{width:40vmax;height:40vmax;right:-12vmax;top:18vh;background:radial-gradient(circle,rgba(99,102,241,.65),transparent 68%);animation:drift2 36s ease-in-out infinite alternate}
+.b3{width:36vmax;height:36vmax;left:22vw;bottom:-16vmax;background:radial-gradient(circle,rgba(245,158,11,.5),transparent 68%);animation:drift3 42s ease-in-out infinite alternate}
+.bg-grid{position:absolute;inset:0;background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:56px 56px;-webkit-mask-image:radial-gradient(ellipse at 50% 30%,#000 15%,transparent 78%);mask-image:radial-gradient(ellipse at 50% 30%,#000 15%,transparent 78%)}
+.bg-noise{position:absolute;inset:0;opacity:var(--noise-o);background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .5 0 0 0 0 .5 0 0 0 0 .5 0 0 0 .9 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");mix-blend-mode:overlay}
+#bgc{position:absolute;inset:0;width:100%;height:100%}
+@keyframes mesh{0%{transform:translate3d(0,0,0) rotate(0) scale(1)}100%{transform:translate3d(3%,-2%,0) rotate(8deg) scale(1.1)}}
+@keyframes drift1{to{transform:translate3d(10vw,8vh,0) scale(1.15)}}
+@keyframes drift2{to{transform:translate3d(-12vw,10vh,0) scale(.9)}}
+@keyframes drift3{to{transform:translate3d(8vw,-12vh,0) scale(1.2)}}
+#glow{position:fixed;left:0;top:0;width:360px;height:360px;margin:-180px 0 0 -180px;border-radius:50%;pointer-events:none;z-index:2;background:radial-gradient(circle,rgba(var(--ar),var(--ag),var(--ab),.16),transparent 65%);opacity:0;transition:opacity .4s;will-change:transform}
+body.has-mouse #glow{opacity:1}
+
+/* ---------- Progress & bars ---------- */
+#progress{position:fixed;left:0;top:0;height:4px;width:100%;z-index:900;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(90deg,var(--accent),#f59e0b);pointer-events:none}
+.topbar{position:fixed;left:0;right:0;top:0;z-index:800;height:calc(var(--topbar) + var(--safe-t));padding:var(--safe-t) .6rem 0;display:flex;align-items:center;gap:.5rem;background:var(--card);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);border-bottom:1px solid var(--stroke)}
+.brand{font-weight:700;font-size:1rem;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:flex;align-items:center;gap:.5rem}
+.brand .dot{width:30px;height:30px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent-dark));display:grid;place-items:center;color:#fff;flex:none}
+.ibtn{min-width:48px;min-height:48px;display:inline-grid;place-items:center;border-radius:14px;border:1px solid transparent;background:transparent;color:var(--fg);cursor:pointer;position:relative;overflow:hidden}
+.ibtn:hover{background:var(--accent-soft)}
+.ibtn svg{width:22px;height:22px}
+.bottomnav{position:fixed;left:0;right:0;bottom:0;z-index:800;display:grid;grid-template-columns:repeat(4,1fr);padding:0 .3rem var(--safe-b);background:var(--card);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);border-top:1px solid var(--stroke)}
+.bottomnav button{min-height:56px;min-width:48px;background:none;border:0;color:var(--fg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;font-size:.78rem;cursor:pointer;border-radius:12px}
+.bottomnav button:active{background:var(--accent-soft)}
+.bottomnav svg{width:22px;height:22px}
+.theme-sun{display:none}
+:root[data-theme=dark] .theme-sun{display:block}
+:root[data-theme=dark] .theme-moon{display:none}
+
+/* ---------- Sidebar ---------- */
+.sidebar{display:none}
+.mm{position:fixed;inset:0;z-index:950;background:linear-gradient(160deg,color-mix(in srgb,var(--bg) 94%,var(--accent)),var(--bg));transform:translateX(105%);visibility:hidden;transition:transform .45s cubic-bezier(.2,.8,.2,1),visibility .45s;overflow-y:auto;overscroll-behavior:contain;padding:calc(var(--safe-t) + .6rem) 1rem calc(var(--safe-b) + 1.5rem)}
+.mm.open{transform:none;visibility:visible}
+.mm-head{display:flex;align-items:center;justify-content:space-between;gap:.5rem;margin-bottom:.5rem}
+.mm-inner{max-width:560px;margin:0 auto}
+.toc-list{list-style:none;margin:0;padding:0}
+.toc-list a{display:flex;align-items:center;gap:.7rem;min-height:48px;padding:.5rem .8rem;border-radius:12px;text-decoration:none;color:var(--fg);line-height:1.5;font-size:.98rem;transition:background .2s,transform .2s;border:1px solid transparent}
+.toc-list a:hover{background:var(--accent-soft)}
+.toc-list a .n{flex:none;min-width:2.2rem;height:2.2rem;border-radius:10px;display:grid;place-items:center;font-size:.8rem;font-weight:700;background:var(--accent-soft);color:var(--accent-text)}
+.toc-list a.active{background:var(--accent-soft);border-color:var(--accent-mid);font-weight:600}
+.toc-list a.active .n{background:var(--accent-dark);color:#fff}
+
+/* ---------- Layout ---------- */
+main{position:relative;z-index:1}
+.wrap{width:100%;max-width:1000px;margin:0 auto;padding:0 clamp(.9rem,3vw,1.5rem)}
+body{padding-bottom:calc(var(--bottom) + var(--safe-b))}
+
+/* ---------- Hero ---------- */
+.hero{min-height:100vh;min-height:100dvh;display:grid;align-items:center;gap:1rem;padding:calc(var(--topbar) + var(--safe-t) + 1.2rem) clamp(.9rem,3vw,2rem) 3rem;position:relative}
+.hero-in{display:grid;gap:1.2rem;align-items:center;max-width:1180px;margin:0 auto;width:100%}
+.kicker{display:inline-flex;align-items:center;gap:.5rem;padding:.35rem .9rem;border-radius:99px;border:1px solid var(--accent-mid);background:var(--accent-soft);color:var(--accent-text);font-weight:600;font-size:.88rem;letter-spacing:.04em}
+.hero h1{margin:.8rem 0 .4rem;font-size:clamp(1.9rem,6vw + .2rem,4rem);line-height:1.25;font-weight:800;letter-spacing:-.01em}
+.hero h1 .grad{background:linear-gradient(120deg,var(--accent),#f59e0b 70%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero .h-sub{font-size:clamp(1.05rem,.95rem + .6vw,1.35rem);color:var(--muted);margin:0 0 .6rem;font-weight:600}
+.hero .h-lead{color:var(--muted);max-width:60ch;margin:0 0 1rem}
+.typing{min-height:2.2em;font-weight:700;font-size:clamp(1rem,.9rem + .6vw,1.3rem);color:var(--accent-text);font-family:var(--mono)}
+.typing::after{content:'▍';margin-left:2px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.hero-cta{display:flex;flex-wrap:wrap;gap:.7rem;margin:1rem 0}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem;margin:.6rem 0 0}
+.chip{font-size:.85rem;padding:.3rem .8rem;border-radius:99px;background:var(--card);border:1px solid var(--stroke);color:var(--muted)}
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:.7rem;margin-top:1.2rem}
+.stat{background:var(--card);border:1px solid var(--stroke);border-radius:18px;padding:.9rem 1rem;-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+.stat b{display:block;font-size:clamp(1.6rem,4vw,2.2rem);line-height:1.2;color:var(--accent-text)}
+.stat span{font-size:.88rem;color:var(--muted)}
+.globe-wrap{position:relative;width:100%;max-width:560px;margin:0 auto;aspect-ratio:1/1}
+#globe{position:absolute;inset:0;cursor:grab;touch-action:pan-y;border-radius:50%}
+#globe:active{cursor:grabbing}
+#globe canvas{display:block;width:100%!important;height:100%!important}
+.globe-hint{position:absolute;left:0;right:0;bottom:-.2rem;text-align:center;font-size:.8rem;color:var(--muted);pointer-events:none}
+.gfall{width:100%;height:100%;display:grid;place-items:center}
+.gfall svg{width:100%;height:100%;color:var(--accent)}
+.gfall .orb{transform-origin:center;animation:spin 40s linear infinite}
+.gfall .arc{stroke-dasharray:6 8;animation:dash 6s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes dash{to{stroke-dashoffset:-140}}
+.scroll-cue{position:absolute;left:50%;bottom:1rem;transform:translateX(-50%);display:none;color:var(--muted);font-size:.8rem;text-align:center}
+
+/* ---------- Waves ---------- */
+.wave{height:60px;overflow:hidden;color:var(--accent);opacity:.2;position:relative;margin:1.5rem 0 0}
+.wave svg{position:absolute;left:0;top:0;width:200%;height:100%;animation:waveMove 22s linear infinite}
+.wave.w2 svg{animation-duration:34s;animation-direction:reverse}
+@keyframes waveMove{to{transform:translateX(-50%)}}
+
+/* ---------- Chapters ---------- */
+.chapter{position:relative;padding:clamp(2.2rem,6vw,4.5rem) 0 .5rem}
+.ch-head{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;margin-bottom:1.4rem;position:relative}
+.ch-badge{flex:none;width:clamp(56px,10vw,76px);height:clamp(56px,10vw,76px);border-radius:22px;display:grid;place-items:center;color:#fff;background:linear-gradient(140deg,var(--sa),color-mix(in srgb,var(--sa) 55%,#000));box-shadow:0 12px 30px -10px var(--sa)}
+.ch-badge svg{width:46%;height:46%}
+.ch-meta{flex:1;min-width:min(100%,260px)}
+.ch-no{display:inline-block;font-size:.88rem;font-weight:700;letter-spacing:.06em;padding:.15rem .75rem;border-radius:99px;background:color-mix(in srgb,var(--sa) 16%,transparent);color:color-mix(in srgb,var(--sa) 55%,var(--fg));margin-bottom:.3rem}
+.ch-head h2{margin:0;font-size:clamp(1.45rem,3.2vw + .5rem,2.5rem);line-height:1.4;font-weight:800;overflow-wrap:anywhere}
+.split .w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.12em}
+.split .wi{display:inline-block}
+.ghost{position:absolute;right:0;top:-1.6rem;font-size:clamp(5rem,16vw,11rem);font-weight:900;line-height:1;color:var(--sa);opacity:.07;pointer-events:none;user-select:none}
+.sub{position:relative;background:var(--card);-webkit-backdrop-filter:blur(18px) saturate(1.4);backdrop-filter:blur(18px) saturate(1.4);border:1px solid var(--stroke);border-radius:24px;padding:clamp(1.1rem,3vw,2rem);box-shadow:var(--shadow);margin-bottom:1.25rem;overflow:hidden;scroll-margin-top:84px}
+.sub::before{content:'';position:absolute;left:0;top:0;right:0;height:4px;background:linear-gradient(90deg,var(--sa),transparent 80%)}
+.sub h3{margin:.2rem 0 .9rem;font-size:clamp(1.1rem,1.2vw + .8rem,1.5rem);line-height:1.5;color:color-mix(in srgb,var(--sa) 50%,var(--fg));overflow-wrap:anywhere}
+.sub p{margin:.6rem 0;overflow-wrap:anywhere}
+.sub p.lb{font-weight:700;margin-top:1.1rem;color:color-mix(in srgb,var(--sa) 45%,var(--fg))}
+.flash{animation:flash 1.8s ease-out}
+@keyframes flash{0%{box-shadow:0 0 0 0 var(--sa),var(--shadow)}30%{box-shadow:0 0 0 6px var(--accent-mid),var(--shadow)}100%{box-shadow:var(--shadow)}}
+.ul,.ol{list-style:none;padding:0;margin:.6rem 0}
+.ul li,.ol li{position:relative;padding-left:1.9rem;margin:.45rem 0;overflow-wrap:anywhere}
+.ul li::before{content:'';position:absolute;left:.35rem;top:.78em;width:.55rem;height:.55rem;border-radius:3px;background:var(--sa);transform:rotate(45deg)}
+.ul.q li::before{content:'“';background:none;width:auto;height:auto;transform:none;top:-.05em;font-size:1.6rem;color:var(--sa);font-weight:800;line-height:1}
+.ul.chk li::before{content:'✓';background:none;width:auto;height:auto;transform:none;top:0;font-weight:800;color:var(--sa)}
+.ol{counter-reset:o}
+.ol li{counter-increment:o;padding-left:2.5rem}
+.ol li::before{content:counter(o,bengali);position:absolute;left:0;top:.1em;min-width:1.8rem;height:1.8rem;border-radius:9px;display:grid;place-items:center;font-size:.85rem;font-weight:700;background:color-mix(in srgb,var(--sa) 16%,transparent);color:color-mix(in srgb,var(--sa) 55%,var(--fg))}
+
+/* cards */
+.df{display:grid;gap:.85rem;grid-template-columns:1fr;margin:.8rem 0}
+.dcard{position:relative;border:1px solid var(--stroke);border-radius:18px;padding:1rem 1.1rem;background:linear-gradient(160deg,color-mix(in srgb,var(--sa) 9%,var(--card-solid)),var(--card-solid));overflow:hidden;transition:box-shadow .3s,border-color .3s}
+.dcard:hover{border-color:var(--accent-mid);box-shadow:0 18px 40px -20px var(--sa)}
+.dcard .dt{font-weight:700;color:color-mix(in srgb,var(--sa) 50%,var(--fg));margin:0 0 .25rem;line-height:1.5;overflow-wrap:anywhere}
+.dcard .dd{margin:0;color:var(--muted);overflow-wrap:anywhere}
+.df.sm .dcard{padding:.75rem .95rem}
+.tilt{transform-style:preserve-3d;will-change:transform}
+.tilt::after{content:'';position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:radial-gradient(circle at var(--gx,50%) var(--gy,50%),rgba(255,255,255,.3),transparent 55%);opacity:0;transition:opacity .25s;mix-blend-mode:soft-light}
+.tilt:hover::after{opacity:1}
+.nt{border-left:5px solid var(--sa);background:color-mix(in srgb,var(--sa) 9%,var(--card-solid));border-radius:0 16px 16px 0;padding:.9rem 1.1rem;margin:1rem 0}
+.nt p{margin:.2rem 0}
+.nt.warn{border-left-color:#d97706;background:color-mix(in srgb,#f59e0b 12%,var(--card-solid))}
+.nt .nth{font-weight:700;display:flex;align-items:center;gap:.4rem;margin-bottom:.2rem}
+.code{position:relative;background:var(--code);color:var(--code-fg);border-radius:16px;padding:1rem 1.1rem;margin:.8rem 0;font-family:var(--mono);font-size:.93rem;line-height:1.75;white-space:pre-wrap;overflow-wrap:anywhere;overflow-x:auto}
+.code .cl{display:block;font-size:.78rem;opacity:.7;margin-bottom:.4rem;font-family:var(--font)}
+.code .copy{position:absolute;right:.5rem;top:.5rem;min-height:40px;min-width:40px;padding:.2rem .7rem;border-radius:10px;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.1);color:#fff;font-size:.8rem;cursor:pointer}
+.code .copy:hover{background:rgba(255,255,255,.2)}
+
+/* tables */
+.tbl-wrap{margin:.9rem 0;border:1px solid var(--stroke);border-radius:16px;overflow:hidden}
+.tbl-wrap .scroll{overflow-x:auto}
+table.tbl{width:100%;border-collapse:collapse;font-size:.96rem}
+.tbl caption{text-align:left;padding:.7rem 1rem;font-weight:700;caption-side:top}
+.tbl th,.tbl td{padding:.7rem .9rem;text-align:left;vertical-align:top;border-bottom:1px solid var(--stroke);overflow-wrap:anywhere}
+.tbl th{background:color-mix(in srgb,var(--sa) 16%,var(--card-solid));font-weight:700}
+.tbl tbody tr:hover td{background:var(--accent-soft)}
+.tbl tr:last-child td{border-bottom:0}
+
+/* flow */
+.fl{display:grid;gap:1.1rem;margin:.9rem 0}
+.fl-title{font-weight:700;margin:0 0 .5rem;color:color-mix(in srgb,var(--sa) 50%,var(--fg))}
+.fl-row{display:flex;flex-wrap:wrap;align-items:center;gap:.45rem}
+.fnode{position:relative;padding:.55rem .85rem;border-radius:14px;border:1px solid var(--accent-mid);background:var(--accent-soft);font-size:.93rem;line-height:1.5;animation:fpulse 7s ease-in-out infinite;animation-delay:calc(var(--i)*.55s)}
+.fnode .fi{display:inline-grid;place-items:center;min-width:1.5rem;height:1.5rem;border-radius:8px;background:var(--sa);color:#fff;font-size:.75rem;font-weight:700;margin-right:.4rem}
+.farrow{color:var(--sa);font-weight:800;animation:farrow 7s ease-in-out infinite;animation-delay:calc(var(--i)*.55s)}
+@keyframes fpulse{0%,14%,100%{background:var(--accent-soft);transform:none}7%{background:var(--accent-mid);transform:translateY(-3px);box-shadow:0 10px 22px -12px var(--sa)}}
+@keyframes farrow{0%,14%,100%{transform:none;opacity:.55}7%{transform:translateX(4px);opacity:1}}
+
+/* timeline */
+.tl{list-style:none;margin:1rem 0;padding:0 0 0 2.6rem;position:relative;counter-reset:t}
+.tl::before{content:'';position:absolute;left:1.05rem;top:.4rem;bottom:.4rem;width:3px;border-radius:3px;background:linear-gradient(var(--sa),color-mix(in srgb,var(--sa) 10%,transparent));transform-origin:top}
+.tl li{position:relative;margin:0 0 .9rem;padding:.7rem 1rem;border-radius:16px;border:1px solid var(--stroke);background:var(--card-solid);counter-increment:t;overflow-wrap:anywhere}
+.tl li::before{content:counter(t,bengali);position:absolute;left:-2.6rem;top:.55rem;width:2.1rem;height:2.1rem;border-radius:50%;display:grid;place-items:center;background:var(--sa);color:#fff;font-weight:700;font-size:.85rem;box-shadow:0 0 0 5px color-mix(in srgb,var(--sa) 20%,transparent)}
+.chapter.tlmode .subs{position:relative;padding-left:1.4rem}
+.chapter.tlmode .subs::before{content:'';position:absolute;left:.35rem;top:0;bottom:0;width:3px;border-radius:3px;background:linear-gradient(var(--sa),transparent)}
+.chapter.tlmode .sub::after{content:'';position:absolute;left:-1.4rem;top:1.4rem;width:14px;height:14px;border-radius:50%;background:var(--sa);box-shadow:0 0 0 5px color-mix(in srgb,var(--sa) 20%,transparent)}
+.chapter.tlmode .sub{overflow:visible}
+
+/* tabs */
+.tabs{margin:.9rem 0}
+.tablist{display:flex;gap:.4rem;overflow-x:auto;padding:.2rem .1rem .6rem;scrollbar-width:thin}
+.tab{flex:none;min-height:48px;padding:.5rem 1.05rem;border-radius:14px;border:1px solid var(--stroke);background:var(--card-solid);color:var(--fg);cursor:pointer;font-size:.95rem;font-weight:600;transition:background .2s,color .2s,border-color .2s}
+.tab:hover{border-color:var(--accent-mid)}
+.tab[aria-selected=true]{background:linear-gradient(135deg,var(--sa),color-mix(in srgb,var(--sa) 58%,#000));color:#fff;border-color:transparent}
+.tabpanel{animation:fadeUp .35s ease both}
+.tabpanel[hidden]{display:none}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+/* accordion */
+.acc{margin:.8rem 0;display:grid;gap:.6rem}
+.acc details{border:1px solid var(--stroke);border-radius:16px;background:var(--card-solid);overflow:hidden}
+.acc summary{min-height:52px;display:flex;align-items:center;gap:.7rem;padding:.6rem 1rem;cursor:pointer;font-weight:700;list-style:none;line-height:1.5}
+.acc summary::-webkit-details-marker{display:none}
+.acc summary::after{content:'+';margin-left:auto;flex:none;width:1.8rem;height:1.8rem;border-radius:50%;display:grid;place-items:center;background:var(--accent-soft);color:var(--accent-text);font-size:1.2rem;transition:transform .3s}
+.acc details[open] summary::after{transform:rotate(45deg)}
+.acc details[open] summary{background:color-mix(in srgb,var(--sa) 10%,transparent)}
+.acc .ab{padding:.2rem 1.1rem 1rem}
+
+/* checklist */
+.ckb{margin:.8rem 0}
+.ckb .ckp{display:flex;align-items:center;gap:.8rem;margin-bottom:.6rem;font-weight:700;font-size:.92rem}
+.track{flex:1;height:10px;border-radius:99px;background:var(--stroke);overflow:hidden}
+.fill{display:block;height:100%;width:100%;border-radius:99px;background:linear-gradient(90deg,var(--sa),#f59e0b);transform-origin:0 50%;transform:scaleX(0)}
+.cki{display:flex;align-items:flex-start;gap:.8rem;min-height:48px;padding:.5rem .6rem;border-radius:12px;cursor:pointer;overflow-wrap:anywhere}
+.cki:hover{background:var(--accent-soft)}
+.cki input{appearance:none;-webkit-appearance:none;flex:none;width:26px;height:26px;margin-top:.15rem;border:2px solid var(--sa);border-radius:8px;display:grid;place-items:center;cursor:pointer;background:transparent;transition:background .2s}
+.cki input:checked{background:var(--sa)}
+.cki input:checked::after{content:'✓';color:#fff;font-weight:800;line-height:1}
+.cki input:checked+span{opacity:.65;text-decoration:line-through}
+
+/* pros/cons */
+.pc{display:grid;gap:.9rem;margin:.9rem 0}
+.pc>div{border-radius:18px;padding:1rem 1.1rem;border:1px solid var(--stroke)}
+.pc .pro{background:color-mix(in srgb,#16a34a 10%,var(--card-solid))}
+.pc .con{background:color-mix(in srgb,#dc2626 9%,var(--card-solid))}
+.pc h4{margin:0 0 .4rem;font-size:1.05rem}
+
+/* charts / calc */
+.widget{border:1px solid var(--accent-mid);border-radius:22px;padding:clamp(1rem,2.5vw,1.6rem);margin:1.1rem 0;background:linear-gradient(160deg,color-mix(in srgb,var(--sa) 10%,var(--card-solid)),var(--card-solid))}
+.widget h4{margin:0 0 .3rem;font-size:1.2rem;display:flex;align-items:center;gap:.5rem;line-height:1.5}
+.widget .wsub{margin:0 0 1rem;color:var(--muted);font-size:.93rem}
+.grid2{display:grid;gap:1.2rem;grid-template-columns:1fr}
+.fields{display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
+.field label{display:block;font-size:.84rem;color:var(--muted);margin-bottom:.2rem;line-height:1.4}
+.field input{width:100%;min-height:48px;padding:.5rem .8rem;border-radius:12px;border:1px solid var(--stroke);background:var(--card-solid);color:var(--fg);font:inherit;font-size:1rem}
+.field input:focus-visible{outline:3px solid var(--accent)}
+.results{display:grid;gap:.6rem;align-content:start}
+.res{padding:.8rem 1rem;border-radius:16px;border:1px solid var(--stroke);background:var(--card-solid)}
+.res small{display:block;color:var(--muted);font-size:.83rem}
+.res b{font-size:clamp(1.25rem,3vw,1.7rem);color:var(--accent-text);line-height:1.3}
+.res.ok b{color:#15803d}.res.bad b{color:#b91c1c}
+:root[data-theme=dark] .res.ok b{color:#4ade80}:root[data-theme=dark] .res.bad b{color:#f87171}
+.donut-box{display:grid;gap:.8rem;justify-items:center;align-items:center}
+.donut{width:min(240px,70vw);height:auto;overflow:visible}
+.donut circle.seg{fill:none;stroke-width:26;cursor:pointer;transition:stroke-dasharray 1.2s cubic-bezier(.2,.8,.2,1),opacity .2s,stroke-width .2s}
+.donut circle.seg:hover,.donut circle.seg:focus-visible{stroke-width:31;outline:none}
+.donut text{fill:var(--fg);font-family:var(--font);text-anchor:middle}
+.legend{list-style:none;margin:0;padding:0;display:grid;gap:.25rem;width:100%;font-size:.92rem}
+.legend li{display:flex;align-items:center;gap:.55rem;min-height:36px;cursor:pointer;border-radius:10px;padding:0 .4rem}
+.legend li:hover{background:var(--accent-soft)}
+.legend i{flex:none;width:14px;height:14px;border-radius:5px}
+.legend em{margin-left:auto;font-style:normal;font-weight:700;color:var(--muted);white-space:nowrap}
+.bars{display:grid;gap:.7rem}
+.brow{display:grid;gap:.2rem;cursor:pointer}
+.brow .bl{display:flex;justify-content:space-between;gap:.6rem;font-size:.92rem}
+.brow .bt{height:16px;border-radius:99px;background:var(--stroke);overflow:hidden}
+.brow .bf{display:block;height:100%;border-radius:99px;transform-origin:0 50%;transform:scaleX(0)}
+#tip{position:fixed;z-index:1500;pointer-events:none;max-width:260px;padding:.5rem .8rem;border-radius:12px;background:var(--code);color:#fff;font-size:.88rem;line-height:1.5;box-shadow:0 10px 30px rgba(0,0,0,.4);opacity:0;transform:translateY(4px);transition:opacity .15s,transform .15s}
+#tip.show{opacity:1;transform:none}
+
+/* incoterm explorer */
+.jr{position:relative;margin:2.2rem .8rem 3.4rem;height:6px;border-radius:6px;background:var(--stroke)}
+.jr-cost{position:absolute;left:0;top:0;height:100%;border-radius:6px;background:linear-gradient(90deg,var(--sa),#f59e0b);transition:width .7s cubic-bezier(.2,.8,.2,1)}
+.jr-stop{position:absolute;top:50%;width:16px;height:16px;margin:-8px 0 0 -8px;border-radius:50%;background:var(--card-solid);border:3px solid var(--sa)}
+.jr-stop span{position:absolute;top:1.3rem;left:50%;transform:translateX(-50%);font-size:.78rem;line-height:1.3;text-align:center;width:6.2rem;color:var(--muted)}
+.jr-stop:first-child span{transform:none;left:-.5rem;text-align:left}
+.jr-stop:last-of-type span{transform:none;left:auto;right:-.5rem;text-align:right}
+.jr-risk{position:absolute;top:-26px;width:36px;height:36px;margin-left:-18px;display:grid;place-items:center;transition:left .7s cubic-bezier(.2,.8,.2,1);color:#fff;font-size:1.1rem;border-radius:50% 50% 50% 0;transform:rotate(-45deg);background:#dc2626;box-shadow:0 8px 18px -6px #dc2626}
+.jr-risk b{transform:rotate(45deg);font-size:.8rem}
+.jr-legend{display:flex;flex-wrap:wrap;gap:.9rem;font-size:.85rem;color:var(--muted);margin-bottom:.5rem}
+.jr-legend i{display:inline-block;width:14px;height:8px;border-radius:4px;margin-right:.35rem;vertical-align:middle}
+.tags{display:flex;flex-wrap:wrap;gap:.4rem;margin:.6rem 0}
+.tag{font-size:.85rem;padding:.2rem .75rem;border-radius:99px;background:var(--accent-soft);color:var(--accent-text);border:1px solid var(--accent-mid)}
+.grp-l{font-size:.85rem;font-weight:700;color:var(--muted);align-self:center;white-space:nowrap;padding:0 .3rem}
+.lcsvg{width:100%;height:auto;margin:.8rem 0}
+.lcsvg text{font-family:var(--font);fill:var(--fg);font-size:13px}
+.lcsvg .bx{fill:var(--card-solid);stroke:var(--sa);stroke-width:2}
+.lcsvg .ar{stroke:var(--sa);stroke-width:2;fill:none;stroke-dasharray:6 6;animation:dash 4s linear infinite}
+.lcsvg .st{fill:var(--sa)}
+.lcsvg .stt{fill:#fff;font-weight:700;font-size:12px}
+
+/* buttons */
+.btn{position:relative;overflow:hidden;min-height:48px;min-width:48px;padding:.7rem 1.35rem;border-radius:14px;border:1px solid var(--stroke);background:var(--card);color:var(--fg);font-size:1rem;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:.5rem;text-decoration:none;-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);will-change:transform}
+.btn.pri{background:linear-gradient(135deg,var(--accent-dark),color-mix(in srgb,var(--accent) 80%,#000));color:#fff;border-color:transparent;box-shadow:0 14px 30px -12px var(--accent)}
+.btn:hover{border-color:var(--accent-mid)}
+.rip{position:absolute;border-radius:50%;background:rgba(255,255,255,.45);transform:scale(0);animation:rip .65s ease-out forwards;pointer-events:none}
+@keyframes rip{to{transform:scale(3.4);opacity:0}}
+#totop{position:fixed;right:1rem;bottom:calc(var(--bottom) + var(--safe-b) + 1rem);z-index:700;display:none;opacity:0;transform:translateY(12px);transition:opacity .3s,transform .3s}
+#totop.show{opacity:1;transform:none}
+
+/* palette */
+#pal{position:fixed;inset:0;z-index:1200;display:none;align-items:flex-start;justify-content:center;padding:calc(var(--safe-t) + 4vh) .8rem 1rem;background:rgba(3,8,20,.55);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+#pal.open{display:flex}
+.pal-box{width:100%;max-width:680px;max-height:84dvh;display:flex;flex-direction:column;background:var(--card-solid);border:1px solid var(--stroke);border-radius:22px;box-shadow:0 30px 80px rgba(0,0,0,.45);overflow:hidden}
+.pal-in{display:flex;align-items:center;gap:.6rem;padding:.4rem .9rem;border-bottom:1px solid var(--stroke)}
+.pal-in input{flex:1;min-height:52px;border:0;background:transparent;color:var(--fg);font:inherit;font-size:1.05rem;outline:none}
+.pal-in kbd,.kbd{font-family:var(--mono);font-size:.75rem;padding:.1rem .45rem;border-radius:6px;border:1px solid var(--stroke);color:var(--muted)}
+#pal-list{list-style:none;margin:0;padding:.4rem;overflow-y:auto;flex:1}
+#pal-list li a{display:block;min-height:48px;padding:.55rem .8rem;border-radius:12px;text-decoration:none;color:var(--fg);cursor:pointer}
+#pal-list li a:hover,#pal-list li a.sel{background:var(--accent-soft)}
+#pal-list .pt{font-weight:700;font-size:.96rem;line-height:1.5}
+#pal-list .pc2{font-size:.78rem;color:var(--accent-text);font-weight:700}
+#pal-list .ps{font-size:.88rem;color:var(--muted);line-height:1.6;overflow-wrap:anywhere}
+mark{background:rgba(250,204,21,.55);color:inherit;border-radius:4px;padding:0 2px}
+.pal-empty{padding:1.4rem;text-align:center;color:var(--muted)}
+.pal-foot{display:flex;gap:1rem;flex-wrap:wrap;padding:.5rem .9rem;border-top:1px solid var(--stroke);font-size:.8rem;color:var(--muted)}
+
+/* footer */
+.foot{padding:3rem 0 2rem;text-align:center;color:var(--muted);font-size:.92rem}
+.foot b{color:var(--fg)}
+
+/* ---------- Responsive ---------- */
+@media (max-width:767.98px){
+  .tbl.cardify thead{position:absolute;left:-9999px}
+  .tbl.cardify,.tbl.cardify tbody,.tbl.cardify tr,.tbl.cardify td{display:block;width:100%}
+  .tbl.cardify tr{margin:.7rem;width:auto;border:1px solid var(--stroke);border-radius:14px;overflow:hidden;background:var(--card-solid)}
+  .tbl.cardify td{border-bottom:1px dashed var(--stroke);padding:.55rem .9rem .55rem .9rem}
+  .tbl.cardify td::before{content:attr(data-label);display:block;font-size:.78rem;font-weight:700;color:var(--accent-text);margin-bottom:.1rem}
+  .tbl.cardify tbody tr:hover td{background:none}
+  .fields{grid-template-columns:1fr}
+}
+@media (min-width:480px){
+  .stats{grid-template-columns:repeat(4,1fr)}
+}
+@media (min-width:768px){
+  .df{grid-template-columns:repeat(2,1fr)}
+  .df.sm{grid-template-columns:repeat(2,1fr)}
+  .grid2{grid-template-columns:1fr 1fr;align-items:start}
+  .pc{grid-template-columns:1fr 1fr}
+  .scroll-cue{display:block}
+}
+@media (min-width:1024px){
+  body{padding-bottom:0}
+  .topbar,.bottomnav,#mm-open{display:none}
+  .sidebar{display:flex;flex-direction:column;position:fixed;left:0;top:0;bottom:0;width:var(--side);z-index:700;padding:1rem .8rem;background:var(--card);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);border-right:1px solid var(--stroke)}
+  .sidebar .brand{flex:none;margin:.2rem .4rem .8rem;font-size:1.02rem;white-space:normal;line-height:1.4}
+  .sb-tools{display:flex;gap:.5rem;margin:0 .2rem .7rem}
+  .sb-tools .btn{flex:1;font-size:.92rem;padding:.5rem .7rem}
+  .sidebar nav{flex:1;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;margin:0 -.3rem;padding:0 .3rem}
+  .sb-foot{flex:none;padding:.7rem .5rem 0;font-size:.82rem;color:var(--muted);border-top:1px solid var(--stroke);margin-top:.5rem}
+  main{margin-left:var(--side)}
+  .hero{padding-top:2rem}
+  .hero-in{grid-template-columns:1.1fr .9fr;gap:2rem}
+  #totop{display:grid;bottom:1.5rem}
+  .jr-stop span{width:7.5rem}
+  .stats{grid-template-columns:repeat(2,1fr)}
+}
+@media (min-width:1440px){
+  .wrap{max-width:1080px}
+  .hero-in{max-width:1300px}
+  .stats{grid-template-columns:repeat(4,1fr)}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
+  .bg-mesh{animation:none}
+  .blob{display:none}
+  .bg-mesh{opacity:1}
+}
+
+/* print */
+@media print{
+  :root,:root[data-theme=dark]{--bg:#fff;--fg:#000;--muted:#222;--card:#fff;--card-solid:#fff;--stroke:#bbb;--shadow:none;--code:#f3f3f3;--code-fg:#000}
+  body{background:#fff;color:#000;font-size:11pt;padding:0}
+  #bg,#splash,#glow,.topbar,.bottomnav,.sidebar,#progress,#totop,#pal,.mm,.wave,.hero-cta,.globe-wrap,.scroll-cue,.code .copy,.ghost,#tip{display:none!important}
+  main{margin:0}
+  .hero{min-height:auto;padding:1rem 0}
+  .hero-in{display:block}
+  *{animation:none!important;transition:none!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+  .sub,.dcard,.widget,.tl li{box-shadow:none!important;break-inside:avoid;background:#fff!important}
+  .chapter{break-before:page}
+  [style*="opacity"],.rv,.wi{opacity:1!important;transform:none!important}
+  .tabpanel{display:block!important}
+  .tabpanel[hidden]{display:block!important}
+  .tablist{display:none}
+  .tabpanel::before{content:attr(data-label);display:block;font-weight:700;margin:.6rem 0 .2rem}
+  .fill,.bf{transform:none!important}
+  .code{color:#000}
+  a{color:#000}
+}
+
+/* perf: no backdrop blur / blend / giant blur layers over the animated background */
+.topbar,.bottomnav,.sidebar,.stat,.sub{-webkit-backdrop-filter:none!important;backdrop-filter:none!important;background:color-mix(in srgb,var(--card-solid) 92%,transparent)!important}
+.bg-mesh{animation:none!important}
+.blob{filter:none!important}
+.bg-noise{mix-blend-mode:normal!important;opacity:calc(var(--noise-o)*.5)!important}
+.tilt{will-change:auto!important}
+</style>
+</head>
+<body>
+<a class="skip" href="#content">মূল কনটেন্টে যান</a>
+
+<div id="splash" role="status" aria-live="polite">
+  <div class="sp-in">
+    <svg class="sp-ship" viewBox="0 0 260 150" fill="none" aria-hidden="true">
+      <g class="sh">
+        <path d="M30 92h200l-22 30H56z" fill="currentColor" opacity=".9"/>
+        <rect x="70" y="60" width="26" height="30" rx="3" fill="#f59e0b"/>
+        <rect x="98" y="60" width="26" height="30" rx="3" fill="currentColor" opacity=".55"/>
+        <rect x="126" y="60" width="26" height="30" rx="3" fill="#6366f1"/>
+        <rect x="154" y="60" width="26" height="30" rx="3" fill="currentColor" opacity=".35"/>
+        <rect x="84" y="30" width="26" height="30" rx="3" fill="currentColor" opacity=".7"/>
+        <rect x="112" y="30" width="26" height="30" rx="3" fill="#f59e0b" opacity=".85"/>
+        <rect x="170" y="38" width="30" height="52" rx="4" fill="currentColor"/>
+        <rect x="176" y="46" width="18" height="8" rx="2" fill="#fff" opacity=".8"/>
+      </g>
+      <g class="wv" stroke="currentColor" stroke-width="3" stroke-linecap="round" opacity=".6">
+        <path d="M-10 128q10-8 20 0t20 0t20 0t20 0t20 0t20 0t20 0t20 0t20 0t20 0t20 0t20 0t20 0t20 0t20 0"/>
+        <path d="M-10 140q10-8 20 0t20 0t20 0t20 0t20 0t20 0t20 0t20 0t20 0t20 0t20 0t20 0t20 0t20 0t20 0" opacity=".5"/>
+      </g>
+    </svg>
+    <p class="sp-title">Import–Export Handbook</p>
+    <p class="sp-sub">আন্তর্জাতিক বাণিজ্যের জগতে স্বাগতম…</p>
+    <div class="sp-bar"><i></i></div>
+  </div>
+</div>
+
+<div id="bg" aria-hidden="true">
+  <div class="bg-mesh"></div>
+  <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+  <div class="bg-grid"></div>
+  <canvas id="bgc"></canvas>
+  <div class="bg-noise"></div>
+</div>
+<div id="glow" aria-hidden="true"></div>
+<div id="progress" aria-hidden="true"></div>
+<div id="tip" role="tooltip"></div>
+
+<header class="topbar">
+  <button class="ibtn" id="mm-open" aria-label="সূচিপত্র খুলুন" aria-expanded="false" aria-controls="mm">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h10"/></svg>
+  </button>
+  <div class="brand"><span class="dot"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18"/></svg></span><span>Import–Export Handbook</span></div>
+  <button class="ibtn" data-act="search" aria-label="সার্চ খুলুন"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg></button>
+</header>
+
+<aside class="sidebar" aria-label="সূচিপত্র সাইডবার">
+  <div class="brand"><span class="dot"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18"/></svg></span><span>The Complete Import–Export Handbook</span></div>
+  <div class="sb-tools">
+    <button class="btn" data-act="search" aria-label="সার্চ (Ctrl+K)">🔎 সার্চ <span class="kbd">Ctrl K</span></button>
+    <button class="btn" data-act="theme" aria-label="থিম বদলান (T)"><svg class="theme-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg><svg class="theme-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><span class="kbd">T</span></button>
+  </div>
+  <nav aria-label="সূচিপত্র"><ul class="toc-list" id="toc-side"></ul></nav>
+  <div class="sb-foot"><span id="sb-read">পড়ার সময় গণনা হচ্ছে…</span> · <span id="sb-pct">০%</span> সম্পন্ন</div>
+</aside>
+
+<div class="mm" id="mm" role="dialog" aria-modal="true" aria-label="সূচিপত্র মেনু">
+  <div class="mm-inner" id="mm-inner">
+    <div class="mm-head">
+      <strong style="font-size:1.1rem">সূচিপত্র</strong>
+      <button class="ibtn" id="mm-close" aria-label="মেনু বন্ধ করুন"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 5l14 14M19 5L5 19"/></svg></button>
+    </div>
+    <ul class="toc-list" id="toc-mob"></ul>
+  </div>
+</div>
+
+<nav class="bottomnav" aria-label="দ্রুত নেভিগেশন">
+  <button data-act="menu" aria-label="সূচিপত্র"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h10"/></svg>সূচিপত্র</button>
+  <button data-act="search" aria-label="সার্চ"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>সার্চ</button>
+  <button data-act="theme" aria-label="থিম বদলান"><svg class="theme-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg><svg class="theme-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>থিম</button>
+  <button data-act="top" aria-label="উপরে যান"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>উপরে</button>
+</nav>
+
+<button class="btn pri" id="totop" data-act="top" aria-label="উপরে যান">↑ উপরে যান</button>
+
+<div id="pal" role="dialog" aria-modal="true" aria-label="সার্চ">
+  <div class="pal-box">
+    <div class="pal-in">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+      <input id="pal-q" type="search" placeholder="যেকোনো শব্দ খুঁজুন… (যেমন: LC, FOB, Landed Cost)" autocomplete="off" aria-label="সার্চ শব্দ" aria-controls="pal-list">
+      <button class="ibtn" id="pal-x" aria-label="সার্চ বন্ধ করুন"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 5l14 14M19 5L5 19"/></svg></button>
+    </div>
+    <ul id="pal-list" role="listbox" aria-label="সার্চের ফলাফল"></ul>
+    <div class="pal-foot"><span><span class="kbd">↑</span> <span class="kbd">↓</span> বাছাই</span><span><span class="kbd">Enter</span> যান</span><span><span class="kbd">Esc</span> বন্ধ</span></div>
+  </div>
+</div>
+
+<main id="main">
+  <section class="hero" id="top" aria-labelledby="h1">
+    <div class="hero-in">
+      <div class="hero-txt">
+        <span class="kicker">THE COMPLETE IMPORT–EXPORT HANDBOOK · প্রথম অংশ</span>
+        <h1 id="h1" class="split"><span class="grad">International</span> Import–Export Business</h1>
+        <p class="h-sub">শূন্য থেকে আন্তর্জাতিক বাণিজ্যের ভিত্তি, ব্যবসায়িক কাঠামো, সোর্সিং, দরদাম, ডকুমেন্টেশন ও পেমেন্ট</p>
+        <div class="typing" id="typing" aria-hidden="true"></div>
+        <div class="hero-cta">
+          <a class="btn pri mag" href="#intro">পড়া শুরু করুন →</a>
+          <button class="btn mag" data-act="search">🔎 সার্চ করুন <span class="kbd">Ctrl K</span></button>
+        </div>
+        <div class="chips" id="hero-chips"></div>
+        <div class="stats" id="stats"></div>
+      </div>
+      <div class="globe-wrap">
+        <div id="globe" role="img" aria-label="ঘূর্ণায়মান 3D গ্লোব, যেখানে বিভিন্ন বন্দর ও জাহাজ-রুট দেখানো হয়েছে। মাউস বা আঙুল দিয়ে ঘোরানো যায়।"></div>
+        <div class="globe-hint">গ্লোবটি টেনে ঘোরান</div>
+      </div>
+    </div>
+    <div class="scroll-cue" aria-hidden="true">স্ক্রল করুন ↓</div>
+  </section>
+  <div class="wrap" id="content"></div>
+  <div class="wrap"><footer class="foot"><p><b>The Complete Import–Export Handbook</b> — প্রথম অংশ</p><p>আইন, শুল্কহার, লাইসেন্স, ব্যাংকিং নিয়ম ও সরকারি প্রক্রিয়া সময়ের সঙ্গে পরিবর্তিত হতে পারে; বাস্তব লেনদেনের আগে সর্বশেষ সরকারি নির্দেশনা, ব্যাংক ও অভিজ্ঞ পেশাজীবীর সঙ্গে যাচাই করুন।</p></footer></div>
+</main>
+<noscript><p style="position:relative;z-index:5;padding:2rem;text-align:center">এই পেজের কনটেন্ট দেখতে JavaScript চালু করুন।</p></noscript>
+<script>
+/* ===== কনটেন্ট ডেটা (অংশ ১): সহায়ক ফাংশন, ভূমিকা, অধ্যায় ১–৪ ===== */
+window.CH=[];
+var p=function(x){return{t:'p',x:x}},lb=function(x){return{t:'lb',x:x}},ul=function(i,c){return{t:'ul',i:i,c:c}},ol=function(i,k){return{t:'ol',i:i,k:k}},
+df=function(i,c){return{t:'df',i:i,c:c}},nt=function(x,v,h){return{t:'nt',x:x,v:v,h:h}},cd=function(x,l){return{t:'cd',x:x,l:l}},
+tb=function(h,r,cap,card){return{t:'tb',h:h,r:r,cap:cap,card:card}},fl=function(rows){return{t:'fl',rows:rows}},tl=function(i){return{t:'tl',i:i}},
+ck=function(i){return{t:'ck',i:i}},ac=function(i,open){return{t:'ac',i:i,open:open}},tabs=function(i){return{t:'tabs',i:i}},sp=function(k){return{t:'sp',k:k}},
+pc=function(pro,con,pt,ct){return{t:'pc',pro:pro,con:con,pt:pt,ct:ct}},S=function(h,b){return{h:h,b:b}},C=function(o){CH.push(o)};
+
+C({id:'intro',no:'ভূমিকা',title:'প্রকাশনা-নোট, পরিধি ও সূচিপত্র',ac:'#0ea5e9',ic:'book',subs:[
+S('প্রকাশনা-নোট',[
+ p('এই অংশটি আন্তর্জাতিক আমদানি-রপ্তানি ব্যবসা শেখার জন্য সাজানো হয়েছে। ভাষা রাখা হয়েছে স্বাভাবিক বাংলাদেশি বাংলা; প্রয়োজনীয় জায়গায় প্রচলিত ইংরেজি ব্যবসায়িক ও টেকনিক্যাল শব্দ ব্যবহার করা হয়েছে। আইন, শুল্কহার, লাইসেন্স, ব্যাংকিং নিয়ম এবং সরকারি প্রক্রিয়া সময়ের সঙ্গে পরিবর্তিত হতে পারে। তাই বাস্তব লেনদেনের আগে সংশ্লিষ্ট দেশের সর্বশেষ সরকারি নির্দেশনা, ব্যাংক এবং অভিজ্ঞ পেশাজীবীর সঙ্গে যাচাই করা জরুরি।')
+]),
+S('এই অংশের পরিধি',[
+ p('প্রথম অংশে আন্তর্জাতিক বাণিজ্যের মৌলিক ধারণা, Import–Export ব্যবসার ধরন, Buyer–Seller–Supplier–Manufacturer-এর ভূমিকা, বাজার যাচাই, সোর্সিং, Supplier যাচাই, পণ্যের দাম ও দরদাম, Proforma Invoice, Purchase Order, Commercial Invoice, Packing List, আন্তর্জাতিক পেমেন্ট, ব্যাংকিং এবং Incoterms-এর ভিত্তি আলোচনা করা হয়েছে। জাহাজ, বন্দর, Freight Forwarding, Customs Clearance ও C&F-এর পূর্ণাঙ্গ কার্যক্রম পরবর্তী অংশগুলোতে বিস্তারিত আসবে।')
+]),
+S('সূচিপত্র',[sp('toc')])
+]});
+
+C({id:'c1',no:'অধ্যায় ১',title:'আন্তর্জাতিক বাণিজ্য: একেবারে শুরু থেকে',ac:'#0d9488',ic:'globe',subs:[
+S('১.১ আন্তর্জাতিক বাণিজ্য বলতে কী বোঝায়',[
+ p('একটি দেশের মানুষ, ব্যবসা বা প্রতিষ্ঠান যখন অন্য দেশের কোনো ব্যক্তি বা প্রতিষ্ঠানের কাছ থেকে পণ্য বা সেবা কেনে, তখন সেটি Import বা আমদানি। আর নিজের দেশের পণ্য বা সেবা অন্য দেশে বিক্রি করলে সেটি Export বা রপ্তানি। এই দুই ধরনের কার্যক্রম মিলিয়েই International Trade বা আন্তর্জাতিক বাণিজ্য।'),
+ p('ধরা যাক, ঢাকার একজন ব্যবসায়ী চীনের একটি কারখানা থেকে ৫০০টি LED লাইট কিনলেন। চীনের Supplier পণ্য তৈরি বা সরবরাহ করল, বাংলাদেশের ব্যবসায়ী মূল্য পরিশোধ করলেন, পণ্য আন্তর্জাতিক পরিবহনের মাধ্যমে বাংলাদেশে এল এবং প্রয়োজনীয় Customs প্রক্রিয়া শেষে তাঁর গুদামে পৌঁছাল। বাংলাদেশের ব্যবসায়ীর দৃষ্টিতে এটি Import। চীনের Supplier-এর দৃষ্টিতে একই লেনদেন Export।'),
+ p('এখানে শুধু পণ্য কেনাবেচা হয়নি। এর সঙ্গে যুক্ত হয়েছে পণ্যের Specification ঠিক করা, দাম আলোচনা, Payment Method নির্বাচন, Export Documentation, পরিবহন, Cargo Insurance, Customs Formalities এবং পণ্য বুঝে নেওয়া। অর্থাৎ Import–Export হলো একাধিক পক্ষের সমন্বয়ে পরিচালিত একটি সম্পূর্ণ ব্যবসায়িক প্রক্রিয়া।')
+]),
+S('১.২ দেশগুলো কেন আমদানি ও রপ্তানি করে',[
+ p('কোনো দেশ সব ধরনের পণ্য সমান দক্ষতায় বা কম খরচে উৎপাদন করতে পারে না। কোনো দেশে কাঁচামাল বেশি, কোথাও শ্রমের খরচ তুলনামূলক কম, কোথাও উন্নত প্রযুক্তি আছে, আবার কোনো দেশে নির্দিষ্ট পণ্যের বড় উৎপাদনশিল্প গড়ে উঠেছে। তাই দেশগুলো নিজেদের প্রয়োজন, সক্ষমতা ও বাণিজ্যিক সুবিধা অনুযায়ী একে অপরের সঙ্গে পণ্য বিনিময় করে।'),
+ lb('আমদানির কয়েকটি সাধারণ কারণ:'),
+ ul(['দেশে পণ্যটি উৎপাদিত হয় না।','স্থানীয় উৎপাদন চাহিদার তুলনায় কম।','বিদেশ থেকে কিনলে মোট খরচ কম হতে পারে।','বিদেশি পণ্যের Quality, Technology বা Design উন্নত।','কোনো শিল্প চালাতে প্রয়োজনীয় Machine, Spare Parts বা Raw Materials বিদেশ থেকে আনতে হয়।','মৌসুমি বা জরুরি চাহিদা মেটাতে আমদানি প্রয়োজন হয়।']),
+ lb('রপ্তানির কয়েকটি সাধারণ কারণ:'),
+ ul(['দেশের উৎপাদিত পণ্যের বিদেশে বাজার আছে।','বড় বাজারে বিক্রি করলে উৎপাদনের পরিমাণ বাড়ানো যায়।','বৈদেশিক মুদ্রা আয় করা যায়।','স্থানীয় শিল্প, কর্মসংস্থান ও উৎপাদনশীলতা বাড়ে।','কোনো দেশের বিশেষ দক্ষতা বা কাঁচামালের বাণিজ্যিক ব্যবহার করা যায়।'])
+]),
+S('১.৩ আন্তর্জাতিক বাণিজ্যে পণ্য ছাড়াও কী কী বিষয় থাকে',[
+ p('অনেক নতুন ব্যবসায়ী মনে করেন, Supplier-কে টাকা পাঠিয়ে পণ্য আনতে পারলেই Import সম্পন্ন। বাস্তবে পণ্য কেনা পুরো কাজের একটি অংশ মাত্র। একটি আন্তর্জাতিক অর্ডারে সাধারণত নিচের বিষয়গুলো থাকে:'),
+ df([
+  ['ক. Commercial Agreement','কী পণ্য, কত পরিমাণ, কী দামে, কোন মানে এবং কোন সময়ে সরবরাহ হবে—এসব বিষয়ে Buyer ও Seller-এর সমঝোতা।'],
+  ['খ. Payment Arrangement','অগ্রিম টাকা, ব্যাংক ট্রান্সফার, LC বা অন্য কোনো গ্রহণযোগ্য পদ্ধতিতে কীভাবে মূল্য পরিশোধ হবে।'],
+  ['গ. Export-side Formalities','রপ্তানিকারকের দেশের নিয়ম অনুযায়ী Export Declaration, প্রয়োজনীয় অনুমতি ও ডকুমেন্ট প্রস্তুত।'],
+  ['ঘ. Transportation','কারখানা বা Warehouse থেকে Port, তারপর সমুদ্র/বিমান/সড়কপথে গন্তব্য দেশে পরিবহন।'],
+  ['ঙ. Insurance','পরিবহনের সময় পণ্য হারানো বা ক্ষতিগ্রস্ত হওয়ার ঝুঁকির বিপরীতে বীমা, যদি নেওয়া হয় বা চুক্তি/নিয়মে প্রয়োজন হয়।'],
+  ['চ. Import-side Formalities','গন্তব্য দেশের Customs Declaration, পণ্যের শ্রেণিবিন্যাস, মূল্য নির্ধারণ, Duty–Tax এবং প্রয়োজনীয় অনুমোদন।'],
+  ['ছ. Delivery and Receiving','পণ্য ছাড় হওয়ার পর গুদাম বা নির্ধারিত ঠিকানায় পৌঁছানো, পরিমাণ ও Quality পরীক্ষা এবং Supplier-এর সঙ্গে কোনো Claim থাকলে তা নিষ্পত্তি।']
+ ])
+]),
+S('১.৪ আন্তর্জাতিক বাণিজ্যের প্রধান তিনটি প্রবাহ',[
+ p('একটি Import Order-এ তিনটি প্রবাহ একসঙ্গে চলে।'),
+ fl([
+  {t:'পণ্যের প্রবাহ',n:['Factory','Supplier Warehouse','Export Port','Main Carriage','Destination Port','Customs Release','Importer Warehouse']},
+  {t:'টাকার প্রবাহ',n:['Buyer/Importer','Bank বা Payment Channel','Seller/Exporter']},
+  {t:'তথ্য ও ডকুমেন্টের প্রবাহ',n:['Inquiry','Quotation','PI','Order Confirmation','Production Updates','Shipping Documents','Customs Documents','Delivery Confirmation']}
+ ]),
+ p('টাকার প্রবাহে চুক্তি অনুযায়ী টাকা একবারে, ধাপে ধাপে অথবা নির্দিষ্ট ডকুমেন্টের বিপরীতে পরিশোধ হতে পারে।'),
+ nt('এই তিনটি প্রবাহের মধ্যে সমন্বয় না থাকলে সমস্যা তৈরি হয়। যেমন, পণ্য জাহাজে উঠে গেছে কিন্তু প্রয়োজনীয় ডকুমেন্টে ভুল আছে—তাহলে পণ্য বন্দরে পৌঁছানোর পর Clearance আটকে যেতে পারে। আবার পণ্য প্রস্তুত, কিন্তু Payment বা Shipping Instruction নিশ্চিত হয়নি—তাহলে Shipment দেরি হতে পারে।','warn','সমন্বয় না থাকলে')
+]),
+S('১.৫ International Trade-এর গুরুত্বপূর্ণ শব্দ',[
+ df([
+  ['Importer','যে ব্যক্তি বা প্রতিষ্ঠান বিদেশ থেকে পণ্য কেনে এবং নিজের দেশে আনে।'],
+  ['Exporter','যে ব্যক্তি বা প্রতিষ্ঠান নিজের দেশ থেকে অন্য দেশে পণ্য বিক্রি বা পাঠায়।'],
+  ['Buyer','যে পণ্য কেনে। Buyer সবসময় Importer হতে পারেন, তবে মধ্যস্বত্বভোগী বা অন্য দেশের কোনো ব্যবসাও Buyer হতে পারে।'],
+  ['Seller','যে পণ্য বিক্রি করে। Seller নিজে Manufacturer হতে পারেন, আবার Trader-ও হতে পারেন।'],
+  ['Supplier','যে পণ্য সরবরাহ করে। Supplier সরাসরি Factory, Distributor, Wholesaler বা Trading Company হতে পারে।'],
+  ['Manufacturer','যে প্রতিষ্ঠান পণ্য তৈরি করে।'],
+  ['Trading Company','যে প্রতিষ্ঠান বিভিন্ন Factory থেকে পণ্য সংগ্রহ করে Buyer-এর কাছে বিক্রি করে। Trading Company নিজে পণ্য উৎপাদন নাও করতে পারে।'],
+  ['Consignee','পরিবহন ডকুমেন্টে যার নামে পণ্য পাঠানো হয় বা যিনি পণ্য গ্রহণের পক্ষ হিসেবে উল্লেখ থাকেন। Bill of Lading-এ Consignee-এর পরিচয় গুরুত্বপূর্ণ।'],
+  ['Shipper','পরিবহন ডকুমেন্টে যিনি পণ্য পাঠানোর পক্ষ হিসেবে উল্লেখ থাকেন। বাস্তবে Shipper এবং প্রকৃত Manufacturer একই ব্যক্তি বা প্রতিষ্ঠান নাও হতে পারে।'],
+  ['Notify Party','Shipment পৌঁছানোর বিষয়ে যাকে জানাতে বলা হয়। অনেক ক্ষেত্রে এটি Importer বা তার Agent হয়।'],
+  ['Cargo','পরিবহনের জন্য পাঠানো পণ্য বা মালামাল।'],
+  ['Shipment','নির্দিষ্ট চালান বা পরিবহন কার্যক্রম।'],
+  ['Lead Time','অর্ডার দেওয়ার পর নির্দিষ্ট কাজ বা পণ্য হাতে পেতে মোট যে সময় লাগে। Production Lead Time, Shipping Lead Time এবং Total Lead Time আলাদা করে বুঝতে হবে।']
+ ],'sm')
+]),
+S('১.৬ একটি সহজ Import উদাহরণ',[
+ p('ধরা যাক, বাংলাদেশের একজন ব্যবসায়ী চীন থেকে ১,০০০টি ছোট Electric Fan আমদানি করতে চান। প্রথমে তিনি বাজারে পণ্যের চাহিদা, বিক্রয়মূল্য ও প্রতিযোগী পণ্য যাচাই করবেন। এরপর Supplier খুঁজে পণ্যের Specification, Motor Power, Voltage, Plug Type, Size, Packaging এবং Warranty সম্পর্কে জানবেন। Supplier-এর কাছ থেকে Quotation ও Sample নেবেন। Sample পরীক্ষা করে সন্তুষ্ট হলে Quantity, Unit Price, Production Time, Packaging এবং Delivery Terms নিয়ে আলোচনা করবেন।'),
+ p('তারপর PI যাচাই করে অর্ডার নিশ্চিত করবেন। পেমেন্টের শর্ত অনুযায়ী টাকা পাঠাবেন। Supplier পণ্য তৈরি করবে বা প্রস্তুত করবে। এরপর Shipment-এর ব্যবস্থা হবে। বাংলাদেশে পণ্য পৌঁছালে প্রযোজ্য Customs Procedure, Duty–Tax এবং অন্যান্য আনুষ্ঠানিকতা সম্পন্ন করে পণ্য ছাড় করাতে হবে। সবশেষে গুদামে পণ্য গ্রহণ করে Quantity ও Quality মিলিয়ে দেখতে হবে।'),
+ p('এই একটি অর্ডারের প্রতিটি ধাপ আলাদা করে বোঝাই এই বইয়ের উদ্দেশ্য।')
+])
+]});
+
+C({id:'c2',no:'অধ্যায় ২',title:'Import–Export ব্যবসার কাঠামো ও ব্যবসায়িক মডেল',ac:'#2563eb',ic:'layers',subs:[
+S('২.১ Import–Export কি শুধু বড় কোম্পানির ব্যবসা',[
+ p('না। আন্তর্জাতিক বাণিজ্যে বড় Manufacturer, Trading Company, Wholesaler, Retailer, ছোট Importer, Online Seller—সব ধরনের ব্যবসা অংশ নিতে পারে। তবে ব্যবসার আকার ছোট হলেই নিয়মকানুন এড়িয়ে যাওয়া যায় না। পণ্যের ধরন, পরিমাণ, মূল্য, দেশের আইন এবং Payment Channel অনুযায়ী প্রয়োজনীয় কাগজপত্র ও অনুমতি মানতে হয়।'),
+ p('কেউ একটি পূর্ণ কন্টেইনার পণ্য আনেন, কেউ কয়েকটি কার্টন Consolidation করে আনেন, আবার কেউ কোনো নির্দিষ্ট প্রকল্পের জন্য একটি Machine আমদানি করেন। এদের সবার ব্যবসার ধরন এক নয়, কিন্তু প্রত্যেকেরই Supplier, Price, Payment, Shipping এবং Customs সম্পর্কে পরিষ্কার ধারণা থাকা দরকার।')
+]),
+S('২.২ সাধারণ Import Business Model',[
+ df([
+  ['ক. Direct Import','Importer সরাসরি বিদেশি Manufacturer বা Supplier-এর কাছ থেকে পণ্য কেনেন। এতে যোগাযোগ ও দরদামের নিয়ন্ত্রণ বেশি থাকতে পারে। তবে Supplier যাচাই, Production Follow-up, Documentation ও Shipment Coordination নিজের ব্যবস্থায় করতে হয়।'],
+  ['খ. Trading Company-এর মাধ্যমে Import','Buyer এমন একটি Trading Company থেকে কেনেন, যারা একাধিক Factory-এর পণ্য সরবরাহ করতে পারে। একসঙ্গে বিভিন্ন পণ্য সংগ্রহ করা সহজ হতে পারে। তবে Trading Company-এর Margin, Factory পরিচয় এবং Quality Control বুঝে নিতে হবে।'],
+  ['গ. Sourcing Agent-এর মাধ্যমে Import','Buyer নিজের প্রয়োজন জানান, Agent Supplier খোঁজে, দাম যাচাই, Sample, Inspection বা Shipment Coordination-এ সহায়তা করে। Agent কী কাজ করবে এবং কীভাবে Fee নেবে, তা লিখিতভাবে ঠিক করা উচিত।'],
+  ['ঘ. Wholesale Import','বড় পরিমাণে পণ্য এনে Distributor, Retailer বা অন্য ব্যবসায়ীর কাছে বিক্রি করা হয়। এখানে Inventory, Working Capital, Storage এবং Cash Flow গুরুত্বপূর্ণ।'],
+  ['ঙ. Retail বা E-commerce Import','অনলাইন বা অফলাইন খুচরা বিক্রির জন্য পণ্য আনা হয়। পণ্যের ছবি, Description, Packaging, Warranty, Return Policy এবং Customer Service-ও ব্যবসার খরচের অংশ।'],
+  ['চ. Project-based Import','কোনো Factory, Construction Project, Hospital বা নির্দিষ্ট প্রতিষ্ঠানের প্রয়োজন অনুযায়ী Machine, Equipment বা Materials আমদানি করা হয়। Specification, Installation, Spare Parts, Training এবং After-sales Service এখানে গুরুত্বপূর্ণ।'],
+  ['ছ. Order-based বা Pre-order Model','আগে Customer-এর কাছ থেকে অর্ডার বা চাহিদা সংগ্রহ করে পরে বিদেশ থেকে পণ্য আনা হয়। এতে Inventory Risk কমতে পারে, কিন্তু Delivery Time, Customer Communication, Refund Policy এবং Supplier Reliability খুব ভালোভাবে সামলাতে হয়। Customer-এর টাকা নেওয়ার আগে আইন, ব্যবসায়িক নীতি ও বাস্তব Delivery Capacity বিবেচনা করতে হবে।']
+ ])
+]),
+S('২.৩ Export Business Model',[
+ df([
+  ['ক. Manufacturer Exporter','নিজস্ব Factory-তে পণ্য তৈরি করে বিদেশি Buyer-এর কাছে বিক্রি করে।'],
+  ['খ. Merchant Exporter','নিজে উৎপাদন না করেও স্থানীয় Manufacturer বা Supplier থেকে পণ্য কিনে বিদেশে বিক্রি করে। দেশের আইন অনুযায়ী প্রয়োজনীয় Export Registration ও Documentation মেনে চলতে হয়।'],
+  ['গ. Contract Manufacturing','বিদেশি Buyer-এর Specification অনুযায়ী স্থানীয় Factory পণ্য তৈরি করে। Brand, Design, Quality Standard, Inspection এবং Intellectual Property-এর শর্ত চুক্তিতে স্পষ্ট থাকা দরকার।'],
+  ['ঘ. Private Label','Manufacturer-এর তৈরি পণ্য Buyer নিজের Brand Name ও Packaging-এ বাজারজাত করেন। Brand ব্যবহার, Label, Trademark এবং পণ্যের দায়বদ্ধতা নিয়ে লিখিত চুক্তি প্রয়োজন।'],
+  ['ঙ. OEM ও ODM','OEM-এ Buyer-এর নির্দিষ্ট Design বা Specification অনুযায়ী পণ্য তৈরি হতে পারে। ODM-এ Manufacturer নিজের Design বা Product Platform সরবরাহ করে, Buyer তা নিজের Brand-এ বাজারজাত করতে পারেন। দুই ক্ষেত্রেই Design Ownership, Modification Rights ও Quality Responsibility স্পষ্ট করা জরুরি।']
+ ])
+]),
+S('২.৪ ব্যবসার জন্য কোন মডেল বেছে নেবেন',[
+ p('একটি মডেল সবার জন্য ভালো নয়। সিদ্ধান্ত নেওয়ার আগে পাঁচটি বিষয় যাচাই করুন:'),
+ ol(['Capital: পণ্য কেনা, Freight, Duty–Tax, Storage এবং বিক্রির আগ পর্যন্ত খরচ চালানোর মতো টাকা আছে কি না।','Experience: Supplier যাচাই, Product Quality, Shipping ও Customs সম্পর্কে নিজের বা দলের অভিজ্ঞতা কতটুকু।','Market: পণ্যটির বাস্তব ক্রেতা আছে কি না এবং প্রতিযোগীদের তুলনায় আপনার সুবিধা কী।','Risk: পণ্য নষ্ট হওয়া, দাম কমে যাওয়া, Shipment Delay, Exchange Rate পরিবর্তন বা Buyer Payment না পাওয়ার ঝুঁকি কতটা।','Compliance: পণ্যটি আমদানি বা রপ্তানি করতে কোনো Licence, Permit, Certification, Standard বা বিশেষ অনুমোদন লাগে কি না।'],true)
+]),
+S('২.৫ ছোট Importer-এর জন্য বিশেষ সতর্কতা',[
+ p('ছোট পরিমাণে পণ্য আনা মানেই সেটি ব্যক্তিগত পার্সেল বা নিয়মের বাইরে কোনো ব্যবস্থা—এমন নয়। বাণিজ্যিক উদ্দেশ্যে পণ্য আমদানি করলে সংশ্লিষ্ট দেশের Import Policy, Customs Rules, Trade Licence, Import Registration বা অন্যান্য প্রযোজ্য শর্ত যাচাই করতে হবে। Shipment ছোট হলেও পণ্যের HS Code, Declared Value, Country of Origin এবং প্রয়োজনীয় অনুমোদনের বিষয়গুলো গুরুত্বপূর্ণ।'),
+ p('যারা Facebook Page, Group বা Online Store-এর মাধ্যমে Customer Order নিয়ে বিদেশ থেকে পণ্য আনেন, তাদেরও Delivery Promise বাস্তবসম্মত রাখতে হবে। Supplier-এর Production Time, Warehouse Processing, Consolidation, Transit, Customs এবং Local Delivery—সব মিলিয়ে Customer-কে সময় জানাতে হবে। শুধু Supplier-এর বলা সময়কে Customer Delivery Time ধরে নেওয়া ঠিক নয়।')
+])
+]});
+
+C({id:'c3',no:'অধ্যায় ৩',title:'আন্তর্জাতিক বাণিজ্যে কারা কী কাজ করে',ac:'#7c3aed',ic:'users',subs:[
+S('৩.১ Buyer ও Importer-এর পার্থক্য',[
+ p('Buyer হলো ক্রেতা—যিনি পণ্য কেনার সিদ্ধান্ত নেন। Importer হলো সেই পক্ষ, যিনি বিদেশ থেকে পণ্য নিজের দেশে আমদানি করেন এবং দেশের নিয়ম অনুযায়ী Importer হিসেবে দায়িত্ব পালন করেন। কোনো প্রতিষ্ঠানের Procurement Department Buyer-এর কাজ করতে পারে, কিন্তু Customs Declaration-এ অন্য কোনো নিবন্ধিত প্রতিষ্ঠান Importer of Record হতে পারে। তাই চুক্তি ও কাগজপত্রে কে Buyer এবং কে Importer—তা পরিষ্কার রাখা দরকার।')
+]),
+S('৩.২ Seller, Supplier ও Manufacturer',[
+ p('এই তিনটি শব্দ অনেক সময় একই অর্থে ব্যবহার করা হলেও বাস্তবে আলাদা হতে পারে। Manufacturer পণ্য তৈরি করে। Supplier পণ্য সরবরাহ করে। Seller Buyer-এর কাছে পণ্য বিক্রির চুক্তি করে। একটি Factory সরাসরি Seller ও Supplier—দুই ভূমিকায় থাকতে পারে। আবার Trading Company Seller ও Supplier হলেও পণ্যটি অন্য Factory-তে তৈরি হতে পারে।'),
+ p('Buyer যদি সরাসরি Factory থেকে কেনার কথা ভাবেন, তাহলে শুধু Supplier-এর কথায় বিশ্বাস না করে Factory-এর Legal Name, Business Licence, Production Address এবং বাস্তব উৎপাদন সক্ষমতা যাচাই করা উচিত।')
+]),
+S('৩.৩ Sourcing Agent',[
+ p('Sourcing Agent Buyer-এর হয়ে Supplier খুঁজে, Quotation সংগ্রহ, Sample, Negotiation, Factory Visit, Production Follow-up, Quality Inspection এবং কখনো Shipping Coordination-এ সহায়তা করতে পারে।'),
+ lb('Agent-এর সঙ্গে কাজ শুরুর আগে লিখিতভাবে ঠিক করুন:'),
+ ul(['Agent কেবল Supplier পরিচয় করিয়ে দেবে, নাকি পুরো Order Follow-up করবে?','Agent-এর Fee Fixed, Percentage, নাকি প্রতি Order অনুযায়ী?','Supplier থেকে Agent কোনো Commission পাবে কি না?','Sample ও Inspection-এর খরচ কে বহন করবে?','পণ্য ভুল হলে Agent-এর দায়িত্ব কতটুকু?','Buyer-এর Supplier ও Price Information গোপন রাখা হবে কি না?','Agent কি Buyer-এর অনুমতি ছাড়া Supplier পরিবর্তন করতে পারবে?'],'chk'),
+ p('Agent-এর কাজ ও দায়িত্ব অস্পষ্ট থাকলে পরে Buyer, Agent ও Supplier-এর মধ্যে বিরোধ হতে পারে।')
+]),
+S('৩.৪ Freight Forwarder',[
+ p('Freight Forwarder সাধারণত পণ্য পরিবহনের ব্যবস্থা করতে সাহায্য করে। তারা Shipping Line, Airline, Trucking Company, Warehouse এবং অন্যান্য Logistics Provider-এর সঙ্গে সমন্বয় করে। তারা Freight Quotation, Booking, Cargo Consolidation, Shipping Instruction এবং প্রয়োজন অনুযায়ী Documentation Coordination করতে পারে।'),
+ p('সব Freight Forwarder একই ধরনের Service দেয় না। কেউ শুধু Ocean Freight বুক করে, কেউ Door-to-Door Logistics দেয়, আবার কেউ Customs Broker বা স্থানীয় Agent-এর সঙ্গে সমন্বয় করে। কোন Service অন্তর্ভুক্ত এবং কোনটি অতিরিক্ত—Quotation-এ লিখিতভাবে জানতে হবে।')
+]),
+S('৩.৫ Shipping Line ও Shipping Agent',[
+ p('Shipping Line সমুদ্রপথে জাহাজ পরিচালনা করে বা জাহাজের মাধ্যমে Cargo Carriage Service দেয়। Shipping Agent নির্দিষ্ট Port বা অঞ্চলে Shipping Line-এর প্রতিনিধি হিসেবে কাজ করতে পারে। Vessel Call, Port Formalities, Cargo Documentation, Local Coordination এবং অন্যান্য দায়িত্ব তাদের কাজের মধ্যে থাকতে পারে।')
+]),
+S('৩.৬ Customs Broker বা C&F Agent',[
+ p('বাংলাদেশে প্রচলিতভাবে C&F Agent বলতে এমন পেশাজীবী বা প্রতিষ্ঠানকে বোঝানো হয়, যারা Importer বা Exporter-এর পক্ষে Customs Clearance-সংক্রান্ত কাজ করে। তারা কাগজপত্র প্রস্তুত ও দাখিল, Customs Declaration, Assessment-এর প্রক্রিয়ায় সহায়তা, Duty–Tax সংক্রান্ত হিসাব এবং পণ্য ছাড়ের কাজ সমন্বয় করতে পারে।'),
+ nt('C&F Agent Importer-এর হয়ে কাজ করলেও পণ্যের সঠিক তথ্য, মূল্য, HS Code-সংক্রান্ত তথ্য এবং প্রয়োজনীয় ডকুমেন্ট দেওয়ার দায়িত্ব Importer-এরও থাকে। কোনো ভুল তথ্য দিয়ে Customs Duty কমানোর চেষ্টা করা আইনগত ঝুঁকি তৈরি করতে পারে।','warn','Importer-এর দায়িত্ব')
+]),
+S('৩.৭ Bank ও Insurance Company',[
+ p('Bank আন্তর্জাতিক Payment, Foreign Exchange, LC, Trade Finance এবং প্রয়োজনীয় ব্যাংকিং ডকুমেন্টের কাজ করে। Insurance Company Cargo Insurance বা অন্যান্য বীমা কভার দিতে পারে। Insurance থাকলেই সব ধরনের ক্ষতি কভার হয় না; Policy-এর Coverage, Exclusion, Deductible, Claim Notice এবং Survey Requirement বুঝে নিতে হবে।')
+]),
+S('৩.৮ Surveyor ও Inspection Company',[
+ p('Surveyor পণ্যের অবস্থা, পরিমাণ, ওজন, ক্ষতি বা নির্দিষ্ট ঘটনার তথ্য পরীক্ষা করে Report দিতে পারে। Inspection Company উৎপাদনের সময় বা Shipment-এর আগে Quality Inspection করে। Inspection Report Buyer-এর সিদ্ধান্তে সহায়তা করে, তবে এটি সব ধরনের ভবিষ্যৎ ত্রুটি বা ক্ষতির নিশ্চয়তা দূর করে না।')
+]),
+S('৩.৯ একটি Order-এ দায়িত্বের সমন্বয়',[
+ p('ধরা যাক, Buyer চীনের একটি Factory থেকে পণ্য কিনছেন। Buyer Specification ও Order নিশ্চিত করেন। Factory উৎপাদন করে। Sourcing Agent Follow-up করে। Inspection Company পণ্য পরীক্ষা করে। Freight Forwarder Shipment বুক করে। Shipping Line সমুদ্রপথে পণ্য বহন করে। বাংলাদেশে C&F Agent Customs Clearance-এ সহায়তা করে। Importer Duty–Tax ও অন্যান্য প্রযোজ্য খরচ পরিশোধ করে পণ্য গ্রহণ করেন।'),
+ p('এখানে কেউই একা পুরো কাজটি করেন না। তাই প্রতিটি পক্ষের দায়িত্ব, যোগাযোগের ব্যক্তি, Deadline এবং Documents-এর দায়িত্ব শুরুতেই নির্ধারণ করা উচিত।')
+])
+]});
+
+C({id:'c4',no:'অধ্যায় ৪',title:'পণ্য নির্বাচন, বাজার যাচাই ও আমদানির পরিকল্পনা',ac:'#db2777',ic:'chart',subs:[
+S('৪.১ পণ্য পছন্দের আগে বাজার বুঝুন',[
+ p('কোনো পণ্য বিদেশে সস্তা দেখালেই সেটি আমদানি করে লাভ হবে—এমন নিশ্চয়তা নেই। পণ্যটি বাংলাদেশে কত দামে বিক্রি হয়, বাজারে কতজন প্রতিযোগী আছে, Customer কী ধরনের Quality চায়, পণ্যটির চাহিদা মৌসুমি কি না, স্থানীয় বিকল্প আছে কি না—এসব জানতে হবে।'),
+ lb('প্রাথমিক Market Research-এর জন্য:'),
+ ul(['অনলাইন Marketplace-এ একই পণ্যের বিক্রয়মূল্য দেখুন।','স্থানীয় পাইকারি বাজারে দাম যাচাই করুন।','অন্তত কয়েকজন সম্ভাব্য ক্রেতা বা Retailer-এর সঙ্গে কথা বলুন।','প্রতিযোগী পণ্যের Brand, Warranty, Packaging ও Specification তুলনা করুন।','পণ্যটির বিক্রি কত দ্রুত হয়, তা বোঝার চেষ্টা করুন।','Customer Return ও After-sales Service-এর সম্ভাব্য খরচ হিসাব করুন।'])
+]),
+S('৪.২ Demand আর Trend এক জিনিস নয়',[
+ p('সামাজিক যোগাযোগমাধ্যমে কোনো পণ্য ভাইরাল হওয়া মানেই দীর্ঘমেয়াদি Demand আছে—এমন নয়। Trend দ্রুত বদলায়। অন্যদিকে কিছু পণ্যের চাহিদা নিয়মিত থাকে, যেমন নির্দিষ্ট ধরনের Spare Parts, Packaging Materials বা দৈনন্দিন ব্যবহার্য পণ্য।'),
+ p('নতুন Importer-এর উচিত শুধু ভাইরাল পণ্য দেখে বড় অর্ডার না দেওয়া। আগে Sample বা ছোট পরিমাণে বৈধ ও উপযুক্ত উপায়ে বাজার পরীক্ষা করা যায় কি না, তা বিবেচনা করুন।')
+]),
+S('৪.৩ পণ্যের Legal ও Regulatory Check',[
+ p('Order দেওয়ার আগেই জানতে হবে পণ্যটি আমদানি করা যায় কি না এবং বিশেষ কোনো অনুমোদন লাগে কি না। কিছু পণ্যে Standard, Certification, Test Report, Labelling, Registration, Permit বা সংশ্লিষ্ট সরকারি সংস্থার অনুমোদন প্রয়োজন হতে পারে।'),
+ p('উদাহরণ হিসেবে খাদ্য, ওষুধ, মেডিকেল ডিভাইস, কসমেটিকস, রাসায়নিক, বৈদ্যুতিক সরঞ্জাম, Wireless/RF Device এবং উদ্ভিদ বা প্রাণিজ পণ্যের ক্ষেত্রে আলাদা নিয়ন্ত্রণ থাকতে পারে। পণ্যের নাম দেখে অনুমান না করে সঠিক Product Description, Composition, Use এবং HS Code ধরে নিয়ম যাচাই করতে হবে।')
+]),
+S('৪.৪ HS Code কেন আগে জানা দরকার',[
+ p('HS Code হলো আন্তর্জাতিকভাবে পণ্য শ্রেণিবিন্যাসের একটি Harmonized System। Customs এই শ্রেণিবিন্যাসের ভিত্তিতে পণ্যের ওপর প্রযোজ্য Duty–Tax, Restriction এবং Statistical Reporting নির্ধারণে কাজ করে। প্রথম ছয় ডিজিট আন্তর্জাতিকভাবে Harmonized হলেও দেশভেদে আরও Digit যোগ হতে পারে।'),
+ p('একই রকম দেখতে দুই পণ্যের Material, Function বা Use আলাদা হলে HS Code-ও আলাদা হতে পারে। তাই শুধু Supplier-এর দেওয়া HS Code কপি করা ঠিক নয়। পণ্যের Technical Description, Composition, Function এবং প্রযোজ্য Customs Tariff মিলিয়ে যাচাই করা দরকার। সন্দেহ থাকলে Customs বা যোগ্য Customs Professional-এর পরামর্শ নিন।')
+]),
+S('৪.৫ Product Specification Sheet তৈরি',[
+ p('Supplier-কে শুধু “এই পণ্যটা চাই” বললে ভুল বোঝাবুঝি হতে পারে। একটি Specification Sheet তৈরি করুন। এতে থাকবে:'),
+ ul(['Product Name ও Model','Material বা Composition','Size, Dimension ও Weight','Colour ও Design','Technical Parameters','Voltage, Wattage, Plug বা Connector Type—প্রযোজ্য হলে','Performance Requirement','Packaging Type','Label ও Branding Requirement','Warranty বা Defect Policy','Acceptable Tolerance','Required Quantity']),
+ p('যেমন, “এক হাজারটি Fan” বলার বদলে Fan-এর Diameter, Motor Type, Power, Voltage, Speed, Noise Level, Plug Type, Colour, Packaging এবং প্রয়োজনীয় Test Standard উল্লেখ করুন।')
+]),
+S('৪.৬ Target Cost ও Target Selling Price',[
+ p('পণ্য কেনার আগে একটি Target Cost নির্ধারণ করুন। শুধু Factory Price নয়, পণ্যটি গুদামে পৌঁছানো পর্যন্ত সম্ভাব্য সব খরচ ধরতে হবে। এরপর স্থানীয় বাজারে বিক্রির সম্ভাব্য দাম এবং ব্যবসার কাঙ্ক্ষিত Margin হিসাব করুন।'),
+ lb('একটি প্রাথমিক কাঠামো:'),
+ cd('Product Purchase Cost\n+ Origin-side Charges\n+ International Freight\n+ Insurance\n+ Customs Duty and Taxes\n+ Port and Clearance Charges\n+ Inland Transport\n+ Warehouse and Handling\n+ Finance and Currency Cost\n+ Other Applicable Costs\n= Estimated Landed Cost','Landed Cost কাঠামো'),
+ p('এটি একটি Planning Formula। প্রকৃত হিসাবের ক্ষেত্রে Incoterms, Customs Valuation Rules, Duty–Tax Structure এবং Quotation-এ কোন খরচ অন্তর্ভুক্ত আছে—এসব দেখে হিসাব করতে হবে।')
+]),
+S('৪.৭ প্রথম অর্ডারের Quantity কীভাবে ঠিক করবেন',[
+ p('Supplier বেশি Quantity নিলে কম Unit Price দিতে পারে। কিন্তু বেশি পণ্য কিনলে Inventory আটকে যাওয়ার ঝুঁকিও বাড়ে। তাই শুধু Unit Price কমানোর জন্য অপ্রয়োজনীয় বড় অর্ডার দেওয়া উচিত নয়।'),
+ lb('Quantity নির্ধারণে বিবেচনা করুন:'),
+ ul(['মাসিক সম্ভাব্য বিক্রি','পণ্যের Shelf Life বা Obsolescence Risk','Minimum Order Quantity (MOQ)','Storage Capacity','Working Capital','Lead Time','Reorder করার সুযোগ','Supplier-এর Production Capacity'])
+]),
+S('৪.৮ Import Feasibility Sheet',[
+ p('প্রতিটি সম্ভাব্য পণ্যের জন্য একটি Feasibility Sheet রাখুন:'),
+ ol(['পণ্যের নাম ও Model','Supplier-এর নাম ও দেশ','MOQ','Unit Price','Sample Cost','Estimated Production Time','Estimated Freight','সম্ভাব্য Duty–Tax','প্রয়োজনীয় Permit/Certificate','Estimated Landed Cost','Local Market Price','সম্ভাব্য Gross Margin','প্রধান ঝুঁকি','সিদ্ধান্ত: Proceed / Hold / Reject']),
+ p('এই Sheet থাকলে একাধিক Supplier বা পণ্যের মধ্যে তুলনা করা সহজ হয়।')
+])
+]});
+</script>
+<script>
+/* ===== কনটেন্ট ডেটা (অংশ ২): অধ্যায় ৫–৯ ===== */
+C({id:'c5',no:'অধ্যায় ৫',title:'International Sourcing ও Procurement',ac:'#ea580c',ic:'search',subs:[
+S('৫.১ Sourcing আর Procurement-এর পার্থক্য',[
+ p('Sourcing হলো উপযুক্ত Supplier, Product, Price এবং Supply Option খুঁজে বের করার প্রক্রিয়া। Procurement আরও বড় একটি প্রক্রিয়া—এতে প্রয়োজন নির্ধারণ, Supplier নির্বাচন, দরদাম, Order Placement, Delivery Follow-up, Invoice Processing এবং Supplier Performance মূল্যায়ন থাকতে পারে।'),
+ p('সহজভাবে বললে, Sourcing-এর বড় প্রশ্ন হলো “কোথা থেকে এবং কার কাছ থেকে কিনব?” Procurement-এর প্রশ্ন হলো “প্রতিষ্ঠানের প্রয়োজন অনুযায়ী কীভাবে পুরো কেনাকাটার কাজটি সঠিকভাবে সম্পন্ন করব?”')
+]),
+S('৫.২ Supplier খোঁজার উৎস',[
+ p('Supplier খুঁজতে বিভিন্ন উৎস ব্যবহার করা যায়:'),
+ ul(['B2B Marketplace','Manufacturer-এর নিজস্ব Website','Trade Fair ও Exhibition','Industry Association বা Trade Directory','Chamber of Commerce','Sourcing Agent','Existing Business Network','Factory Referral','Verified Distributor বা Wholesaler']),
+ p('Marketplace-এ কোনো Supplier-এর Profile বা Badge দেখেই তাকে শতভাগ নিরাপদ ধরে নেওয়া যাবে না। এগুলো প্রাথমিক Screening-এ সাহায্য করতে পারে, কিন্তু আলাদা Verification প্রয়োজন।')
+]),
+S('৫.৩ Supplier Shortlisting',[
+ p('প্রথমে একাধিক Supplier-এর কাছ থেকে একই Specification অনুযায়ী Quotation নিন। এরপর তুলনা করুন:'),
+ ul(['Legal Business Identity','Manufacturer নাকি Trading Company','Product Range','Production Capacity','MOQ','Unit Price ও Price Validity','Sample Availability','Production Lead Time','Quality Control Process','Export Experience','Payment Terms','Packaging Capability','Communication Quality','After-sales Support']),
+ nt('সবচেয়ে কম দাম দেওয়া Supplier-কে স্বয়ংক্রিয়ভাবে সেরা ধরে নেওয়া যাবে না। অস্বাভাবিক কম দাম কখনো ভুল Specification, নিম্নমানের Material, লুকানো খরচ বা প্রতারণার সংকেত হতে পারে।','warn','কম দামই সেরা নয়')
+]),
+S('৫.৪ RFQ বা Request for Quotation',[
+ p('RFQ হলো Supplier-এর কাছে নির্দিষ্ট পণ্য ও শর্তের ভিত্তিতে আনুষ্ঠানিকভাবে দাম ও সরবরাহের প্রস্তাব চাওয়া। একটি ভালো RFQ-তে থাকবে:'),
+ ul(['Buyer-এর পরিচয়','Product Name ও Specification','Quantity','Target Market/Country','Packaging Requirement','Required Delivery Date','Inspection Requirement','Incoterms ও Named Place/Port','প্রয়োজনীয় Certificate বা Standard','Quotation-এর Validity','Payment Preference']),
+ p('একই RFQ একাধিক Supplier-কে পাঠালে তুলনা সহজ হয়। তবে প্রত্যেককে একই Specification ও একই Commercial Basis দিতে হবে। একজন FOB Price দিলে আরেকজন EXW Price দিলে সরাসরি Unit Price তুলনা করা ঠিক হবে না।')
+]),
+S('৫.৫ Supplier Evaluation Matrix',[
+ p('Supplier বাছাইয়ের জন্য একটি নম্বরভিত্তিক মূল্যায়ন করা যায়। উদাহরণস্বরূপ:'),
+ sp('chart-matrix'),
+ p('এটি একটি অভ্যন্তরীণ মূল্যায়ন মডেল, কোনো আন্তর্জাতিক বাধ্যতামূলক Standard নয়। পণ্যভেদে ও ব্যবসার প্রয়োজন অনুযায়ী Weight পরিবর্তন করা যায়।')
+]),
+S('৫.৬ Supplier-এর সঙ্গে যোগাযোগ',[
+ p('Supplier-কে অস্পষ্ট প্রশ্ন না করে নির্দিষ্ট প্রশ্ন করুন। যেমন:'),
+ ul(['আপনারা কি এই Model-এর Manufacturer?','এই Specification অনুযায়ী MOQ কত?','Unit Price কি EXW, FOB, নাকি অন্য কোনো Incoterm?','Sample-এর মূল্য ও Courier Charge কত?','Production Time কত দিন?','Shipment-এর আগে Third-party Inspection অনুমোদন করবেন?','Packaging-এর Gross Weight ও Carton Dimension কত?','পণ্যের Warranty বা Defect Handling Policy কী?'],'q'),
+ p('গুরুত্বপূর্ণ কথাবার্তা Email বা লিখিত Chat-এ সংরক্ষণ করুন। শুধু Voice Call-এ চুক্তি না রেখে মূল শর্তগুলো লিখিতভাবে Confirm করুন।')
+]),
+S('৫.৭ Procurement Cycle',[
+ fl([{t:'Procurement Cycle',num:1,n:['Need Identification','Specification','Supplier Search','RFQ','Quotation Comparison','Supplier Verification','Sample','Negotiation','Purchase Approval','PO/Contract','Payment','Production','Inspection','Shipment','Receiving','Supplier Evaluation']}]),
+ p('সব পণ্যে প্রতিটি ধাপ একইভাবে লাগবে না। তবে পণ্যের মূল্য, ঝুঁকি ও জটিলতা যত বেশি, যাচাই ও Approval তত শক্ত হওয়া উচিত।')
+])
+]});
+
+C({id:'c6',no:'অধ্যায় ৬',title:'China Sourcing এবং Supplier Verification',ac:'#dc2626',ic:'verify',subs:[
+S('৬.১ চীন থেকে Sourcing জনপ্রিয় কেন',[
+ p('চীনে Electronics, Machinery, Lighting, Garments Accessories, Household Items, Packaging, Tools, Toys, Furniture Components এবং অসংখ্য Industrial Product-এর বড় উৎপাদন ও Supply Network রয়েছে। অনেক পণ্যের ক্ষেত্রে এক জায়গায় বহু Supplier পাওয়া যায়। ফলে Buyer Price, Design, Specification ও MOQ তুলনা করতে পারেন।'),
+ p('তবে “চীনে সব পণ্য সস্তা” বা “চীনের সব Supplier একই মানের”—দুটিই ভুল ধারণা। পণ্যের Quality, Factory Capability, Material, Production Volume, Brand, Compliance এবং Logistics অনুযায়ী দাম ও ঝুঁকি বদলায়।')
+]),
+S('৬.২ Marketplace, Factory ও Trading Company',[
+ p('চীনের B2B বা Wholesale Marketplace-এ Supplier খুঁজে পাওয়া সহজ হতে পারে। কিন্তু Marketplace হলো যোগাযোগ ও বাণিজ্যের একটি মাধ্যম; এটি নিজে প্রতিটি পণ্যের Quality বা Supplier-এর সব দায় নেয়—এমন ধরে নেওয়া যাবে না।'),
+ lb('Supplier-এর সঙ্গে যোগাযোগের পর জেনে নিন:'),
+ ul(['কোম্পানির Legal Chinese Name কী?','Business Registration বা Unified Social Credit Code কী?','Factory Address কোথায়?','Factory নিজে উৎপাদন করে, নাকি অন্য Factory-তে Outsource করে?','Export করার অভিজ্ঞতা আছে কি?','Bank Account-এর Beneficiary Name কোম্পানির Legal Name-এর সঙ্গে মেলে কি?','পণ্যের Quality Control কীভাবে হয়?'],'q')
+]),
+S('৬.৩ Factory Verification',[
+ p('শুধু Website, Product Photo বা Marketplace Profile দিয়ে Factory Verification শেষ হয় না। প্রয়োজনে Business Registration Document, Factory Address, Video Call, Live Factory Tour, Third-party Audit বা স্থানীয় Inspection Service ব্যবহার করা যায়।'),
+ lb('Verification-এর লক্ষ্য হলো:'),
+ ol(['প্রতিষ্ঠানটি বাস্তবে আছে কি না।','যোগাযোগকারী ব্যক্তি ওই প্রতিষ্ঠানের অনুমোদিত প্রতিনিধি কি না।','প্রতিষ্ঠানটি Manufacturer, Trader, নাকি Agent।','পণ্য তৈরির বা সংগ্রহের সক্ষমতা আছে কি না।','Payment গ্রহণের Bank Account যথাযথ কি না।','পণ্যের Compliance ও Quality Control সম্পর্কে বাস্তব ব্যবস্থা আছে কি না।'])
+]),
+S('৬.৪ Bank Account ও Payment Fraud',[
+ p('Supplier-এর Bank Details পরিবর্তনের Email বা Message এলে বিশেষ সতর্ক থাকুন। প্রতারকরা কখনো Supplier-এর Email বা যোগাযোগের চ্যানেল নকল করে নতুন Bank Account পাঠাতে পারে।'),
+ nt('Bank Details পরিবর্তন হলে আগের পরিচিত নম্বর বা স্বাধীনভাবে যাচাই করা Contact Channel দিয়ে Supplier-এর সঙ্গে কথা বলে নিশ্চিত হোন। শুধু নতুন Email-এর Reply দিয়ে Account Change Confirm করবেন না। Beneficiary Name, Bank Country, Account Details এবং Contract-এর তথ্য মিলিয়ে নিন।','warn','Bank Details বদলালে')
+]),
+S('৬.৫ Supplier-এর Red Flags',[
+ ul(['বাজারদরের তুলনায় অস্বাভাবিক কম দাম।','কোম্পানির পরিচয় বা ঠিকানা দিতে অনীহা।','Factory Visit বা Video Verification এড়িয়ে যাওয়া।','বারবার ব্যক্তিগত Bank Account-এ টাকা পাঠাতে বলা।','লিখিত Specification বা PI দিতে না চাওয়া।','Sample ও Bulk Production-এর মধ্যে পার্থক্য থাকতে পারে—এমন প্রশ্নের উত্তর না দেওয়া।','দ্রুত টাকা পাঠানোর জন্য অযৌক্তিক চাপ।','Contract-এ নিজের Legal Entity-এর নাম না থাকা।','Bank Beneficiary Name ও Seller-এর পরিচয়ে অমিল, যার গ্রহণযোগ্য ব্যাখ্যা নেই।'],'flag'),
+ p('একটি Red Flag দেখলেই Supplier প্রতারক—এমন সিদ্ধান্ত নয়। কিন্তু একাধিক Red Flag থাকলে Order স্থগিত রেখে যাচাই করা উচিত।')
+]),
+S('৬.৬ Sourcing Agent ব্যবহার করলে',[
+ p('চীনে ভাষা, স্থানীয় যোগাযোগ, Factory Visit, Sample Collection এবং Consolidation-এর সুবিধার জন্য Sourcing Agent ব্যবহার করা যায়। তবে Agent-এর মাধ্যমে কাজ করলেও Buyer-এর নিজের Verification বন্ধ করা উচিত নয়।'),
+ p('Agent-এর সঙ্গে Agreement-এ Service Scope, Fee, Commission Disclosure, Inspection Standard, Payment Handling, Liability, Confidentiality এবং Dispute Process উল্লেখ করুন। Supplier-কে টাকা সরাসরি দেবেন নাকি Agent-এর মাধ্যমে দেবেন—এটি ব্যবসার কাঠামো, আইন এবং Payment Risk বিবেচনায় ঠিক করতে হবে।')
+])
+]});
+
+C({id:'c7',no:'অধ্যায় ৭',title:'Product Specification, Sample, Quality ও Inspection',ac:'#16a34a',ic:'box',subs:[
+S('৭.১ পণ্যের নাম এক হলেও Specification আলাদা হতে পারে',[
+ p('একই নামে বিক্রি হওয়া পণ্যের Material, Component, Size, Performance, Durability এবং Safety Standard আলাদা হতে পারে। তাই Product Name দিয়ে Order নিশ্চিত করা ঝুঁকিপূর্ণ।'),
+ p('উদাহরণ হিসেবে একটি LED Bulb-এর ক্ষেত্রে Wattage, Lumen, Colour Temperature, Input Voltage, Base Type, Power Factor, Driver Quality, Housing Material, Lifespan Claim এবং Packaging উল্লেখ করা প্রয়োজন হতে পারে।')
+]),
+S('৭.২ Sample কেন গুরুত্বপূর্ণ',[
+ p('Sample হলো Bulk Order-এর আগে পণ্যের বাস্তব মান যাচাই করার সুযোগ। Sample হাতে পেলে Specification Sheet-এর সঙ্গে মিলিয়ে দেখুন। শুধু দেখতে ভালো হলেই Sample Pass করা উচিত নয়; পণ্যের কাজ, স্থায়িত্ব, Safety ও ব্যবহারযোগ্যতা পরীক্ষা করতে হবে।'),
+ p('Sample Approval-এর পর সেটিকে Reference Sample হিসেবে সংরক্ষণ করা যায়। চুক্তিতে উল্লেখ করা যেতে পারে যে Bulk Production-এর পণ্য Approved Sample এবং লিখিত Specification-এর সঙ্গে সামঞ্জস্যপূর্ণ হতে হবে।')
+]),
+S('৭.৩ Sample-এর ধরন',[
+ df([
+  ['Pre-production Sample','Bulk Production শুরুর আগে অনুমোদনের জন্য তৈরি Sample।'],
+  ['Production Sample','উৎপাদন চলাকালে তৈরি বা নেওয়া Sample।'],
+  ['Pre-shipment Sample','Shipment-এর আগে প্রস্তুত পণ্য থেকে নেওয়া Sample।'],
+  ['Golden Sample','Buyer ও Supplier উভয়ের অনুমোদিত Reference Sample, যার সঙ্গে Bulk Product তুলনা করা হয়।']
+ ])
+]),
+S('৭.৪ Inspection-এর ধাপ',[
+ df([
+  ['Initial Production Check','উৎপাদন শুরু হয়েছে কি না, Material ও Process ঠিক আছে কি না দেখা।'],
+  ['During Production Inspection','উৎপাদনের মাঝামাঝি সময়ে Quality ও Defect পরীক্ষা।'],
+  ['Pre-shipment Inspection','পণ্য তৈরি ও প্যাকিংয়ের কাছাকাছি সময়ে Quantity, Appearance, Function ও Packaging পরীক্ষা।'],
+  ['Loading Supervision','Container বা Truck-এ পণ্য তোলার সময় Quantity, Carton Condition, Loading এবং Seal-সংক্রান্ত বিষয় পর্যবেক্ষণ।']
+ ]),
+ p('সব Order-এ সব ধরনের Inspection বাধ্যতামূলক নয়। পণ্যের ঝুঁকি, Order Value ও Buyer-এর Quality Requirement অনুযায়ী Inspection Plan ঠিক করা হয়।')
+]),
+S('৭.৫ AQL-এর ধারণা',[
+ p('AQL বা Acceptable Quality Limit হলো কিছু Sampling Inspection Plan-এ ব্যবহৃত একটি পরিসংখ্যানভিত্তিক ধারণা। এটি বোঝায় নির্দিষ্ট Sampling Plan অনুযায়ী Lot গ্রহণ বা প্রত্যাখ্যানের সিদ্ধান্ত কীভাবে হবে। AQL মানে এই নয় যে পুরো Lot-এর ঠিক ওই শতাংশ পণ্য Defective হওয়ার অনুমতি দেওয়া হয়েছে। Inspection Plan, Sample Size, Defect Classification এবং Acceptance/Rejection Number একসঙ্গে বুঝতে হয়।')
+]),
+S('৭.৬ Defect Classification',[
+ tb(['ধরন','ব্যাখ্যা'],[
+  ['Critical Defect','পণ্যের Safety বা আইনগত গ্রহণযোগ্যতার জন্য গুরুতর ঝুঁকি তৈরি করে।'],
+  ['Major Defect','পণ্যের ব্যবহার, কার্যকারিতা বা Customer Acceptance-এ উল্লেখযোগ্য সমস্যা তৈরি করে।'],
+  ['Minor Defect','তুলনামূলক ছোট সমস্যা, যা পণ্যের মূল কার্যকারিতা নাও নষ্ট করতে পারে, তবে Appearance বা Finish-এ প্রভাব ফেলতে পারে।']
+ ],'Defect-এর তিনটি স্তর',true),
+ p('Defect Classification পণ্যের ধরন ও Inspection Standard অনুযায়ী নির্ধারণ করা উচিত।')
+])
+]});
+
+C({id:'c8',no:'অধ্যায় ৮',title:'Product Pricing, Costing ও Negotiation',ac:'#ca8a04',ic:'calc',subs:[
+S('৮.১ Supplier-এর Unit Price-ই চূড়ান্ত খরচ নয়',[
+ p('Supplier যদি একটি পণ্যের দাম ৫ ডলার বলেন, তার মানে এই নয় যে পণ্যটি বাংলাদেশের গুদামে ৫ ডলারেই পৌঁছাবে। এর সঙ্গে Packaging, Local Transport, Export Charges, Freight, Insurance, Customs Duty–Tax, Port Charges, C&F Service, Inland Transport, Bank Charges এবং অন্যান্য খরচ যুক্ত হতে পারে।'),
+ p('তাই Price Comparison করতে হলে একই Commercial Basis-এ তুলনা করতে হবে।')
+]),
+S('৮.২ Quotation-এ কী কী দেখতে হবে',[
+ ul(['Product Description ও Model','Specification','Quantity ও Unit','Unit Price','Total Amount','Currency','Incoterm ও Named Place','Packaging','Production Lead Time','Delivery Schedule','Payment Terms','Quotation Validity','Warranty/Defect Terms','Excluded Charges']),
+ p('Quotation-এ শুধু “FOB Price” লেখা থাকলে কোন Port বা Place বোঝানো হয়েছে তা নিশ্চিত করুন। Incoterm-এর সঙ্গে Named Port/Place উল্লেখ করা জরুরি।')
+]),
+S('৮.৩ Landed Cost-এর একটি উদাহরণ',[
+ p('ধরা যাক, একজন Importer ১,০০০টি পণ্য কিনছেন।'),
+ tb(['খরচের খাত','পরিমাণ'],[
+  ['পণ্যের মোট মূল্য','USD 5,000'],
+  ['Origin-side ও অন্যান্য প্রযোজ্য খরচ','USD 300'],
+  ['International Freight','USD 700'],
+  ['Insurance','USD 50'],
+  ['বাংলাদেশে Port, Clearance ও Inland Transport-এর আনুমানিক খরচ','USD 450 সমমূল্য']
+ ],'১,০০০টি পণ্যের উদাহরণ',true),
+ p('প্রাথমিকভাবে Customs Duty–Tax বাদে মোট খরচ:'),
+ cd('5,000 + 300 + 700 + 50 + 450 = USD 6,500'),
+ p('প্রতি পণ্যের খরচ:'),
+ cd('6,500 ÷ 1,000 = USD 6.50'),
+ sp('chart-landed'),
+ nt('এটি কেবল বোঝানোর জন্য একটি কাল্পনিক উদাহরণ। বাস্তবে Customs Duty–Tax, Customs Valuation, Exchange Rate, Bank Charges এবং অন্যান্য খরচ যোগ করলে হিসাব বদলাবে। কিছু খরচ Customs Assessable Value-তে কীভাবে অন্তর্ভুক্ত হবে, তা প্রযোজ্য আইন ও নিয়ম অনুযায়ী নির্ধারিত হয়। একই খরচকে ভুলভাবে দুইবার যোগ করা যাবে না।','warn','কাল্পনিক উদাহরণ'),
+ sp('calc-landed')
+]),
+S('৮.৪ Gross Margin ও Markup',[
+ p('ধরা যাক, একটি পণ্যের Landed Cost ১০০ টাকা এবং বিক্রয়মূল্য ১৩০ টাকা।'),
+ cd('Gross Profit = ১৩০ – ১০০ = ৩০ টাকা।\nGross Margin = ৩০ ÷ ১৩০ × ১০০ = প্রায় ২৩.০৮%।\nMarkup = ৩০ ÷ ১০০ × ১০০ = ৩০%।'),
+ p('Margin ও Markup এক জিনিস নয়। ব্যবসায় হিসাব করার সময় কোনটি ব্যবহার করছেন তা পরিষ্কার রাখুন। Net Profit হিসাব করতে Rent, Salary, Marketing, Storage, Damage, Return, Finance Cost এবং অন্যান্য Operating Expense-ও বিবেচনা করতে হবে।'),
+ sp('calc-margin')
+]),
+S('৮.৫ Negotiation-এর প্রস্তুতি',[
+ p('দরদাম শুরু করার আগে নিজের Target Price, Maximum Acceptable Price এবং বিকল্প Supplier-এর তথ্য প্রস্তুত রাখুন। শুধু দাম কমানোর কথা না বলে Quantity, Packaging, Payment Terms, Lead Time, Spare Parts, Warranty এবং Inspection নিয়ে আলোচনা করুন।'),
+ lb('Negotiation-এর কিছু বাস্তব কৌশল:'),
+ ul(['একাধিক Supplier-এর Quotation তুলনা করুন।','একই Specification ধরে দাম চান।','বেশি Quantity দিলে Discount কত হবে জিজ্ঞেস করুন।','Sample Cost Bulk Order-এ Adjust করা যাবে কি না জিজ্ঞেস করুন।','Packaging উন্নত করলে অতিরিক্ত খরচ কত হবে জানুন।','Payment Milestone নিয়ে আলোচনা করুন।','Defective Product-এর Replacement বা Credit Note Policy লিখিতভাবে ঠিক করুন।','Quotation-এর Validity ও Price Change-এর শর্ত বুঝুন।'])
+]),
+S('৮.৬ Hidden Cost খুঁজে বের করা',[
+ p('কখনো Quotation-এ Product Price কম দেখালেও পরে Tooling Fee, Printing Fee, Label Fee, Special Packaging, Palletization, Testing, Documentation বা Local Delivery Charge যোগ হতে পারে। তাই Quotation-এ কী Included এবং কী Excluded—দুটিই লিখিতভাবে নিন।')
+]),
+S('৮.৭ Currency Risk',[
+ p('Buyer যদি USD-তে পেমেন্ট করেন কিন্তু বাংলাদেশে টাকায় বিক্রি করেন, তাহলে Exchange Rate পরিবর্তনে Landed Cost বাড়তে পারে। Order Confirm করার সময়কার Rate আর Payment করার সময়কার Rate এক নাও হতে পারে। বড় Order-এর ক্ষেত্রে Bank-এর প্রযোজ্য Exchange Rate, Remittance Charges এবং সম্ভাব্য Currency Exposure হিসাব করুন।')
+])
+]});
+
+C({id:'c9',no:'অধ্যায় ৯',title:'PI, PO এবং বাণিজ্যিক ডকুমেন্টের ভিত্তি',ac:'#0891b2',ic:'doc',subs:[
+S('৯.১ Proforma Invoice (PI) কী',[
+ p('Proforma Invoice হলো Seller-এর দেওয়া একটি প্রাথমিক Commercial Document, যেখানে প্রস্তাবিত পণ্য, Quantity, Price, Payment Terms, Delivery Terms এবং অন্যান্য শর্ত উল্লেখ থাকে। এটি সাধারণত Order ও Payment Arrangement চূড়ান্ত করার আগে Buyer-কে দেওয়া হয়।'),
+ p('PI-কে সব ক্ষেত্রে Final Commercial Invoice বা Tax Invoice মনে করা ঠিক নয়। PI-এর ভিত্তিতে Buyer Order, Bank Process বা Import Preparation শুরু করতে পারেন—তবে সংশ্লিষ্ট ব্যাংক ও দেশের নিয়ম অনুযায়ী অতিরিক্ত ডকুমেন্ট লাগতে পারে।')
+]),
+S('৯.২ একটি PI-তে কী থাকা উচিত',[
+ ul(['Seller-এর Legal Name, Address ও Contact','Buyer-এর Legal Name ও Address','PI Number ও Date','Product Description','Model/SKU','Specification','Quantity ও Unit','Unit Price','Total Amount','Currency','Incoterm ও Named Place/Port','Payment Terms','Production/Delivery Time','Packaging Details','Quotation Validity','Bank Details—যদি প্রযোজ্য হয়','Seller-এর Authorized Signature/Seal—প্রযোজ্য ক্ষেত্রে']),
+ p('PI পাওয়ার পর Buyer-এর উচিত নিজের Order Requirement-এর সঙ্গে প্রতিটি তথ্য মিলিয়ে দেখা।')
+]),
+S('৯.৩ Purchase Order (PO) কী',[
+ p('Purchase Order হলো Buyer-এর পক্ষ থেকে Seller-কে দেওয়া আনুষ্ঠানিক ক্রয়াদেশ। এতে Buyer কী পণ্য, কত পরিমাণ, কী দামে এবং কোন শর্তে কিনতে চান তা উল্লেখ থাকে। Seller PO গ্রহণ বা Confirm করলে এটি Commercial Agreement-এর অংশ হতে পারে। তবে PO, Seller Confirmation এবং আলাদা Sales Contract-এর আইনি সম্পর্ক দেশ ও চুক্তির শর্ত অনুযায়ী নির্ধারিত হয়।')
+]),
+S('৯.৪ PI ও PO-এর পার্থক্য',[
+ p('PI সাধারণত Seller তৈরি করেন এবং Buyer-কে প্রস্তাবিত লেনদেনের বিবরণ দেন। PO সাধারণত Buyer তৈরি করেন এবং Seller-কে কেনার নির্দেশ বা প্রস্তাব পাঠান। অনেক ব্যবসায় PI ও PO—দুটিই ব্যবহার হয়। আবার কিছু ক্ষেত্রে Sales Contract বা অন্য Confirmation Document প্রধান ভূমিকা পালন করে।'),
+ tb(['বিষয়','PI (Proforma Invoice)','PO (Purchase Order)'],[
+  ['সাধারণত কে তৈরি করেন','Seller','Buyer'],
+  ['কাকে দেওয়া হয়','Buyer-কে প্রস্তাবিত লেনদেনের বিবরণ দেন','Seller-কে কেনার নির্দেশ বা প্রস্তাব পাঠান']
+ ],'এক নজরে পার্থক্য',true)
+]),
+S('৯.৫ Commercial Invoice',[
+ p('Commercial Invoice হলো বিক্রেতার দেওয়া বাণিজ্যিক চালান, যেখানে বাস্তব বিক্রয় ও পণ্যের মূল্য সংক্রান্ত তথ্য থাকে। Customs Valuation, Import Declaration, Bank Documentation এবং অন্যান্য প্রক্রিয়ায় এটি গুরুত্বপূর্ণ হতে পারে।'),
+ p('Commercial Invoice-এ Seller, Buyer, Product Description, Quantity, Unit Price, Total Value, Currency, Country of Origin, Delivery Terms এবং অন্যান্য প্রাসঙ্গিক তথ্য সঠিক থাকা জরুরি।')
+]),
+S('৯.৬ Packing List',[
+ p('Packing List-এ পণ্য কীভাবে প্যাক করা হয়েছে তার বিবরণ থাকে। সাধারণত Carton/Package সংখ্যা, প্রতিটি প্যাকেজের Mark বা Number, পণ্যের Quantity, Net Weight, Gross Weight এবং Dimension উল্লেখ থাকে।'),
+ p('Commercial Invoice পণ্যের বাণিজ্যিক মূল্য দেখায়; Packing List প্যাকেজিং ও পণ্যের প্যাকিং-সংক্রান্ত তথ্য দেয়। দুটি ডকুমেন্টের তথ্য পরস্পরের সঙ্গে সামঞ্জস্যপূর্ণ হওয়া দরকার।')
+]),
+S('৯.৭ Sales Contract',[
+ p('বড় বা ঝুঁকিপূর্ণ Order-এর ক্ষেত্রে আলাদা Sales Contract করা ভালো। এতে Product Specification, Quantity, Price, Currency, Incoterm, Payment, Delivery Schedule, Inspection, Warranty, Defect Handling, Force Majeure, Dispute Resolution, Governing Law এবং Contract Termination-এর শর্ত রাখা যায়।')
+]),
+S('৯.৮ ডকুমেন্টের তথ্য মিলিয়ে দেখা',[
+ p('PI-তে ১,০০০ পণ্য, PO-তে ১,০০০, Commercial Invoice-এ ৯৫০ এবং Packing List-এ ১,০০০ দেখালে প্রশ্ন তৈরি হবে। একইভাবে Product Model, Currency, Unit Price, Buyer Name, Seller Name, Country of Origin ও Incoterm-এর মধ্যে অসামঞ্জস্য থাকলে ব্যাংক বা Customs Process জটিল হতে পারে।'),
+ p('একটি Master Order Sheet রাখুন। সেখান থেকে PI, PO, Invoice, Packing List ও Shipping Instruction-এর তথ্য মিলিয়ে নিন।'),
+ sp('calc-docmatch')
+])
+]});
+</script>
+<script>
+/* ===== কনটেন্ট ডেটা (অংশ ৩): অধ্যায় ১০–১৩ ===== */
+C({id:'c10',no:'অধ্যায় ১০',title:'আন্তর্জাতিক পেমেন্ট ও ব্যাংকিংয়ের পরিচিতি',ac:'#4f46e5',ic:'bank',subs:[
+S('১০.১ কেন আন্তর্জাতিক Payment আলাদা',[
+ p('দেশের ভেতরে টাকা পাঠানোর তুলনায় আন্তর্জাতিক Payment-এ একাধিক ব্যাংক, Currency Conversion, Compliance Check এবং Documentary Requirement যুক্ত হতে পারে। Buyer ও Seller ভিন্ন দেশে থাকেন; তাদের Banking System, Currency, Legal Framework এবং ব্যবসায়িক ঝুঁকিও আলাদা।')
+]),
+S('১০.২ Payment Method বেছে নেওয়ার আগে',[
+ ul(['Buyer ও Seller-এর মধ্যে বিশ্বাসের মাত্রা','Order Value','Supplier-এর Track Record','পণ্যের Production Lead Time','Buyer-এর Cash Flow','Country Risk','Currency Availability','Bank-এর Documentary Requirement','Shipment ও Delivery Terms','Dispute হলে টাকা ফেরত পাওয়ার সম্ভাবনা'])
+]),
+S('১০.৩ Advance Payment',[
+ p('Advance Payment-এ Buyer পণ্য পাঠানোর আগে Seller-কে সম্পূর্ণ বা আংশিক টাকা দেন। Seller-এর জন্য এটি সুবিধাজনক, কারণ Production বা Procurement-এর জন্য টাকা আগে পাওয়া যায়। Buyer-এর ঝুঁকি হলো—টাকা দেওয়ার পর Seller পণ্য না পাঠালে বা চুক্তি অনুযায়ী কাজ না করলে অর্থ ফেরত পাওয়া কঠিন হতে পারে।'),
+ p('ঝুঁকি কমাতে Supplier Verification, Written Contract, Sample Approval, Payment Milestone এবং Inspection-এর ব্যবস্থা করা যায়।')
+]),
+S('১০.৪ Open Account',[
+ p('Open Account-এ Seller পণ্য পাঠানোর পর নির্দিষ্ট Credit Period শেষে Buyer টাকা দেন। Buyer-এর জন্য এটি সুবিধাজনক, কিন্তু Seller-এর Payment Risk বেশি। সাধারণত দীর্ঘদিনের ব্যবসায়িক সম্পর্ক ও বিশ্বাস থাকলে এমন শর্ত দেখা যায়।')
+]),
+S('১০.৫ Documentary Collection',[
+ p('Documentary Collection-এ Seller তার ব্যাংকের মাধ্যমে Shipping বা Commercial Documents Buyer-এর ব্যাংকে পাঠান। ব্যাংক নির্দিষ্ট নির্দেশনা অনুযায়ী Documents Buyer-এর কাছে দেয়। প্রচলিত দুটি ধরন:'),
+ df([
+  ['D/P — Documents against Payment','Buyer টাকা দিলে Documents পান।'],
+  ['D/A — Documents against Acceptance','Buyer নির্দিষ্ট ভবিষ্যৎ তারিখে টাকা দেওয়ার Bill of Exchange গ্রহণ করলে Documents পান।']
+ ]),
+ p('এখানে ব্যাংক সাধারণত Documents সংগ্রহ ও হস্তান্তরের মধ্যস্থতাকারী হিসেবে কাজ করে; LC-এর মতো Payment Guarantee দেয় না। Buyer টাকা না দিলে বা গ্রহণ না করলে Seller-এর জন্য পণ্য ও Documents নিয়ে সমস্যা তৈরি হতে পারে।')
+]),
+S('১০.৬ Documentary Credit বা LC',[
+ p('LC হলো Buyer-এর আবেদনে Issuing Bank-এর দেওয়া একটি ব্যাংকিং Undertaking, যেখানে নির্দিষ্ট শর্ত পূরণ করে Beneficiary প্রয়োজনীয় Documents উপস্থাপন করলে ব্যাংক Payment করার প্রতিশ্রুতি দেয়। LC-এর ধরন ও শর্ত অনুযায়ী Confirming Bank বা অন্য ব্যাংকের ভূমিকাও থাকতে পারে।'),
+ p('LC-তে ব্যাংক সাধারণত পণ্যের বাস্তব অবস্থা পরীক্ষা করে না; তারা Documents পরীক্ষা করে। তাই পণ্য ভালো হলেও Documents-এ Discrepancy থাকলে Payment আটকে যেতে পারে। আবার Documents ঠিক থাকলেও পণ্যের Quality নিয়ে Buyer-এর আলাদা বিরোধ থাকতে পারে।')
+]),
+S('১০.৭ Payment Security-এর বাস্তবতা',[
+ nt('কোনো Payment Method-ই সব ঝুঁকি দূর করে না। Advance Payment-এ Buyer-এর ঝুঁকি, Open Account-এ Seller-এর ঝুঁকি এবং LC-তে Documentary Compliance-এর ঝুঁকি থাকে। তাই ব্যবসার ধরন অনুযায়ী Payment Method নির্বাচন করতে হবে।','info','মনে রাখুন')
+])
+]});
+
+C({id:'c11',no:'অধ্যায় ১১',title:'Letter of Credit (LC): ধারণা ও কাজের ধাপ',ac:'#9333ea',ic:'shield',subs:[
+S('১১.১ LC কী',[
+ p('Letter of Credit বা Documentary Credit হলো ব্যাংকের মাধ্যমে পরিচালিত একটি Documentary Payment Arrangement। Importer বা Applicant তার ব্যাংকের কাছে LC খোলার আবেদন করেন। ব্যাংক LC Issue করে Beneficiary বা Exporter-কে জানায়। LC-তে নির্ধারিত শর্ত অনুযায়ী Exporter পণ্য পাঠিয়ে প্রয়োজনীয় Documents উপস্থাপন করলে ব্যাংক সেগুলো পরীক্ষা করে এবং LC-এর শর্ত পূরণ হলে Payment বা Acceptance-এর ব্যবস্থা করে।'),
+ nt('LC-এর সবচেয়ে গুরুত্বপূর্ণ নীতি হলো: ব্যাংক পণ্য নয়, Documents দেখে। আন্তর্জাতিকভাবে Documentary Credit-এর ক্ষেত্রে UCP 600 বহুল ব্যবহৃত নিয়মাবলি; তবে LC-তে তা প্রযোজ্য হওয়ার জন্য সংশ্লিষ্টভাবে Incorporate করা থাকা জরুরি।','info','মূল নীতি')
+]),
+S('১১.২ LC-এর প্রধান পক্ষ',[
+ sp('svg-lc'),
+ df([
+  ['Applicant','সাধারণত Importer বা Buyer, যিনি LC খোলার আবেদন করেন।'],
+  ['Issuing Bank','Applicant-এর ব্যাংক, যে LC Issue করে।'],
+  ['Beneficiary','সাধারণত Exporter বা Seller, যিনি LC-এর অধীনে Payment পাওয়ার অধিকারী।'],
+  ['Advising Bank','Beneficiary-কে LC-এর সত্যতা যাচাই করে জানায়।'],
+  ['Confirming Bank','Issuing Bank-এর Undertaking-এর পাশাপাশি নিজস্ব Undertaking যোগ করে, যদি LC Confirm করা হয়।'],
+  ['Nominated Bank','LC-তে যে ব্যাংককে Documents উপস্থাপন বা নির্দিষ্ট কাজের জন্য মনোনীত করা হয়।'],
+  ['Negotiating Bank','LC-এর শর্ত অনুযায়ী Complying Presentation-এর বিপরীতে Draft বা Documents কিনে/Negotiation করতে পারে—যদি LC ও ব্যাংকিং ব্যবস্থায় তা প্রযোজ্য হয়।']
+ ])
+]),
+S('১১.৩ LC-এর সাধারণ Workflow',[
+ tl(['Buyer ও Seller পণ্যের Specification, Quantity, Price, Incoterm, Shipment Date এবং Payment Terms ঠিক করেন।','Seller Buyer-কে PI বা Sales Contract দেন।','Buyer নিজের ব্যাংকের সঙ্গে LC-এর শর্ত, Margin, Limit, Cash Flow ও প্রয়োজনীয় Documents নিয়ে আলোচনা করেন।','Buyer LC Application জমা দেন।','Issuing Bank Credit Facility, Compliance ও অন্যান্য শর্ত যাচাই করে LC Issue করে।','LC Advising Bank-এর মাধ্যমে Exporter-এর কাছে পৌঁছায়।','Exporter LC-এর প্রতিটি শর্ত পরীক্ষা করেন। কোনো শর্ত বাস্তবে পূরণ করা সম্ভব না হলে Amendment চাইতে পারেন।','Exporter পণ্য প্রস্তুত করে Shipment করেন।','Exporter LC-তে চাওয়া Documents নির্ধারিত সময় ও স্থানে উপস্থাপন করেন।','ব্যাংক Documents পরীক্ষা করে Discrepancy আছে কি না দেখে।','Documents Complying হলে LC-এর শর্ত অনুযায়ী Payment, Deferred Payment বা Acceptance-এর ব্যবস্থা হয়।','Importer Documents ও প্রযোজ্য Customs Formalities-এর ভিত্তিতে পণ্য ছাড়ানোর কাজ করেন।']),
+ p('এখানে পণ্য হাতে পাওয়ার পরেই LC Payment হয়—এমন কোনো সাধারণ নিয়ম নেই। LC-এর Payment Timing নির্ভর করে Sight, Deferred Payment, Acceptance বা Negotiation-এর শর্তের ওপর।')
+]),
+S('১১.৪ Irrevocable LC at Sight',[
+ p('Irrevocable LC সাধারণভাবে Beneficiary ও সংশ্লিষ্ট ব্যাংকগুলোর সম্মতি ছাড়া একতরফাভাবে পরিবর্তন বা বাতিল করা যায় না—LC-এর প্রযোজ্য নিয়ম অনুযায়ী।'),
+ p('At Sight মানে Documents Complying হলে LC-এর শর্ত অনুযায়ী Sight Payment করা হবে; অর্থাৎ নির্দিষ্ট Deferred Period শেষ হওয়ার জন্য অপেক্ষা করার কথা নয়। তবে ব্যাংকের Document Examination ও Payment Processing-এর বাস্তব সময় থাকতে পারে।')
+]),
+S('১১.৫ LC-এর গুরুত্বপূর্ণ শর্ত',[
+ ul(['Applicant ও Beneficiary-এর নাম','LC Amount ও Currency','Expiry Date','Place of Expiry','Latest Shipment Date','Presentation Period','Shipment From/To','Partial Shipment Allowed কি না','Transshipment Allowed কি না','Incoterm','Required Documents','Insurance Requirement','Payment Terms','Applicable Rules','Special Conditions'])
+]),
+S('১১.৬ LC Discrepancy',[
+ p('LC-এর শর্ত ও উপস্থাপিত Documents-এর মধ্যে অমিল থাকলে Discrepancy হতে পারে। যেমন:'),
+ ul(['Invoice-এর Description LC-এর সঙ্গে মেলে না।','Shipment Date নির্ধারিত Latest Shipment Date-এর পরে।','Bill of Lading-এ ভুল Port বা Consignee।','Required Certificate অনুপস্থিত।','Documents নির্ধারিত Presentation Period-এর পরে জমা।','Amount বা Quantity LC-এর অনুমোদিত সীমার বাইরে।'],'flag'),
+ p('Discrepancy হলে ব্যাংক নিয়ম অনুযায়ী Applicant-এর Waiver চাইতে পারে বা Documents Refuse করতে পারে। Waiver দেওয়া হবে কি না, সেটি ঝুঁকি বুঝে সিদ্ধান্ত নেওয়া উচিত।')
+]),
+S('১১.৭ LC খোলার আগে Importer-এর প্রস্তুতি',[
+ p('Supplier-এর PI, পণ্যের Specification, HS Code ও Regulatory Requirement, Incoterm, Shipment Schedule, Insurance, Required Documents এবং ব্যাংকের Credit Facility—সব আগে যাচাই করুন। LC-এর শর্ত এমনভাবে লিখবেন না যা Exporter বাস্তবে পূরণ করতে পারবেন না। আবার প্রয়োজনীয় নিরাপত্তা বাদ দিয়ে অযথা সহজ শর্তও দেবেন না।')
+]),
+S('১১.৮ LC-এর সুবিধা ও সীমাবদ্ধতা',[
+ pc(['Buyer ও Seller-এর মধ্যে Payment Risk কিছুটা কাঠামোবদ্ধ হয়।','ব্যাংকের Documentary Undertaking থাকে।','বড় Order-এ বিশ্বাসের ঘাটতি কমাতে সাহায্য করতে পারে।','নির্দিষ্ট Documents ও Shipment Conditions নিশ্চিত করা যায়।'],['Bank Charges ও Documentation Cost বেশি হতে পারে।','Documents-এ ছোট ভুলেও সমস্যা হতে পারে।','পণ্যের Quality নিশ্চিত করার বিকল্প নয়।','ব্যাংক ও Buyer-এর Credit Facility প্রয়োজন হতে পারে।','LC-এর শর্ত ভুল হলে Payment ও Shipment জটিল হয়।'],'সুবিধা','সীমাবদ্ধতা')
+])
+]});
+
+C({id:'c12',no:'অধ্যায় ১২',title:'Telegraphic Transfer (TT) এবং অন্যান্য Payment পদ্ধতি',ac:'#0284c7',ic:'transfer',subs:[
+S('১২.১ TT কী',[
+ p('Telegraphic Transfer বা TT বলতে সাধারণভাবে ব্যাংকিং চ্যানেলের মাধ্যমে এক ব্যাংক থেকে অন্য ব্যাংকে আন্তর্জাতিক অর্থ স্থানান্তর বোঝানো হয়। বর্তমানে অনেক ক্ষেত্রে SWIFT Message ও সংশ্লিষ্ট ব্যাংকিং নেটওয়ার্কের মাধ্যমে Cross-border Transfer পরিচালিত হয়। TT কোনো আলাদা Payment Guarantee নয়; এটি মূলত টাকা পাঠানোর একটি পদ্ধতি।')
+]),
+S('১২.২ TT Payment-এর প্রচলিত কাঠামো',[
+ df([
+  ['Advance TT','Buyer পণ্য পাঠানোর আগে টাকা পাঠান।'],
+  ['Partial Advance + Balance','Buyer অর্ডারের সময় কিছু টাকা দেন, বাকি টাকা Production Completion, Inspection বা Shipment-এর নির্দিষ্ট ধাপে দেন।'],
+  ['Balance Before Shipment','পণ্য প্রস্তুত হলে বা Inspection-এর পর Shipment-এর আগে বাকি টাকা দেওয়া হয়।'],
+  ['Balance Against Copy Documents','Seller Shipping Documents-এর Copy পাঠানোর পর Buyer বাকি টাকা দেন। তবে Copy Documents দেখে পণ্যের মালিকানা বা Cargo Release-এর সব অধিকার নিশ্চিত হয় না; বাস্তব Shipping Document ও Transport Terms গুরুত্বপূর্ণ।']
+ ])
+]),
+S('১২.৩ TT-এর সুবিধা ও ঝুঁকি',[
+ p('TT তুলনামূলক সহজ ও দ্রুত হতে পারে, তবে Buyer যদি পুরো টাকা আগে পাঠান, Seller-এর Performance Risk থাকে। আবার Seller যদি পণ্য পাঠিয়ে পরে টাকা নেন, Seller-এর Credit Risk থাকে। তাই Payment Milestone এমনভাবে ঠিক করা উচিত যাতে দুই পক্ষের ঝুঁকি যুক্তিসঙ্গত থাকে।')
+]),
+S('১২.৪ ব্যাংকিং চার্জ',[
+ p('International Transfer-এ Sending Bank Charge, Intermediary/Correspondent Bank Charge এবং Beneficiary Bank Charge থাকতে পারে। SHA, OUR, BEN-এর মতো Charge Arrangement ব্যবহার হতে পারে। কোন পক্ষ কোন চার্জ বহন করবে, তা ব্যাংকের নিয়ম ও Payment Instruction অনুযায়ী পরিষ্কার করতে হবে।')
+]),
+S('১২.৫ Payment Instruction যাচাই',[
+ ul(['Beneficiary-এর Legal Name','Bank Name','Bank Address','Account Number বা IBAN—যেখানে প্রযোজ্য','SWIFT/BIC','Currency','Payment Reference','Bank Country','Charge Instruction'],'chk'),
+ nt('Bank Details পরিবর্তনের অনুরোধ আলাদা চ্যানেলে যাচাই না করে টাকা পাঠাবেন না।','warn','সতর্কতা')
+]),
+S('১২.৬ TT, LC ও D/P–D/A তুলনা',[
+ p('TT হলো ব্যাংকিং Transfer Method। LC হলো ব্যাংকের Documentary Undertaking-ভিত্তিক Credit Arrangement। D/P ও D/A হলো Documentary Collection-এর পদ্ধতি। এদের কাজ ও ঝুঁকি আলাদা; তাই শুধু “ব্যাংকের মাধ্যমে টাকা যাচ্ছে” বলে এগুলোকে একই ধরনের Payment Method ভাবা ঠিক নয়।'),
+ tb(['পদ্ধতি','কীভাবে কাজ করে','ঝুঁকি ও সতর্কতা'],[
+  ['Advance Payment','Buyer পণ্য পাঠানোর আগে Seller-কে সম্পূর্ণ বা আংশিক টাকা দেন।','Buyer-এর ঝুঁকি: Seller পণ্য না পাঠালে বা চুক্তি অনুযায়ী কাজ না করলে অর্থ ফেরত পাওয়া কঠিন হতে পারে।'],
+  ['Open Account','Seller পণ্য পাঠানোর পর নির্দিষ্ট Credit Period শেষে Buyer টাকা দেন।','Seller-এর Payment Risk বেশি।'],
+  ['TT','ব্যাংকিং চ্যানেলে এক ব্যাংক থেকে অন্য ব্যাংকে আন্তর্জাতিক অর্থ স্থানান্তর; আলাদা Payment Guarantee নয়।','Buyer পুরো টাকা আগে পাঠালে Seller-এর Performance Risk; Seller পণ্য পাঠিয়ে পরে টাকা নিলে Seller-এর Credit Risk।'],
+  ['D/P','Documents against Payment: Buyer টাকা দিলে Documents পান; ব্যাংক হস্তান্তরের মধ্যস্থতাকারী।','LC-এর মতো Payment Guarantee নেই। Buyer টাকা না দিলে Seller-এর জন্য পণ্য ও Documents নিয়ে সমস্যা হতে পারে।'],
+  ['D/A','Documents against Acceptance: Buyer ভবিষ্যৎ তারিখে টাকা দেওয়ার Bill of Exchange গ্রহণ করলে Documents পান।','LC-এর মতো Payment Guarantee নেই। Buyer গ্রহণ না করলে Seller-এর সমস্যা হতে পারে।'],
+  ['LC','Issuing Bank-এর Documentary Undertaking; ব্যাংক Documents পরীক্ষা করে, পণ্য নয়।','Documentary Compliance-এর ঝুঁকি; Discrepancy হলে Payment আটকাতে পারে; পণ্যের Quality নিশ্চিত করার বিকল্প নয়।']
+ ],'Payment পদ্ধতির তুলনা',true)
+]),
+S('১২.৭ কোন Payment Method কখন বিবেচনা করবেন',[
+ p('নতুন Supplier-এর ক্ষেত্রে বড় অঙ্কের Unsecured Advance Payment ঝুঁকিপূর্ণ হতে পারে। ছোট Sample Order-এ তুলনামূলক সহজ Payment Method ব্যবহার হতে পারে। বড় অর্ডারে LC বা Milestone Payment বিবেচনা করা যায়। দীর্ঘদিনের নির্ভরযোগ্য সম্পর্ক থাকলে Open Account-এর মতো শর্ত আলোচনায় আসতে পারে। চূড়ান্ত সিদ্ধান্তের আগে ব্যাংকের নিয়ম, দেশের Foreign Exchange Regulation এবং Contract Terms যাচাই করতে হবে।')
+])
+]});
+
+C({id:'c13',no:'অধ্যায় ১৩',title:'Incoterms 2020: দায়িত্ব, খরচ ও ঝুঁকি বোঝা',ac:'#059669',ic:'scale',subs:[
+S('১৩.১ Incoterms কী',[
+ p('Incoterms হলো International Chamber of Commerce (ICC) প্রকাশিত আন্তর্জাতিক বাণিজ্যিক শর্তাবলি। এগুলো Buyer ও Seller-এর মধ্যে পণ্য সরবরাহের ক্ষেত্রে নির্দিষ্ট দায়িত্ব, খরচ এবং Risk Transfer-এর জায়গা পরিষ্কার করতে সাহায্য করে।'),
+ p('Incoterms পণ্যের মালিকানা কখন বদলাবে, Payment কীভাবে হবে, চুক্তি ভঙ্গের প্রতিকার কী হবে বা পণ্যের Quality কেমন হবে—এসব বিষয় নিজে থেকে নির্ধারণ করে না। এসবের জন্য Sales Contract ও অন্যান্য চুক্তির শর্ত দরকার।'),
+ p('Incoterms 2020-এ ১১টি Rule আছে। এর মধ্যে ৭টি যেকোনো Mode of Transport-এর জন্য এবং ৪টি Sea ও Inland Waterway Transport-এর জন্য।'),
+ sp('chart-incoterm')
+]),
+S('১৩.২ যেকোনো পরিবহন পদ্ধতির জন্য ৭টি Rule',[
+ df([
+  ['EXW — Ex Works','Seller নিজের নির্ধারিত স্থানে পণ্য Buyer-এর ব্যবস্থার জন্য প্রস্তুত রাখেন। Seller-এর দায়িত্ব তুলনামূলক কম। Export Clearance ও Loading-এর মতো বিষয় কে করবে, তা চুক্তি ও বাস্তব ব্যবস্থায় বিশেষভাবে দেখতে হবে। আন্তর্জাতিক Export-এর ক্ষেত্রে EXW অনেক সময় Buyer-এর জন্য জটিল হতে পারে।'],
+  ['FCA — Free Carrier','Seller নির্ধারিত স্থানে Buyer-এর মনোনীত Carrier-এর কাছে পণ্য হস্তান্তর করেন। Export Clearance সাধারণত Seller-এর দায়িত্ব। Containerized Cargo-এর ক্ষেত্রে FCA প্রায়ই বেশি উপযোগী হতে পারে, কারণ পণ্য Carrier-এর কাছে হস্তান্তরের সময় Risk Transfer নির্ধারণ করা যায়।'],
+  ['CPT — Carriage Paid To','Seller নির্ধারিত গন্তব্য পর্যন্ত Carriage Cost পরিশোধ করেন, কিন্তু Risk সাধারণত প্রথম Carrier-এর কাছে পণ্য হস্তান্তরের সময় Buyer-এর কাছে চলে যায়।'],
+  ['CIP — Carriage and Insurance Paid To','CPT-এর মতো, তবে Seller নির্দিষ্ট Insurance Coverage সংগ্রহ করেন। Incoterms 2020-এ CIP-এর Insurance Requirement সাধারণত CIF-এর চেয়ে বিস্তৃত।'],
+  ['DAP — Delivered at Place','Seller নির্ধারিত গন্তব্যস্থলে পণ্য পৌঁছে দেন, Unloading-এর জন্য প্রস্তুত অবস্থায়। Import Clearance ও Import Duty–Tax সাধারণত Buyer-এর দায়িত্ব।'],
+  ['DPU — Delivered at Place Unloaded','Seller নির্ধারিত গন্তব্যস্থলে পণ্য Unload করেও দেন। Incoterms 2020-এ এটি আগের DAT Rule-এর পরিবর্তে এসেছে।'],
+  ['DDP — Delivered Duty Paid','Seller পণ্য নির্ধারিত গন্তব্যে পৌঁছে দেন এবং Import Clearance ও Duty–Tax-এর দায়িত্বও নেন। তবে Seller-এর পক্ষে Buyer-এর দেশে Importer হিসেবে কাজ করা আইনগতভাবে সম্ভব কি না, তা আগে যাচাই করা জরুরি।']
+ ])
+]),
+S('১৩.৩ Sea ও Inland Waterway-এর জন্য ৪টি Rule',[
+ df([
+  ['FAS — Free Alongside Ship','Seller নির্ধারিত Shipment Port-এ জাহাজের পাশে পণ্য পৌঁছে দেন। এরপর Risk Buyer-এর কাছে যায়। সাধারণত Bulk বা নির্দিষ্ট Port-side Cargo-তে প্রাসঙ্গিক।'],
+  ['FOB — Free on Board','Seller পণ্য নির্ধারিত Port of Shipment-এ জাহাজে Load করেন। জাহাজে পণ্য On Board হওয়ার পর Risk Buyer-এর কাছে যায়। Containerized Cargo-তে পণ্য অনেক সময় জাহাজে ওঠার আগেই Terminal-এ Carrier-এর কাছে হস্তান্তর হয়; সে ক্ষেত্রে FCA বেশি উপযুক্ত হতে পারে।'],
+  ['CFR — Cost and Freight','Seller নির্ধারিত Destination Port পর্যন্ত Freight Cost পরিশোধ করেন। কিন্তু Risk Shipment Port-এ পণ্য জাহাজে On Board হওয়ার পর Buyer-এর কাছে চলে যায়।'],
+  ['CIF — Cost, Insurance and Freight','CFR-এর মতো, তবে Seller Marine Insurance-ও সংগ্রহ করেন। Incoterms 2020 অনুযায়ী CIF-এ সাধারণত ন্যূনতম Institute Cargo Clauses (C) ধরনের Coverage প্রয়োজন হয়, যদি পক্ষগুলো ভিন্নভাবে সম্মত না হয়।']
+ ]),
+ sp('incoterm')
+]),
+S('১৩.৪ Cost আর Risk এক জায়গায় বদলায় না—এটি মনে রাখুন',[
+ p('CFR ও CIF-এ Seller Destination Port পর্যন্ত Freight বা Insurance-এর খরচ বহন করলেও Risk Shipment Port-এ On Board হওয়ার সময় Buyer-এর কাছে চলে যায়। নতুন Importer-দের মধ্যে এই জায়গায় ভুল বোঝাবুঝি হয়।'),
+ nt('“Seller Freight দিয়েছে, তাই পণ্য গন্তব্যে পৌঁছানো পর্যন্ত Seller-এর Risk”—এমন ধরে নেওয়া যাবে না।','warn','সাধারণ ভুল ধারণা')
+]),
+S('১৩.৫ Incoterm-এর সঙ্গে Place লিখুন',[
+ p('শুধু FOB, CIF বা FCA লিখে থেমে যাবেন না। Rule-এর সঙ্গে নির্দিষ্ট Named Port বা Place এবং Version উল্লেখ করুন। যেমন: “FCA [নির্দিষ্ট ঠিকানা/টার্মিনাল], Incoterms 2020” অথবা “CIF Chattogram Port, Incoterms 2020”—চুক্তির বাস্তবতার সঙ্গে মিলিয়ে।'),
+ cd('FCA [নির্দিষ্ট ঠিকানা/টার্মিনাল], Incoterms 2020\nCIF Chattogram Port, Incoterms 2020','লেখার নমুনা')
+]),
+S('১৩.৬ Incoterms বাছাইয়ের আগে প্রশ্ন',[
+ ul(['Export Clearance কে করবে?','পণ্য কোথায় Carrier-এর কাছে হস্তান্তর হবে?','Main Freight কে বুক ও পরিশোধ করবে?','Insurance কে নেবে?','Import Clearance কে করবে?','Duty–Tax কে দেবে?','Destination Port থেকে Warehouse পর্যন্ত Transport কার দায়িত্ব?','Unloading কে করবে?','Risk ঠিক কোন জায়গায় Buyer-এর কাছে যাবে?'],'q'),
+ p('Incoterms নির্বাচন শুধু কম দাম দেখার বিষয় নয়। Buyer-এর Logistics Capability, Seller-এর অভিজ্ঞতা, পণ্যের ধরন এবং দেশের আইন বিবেচনা করতে হবে।')
+])
+]});
+</script>
+<script>
+/* ===== কনটেন্ট ডেটা (অংশ ৪): অধ্যায় ১৪–১৬, পরিশিষ্ট, সমাপ্তি ও সর্বমোট DATA ===== */
+C({id:'c14',no:'অধ্যায় ১৪',title:'একটি Import Order শুরু থেকে Shipment-এর প্রস্তুতি পর্যন্ত',ac:'#c2410c',ic:'route',tlmode:true,subs:[
+S('১৪.১ ধাপ ১: Business Requirement',[
+ p('প্রথমে লিখে ফেলুন কী পণ্য লাগবে, কেন লাগবে, কত Quantity লাগবে, কাদের কাছে বিক্রি করবেন এবং কত সময়ের মধ্যে পণ্য প্রয়োজন। এই পর্যায়ে Market Research, Target Cost ও Regulatory Check করুন।')
+]),
+S('১৪.২ ধাপ ২: Product Specification',[
+ p('পণ্যের Specification Sheet তৈরি করুন। ছবি বা Reference Link দেওয়া যেতে পারে, কিন্তু ছবি একা যথেষ্ট নয়। Material, Dimension, Function, Packaging, Standard ও Tolerance লিখিতভাবে দিন।')
+]),
+S('১৪.৩ ধাপ ৩: Supplier Search ও RFQ',[
+ p('একাধিক Supplier খুঁজুন এবং একই RFQ পাঠান। Quotation পাওয়ার পর Price, Incoterm, MOQ, Lead Time, Payment Terms ও Quality Capability তুলনা করুন।')
+]),
+S('১৪.৪ ধাপ ৪: Supplier Verification',[
+ p('Supplier-এর Legal Identity, Factory বা Trading Status, Address, Contact Person, Bank Details এবং Export Experience যাচাই করুন। প্রয়োজন হলে Third-party Audit বা Factory Inspection করুন।')
+]),
+S('১৪.৫ ধাপ ৫: Sample ও Approval',[
+ p('Sample নিন, পরীক্ষা করুন এবং Specification-এর সঙ্গে মিলিয়ে Approval দিন। Sample-এ পরিবর্তন প্রয়োজন হলে Bulk Production-এর আগে সংশোধিত Sample অনুমোদন করুন।')
+]),
+S('১৪.৬ ধাপ ৬: Commercial Negotiation',[
+ p('Unit Price, Quantity, Incoterm, Named Place, Payment Terms, Production Time, Delivery Date, Packaging, Inspection, Warranty এবং Defect Handling নিয়ে আলোচনা করুন।')
+]),
+S('১৪.৭ ধাপ ৭: PI, PO ও Contract',[
+ p('PI ও PO-এর তথ্য মিলিয়ে নিন। Order Value বা Risk বেশি হলে Sales Contract করুন। কোনো শর্ত Chat-এ ঠিক হলেও Contract/PO/PI-তে প্রতিফলিত হয়েছে কি না দেখুন।')
+]),
+S('১৪.৮ ধাপ ৮: Import Compliance ও Banking Preparation',[
+ p('পণ্যের HS Code, Import Policy, প্রয়োজনীয় Permit, Standard, Certificate এবং ব্যাংকের প্রয়োজনীয় কাগজপত্র যাচাই করুন। LC হলে LC Draft Supplier-কে দিয়ে পরীক্ষা করান। TT হলে Beneficiary Bank Details স্বাধীনভাবে যাচাই করুন।')
+]),
+S('১৪.৯ ধাপ ৯: Payment ও Production',[
+ p('চুক্তি অনুযায়ী Payment করুন। Production Schedule নিন। Supplier-এর কাছ থেকে ছবি বা Video Update নেওয়া যেতে পারে, তবে এগুলো Formal Inspection-এর বিকল্প নয়।')
+]),
+S('১৪.১০ ধাপ ১০: Quality Inspection',[
+ p('চুক্তি অনুযায়ী During Production বা Pre-shipment Inspection করুন। Defect পাওয়া গেলে Shipment-এর আগে Corrective Action, Rework, Replacement বা Price Adjustment নিয়ে লিখিত সমঝোতা করুন।')
+]),
+S('১৪.১১ ধাপ ১১: Shipping Plan',[
+ p('পণ্যের Volume, Weight, Delivery Deadline এবং Budget অনুযায়ী Air, Sea বা অন্য Transport Option বিবেচনা করুন। Freight Forwarder-এর কাছ থেকে একই Scope-এর Quotation নিন। Origin-side Charges, Destination-side Charges, Transit Time এবং Exclusions বুঝুন।')
+]),
+S('১৪.১২ ধাপ ১২: Shipment Documents',[
+ p('Shipment-এর আগে Commercial Invoice, Packing List, Shipping Instruction, প্রয়োজনীয় Certificate এবং অন্যান্য Documents প্রস্তুত করুন। কোন Document কে ইস্যু করবে এবং কখন পাওয়া যাবে তা আগে থেকে ঠিক করুন।')
+]),
+S('১৪.১৩ ধাপ ১৩: Final Pre-shipment Checklist',[
+ ul(['Product ও Quantity ঠিক আছে।','Approved Specification অনুসরণ করা হয়েছে।','Inspection Result গ্রহণযোগ্য।','Packaging ও Shipping Mark ঠিক আছে।','Carton Count, Net/Gross Weight ও Dimension মিলেছে।','Payment Status পরিষ্কার।','Export-side Documents প্রস্তুত।','Freight Booking ও Shipment Schedule Confirm।','Insurance প্রয়োজন হলে ব্যবস্থা করা হয়েছে।','Buyer, Seller ও Forwarder-এর Contact Information সংরক্ষিত।'],'chk'),
+ p('এই পর্যায়ে Shipment শুরু করার জন্য প্রয়োজনীয় প্রস্তুতি সম্পন্ন হয়। প্রকৃত Export Port Operation, Vessel Loading, Bill of Lading, Import Customs এবং Delivery পরবর্তী অংশগুলোতে বিস্তারিত আলোচনা করা হবে।')
+])
+]});
+
+C({id:'c15',no:'অধ্যায় ১৫',title:'Export Business-এর প্রাথমিক কাঠামো',ac:'#be185d',ic:'export',subs:[
+S('১৫.১ Exporter কীভাবে Buyer খুঁজবেন',[
+ p('Exporter বিদেশি Buyer খুঁজতে B2B Marketplace, Trade Fair, Chamber of Commerce, Distributor Network, Industry Association, Business Referral এবং নিজের Website ব্যবহার করতে পারেন। Buyer-এর পরিচয়, Business Registration, Market Presence, Payment Capacity এবং Purchase History যাচাই করা গুরুত্বপূর্ণ।')
+]),
+S('১৫.২ Export Inquiry',[
+ p('বিদেশি Buyer Product Catalogue, Specification, Price, MOQ, Sample, Production Capacity এবং Delivery Time জানতে চাইতে পারেন। Exporter-এর উচিত দ্রুত কিন্তু যাচাই করা তথ্য দিয়ে উত্তর দেওয়া। অযথা কম দাম বা অসম্ভব Delivery Promise দিয়ে Order নেওয়া দীর্ঘমেয়াদে ক্ষতিকর।')
+]),
+S('১৫.৩ Export Quotation',[
+ p('Export Quotation-এ Product Description, Quantity, Unit Price, Currency, Incoterm, Named Place, Payment Terms, Lead Time, Packing, Validity এবং প্রয়োজনীয় Standard উল্লেখ করুন। Buyer-এর চাহিদা অনুযায়ী Sample ও Inspection Terms-ও উল্লেখ করা যায়।')
+]),
+S('১৫.৪ Export Order Confirmation',[
+ p('Buyer-এর PO, Seller-এর Order Confirmation বা Sales Contract-এর মাধ্যমে Order নিশ্চিত হতে পারে। Payment Method ও Shipment Terms স্পষ্ট থাকতে হবে। Buyer-এর Credit Risk থাকলে Advance Payment, LC বা উপযুক্ত Documentary Arrangement বিবেচনা করা যায়।')
+]),
+S('১৫.৫ Production ও Quality Control',[
+ p('Buyer-এর Specification অনুযায়ী Production Plan তৈরি করুন। Raw Material, Production Process, In-process Quality Control, Final Inspection এবং Packaging-এর দায়িত্ব নির্ধারণ করুন। Buyer-এর অনুমতি ছাড়া Material বা Model পরিবর্তন করবেন না।')
+]),
+S('১৫.৬ Export Documentation-এর প্রস্তুতি',[
+ p('Export-এর ক্ষেত্রে Commercial Invoice, Packing List, Export Declaration, Certificate of Origin, Inspection Certificate, Phytosanitary Certificate বা অন্যান্য Documents পণ্যের ধরন ও দেশের নিয়ম অনুযায়ী প্রয়োজন হতে পারে। সব পণ্যে সব Certificate লাগে না। পণ্য, Destination Country, Buyer-এর Contract এবং Applicable Regulation অনুযায়ী যাচাই করতে হবে।')
+]),
+S('১৫.৭ Exporter-এর ঝুঁকি',[
+ ul(['Buyer-এর Payment Default','Product Rejection','Shipment Delay','Currency Fluctuation','Document Discrepancy','Transport Damage','Destination Country-এর Regulatory Change','Sanctions বা Restricted Party Risk','Intellectual Property Dispute'],'flag'),
+ p('Export Contract-এ Inspection, Acceptance Criteria, Claim Period, Payment Security এবং Dispute Resolution পরিষ্কার রাখা উচিত।')
+])
+]});
+
+C({id:'c16',no:'অধ্যায় ১৬',title:'সাধারণ ভুল, প্রতারণার ঝুঁকি ও ব্যবহারিক চেকলিস্ট',ac:'#b91c1c',ic:'alert',subs:[
+S('১৬.১ নতুন Importer-দের সাধারণ ভুল',[
+ ol(['বাজার যাচাই না করে পণ্য নির্বাচন।','শুধু Unit Price দেখে Supplier নির্বাচন।','Supplier-এর পরিচয় যাচাই না করা।','Product Specification লিখিতভাবে না নেওয়া।','Sample না দেখে বড় Order দেওয়া।','PI ও PO-এর তথ্য না মেলানো।','Incoterm না বুঝে Order Confirm করা।','Freight Quotation-এর Excluded Charges না দেখা।','HS Code ও Import Requirement আগে যাচাই না করা।','Customs Duty–Tax না হিসাব করে লাভ নির্ধারণ।','Bank Details পরিবর্তন যাচাই না করে টাকা পাঠানো।','Production ও Shipment Lead Time আলাদা না করা।','Insurance Coverage না বুঝে পণ্য পাঠানো।','Shipment Documents-এর তথ্য মিলিয়ে না দেখা।','Customer-কে অবাস্তব Delivery Promise দেওয়া।'])
+]),
+S('১৬.২ Supplier Fraud-এর ধরন',[
+ ac([
+  ['Impersonation Fraud',['প্রতারক আসল Supplier বা তার কর্মীর পরিচয় ব্যবহার করে টাকা নেওয়ার চেষ্টা করে।']],
+  ['Business Identity Fraud',['ভুয়া বা অন্য প্রতিষ্ঠানের পরিচয় ব্যবহার করে Order নেওয়া হয়।']],
+  ['Quality Substitution',['Sample ভালো দেখিয়ে Bulk Production-এ নিম্নমানের পণ্য দেওয়া হয়।']],
+  ['Payment Diversion',['Supplier-এর Email বা Chat নকল করে Bank Account পরিবর্তনের নির্দেশ পাঠানো হয়।']],
+  ['Quantity Shortage',['Invoice বা Packing List অনুযায়ী পণ্য দেখানো হলেও বাস্তবে কম পণ্য পাঠানো হয়।']],
+  ['Counterfeit Product',['আসল Brand বা অনুমোদিত পণ্যের বদলে নকল পণ্য সরবরাহ করা হয়।']]
+ ],true)
+]),
+S('১৬.৩ প্রতারণা প্রতিরোধের নিয়ম',[
+ ul(['Legal Business Identity যাচাই করুন।','Supplier-এর পরিচিত Contact Channel সংরক্ষণ করুন।','Bank Details পরিবর্তন হলে আলাদা মাধ্যমে Confirm করুন।','Written Contract ছাড়া বড় অঙ্কের Payment করবেন না।','Sample ও Bulk Specification মিলিয়ে রাখুন।','প্রয়োজন হলে Independent Inspection করুন।','Payment Milestone যুক্তিসঙ্গত রাখুন।','সব Invoice, Chat, Email, Receipt ও Inspection Report সংরক্ষণ করুন।','অস্বাভাবিক চাপ বা গোপনীয়তার দাবি এলে থামুন এবং যাচাই করুন।'],'chk')
+]),
+S('১৬.৪ Import Order Master Checklist',[
+ tabs([
+  ['অর্ডারের আগে',[ck(['পণ্যের বাজার ও চাহিদা যাচাই করা হয়েছে।','Product Specification তৈরি হয়েছে।','HS Code ও Import Requirement যাচাই হয়েছে।','Supplier Shortlist করা হয়েছে।','Supplier Verification হয়েছে।','Sample পরীক্ষা করা হয়েছে।','Landed Cost Estimate তৈরি হয়েছে।'])]],
+  ['অর্ডার নিশ্চিত করার সময়',[ck(['Quotation তুলনা করা হয়েছে।','Incoterm ও Named Place নির্দিষ্ট।','Payment Terms লিখিত।','PI/PO/Contract-এর তথ্য মিলে।','Production Lead Time নির্দিষ্ট।','Inspection ও Defect Policy নির্ধারিত।','Bank Details যাচাই করা হয়েছে।'])]],
+  ['Shipment-এর আগে',[ck(['Production Status Confirm।','Quality Inspection সম্পন্ন।','Quantity ও Packaging Confirm।','Carton Count ও Weight Confirm।','Shipping Plan Confirm।','প্রয়োজনীয় Documents প্রস্তুত।','Insurance প্রয়োজন অনুযায়ী ব্যবস্থা করা হয়েছে।','Buyer ও Logistics Team-এর যোগাযোগ নিশ্চিত।'])]],
+  ['পণ্য গ্রহণের সময়',[ck(['Package ও Seal-এর অবস্থা দেখা হয়েছে।','Carton Count মিলেছে।','Damage বা Shortage নথিভুক্ত হয়েছে।','প্রয়োজন হলে ছবি/ভিডিও ও Survey Report নেওয়া হয়েছে।','Supplier-এর সঙ্গে Claim করার সময়সীমা দেখা হয়েছে।','Final Landed Cost আপডেট করা হয়েছে।'])]]
+ ])
+]),
+S('১৬.৫ Export Order Master Checklist',[
+ tabs([
+  ['Buyer যাচাই',[ck(['Buyer-এর পরিচয় ও ব্যবসা যাচাই।','Payment Capacity ও Risk মূল্যায়ন।','Sanctions/Restricted Party Screening—প্রযোজ্য হলে।'])]],
+  ['Order',[ck(['Specification ও Quantity নিশ্চিত।','Quotation ও Contract Confirm।','Incoterm ও Named Place ঠিক।','Payment Terms নির্ধারিত।','Inspection Criteria নির্ধারিত।'])]],
+  ['Production',[ck(['Raw Material ও Production Plan Confirm।','Quality Control Plan আছে।','Sample/Specification অনুযায়ী Production।','Final Inspection সম্পন্ন।'])]],
+  ['Shipment',[ck(['Export-side Requirements যাচাই।','Commercial Invoice ও Packing List প্রস্তুত।','প্রয়োজনীয় Certificate প্রস্তুত।','Freight ও Insurance Arrangement Confirm।','Shipping Documents-এর তথ্য মিলেছে।','Buyer-কে Shipment Information পাঠানো হয়েছে।'])]]
+ ])
+])
+]});
+
+C({id:'ap1',no:'পরিশিষ্ট ক',title:'গুরুত্বপূর্ণ Import–Export শব্দের সহজ ব্যাখ্যা',ac:'#0f766e',ic:'book',subs:[
+S('শব্দতালিকা',[
+ df([
+  ['Applicant','LC খোলার আবেদনকারী।'],
+  ['Beneficiary','LC-এর অধীনে অর্থ পাওয়ার অধিকারী পক্ষ।'],
+  ['Bill of Exchange','নির্দিষ্ট পক্ষকে নির্দিষ্ট সময়ে অর্থ পরিশোধের লিখিত নির্দেশ বা Instrument।'],
+  ['Bill of Lading','Carrier-এর Cargo Receipt, Carriage Contract-এর প্রমাণ এবং কিছু ক্ষেত্রে Document of Title হিসেবে কাজ করা পরিবহন ডকুমেন্ট।'],
+  ['Buyer','ক্রেতা।'],
+  ['Cargo','পরিবহনযোগ্য পণ্য।'],
+  ['Certificate of Origin','পণ্যের Origin বা উৎপত্তি-সংক্রান্ত সনদ।'],
+  ['Commercial Invoice','বিক্রয়ের বাণিজ্যিক চালান।'],
+  ['Consignee','পরিবহন ডকুমেন্টে পণ্য গ্রহণকারী পক্ষ।'],
+  ['Customs','আমদানি-রপ্তানি ও সীমান্ত বাণিজ্য নিয়ন্ত্রণকারী সরকারি কর্তৃপক্ষ।'],
+  ['Exporter','রপ্তানিকারক।'],
+  ['Freight','পণ্য পরিবহনের ভাড়া বা চার্জ।'],
+  ['Freight Forwarder','পণ্য পরিবহনের ব্যবস্থা ও সমন্বয়কারী প্রতিষ্ঠান।'],
+  ['HS Code','পণ্য শ্রেণিবিন্যাসের Harmonized System Code।'],
+  ['Importer','আমদানিকারক।'],
+  ['Incoterms','Buyer ও Seller-এর Delivery Responsibility, Cost এবং Risk ভাগ করার আন্তর্জাতিক নিয়ম।'],
+  ['Inspection','পণ্য বা প্রক্রিয়া পরীক্ষা।'],
+  ['Landed Cost','পণ্য নির্দিষ্ট গন্তব্যে পৌঁছানো পর্যন্ত প্রযোজ্য মোট খরচের হিসাব।'],
+  ['MOQ','Minimum Order Quantity।'],
+  ['Packing List','প্যাকেজ ও পণ্যের পরিমাণ, ওজন ও Dimension-এর বিবরণ।'],
+  ['PI','Proforma Invoice।'],
+  ['PO','Purchase Order।'],
+  ['RFQ','Request for Quotation।'],
+  ['Shipper','পরিবহন ডকুমেন্টে পণ্য পাঠানোর পক্ষ।'],
+  ['Supplier','পণ্য সরবরাহকারী।'],
+  ['TT','Telegraphic Transfer।'],
+  ['UCP 600','Documentary Credit-এর জন্য ICC-এর Uniform Customs and Practice-এর প্রচলিত সংস্করণ।']
+ ],'sm')
+])
+]});
+
+C({id:'ap2',no:'পরিশিষ্ট খ',title:'একটি Supplier RFQ-এর নমুনা কাঠামো',ac:'#0f766e',ic:'mail',subs:[
+S('RFQ ইমেইলের নমুনা',[
+ cd('Subject: Request for Quotation — [Product Name / Model]\n\nDear Sales Team,\n\nWe are interested in purchasing the following product for the Bangladesh market.\n\nProduct Name:\nModel:\nSpecification:\nRequired Quantity:\nPackaging Requirement:\nTarget Delivery Time:\nRequired Documents/Certificates:\nPreferred Incoterm:\nNamed Place/Port:\nPayment Preference:\n\nPlease provide:\n1. Unit Price and Total Price\n2. MOQ\n3. Sample Price and Sample Lead Time\n4. Bulk Production Lead Time\n5. Packaging Details\n6. Net Weight and Gross Weight\n7. Carton Dimensions\n8. Warranty and Defect Policy\n9. Available Certificates/Test Reports\n10. Quotation Validity\n\nPlease also confirm whether you are the manufacturer or a trading company.\n\nBest regards,\n[Buyer/Company Name]','RFQ নমুনা'),
+ p('এই নমুনাটি প্রয়োজন অনুযায়ী পরিবর্তন করতে হবে। Supplier-কে RFQ পাঠানোর সময় অস্পষ্ট জায়গায় নিজের অনুমান বসিয়ে দেবেন না।')
+])
+]});
+
+C({id:'ap3',no:'পরিশিষ্ট গ',title:'একটি Import Costing Sheet-এর কাঠামো',ac:'#0f766e',ic:'calc',subs:[
+S('Costing Sheet (A–G)',[
+ ac([
+  ['A. Product Cost',[cd('Quantity × Unit Price = Total Product Value')]],
+  ['B. Origin-side Cost',[ul(['Local Transport','Export Handling','Documentation','Warehouse/Loading','Other Origin Charges'])]],
+  ['C. International Logistics',[ul(['Main Freight','Insurance','Other Freight-related Charges'])]],
+  ['D. Destination-side Cost',[ul(['Terminal/Port Charges','Customs-related Service Charges','C&F Service Fee','Inland Transport','Warehouse Handling'])]],
+  ['E. Government Charges',[ul(['Customs Duty','VAT','Supplementary Duty—যদি প্রযোজ্য হয়','Regulatory Duty বা অন্যান্য প্রযোজ্য Tax—যদি থাকে'])]],
+  ['F. Financial Cost',[ul(['Bank Charges','Currency Conversion','Interest/Finance Cost','Payment-related Charges'])]],
+  ['G. Final Calculation',[cd('Total Applicable Cost ÷ Saleable Quantity = Per-unit Landed Cost')]]
+ ],true),
+ nt('সতর্কতা: Customs Duty–Tax-এর হিসাব পণ্যের HS Code, Customs Assessable Value, Origin, Applicable Tariff, Regulatory Conditions এবং সংশ্লিষ্ট সময়ের আইন অনুযায়ী করতে হবে। শুধু Supplier-এর Invoice Value দিয়ে Duty নির্ধারণ করা যায় না।','warn','সতর্কতা')
+])
+]});
+
+C({id:'ap4',no:'পরিশিষ্ট ঘ',title:'এই অংশ পড়ার পর একজন শিক্ষার্থী কী বুঝতে পারবেন',ac:'#0f766e',ic:'check',subs:[
+S('শিখন-ফলাফল',[
+ p('এই অংশ শেষ করার পর পাঠক:'),
+ ol(['Import ও Export-এর মৌলিক পার্থক্য ব্যাখ্যা করতে পারবেন।','আন্তর্জাতিক বাণিজ্যের প্রধান পক্ষগুলোর ভূমিকা বুঝতে পারবেন।','Import Business Model ও Export Business Model-এর পার্থক্য ধরতে পারবেন।','বাজার যাচাই ও Product Feasibility-এর প্রাথমিক কাঠামো তৈরি করতে পারবেন।','Supplier খোঁজা, RFQ পাঠানো ও Quotation তুলনা করতে পারবেন।','Manufacturer, Trading Company ও Sourcing Agent-এর পার্থক্য বুঝতে পারবেন।','Supplier Verification ও Payment Fraud-এর ঝুঁকি চিহ্নিত করতে পারবেন।','Sample, Specification ও Inspection-এর প্রয়োজন বুঝতে পারবেন।','Product Cost, Landed Cost, Gross Margin ও Markup-এর পার্থক্য হিসাব করতে পারবেন।','PI, PO, Commercial Invoice ও Packing List-এর কাজ বুঝতে পারবেন।','TT, LC, D/P ও D/A-এর মৌলিক পার্থক্য ব্যাখ্যা করতে পারবেন।','LC-এর সাধারণ Workflow ও Discrepancy-এর কারণ বুঝতে পারবেন।','Incoterms 2020-এর ১১টি Rule-এর মৌলিক দায়িত্ব ও Risk Transfer বুঝতে পারবেন।','একটি Import Order Shipment-এর প্রস্তুতি পর্যন্ত কীভাবে পরিচালিত হয়, তার Workflow তৈরি করতে পারবেন।','Export Order-এর প্রাথমিক Commercial ও Documentation প্রস্তুতি বুঝতে পারবেন।'])
+])
+]});
+
+C({id:'end',no:'সমাপ্তি',title:'প্রথম অংশের সমাপ্তি',ac:'#0ea5e9',ic:'anchor',subs:[
+S('এই অংশে যা আলোচিত হয়েছে',[
+ p('এই অংশে আন্তর্জাতিক Import–Export ব্যবসার ভিত্তি তৈরি করা হয়েছে। একটি ব্যবসায়িক Order কীভাবে শুরু হয়, পণ্য কীভাবে নির্বাচন ও Source করা হয়, Supplier কীভাবে যাচাই করতে হয়, দাম ও Payment Terms কীভাবে ঠিক হয় এবং Shipment-এর আগে কী কী প্রস্তুতি লাগে—এসব বিষয় আলোচনা করা হয়েছে।'),
+ p('তবে এখানে Port Operations, Vessel Loading, Container Yard, Freight Forwarding-এর বিস্তারিত কাজ, Bill of Lading-এর পূর্ণাঙ্গ ব্যবহার, Customs Clearance, C&F Agent-এর বাস্তব কার্যক্রম এবং বাংলাদেশে পণ্য ছাড়ানোর ধাপগুলো ইচ্ছাকৃতভাবে পরবর্তী অংশের জন্য রাখা হয়েছে। কারণ এগুলো আলাদা করে বিস্তারিত না বুঝলে Import–Export-এর বাস্তব Logistics ও Port Process পরিষ্কার হবে না।')
+]),
+S('পরবর্তী অংশ',[
+ nt('Part 2 — Maritime Shipping & Complete Seaport Operations\nসেখানে Maritime Shipping-এর বৈশ্বিক ভূমিকা থেকে শুরু করে Port Infrastructure, Container Terminal, Yard Management, Export Port Process, Vessel Operations, Import Discharge, Bill of Lading, Oil Terminal এবং তোমার দেওয়া ভিডিওর প্রতিটি বিষয় বিস্তারিতভাবে আলোচনা করা হবে।','info','পরবর্তী অংশ')
+])
+]});
+
+/* ===== সর্বমোট DATA: সার্চ, চার্ট ও ক্যালকুলেটর একই উৎস ব্যবহার করে ===== */
+window.DATA={
+ meta:{
+  title:'THE COMPLETE IMPORT–EXPORT HANDBOOK',
+  part:'প্রথম অংশ: International Import–Export Business',
+  sub:'শূন্য থেকে আন্তর্জাতিক বাণিজ্যের ভিত্তি, ব্যবসায়িক কাঠামো, সোর্সিং, দরদাম, ডকুমেন্টেশন ও পেমেন্ট',
+  typing:['Import & Export','Global Sourcing','Supplier Verification','Landed Cost','Letter of Credit','Incoterms 2020','Shipment Readiness'],
+  stats:[[16,'অধ্যায়'],[11,'Incoterms 2020 Rule'],[12,'LC Workflow-এর ধাপ'],[13,'Import Order-এর ধাপ']],
+  chips:['Sourcing','Supplier Verification','PI · PO · Invoice','TT · LC · D/P · D/A','Incoterms 2020','Landed Cost']
+ },
+ chapters:CH,
+ matrix:[['Quality Capability',25],['Price Competitiveness',20],['Reliability ও Business Verification',20],['Production Capacity',15],['Communication',10],['Delivery Performance',10]],
+ landed:[['পণ্যের মোট মূল্য',5000],['Origin-side ও অন্যান্য প্রযোজ্য খরচ',300],['International Freight',700],['Insurance',50],['Port, Clearance ও Inland Transport (আনুমানিক)',450]],
+ calc:{landed:{qty:1000,unit:5,origin:300,freight:700,ins:50,dest:450,duty:0,fin:0,oth:0,sell:0},margin:{cost:100,price:130},docs:{pi:1000,po:1000,inv:950,pl:1000}},
+ stages:['Seller-এর স্থান','Origin Port/Terminal','জাহাজে On Board','Destination Port','গন্তব্য স্থান'],
+ incoterms:[
+  {c:'EXW',n:'Ex Works',g:'any',r:0,k:0,tag:['Seller-এর দায়িত্ব তুলনামূলক কম'],d:'Seller নিজের নির্ধারিত স্থানে পণ্য Buyer-এর ব্যবস্থার জন্য প্রস্তুত রাখেন। Seller-এর দায়িত্ব তুলনামূলক কম। Export Clearance ও Loading-এর মতো বিষয় কে করবে, তা চুক্তি ও বাস্তব ব্যবস্থায় বিশেষভাবে দেখতে হবে। আন্তর্জাতিক Export-এর ক্ষেত্রে EXW অনেক সময় Buyer-এর জন্য জটিল হতে পারে।'},
+  {c:'FCA',n:'Free Carrier',g:'any',r:1,k:1,tag:['Export Clearance সাধারণত Seller-এর'],d:'Seller নির্ধারিত স্থানে Buyer-এর মনোনীত Carrier-এর কাছে পণ্য হস্তান্তর করেন। Export Clearance সাধারণত Seller-এর দায়িত্ব। Containerized Cargo-এর ক্ষেত্রে FCA প্রায়ই বেশি উপযোগী হতে পারে, কারণ পণ্য Carrier-এর কাছে হস্তান্তরের সময় Risk Transfer নির্ধারণ করা যায়।'},
+  {c:'CPT',n:'Carriage Paid To',g:'any',r:1,k:4,tag:['Carriage Cost Seller-এর'],d:'Seller নির্ধারিত গন্তব্য পর্যন্ত Carriage Cost পরিশোধ করেন, কিন্তু Risk সাধারণত প্রথম Carrier-এর কাছে পণ্য হস্তান্তরের সময় Buyer-এর কাছে চলে যায়।'},
+  {c:'CIP',n:'Carriage and Insurance Paid To',g:'any',r:1,k:4,tag:['Carriage Cost Seller-এর','Insurance Seller সংগ্রহ করেন'],d:'CPT-এর মতো, তবে Seller নির্দিষ্ট Insurance Coverage সংগ্রহ করেন। Incoterms 2020-এ CIP-এর Insurance Requirement সাধারণত CIF-এর চেয়ে বিস্তৃত।'},
+  {c:'DAP',n:'Delivered at Place',g:'any',r:4,k:4,tag:['Unloading-এর জন্য প্রস্তুত অবস্থায়','Import Clearance ও Duty–Tax সাধারণত Buyer-এর'],d:'Seller নির্ধারিত গন্তব্যস্থলে পণ্য পৌঁছে দেন, Unloading-এর জন্য প্রস্তুত অবস্থায়। Import Clearance ও Import Duty–Tax সাধারণত Buyer-এর দায়িত্ব।'},
+  {c:'DPU',n:'Delivered at Place Unloaded',g:'any',r:4,k:4,tag:['Seller Unload করেও দেন'],d:'Seller নির্ধারিত গন্তব্যস্থলে পণ্য Unload করেও দেন। Incoterms 2020-এ এটি আগের DAT Rule-এর পরিবর্তে এসেছে।'},
+  {c:'DDP',n:'Delivered Duty Paid',g:'any',r:4,k:4,tag:['Import Clearance ও Duty–Tax Seller-এর'],d:'Seller পণ্য নির্ধারিত গন্তব্যে পৌঁছে দেন এবং Import Clearance ও Duty–Tax-এর দায়িত্বও নেন। তবে Seller-এর পক্ষে Buyer-এর দেশে Importer হিসেবে কাজ করা আইনগতভাবে সম্ভব কি না, তা আগে যাচাই করা জরুরি।'},
+  {c:'FAS',n:'Free Alongside Ship',g:'sea',r:1,k:1,tag:['জাহাজের পাশে পৌঁছানো পর্যন্ত Seller'],d:'Seller নির্ধারিত Shipment Port-এ জাহাজের পাশে পণ্য পৌঁছে দেন। এরপর Risk Buyer-এর কাছে যায়। সাধারণত Bulk বা নির্দিষ্ট Port-side Cargo-তে প্রাসঙ্গিক।'},
+  {c:'FOB',n:'Free on Board',g:'sea',r:2,k:2,tag:['জাহাজে Load করেন Seller'],d:'Seller পণ্য নির্ধারিত Port of Shipment-এ জাহাজে Load করেন। জাহাজে পণ্য On Board হওয়ার পর Risk Buyer-এর কাছে যায়। Containerized Cargo-তে পণ্য অনেক সময় জাহাজে ওঠার আগেই Terminal-এ Carrier-এর কাছে হস্তান্তর হয়; সে ক্ষেত্রে FCA বেশি উপযুক্ত হতে পারে।'},
+  {c:'CFR',n:'Cost and Freight',g:'sea',r:2,k:3,tag:['Destination Port পর্যন্ত Freight Seller-এর'],d:'Seller নির্ধারিত Destination Port পর্যন্ত Freight Cost পরিশোধ করেন। কিন্তু Risk Shipment Port-এ পণ্য জাহাজে On Board হওয়ার পর Buyer-এর কাছে চলে যায়।'},
+  {c:'CIF',n:'Cost, Insurance and Freight',g:'sea',r:2,k:3,tag:['Destination Port পর্যন্ত Freight Seller-এর','Marine Insurance Seller সংগ্রহ করেন'],d:'CFR-এর মতো, তবে Seller Marine Insurance-ও সংগ্রহ করেন। Incoterms 2020 অনুযায়ী CIF-এ সাধারণত ন্যূনতম Institute Cargo Clauses (C) ধরনের Coverage প্রয়োজন হয়, যদি পক্ষগুলো ভিন্নভাবে সম্মত না হয়।'}
+ ]
+};
+</script>
+<style>
+/* অতিরিক্ত স্টাইল (ইঞ্জিনের জন্য) */
+.ul.flag li::before{content:'⚠';background:none;width:auto;height:auto;transform:none;top:.05em;color:#d97706;font-size:1rem;left:.1rem}
+.tbl td:first-child{font-weight:700}
+.jr-stop.l span{transform:none;left:auto;right:-.5rem;text-align:right}
+.hero h1 .grad{background:none;-webkit-background-clip:border-box;background-clip:border-box;color:var(--accent-text)}
+.hero h1 .grad .wi{background:linear-gradient(120deg,var(--accent),#f59e0b 90%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.mag{transition:transform .25s cubic-bezier(.2,.8,.2,1)}
+.dcard.tap{transform:scale(.98)}
+.inc-panel h5{margin:.2rem 0;font-size:1.25rem;line-height:1.5}
+.inc-panel .desc{margin:.3rem 0 .6rem}
+.lc-cap{font-size:.92rem;color:var(--muted);margin:.2rem 0 0}
+.toc-grid{columns:1;padding:0;margin:0;list-style:none}
+@media (min-width:768px){.toc-grid{columns:2;column-gap:1rem}}
+.toc-grid li{break-inside:avoid}
+.res-list{margin:.2rem 0 0;padding:0;list-style:none;display:grid;gap:.3rem}
+.res-list li{display:flex;gap:.5rem;align-items:flex-start}
+.ok-t{color:#15803d;font-weight:700}.bad-t{color:#b91c1c;font-weight:700}
+:root[data-theme=dark] .ok-t{color:#4ade80}:root[data-theme=dark] .bad-t{color:#f87171}
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+/* ===================== ইঞ্জিন ===================== */
+(function(){
+'use strict';
+var D=window.DATA,CHS=D.chapters;
+var $=function(s,r){return (r||document).querySelector(s)};
+var $$=function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
+var bn=function(s){return String(s).replace(/\d/g,function(d){return '০১২৩৪৫৬৭৮৯'[d]})};
+var nf=function(n,d){if(d===undefined)d=2;return bn(Number(n).toLocaleString('en-US',{maximumFractionDigits:d,minimumFractionDigits:0}))};
+var esc=function(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')};
+var reduce=window.matchMedia('(prefers-reduced-motion: reduce)');
+var fine=window.matchMedia('(hover:hover) and (pointer:fine)');
+var hasG=!!window.gsap,hasST=hasG&&!!window.ScrollTrigger;
+if(hasST){try{gsap.registerPlugin(ScrollTrigger)}catch(e){hasST=false}}
+var safe=function(f){try{f()}catch(e){if(window.console)console.warn(e)}};
+var store={get:function(k){try{return localStorage.getItem(k)}catch(e){return null}},set:function(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+var jumpBehavior=function(){return reduce.matches?'auto':'smooth'};
+
+/* ---------- আইকন ---------- */
+var ICONS={
+globe:'<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18"/>',
+layers:'<path d="M12 3l9 5-9 5-9-5z"/><path d="M3 12.5l9 5 9-5M3 16.5l9 5 9-5"/>',
+users:'<circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.5 2.7-6 6-6s6 2.5 6 6"/><circle cx="17" cy="9" r="2.5"/><path d="M16 14.2c3 .3 5 2.4 5 5.8"/>',
+chart:'<path d="M4 20V4M4 20h16M8 16v-5M13 16V8M18 16v-8"/>',
+search:'<circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/>',
+verify:'<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/>',
+box:'<path d="M21 8l-9-5-9 5v8l9 5 9-5z"/><path d="M3 8l9 5 9-5M12 13v8"/>',
+calc:'<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 12h.01M12 12h.01M16 12h.01M8 16h.01M12 16h.01M16 16h.01"/>',
+doc:'<path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/>',
+bank:'<path d="M3 10l9-6 9 6"/><path d="M5 10v8M9.5 10v8M14.5 10v8M19 10v8M3 20h18"/>',
+shield:'<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18M7 15h4"/>',
+transfer:'<path d="M4 8h14l-3-3M20 16H6l3 3"/>',
+scale:'<path d="M12 4v16M6 20h12M4 8h16"/><path d="M7 8l-3 6h6zM17 8l-3 6h6z"/>',
+route:'<circle cx="6" cy="18" r="2.5"/><circle cx="18" cy="6" r="2.5"/><path d="M8.5 18H15a3 3 0 000-6H9a3 3 0 010-6h6.5"/>',
+export:'<path d="M12 19V5M6 11l6-6 6 6M4 21h16"/>',
+alert:'<path d="M12 3l10 18H2z"/><path d="M12 10v5M12 18h.01"/>',
+book:'<path d="M4 5a2 2 0 012-2h13v16H6a2 2 0 00-2 2z"/><path d="M4 21V5M8 7h8"/>',
+mail:'<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>',
+check:'<path d="M5 12.5l4.5 4.5L19 7.5"/>',
+anchor:'<circle cx="12" cy="5" r="2"/><path d="M12 7v14M5 13a7 7 0 0014 0M8 11h8"/>'
+};
+var ico=function(k,s){s=s||24;return '<svg viewBox="0 0 24 24" width="'+s+'" height="'+s+'" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+(ICONS[k]||ICONS.globe)+'</svg>'};
+
+/* ---------- রঙ ও অ্যাকসেন্ট ---------- */
+var acc={r:14,g:165,b:233};
+var hex2rgb=function(h){h=h.replace('#','');return{r:parseInt(h.slice(0,2),16),g:parseInt(h.slice(2,4),16),b:parseInt(h.slice(4,6),16)}};
+function setAcc(){var s=document.documentElement.style;s.setProperty('--ar',Math.round(acc.r));s.setProperty('--ag',Math.round(acc.g));s.setProperty('--ab',Math.round(acc.b))}
+function toAccent(hex){var c=hex2rgb(hex);if(hasG&&!reduce.matches){gsap.to(acc,{r:c.r,g:c.g,b:c.b,duration:1.3,ease:'power2.out',overwrite:true,onUpdate:setAcc})}else{acc.r=c.r;acc.g=c.g;acc.b=c.b;setAcc()}}
+setAcc();
+var isDark=function(){return document.documentElement.getAttribute('data-theme')==='dark'};
+
+/* ---------- টেক্সট নিষ্কাশন (সার্চের জন্য) ---------- */
+function blockText(b){
+ switch(b.t){
+  case 'p':case 'lb':return b.x;
+  case 'ul':case 'ol':case 'tl':case 'ck':return b.i.join(' ');
+  case 'df':return b.i.map(function(x){return x.join(' ')}).join(' ');
+  case 'nt':return (b.h||'')+' '+b.x;
+  case 'cd':return b.x;
+  case 'tb':return b.h.join(' ')+' '+b.r.map(function(r){return r.join(' ')}).join(' ');
+  case 'fl':return b.rows.map(function(r){return r.t+' '+r.n.join(' ')}).join(' ');
+  case 'ac':case 'tabs':return b.i.map(function(a){return a[0]+' '+a[1].map(blockText).join(' ')}).join(' ');
+  case 'pc':return b.pro.concat(b.con).join(' ')+' '+b.pt+' '+b.ct;
+  case 'sp':if(b.k==='chart-matrix')return D.matrix.map(function(m){return m[0]+' '+m[1]+'%'}).join(' ');return '';
+  default:return '';
+ }
+}
+
+/* ---------- রেন্ডার ---------- */
+var ckSeq=0,tabSeq=0;
+var R={};
+R.p=function(b){return '<p>'+esc(b.x)+'</p>'};
+R.lb=function(b){return '<p class="lb">'+esc(b.x)+'</p>'};
+R.ul=function(b){return '<ul class="ul '+(b.c||'')+'">'+b.i.map(function(x){return '<li>'+esc(x)+'</li>'}).join('')+'</ul>'};
+R.ol=function(b){return '<ol class="ol">'+b.i.map(function(x){if(b.k){var j=x.indexOf(': ');return '<li><strong>'+esc(x.slice(0,j))+'</strong>: '+esc(x.slice(j+2))+'</li>'}return '<li>'+esc(x)+'</li>'}).join('')+'</ol>'};
+R.df=function(b){return '<div class="df '+(b.c||'')+'">'+b.i.map(function(x){return '<div class="dcard tilt rv"><p class="dt">'+esc(x[0])+'</p><p class="dd">'+esc(x[1])+'</p></div>'}).join('')+'</div>'};
+R.nt=function(b){var w=b.v==='warn';return '<div class="nt '+(w?'warn':'')+'" role="note">'+(b.h?'<div class="nth"><span aria-hidden="true">'+(w?'⚠️':'💡')+'</span> '+esc(b.h)+'</div>':'')+b.x.split('\n').map(function(l){return '<p>'+esc(l)+'</p>'}).join('')+'</div>'};
+R.cd=function(b){return '<div class="code"><button type="button" class="copy" aria-label="কপি করুন">কপি</button>'+(b.l?'<span class="cl">'+esc(b.l)+'</span>':'')+'<span class="ct">'+esc(b.x)+'</span></div>'};
+R.tb=function(b){return '<div class="tbl-wrap"><div class="scroll"><table class="tbl '+(b.card?'cardify':'')+'">'+(b.cap?'<caption>'+esc(b.cap)+'</caption>':'')+'<thead><tr>'+b.h.map(function(h){return '<th scope="col">'+esc(h)+'</th>'}).join('')+'</tr></thead><tbody>'+b.r.map(function(r){return '<tr>'+r.map(function(c,i){return '<td data-label="'+esc(b.h[i])+'">'+esc(c)+'</td>'}).join('')+'</tr>'}).join('')+'</tbody></table></div></div>'};
+R.fl=function(b){return '<div class="fl">'+b.rows.map(function(r){return '<div><p class="fl-title">'+esc(r.t)+'</p><div class="fl-row">'+r.n.map(function(n,i){return (i?'<span class="farrow" style="--i:'+i+'" aria-hidden="true">→</span>':'')+'<span class="fnode" style="--i:'+i+'">'+(r.num?'<span class="fi">'+bn(i+1)+'</span>':'')+esc(n)+'</span>'}).join('')+'</div></div>'}).join('')+'</div>'};
+R.tl=function(b){return '<ol class="tl">'+b.i.map(function(x){return '<li>'+esc(x)+'</li>'}).join('')+'</ol>'};
+R.ck=function(b){var id='ck'+(++ckSeq);return '<div class="ckb" data-ck="'+id+'"><div class="ckp"><span class="ckc">০/'+bn(b.i.length)+'</span><span class="track"><span class="fill"></span></span></div>'+b.i.map(function(x,i){return '<label class="cki"><input type="checkbox" data-k="'+id+'-'+i+'"><span>'+esc(x)+'</span></label>'}).join('')+'</div>'};
+R.ac=function(b){return '<div class="acc">'+b.i.map(function(a,k){return '<details'+(b.open&&k===0?' open':'')+'><summary>'+esc(a[0])+'</summary><div class="ab">'+a[1].map(renderBlock).join('')+'</div></details>'}).join('')+'</div>'};
+R.tabs=function(b){var id='tb'+(++tabSeq);return '<div class="tabs" data-tabs><div class="tablist" role="tablist">'+b.i.map(function(a,k){return '<button type="button" class="tab" role="tab" id="'+id+'-t'+k+'" aria-controls="'+id+'-p'+k+'" aria-selected="false">'+esc(a[0])+'</button>'}).join('')+'</div>'+b.i.map(function(a,k){return '<div class="tabpanel" role="tabpanel" id="'+id+'-p'+k+'" aria-labelledby="'+id+'-t'+k+'" data-label="'+esc(a[0])+'" hidden>'+a[1].map(renderBlock).join('')+'</div>'}).join('')+'</div>'};
+R.pc=function(b){return '<div class="pc"><div class="pro"><h4>✅ '+esc(b.pt)+'</h4><ul class="ul chk">'+b.pro.map(function(x){return '<li>'+esc(x)+'</li>'}).join('')+'</ul></div><div class="con"><h4>⚠️ '+esc(b.ct)+'</h4><ul class="ul flag">'+b.con.map(function(x){return '<li>'+esc(x)+'</li>'}).join('')+'</ul></div></div>'};
+
+var CALCF=function(id,label,val,step){return '<div class="field"><label for="'+id+'">'+label+'</label><input id="'+id+'" data-f="'+id+'" type="number" inputmode="decimal" min="0" step="'+(step||'any')+'" value="'+val+'"></div>'};
+var SP={
+ 'toc':function(){return '<ul class="toc-list toc-grid">'+CHS.filter(function(c){return c.id!=='intro'}).map(function(c){return '<li><a href="#'+c.id+'" data-toc="'+c.id+'"><span class="n">'+tocNum(c)+'</span><span>'+esc(c.no)+' — '+esc(c.title)+'</span></a></li>'}).join('')+'</ul>'},
+ 'chart-matrix':function(){return '<div class="widget" data-sp="matrix"><h4>📊 Supplier Evaluation Matrix</h4><p class="wsub">উদাহরণ-মডেলের Weight। ডোনাট বা বারে হোভার/ট্যাপ করুন।</p><div class="grid2"><div class="donut-box" data-donut></div><div class="bars" data-bars></div></div></div>'},
+ 'chart-landed':function(){return '<div class="widget" data-sp="landed-chart"><h4>📦 Landed Cost: খাতভিত্তিক চিত্র</h4><p class="wsub">উদাহরণের খরচগুলো (Customs Duty–Tax বাদে)। বারে হোভার/ট্যাপ করুন।</p><div class="bars" data-bars></div><div class="grid2" style="margin-top:1rem"><div class="res"><small>মোট খরচ (Customs Duty–Tax বাদে)</small><b data-tot></b></div><div class="res"><small>প্রতি পণ্যের খরচ</small><b data-unit></b></div></div></div>'},
+ 'chart-incoterm':function(){return '<div class="widget" data-sp="inc-chart"><h4>🥧 Incoterms 2020: ১১টি Rule</h4><p class="wsub">কোন Rule কোন পরিবহন পদ্ধতির জন্য—অংশে হোভার/ট্যাপ করুন।</p><div class="donut-box" data-donut></div></div>'},
+ 'incoterm':function(){return '<div class="widget" data-sp="incoterm"><h4>🧭 Incoterms এক্সপ্লোরার: Cost ও Risk কোথায় বদলায়</h4><p class="wsub">একটি Rule বাছুন। নিচের সরল চিত্র দেখায় Seller-এর খরচ কতদূর এবং Risk কোথায় Buyer-এর কাছে যায় বা ডেলিভারি পয়েন্ট কোথায়। এটি একটি ব্যাখ্যামূলক সরল চিত্র; চুক্তির Named Place ও ICC-র পূর্ণ Rule অনুযায়ী মিলিয়ে নিন।</p><div class="tabs inc"><div class="tablist" role="tablist" aria-label="Incoterms Rule"></div><div class="inc-panel tabpanel" role="tabpanel" aria-live="polite"></div></div></div>'},
+ 'svg-lc':function(){return '<figure style="margin:.6rem 0"><svg class="lcsvg" viewBox="0 0 480 290" role="img" aria-label="LC-এর প্রধান পক্ষ ও প্রবাহের চিত্র"><defs><marker id="lcm" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" class="st"/></marker></defs>'+
+  '<rect class="bx" x="10" y="20" width="190" height="58" rx="14"/><text x="105" y="46" text-anchor="middle" font-weight="700">Applicant</text><text x="105" y="65" text-anchor="middle" font-size="12" opacity=".75">Importer / Buyer</text>'+
+  '<rect class="bx" x="280" y="20" width="190" height="58" rx="14"/><text x="375" y="46" text-anchor="middle" font-weight="700">Issuing Bank</text><text x="375" y="65" text-anchor="middle" font-size="12" opacity=".75">Applicant-এর ব্যাংক</text>'+
+  '<rect class="bx" x="280" y="140" width="190" height="58" rx="14"/><text x="375" y="166" text-anchor="middle" font-weight="700">Advising Bank</text><text x="375" y="185" text-anchor="middle" font-size="12" opacity=".75">LC যাচাই করে জানায়</text>'+
+  '<rect class="bx" x="10" y="140" width="190" height="58" rx="14"/><text x="105" y="166" text-anchor="middle" font-weight="700">Beneficiary</text><text x="105" y="185" text-anchor="middle" font-size="12" opacity=".75">Exporter / Seller</text>'+
+  '<path class="ar" d="M202 49H278" marker-end="url(#lcm)"/><path class="ar" d="M375 80V138" marker-end="url(#lcm)"/><path class="ar" d="M278 169H202" marker-end="url(#lcm)"/><path class="ar" d="M105 200V250H430V82" marker-end="url(#lcm)"/>'+
+  '<circle class="st" cx="240" cy="34" r="11"/><text class="stt" x="240" y="38" text-anchor="middle">১</text>'+
+  '<circle class="st" cx="391" cy="109" r="11"/><text class="stt" x="391" y="113" text-anchor="middle">২</text>'+
+  '<circle class="st" cx="240" cy="154" r="11"/><text class="stt" x="240" y="158" text-anchor="middle">৩</text>'+
+  '<circle class="st" cx="268" cy="250" r="11"/><text class="stt" x="268" y="254" text-anchor="middle">৪</text>'+
+  '</svg><figcaption class="lc-cap">১ LC আবেদন ও Issue · ২ Advising Bank-এর মাধ্যমে পাঠানো · ৩ Beneficiary-কে জানানো · ৪ Documents উপস্থাপন ও ব্যাংকের পরীক্ষা—Complying হলে Payment/Acceptance।</figcaption></figure>'},
+ 'calc-landed':function(){var c=D.calc.landed;return '<div class="widget" data-sp="calc-landed"><h4>🧮 Landed Cost ক্যালকুলেটর</h4><p class="wsub">সংখ্যা বদলালেই ফলাফল লাইভ বদলাবে। ডিফল্টে ৮.৩-এর উদাহরণ বসানো আছে। Customs Duty–Tax নিজের হিসাব অনুযায়ী বসান—এটি শুধু পরিকল্পনার সরঞ্জাম।</p><div class="grid2"><div class="fields">'+
+  CALCF('qty','পণ্যের পরিমাণ (Quantity)',c.qty)+CALCF('unit','প্রতি ইউনিট দাম (Unit Price, USD)',c.unit)+CALCF('origin','Origin-side ও অন্যান্য খরচ',c.origin)+CALCF('freight','International Freight',c.freight)+CALCF('ins','Insurance',c.ins)+CALCF('dest','Port, Clearance ও Inland Transport',c.dest)+CALCF('duty','Customs Duty–Tax (মোট)',c.duty)+CALCF('fin','Bank, Currency ও Finance খরচ',c.fin)+CALCF('oth','অন্যান্য প্রযোজ্য খরচ',c.oth)+CALCF('sell','প্রতি ইউনিট বিক্রয়মূল্য (ঐচ্ছিক)',c.sell)+
+  '</div><div class="results" aria-live="polite"><div class="res"><small>পণ্যের মোট মূল্য</small><b data-o="pv"></b></div><div class="res"><small>মোট Landed Cost</small><b data-o="tot"></b></div><div class="res"><small>প্রতি ইউনিট Landed Cost</small><b data-o="unit"></b></div><div class="res" data-o="mrow" hidden><small>বিক্রয়মূল্য দিলে: প্রতি ইউনিট Gross Profit · Gross Margin · Markup</small><b data-o="mg"></b></div></div></div><div class="donut-box" style="margin-top:1.2rem" data-donut></div></div>'},
+ 'calc-margin':function(){var c=D.calc.margin;return '<div class="widget" data-sp="calc-margin"><h4>⚖️ Gross Margin বনাম Markup</h4><p class="wsub">Landed Cost ও বিক্রয়মূল্য দিন; Margin ও Markup-এর পার্থক্য দেখুন। ডিফল্টে ১০০ টাকা ও ১৩০ টাকার উদাহরণ।</p><div class="grid2"><div class="fields">'+CALCF('cost','Landed Cost (টাকা)',c.cost)+CALCF('price','বিক্রয়মূল্য (টাকা)',c.price)+'</div><div class="results" aria-live="polite"><div class="res"><small>Gross Profit</small><b data-o="gp"></b></div><div class="res"><small>Gross Margin = Profit ÷ বিক্রয়মূল্য</small><b data-o="gm"></b></div><div class="res"><small>Markup = Profit ÷ Landed Cost</small><b data-o="mk"></b></div></div></div></div>'},
+ 'calc-docmatch':function(){var c=D.calc.docs;return '<div class="widget" data-sp="calc-docs"><h4>🧾 ডকুমেন্টের পরিমাণ মেলানো</h4><p class="wsub">প্রতিটি ডকুমেন্টের পরিমাণ লিখুন; PO-এর সঙ্গে অমিল থাকলে সতর্ক করবে। ডিফল্টে ৯.৮-এর উদাহরণ।</p><div class="grid2"><div class="fields">'+CALCF('pi','PI-তে পরিমাণ',c.pi)+CALCF('po','PO-তে পরিমাণ',c.po)+CALCF('inv','Commercial Invoice-এ পরিমাণ',c.inv)+CALCF('pl','Packing List-এ পরিমাণ',c.pl)+'</div><div class="results" aria-live="polite"><div class="res" data-o="box"><small>ফলাফল</small><b data-o="msg"></b><ul class="res-list" data-o="list"></ul></div></div></div></div>'}
+};
+function renderBlock(b){if(b.t==='sp')return SP[b.k]?SP[b.k]():'';return R[b.t]?R[b.t](b):''}
+function tocNum(c){var m=c.no.match(/[০-৯]+/);if(m)return m[0];if(c.no.indexOf('পরিশিষ্ট')===0)return c.no.slice(-1);return c.id==='end'?'⚑':'✦'}
+var WAVE='<svg viewBox="0 0 2880 60" preserveAspectRatio="none"><path fill="currentColor" d="M0 30C240 0 480 60 720 30S1200 0 1440 30C1680 0 1920 60 2160 30S2640 0 2880 30V60H0Z"/></svg>';
+
+function build(){
+ var h='';
+ CHS.forEach(function(c,ci){
+  var m=c.no.match(/[০-৯]+/);var ghost=m?m[0]:(c.no.indexOf('পরিশিষ্ট')===0?c.no.slice(-1):'✦');
+  h+='<section class="chapter'+(c.tlmode?' tlmode':'')+'" id="'+c.id+'" data-i="'+ci+'" data-ac="'+c.ac+'" style="--sa:'+c.ac+'" aria-labelledby="'+c.id+'-t"><div class="ch-head"><div class="ch-badge" aria-hidden="true">'+ico(c.ic,34)+'</div><div class="ch-meta"><span class="ch-no">'+esc(c.no)+'</span><h2 id="'+c.id+'-t" class="split">'+esc(c.title)+'</h2></div><div class="ghost" aria-hidden="true">'+ghost+'</div></div><div class="subs">';
+  c.subs.forEach(function(s,si){
+   h+='<article class="sub rv" id="'+c.id+'-s'+si+'" aria-labelledby="'+c.id+'-s'+si+'-h"><h3 id="'+c.id+'-s'+si+'-h">'+esc(s.h)+'</h3>'+s.b.map(renderBlock).join('')+'</article>';
+  });
+  h+='</div></section><div class="wave'+(ci%2?' w2':'')+'" aria-hidden="true">'+WAVE+'</div>';
+ });
+ $('#content').innerHTML=h;
+ var li=CHS.map(function(c){return '<li><a href="#'+c.id+'" data-toc="'+c.id+'"><span class="n">'+tocNum(c)+'</span><span>'+esc(c.no)+(c.id==='intro'||c.id==='end'?'':' — ')+(c.id==='intro'?': ':(c.id==='end'?': ':''))+esc(c.title)+'</span></a></li>'}).join('');
+ $('#toc-side').innerHTML=li;$('#toc-mob').innerHTML=li;
+}
+
+/* ---------- গণনা ---------- */
+var WORDS=0;
+CHS.forEach(function(c){c.subs.forEach(function(s){WORDS+=(s.h+' '+s.b.map(blockText).join(' ')).split(/\s+/).length})});
+var MINS=Math.max(1,Math.ceil(WORDS/180));
+
+/* ---------- টুলটিপ ---------- */
+var tip=null;
+function showTip(html,x,y){tip.innerHTML=html;tip.classList.add('show');var w=tip.offsetWidth,hh=tip.offsetHeight;var l=Math.min(Math.max(8,x-w/2),window.innerWidth-w-8);var t=y-hh-14;if(t<8)t=y+20;tip.style.left=l+'px';tip.style.top=t+'px'}
+function hideTip(){tip.classList.remove('show')}
+function tipAt(el,html){var r=el.getBoundingClientRect();showTip(html,r.left+r.width/2,r.top+Math.min(r.height/2,30))}
+function bindTip(el,html){
+ el.addEventListener('pointermove',function(e){if(e.pointerType==='mouse')showTip(html,e.clientX,e.clientY)});
+ el.addEventListener('pointerenter',function(e){if(e.pointerType==='mouse')showTip(html,e.clientX,e.clientY)});
+ el.addEventListener('pointerleave',function(e){if(e.pointerType==='mouse')hideTip()});
+ el.addEventListener('click',function(e){e.stopPropagation();tipAt(el,html)});
+ el.addEventListener('focus',function(){tipAt(el,html)});
+ el.addEventListener('blur',hideTip);
+}
+document.addEventListener('click',function(e){if(!e.target.closest('.seg,.legend li,.brow'))hideTip()});
+window.addEventListener('scroll',hideTip,{passive:true});
+
+/* ---------- ডোনাট ও বার ---------- */
+var PAL=['#0d9488','#6366f1','#f59e0b','#ec4899','#22c55e','#0ea5e9','#ef4444','#a855f7','#84cc16'];
+function donut(host,label){
+ host.innerHTML='<svg class="donut" viewBox="0 0 200 200" role="img" aria-label="'+esc(label||'চার্ট')+'"><g class="gs" transform="rotate(-90 100 100)"></g><text class="c1" x="100" y="100" font-size="24" font-weight="800"></text><text class="c2" x="100" y="122" font-size="11" opacity=".75"></text></svg><ul class="legend"></ul>';
+ var g=$('.gs',host),c1=$('.c1',host),c2=$('.c2',host),lg=$('.legend',host);
+ var Cc=2*Math.PI*70;
+ function draw(items,t1,t2,animate,fmt){
+  g.innerHTML='';lg.innerHTML='';c1.textContent=t1;c2.textContent=t2||'';
+  var total=items.reduce(function(a,x){return a+x.v},0);
+  if(total<=0){c2.textContent='ডেটা দিন';return}
+  var off=0,segs=[];
+  items.forEach(function(it,i){
+   var frac=it.v/total,len=Math.max(0,frac*Cc-(items.length>1?2:0));
+   var ci=document.createElementNS('http://www.w3.org/2000/svg','circle');
+   ci.setAttribute('class','seg');ci.setAttribute('cx',100);ci.setAttribute('cy',100);ci.setAttribute('r',70);
+   ci.setAttribute('stroke',it.c||PAL[i%PAL.length]);ci.setAttribute('stroke-dashoffset',-off);
+   ci.setAttribute('stroke-dasharray',animate?'0 '+Cc:len+' '+(Cc-len));
+   ci.setAttribute('tabindex','0');ci.setAttribute('aria-label',it.l+': '+(fmt?fmt(it.v):nf(it.v))+' ('+nf(frac*100,1)+'%)');
+   g.appendChild(ci);segs.push(ci);
+   if(animate){(function(el,l){setTimeout(function(){el.setAttribute('stroke-dasharray',l+' '+(Cc-l))},60)})(ci,len)}
+   off+=frac*Cc;
+   var html='<b>'+esc(it.l)+'</b><br>'+(fmt?fmt(it.v):nf(it.v))+' · '+nf(frac*100,1)+'%';
+   bindTip(ci,html);
+   var li=document.createElement('li');li.tabIndex=0;li.innerHTML='<i style="background:'+(it.c||PAL[i%PAL.length])+'"></i><span>'+esc(it.l)+'</span><em>'+(fmt?fmt(it.v):nf(it.v))+'</em>';
+   li.addEventListener('mouseenter',function(){segs.forEach(function(s,k){s.style.opacity=k===i?1:.3})});
+   li.addEventListener('mouseleave',function(){segs.forEach(function(s){s.style.opacity=1})});
+   li.addEventListener('click',function(e){e.stopPropagation();segs.forEach(function(s,k){s.style.opacity=k===i?1:.3});tipAt(li,html);setTimeout(function(){segs.forEach(function(s){s.style.opacity=1})},2500)});
+   lg.appendChild(li);
+  });
+ }
+ return{draw:draw};
+}
+function bars(host,items,fmt,maxV){
+ var mx=maxV||Math.max.apply(null,items.map(function(x){return x[1]}));
+ host.innerHTML=items.map(function(it,i){return '<div class="brow" tabindex="0" data-i="'+i+'"><div class="bl"><span>'+esc(it[0])+'</span><b>'+fmt(it[1])+'</b></div><div class="bt"><span class="bf" data-s="'+(it[1]/mx)+'" style="background:'+PAL[i%PAL.length]+'"></span></div></div>'}).join('');
+ $$('.brow',host).forEach(function(r,i){bindTip(r,'<b>'+esc(items[i][0])+'</b><br>'+fmt(items[i][1]))});
+ onView(host,function(){$$('.bf',host).forEach(function(f,i){var s=parseFloat(f.getAttribute('data-s'))||0;if(hasG&&!reduce.matches)gsap.to(f,{scaleX:s,duration:1.1,delay:i*.08,ease:'power3.out'});else f.style.transform='scaleX('+s+')'})},.2);
+}
+function onView(el,fn,th){
+ if(!('IntersectionObserver' in window)){fn();return}
+ var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){io.disconnect();fn()}})},{threshold:th===undefined?.25:th});
+ io.observe(el);
+}
+
+/* ---------- উইজেট ইনিট ---------- */
+function initWidgets(){
+ var c=document;
+ safe(function(){var el=$('[data-sp=matrix]');var d=donut($('[data-donut]',el),'Supplier Evaluation Matrix');onView(el,function(){d.draw(D.matrix.map(function(m,i){return{l:m[0],v:m[1]}}),'১০০%','মোট Weight',true,function(v){return nf(v)+'%'})});bars($('[data-bars]',el),D.matrix,function(v){return nf(v)+'%'})});
+ safe(function(){var el=$('[data-sp=landed-chart]');var tot=D.landed.reduce(function(a,x){return a+x[1]},0);var q=D.calc.landed.qty;$('[data-tot]',el).textContent='USD '+nf(tot);$('[data-unit]',el).textContent='USD '+nf(tot/q,2);bars($('[data-bars]',el),D.landed,function(v){return 'USD '+nf(v)},Math.max.apply(null,D.landed.map(function(x){return x[1]})))});
+ safe(function(){var el=$('[data-sp=inc-chart]');var a=D.incoterms.filter(function(x){return x.g==='any'}).length,b=D.incoterms.length-a;var d=donut($('[data-donut]',el),'Incoterms 2020 Rule সংখ্যা');onView(el,function(){d.draw([{l:'যেকোনো Mode of Transport-এর জন্য',v:a,c:'#0d9488'},{l:'Sea ও Inland Waterway Transport-এর জন্য',v:b,c:'#6366f1'}],nf(a+b),'মোট Rule',true,function(v){return nf(v)+'টি'})})});
+ safe(initIncoterm);
+ safe(initLanded);safe(initMargin);safe(initDocs);
+}
+function initIncoterm(){
+ var el=$('[data-sp=incoterm]');var tl=$('.tablist',el),panel=$('.inc-panel',el);
+ var anyL='<span class="grp-l">যেকোনো পরিবহন (৭টি)</span>',seaL='<span class="grp-l">Sea ও Waterway (৪টি)</span>';
+ var h=anyL,seaDone=false;
+ D.incoterms.forEach(function(x,i){if(x.g==='sea'&&!seaDone){h+=seaL;seaDone=true}h+='<button type="button" class="tab" role="tab" data-i="'+i+'" aria-selected="false">'+x.c+'</button>'});
+ tl.innerHTML=h;
+ var tabs=$$('.tab',tl);
+ var stops=D.stages.map(function(s,i){return '<div class="jr-stop'+(i===4?' l':'')+'" style="left:'+(i*25)+'%"><span>'+esc(s)+'</span></div>'}).join('');
+ panel.innerHTML='<h5></h5><p class="desc"></p><div class="tags"></div><div class="jr-legend"><span><i style="background:linear-gradient(90deg,var(--sa),#f59e0b)"></i>Seller-এর খরচ বহনের সীমা</span><span><i style="background:#dc2626;border-radius:50%;width:10px;height:10px"></i>Risk Buyer-এর কাছে যায় / ডেলিভারি পয়েন্ট</span></div><div class="jr" role="img" aria-label="Incoterm যাত্রাপথের সরল চিত্র">'+stops+'<div class="jr-cost" style="width:0"></div><div class="jr-risk" style="left:0" title="Risk Transfer"><b>!</b></div></div>';
+ var cost=$('.jr-cost',panel),risk=$('.jr-risk',panel);
+ function sel(i,focus){
+  tabs.forEach(function(b){var on=parseInt(b.getAttribute('data-i'),10)===i;b.setAttribute('aria-selected',on);b.tabIndex=on?0:-1;if(on&&focus)b.focus()});
+  var x=D.incoterms[i];
+  $('h5',panel).textContent=x.c+' — '+x.n;$('.desc',panel).textContent=x.d;
+  $('.tags',panel).innerHTML=x.tag.map(function(t){return '<span class="tag">'+esc(t)+'</span>'}).join('');
+  cost.style.width=(x.k*25)+'%';risk.style.left=(x.r*25)+'%';
+ }
+ tabs.forEach(function(b){b.addEventListener('click',function(){sel(parseInt(b.getAttribute('data-i'),10))})});
+ tl.addEventListener('keydown',function(e){var cur=tabs.findIndex(function(b){return b.getAttribute('aria-selected')==='true'});var n=null;if(e.key==='ArrowRight')n=(cur+1)%tabs.length;else if(e.key==='ArrowLeft')n=(cur-1+tabs.length)%tabs.length;else if(e.key==='Home')n=0;else if(e.key==='End')n=tabs.length-1;if(n!==null){e.preventDefault();sel(parseInt(tabs[n].getAttribute('data-i'),10),true)}});
+ sel(0);
+}
+function initLanded(){
+ var el=$('[data-sp=calc-landed]');var d=donut($('[data-donut]',el),'Landed Cost-এর খাতভিত্তিক ভাগ');
+ var g=function(k){return parseFloat($('[data-f='+k+']',el).value)||0};
+ var first=true;
+ function upd(){
+  var pv=g('qty')*g('unit'),parts=[['পণ্যের মূল্য',pv],['Origin-side খরচ',g('origin')],['International Freight',g('freight')],['Insurance',g('ins')],['Port, Clearance ও Inland',g('dest')],['Customs Duty–Tax',g('duty')],['Bank, Currency ও Finance',g('fin')],['অন্যান্য',g('oth')]];
+  var tot=parts.reduce(function(a,p){return a+p[1]},0);var q=g('qty');var u=q>0?tot/q:0;
+  $('[data-o=pv]',el).textContent='USD '+nf(pv);$('[data-o=tot]',el).textContent='USD '+nf(tot);$('[data-o=unit]',el).textContent=q>0?'USD '+nf(u,2):'—';
+  var s=g('sell'),row=$('[data-o=mrow]',el);
+  if(s>0&&q>0){var gp=s-u;row.hidden=false;$('[data-o=mg]',el).textContent=nf(gp,2)+' · '+nf(gp/s*100,2)+'% · '+(u>0?nf(gp/u*100,2)+'%':'—')}else row.hidden=true;
+  var items=parts.map(function(p,i){return{l:p[0],v:p[1],c:PAL[i%PAL.length]}}).filter(function(x){return x.v>0});
+  d.draw(items,'USD '+nf(tot,0),'মোট খরচ',first,function(v){return nf(v)});first=false;
+ }
+ el.addEventListener('input',upd);
+ onView(el,upd,.1);
+ upd();
+}
+function initMargin(){
+ var el=$('[data-sp=calc-margin]');var g=function(k){return parseFloat($('[data-f='+k+']',el).value)||0};
+ function upd(){var cst=g('cost'),pr=g('price'),gp=pr-cst;$('[data-o=gp]',el).textContent=nf(gp,2)+' টাকা';$('[data-o=gm]',el).textContent=pr>0?nf(gp/pr*100,2)+'%':'—';$('[data-o=mk]',el).textContent=cst>0?nf(gp/cst*100,2)+'%':'—'}
+ el.addEventListener('input',upd);upd();
+}
+function initDocs(){
+ var el=$('[data-sp=calc-docs]');var g=function(k){return parseFloat($('[data-f='+k+']',el).value)};
+ function upd(){
+  var po=g('po');var docs=[['PI',g('pi')],['Commercial Invoice',g('inv')],['Packing List',g('pl')]];
+  var bad=docs.filter(function(x){return x[1]!==po});var box=$('[data-o=box]',el);
+  box.className='res '+(bad.length?'bad':'ok');
+  $('[data-o=msg]',el).textContent=bad.length?'⚠️ অমিল পাওয়া গেছে':'✅ পরিমাণ মিলেছে';
+  $('[data-o=list]',el).innerHTML=docs.map(function(x){var ok=x[1]===po;return '<li><span class="'+(ok?'ok-t':'bad-t')+'">'+(ok?'✓':'✗')+'</span><span>'+x[0]+': '+(isNaN(x[1])?'—':nf(x[1]))+' (PO: '+(isNaN(po)?'—':nf(po))+')</span></li>'}).join('')+'<li><span>ℹ️</span><span>শুধু পরিমাণ দেখা হয়েছে; Product Model, Currency, Unit Price, Buyer/Seller Name, Country of Origin ও Incoterm-ও মিলিয়ে নিন।</span></li>';
+ }
+ el.addEventListener('input',upd);upd();
+}
+
+/* ---------- ট্যাব, অ্যাকর্ডিয়ন, চেকলিস্ট, কপি ---------- */
+function initTabs(){
+ $$('.tabs[data-tabs]').forEach(function(t){
+  var tb=$$('.tab',t),pn=$$(':scope > .tabpanel',t);
+  function sel(i,f){tb.forEach(function(b,k){b.setAttribute('aria-selected',k===i);b.tabIndex=k===i?0:-1});pn.forEach(function(p,k){p.hidden=k!==i});if(f)tb[i].focus()}
+  tb.forEach(function(b,i){b.addEventListener('click',function(){sel(i)})});
+  $('.tablist',t).addEventListener('keydown',function(e){var cur=tb.findIndex(function(b){return b.getAttribute('aria-selected')==='true'});var n=null;if(e.key==='ArrowRight')n=(cur+1)%tb.length;else if(e.key==='ArrowLeft')n=(cur-1+tb.length)%tb.length;else if(e.key==='Home')n=0;else if(e.key==='End')n=tb.length-1;if(n!==null){e.preventDefault();sel(n,true)}});
+  sel(0);
+ });
+}
+function initChecks(){
+ var saved={};try{saved=JSON.parse(store.get('ieh-ck')||'{}')||{}}catch(e){saved={}}
+ $$('.ckb').forEach(function(b){
+  var ins=$$('input',b),cnt=$('.ckc',b),fill=$('.fill',b);
+  function upd(anim){var n=ins.filter(function(i){return i.checked}).length;cnt.textContent=bn(n)+'/'+bn(ins.length);var s=ins.length?n/ins.length:0;if(hasG&&!reduce.matches&&anim)gsap.to(fill,{scaleX:s,duration:.5,ease:'power2.out'});else fill.style.transform='scaleX('+s+')'}
+  ins.forEach(function(i){i.checked=!!saved[i.getAttribute('data-k')];i.addEventListener('change',function(){saved[i.getAttribute('data-k')]=i.checked?1:0;store.set('ieh-ck',JSON.stringify(saved));upd(true)})});
+  upd(false);
+ });
+}
+function initCopy(){
+ document.addEventListener('click',function(e){
+  var b=e.target.closest('.copy');if(!b)return;
+  var txt=$('.ct',b.parentNode).textContent;
+  function done(){var o=b.textContent;b.textContent='কপি হয়েছে ✓';setTimeout(function(){b.textContent='কপি'},1600)}
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(done,function(){fb()})}else fb();
+  function fb(){var ta=document.createElement('textarea');ta.value=txt;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');done()}catch(er){}document.body.removeChild(ta)}
+ });
+}
+
+/* ---------- থিম ---------- */
+function toggleTheme(){var n=isDark()?'light':'dark';document.documentElement.setAttribute('data-theme',n);store.set('ieh-theme',n);window.dispatchEvent(new Event('themechange'))}
+
+/* ---------- লক, মেনু, সার্চ ---------- */
+var locks=0;
+function lock(){locks++;document.body.classList.add('lock')}
+function unlock(){locks=Math.max(0,locks-1);if(!locks)document.body.classList.remove('lock')}
+var mm=$('#mm'),mmOpen=$('#mm-open'),lastMM=null;
+function openMenu(){if(mm.classList.contains('open'))return;lastMM=document.activeElement;mm.classList.add('open');lock();mmOpen.setAttribute('aria-expanded','true');setTimeout(function(){$('#mm-close').focus()},60)}
+function closeMenu(){if(!mm.classList.contains('open'))return;mm.classList.remove('open');unlock();mmOpen.setAttribute('aria-expanded','false');if(lastMM&&lastMM.focus&&lastMM.offsetParent!==null)lastMM.focus()}
+function jump(id){var el=document.getElementById(id);if(!el)return;el.scrollIntoView({behavior:jumpBehavior(),block:'start'});el.classList.remove('flash');void el.offsetWidth;el.classList.add('flash');setTimeout(function(){el.classList.remove('flash')},1900)}
+
+var pal=$('#pal'),palQ=$('#pal-q'),palList=$('#pal-list'),lastPal=null,palSel=0,palRes=[];
+var IDX=[];CHS.forEach(function(c){c.subs.forEach(function(s,si){IDX.push({id:c.id+'-s'+si,ch:c.no+' — '+c.title,title:s.h,text:s.b.map(blockText).join(' ')})})});
+var reEsc=function(s){return s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')};
+function hl(text,toks){var t=esc(text);toks.forEach(function(k){if(!k)return;try{t=t.replace(new RegExp('('+reEsc(esc(k))+')','gi'),'<mark>$1</mark>')}catch(e){}});return t}
+function snippet(text,toks){var low=text.toLowerCase(),p=-1;for(var i=0;i<toks.length;i++){p=low.indexOf(toks[i]);if(p>=0)break}if(p<0)p=0;var s=Math.max(0,p-50),e=Math.min(text.length,p+110);return (s>0?'… ':'')+text.slice(s,e)+(e<text.length?' …':'')}
+function renderPal(){
+ var q=palQ.value.trim().toLowerCase();var toks=q.split(/\s+/).filter(Boolean);
+ if(!toks.length){palRes=CHS.map(function(c){return{id:c.id,ch:c.no,title:c.title,sn:''}})}
+ else{
+  var sc=[];IDX.forEach(function(x){var tl=x.title.toLowerCase(),tx=x.text.toLowerCase(),all=tl+' '+x.ch.toLowerCase()+' '+tx;var ok=toks.every(function(k){return all.indexOf(k)>=0});if(!ok)return;var s=0;toks.forEach(function(k){if(tl.indexOf(k)>=0)s+=10;var m=tx.split(k).length-1;s+=Math.min(m,8)});sc.push({x:x,s:s})});
+  sc.sort(function(a,b){return b.s-a.s});
+  palRes=sc.slice(0,40).map(function(o){return{id:o.x.id,ch:o.x.ch,title:o.x.title,sn:snippet(o.x.text,toks)}});
+ }
+ palSel=0;
+ if(!palRes.length){palList.innerHTML='<li class="pal-empty">কোনো ফলাফল পাওয়া যায়নি। অন্য শব্দ দিয়ে চেষ্টা করুন।</li>';return}
+ palList.innerHTML=palRes.map(function(r,i){return '<li role="option" aria-selected="'+(i===0)+'"><a href="#'+r.id+'" data-i="'+i+'" class="'+(i===0?'sel':'')+'"><div class="pc2">'+hl(r.ch,toks)+'</div><div class="pt">'+hl(r.title,toks)+'</div>'+(r.sn?'<div class="ps">'+hl(r.sn,toks)+'</div>':'')+'</a></li>'}).join('');
+}
+function palMove(d){var as=$$('a',palList);if(!as.length)return;as[palSel]&&as[palSel].classList.remove('sel');palSel=(palSel+d+as.length)%as.length;as[palSel].classList.add('sel');as[palSel].scrollIntoView({block:'nearest'});$$('li',palList).forEach(function(l,i){l.setAttribute('aria-selected',i===palSel)})}
+function openPal(){if(pal.classList.contains('open'))return;closeMenu();lastPal=document.activeElement;pal.classList.add('open');lock();palQ.value='';renderPal();setTimeout(function(){palQ.focus()},30)}
+function closePal(){if(!pal.classList.contains('open'))return;pal.classList.remove('open');unlock();if(lastPal&&lastPal.focus)lastPal.focus()}
+function palGo(i){var r=palRes[i];if(!r)return;closePal();setTimeout(function(){jump(r.id)},80)}
+
+function initNav(){
+ mmOpen.addEventListener('click',openMenu);$('#mm-close').addEventListener('click',closeMenu);
+ mm.addEventListener('click',function(e){if(e.target===mm||e.target.id==='mm-inner')closeMenu()});
+ $('#toc-mob').addEventListener('click',function(e){var a=e.target.closest('a');if(!a)return;e.preventDefault();var id=a.getAttribute('data-toc');closeMenu();setTimeout(function(){jump(id)},120)});
+ pal.addEventListener('click',function(e){if(e.target===pal)closePal()});
+ $('#pal-x').addEventListener('click',closePal);
+ palQ.addEventListener('input',renderPal);
+ palQ.addEventListener('keydown',function(e){if(e.key==='ArrowDown'){e.preventDefault();palMove(1)}else if(e.key==='ArrowUp'){e.preventDefault();palMove(-1)}else if(e.key==='Enter'){e.preventDefault();palGo(palSel)}});
+ palList.addEventListener('click',function(e){var a=e.target.closest('a');if(!a)return;e.preventDefault();palGo(parseInt(a.getAttribute('data-i'),10))});
+ document.addEventListener('click',function(e){
+  var b=e.target.closest('[data-act]');if(!b)return;var a=b.getAttribute('data-act');
+  if(a==='search')openPal();else if(a==='theme')toggleTheme();else if(a==='menu')openMenu();else if(a==='top')window.scrollTo({top:0,behavior:jumpBehavior()});
+ });
+ document.addEventListener('keydown',function(e){
+  var ae=document.activeElement,typing=ae&&(/^(INPUT|TEXTAREA|SELECT)$/.test(ae.tagName)||ae.isContentEditable);
+  var k=(e.key||'');
+  if((e.ctrlKey||e.metaKey)&&k.toLowerCase()==='k'){e.preventDefault();openPal();return}
+  if(k==='/'&&!typing&&!e.ctrlKey&&!e.metaKey&&!e.altKey){e.preventDefault();openPal();return}
+  if((k==='t'||k==='T')&&!typing&&!e.ctrlKey&&!e.metaKey&&!e.altKey){toggleTheme();return}
+  if(k==='Escape'){if(pal.classList.contains('open'))closePal();else if(mm.classList.contains('open'))closeMenu()}
+  if(k==='Tab'){var dlg=pal.classList.contains('open')?$('.pal-box'):(mm.classList.contains('open')?mm:null);if(dlg){var f=$$('a[href],button,input,[tabindex]:not([tabindex="-1"])',dlg).filter(function(x){return x.offsetParent!==null});if(f.length){var first=f[0],last=f[f.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}}}}
+ });
+ window.addEventListener('beforeprint',function(){$$('details').forEach(function(d){if(!d.open){d.setAttribute('data-po','1');d.open=true}})});
+ window.addEventListener('afterprint',function(){$$('details[data-po]').forEach(function(d){d.open=false;d.removeAttribute('data-po')})});
+}
+
+/* ---------- স্ক্রল, স্পাই, প্রগ্রেস ---------- */
+function initScroll(){
+ var prog=$('#progress'),tt=$('#totop'),pct=$('#sb-pct'),ticking=false;
+ function upd(){ticking=false;var h=document.documentElement.scrollHeight-window.innerHeight;var p=h>0?Math.min(1,Math.max(0,window.pageYOffset/h)):0;prog.style.transform='scaleX('+p+')';pct.textContent=bn(Math.round(p*100))+'%';var show=window.pageYOffset>700;tt.classList.toggle('show',show)}
+ window.addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(upd)}},{passive:true});
+ window.addEventListener('resize',upd);upd();
+ var links=$$('.toc-list[id] a');var cur=null;
+ function setActive(id){if(cur===id)return;cur=id;links.forEach(function(a){var on=a.getAttribute('data-toc')===id;a.classList.toggle('active',on);if(on)a.setAttribute('aria-current','true');else a.removeAttribute('aria-current')});
+  var nav=$('.sidebar nav'),a=$('#toc-side a[data-toc="'+id+'"]');if(nav&&a&&nav.offsetParent!==null){nav.scrollTo?nav.scrollTo({top:a.offsetTop-nav.clientHeight/2+30,behavior:'auto'}):0}
+  var ch=document.getElementById(id);if(ch&&ch.getAttribute('data-ac'))toAccent(ch.getAttribute('data-ac'))}
+ if('IntersectionObserver' in window){
+  var vis={};var io=new IntersectionObserver(function(es){es.forEach(function(e){vis[e.target.id]=e.isIntersecting});var first=null;CHS.forEach(function(c){if(!first&&vis[c.id])first=c.id});if(first)setActive(first)},{rootMargin:'-35% 0px -55% 0px'});
+  CHS.forEach(function(c){var el=document.getElementById(c.id);if(el)io.observe(el)});
+  var hio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){cur=null;links.forEach(function(a){a.classList.remove('active');a.removeAttribute('aria-current')});toAccent('#0ea5e9')}})},{threshold:.5});
+  hio.observe($('#top'));
+ }
+}
+
+/* ---------- হিরো টেক্সট ---------- */
+function initHero(){
+ $('#hero-chips').innerHTML='<span class="chip">⏱ আনুমানিক পড়ার সময়: ~'+bn(MINS)+' মিনিট</span>'+D.meta.chips.map(function(x){return '<span class="chip">'+esc(x)+'</span>'}).join('');
+ $('#sb-read').textContent='আনুমানিক পড়ার সময়: ~'+bn(MINS)+' মিনিট';
+ $('#stats').innerHTML=D.meta.stats.map(function(s){return '<div class="stat"><b data-count="'+s[0]+'">০</b><span>'+esc(s[1])+'</span></div>'}).join('');
+ $$('[data-count]').forEach(function(el){var n=parseInt(el.getAttribute('data-count'),10);onView(el,function(){if(hasG&&!reduce.matches){var o={v:0};gsap.to(o,{v:n,duration:1.6,ease:'power2.out',onUpdate:function(){el.textContent=bn(Math.round(o.v))}})}else el.textContent=bn(n)},.3)});
+ var ty=$('#typing'),ph=D.meta.typing,pi=0,ci=0,del=false;
+ if(reduce.matches){ty.textContent=ph.join(' · ');ty.style.setProperty('--x','0');return}
+ (function tick(){var w=ph[pi];ci+=del?-1:1;ty.textContent=w.slice(0,ci);var d=del?35:75;if(!del&&ci===w.length){del=true;d=1400}else if(del&&ci===0){del=false;pi=(pi+1)%ph.length;d=350}setTimeout(tick,d)})();
+}
+
+/* ---------- GSAP অ্যানিমেশন ---------- */
+function splitWords(el){
+ el.setAttribute('aria-label',el.textContent.replace(/\s+/g,' ').trim());
+ (function walk(n){Array.prototype.slice.call(n.childNodes).forEach(function(ch){
+  if(ch.nodeType===3){var frag=document.createDocumentFragment();ch.textContent.split(/(\s+)/).forEach(function(t){if(!t)return;if(/^\s+$/.test(t)){frag.appendChild(document.createTextNode(' '))}else{var w=document.createElement('span');w.className='w';w.setAttribute('aria-hidden','true');var i=document.createElement('span');i.className='wi';i.textContent=t;w.appendChild(i);frag.appendChild(w)}});ch.parentNode.replaceChild(frag,ch)}
+  else if(ch.nodeType===1)walk(ch)})})(el);
+}
+function initAnim(){
+ if(!hasG)return;
+ $$('.split').forEach(splitWords);
+ if(reduce.matches||!hasST)return;
+ gsap.set('.rv',{opacity:0,y:36});
+ $$('.split').forEach(function(el){gsap.from($$('.wi',el),{yPercent:115,opacity:0,duration:.9,ease:'power3.out',stagger:.06,scrollTrigger:{trigger:el,start:'top 90%',once:true}})});
+ ScrollTrigger.batch('.rv',{start:'top 93%',once:true,onEnter:function(els){gsap.to(els,{opacity:1,y:0,duration:.85,stagger:.09,ease:'power3.out',overwrite:true,clearProps:'transform'})}});
+ $$('.tl li').forEach(function(li){gsap.from(li,{x:-24,opacity:0,duration:.7,ease:'power2.out',scrollTrigger:{trigger:li,start:'top 92%',once:true}})});
+ $$('.ghost').forEach(function(g){gsap.to(g,{yPercent:-35,ease:'none',scrollTrigger:{trigger:g.closest('.chapter'),start:'top bottom',end:'bottom top',scrub:true}})});
+ var gw=$('.globe-wrap');if(gw)gsap.to(gw,{yPercent:-12,ease:'none',scrollTrigger:{trigger:'#top',start:'top top',end:'bottom top',scrub:true}});
+ gsap.to('.b1',{yPercent:-25,ease:'none',scrollTrigger:{trigger:document.body,start:'top top',end:'bottom bottom',scrub:1.5}});
+ gsap.to('.b2',{yPercent:30,ease:'none',scrollTrigger:{trigger:document.body,start:'top top',end:'bottom bottom',scrub:1.5}});
+ gsap.from('.hero .kicker,.hero .h-sub,.hero .typing,.hero-cta,.chips,.stats',{y:24,opacity:0,duration:.9,stagger:.12,delay:.5,ease:'power3.out'});
+ window.addEventListener('load',function(){ScrollTrigger.refresh()});
+}
+
+/* ---------- ইন্টারঅ্যাকশন: রিপল, ম্যাগনেটিক, টিল্ট, গ্লো ---------- */
+function initFX(){
+ document.addEventListener('pointerdown',function(e){
+  var b=e.target.closest('.btn,.ibtn,.tab');if(!b||reduce.matches)return;
+  var r=b.getBoundingClientRect(),s=Math.max(r.width,r.height),sp=document.createElement('span');sp.className='rip';sp.style.width=sp.style.height=s+'px';sp.style.left=(e.clientX-r.left-s/2)+'px';sp.style.top=(e.clientY-r.top-s/2)+'px';b.appendChild(sp);setTimeout(function(){sp.remove()},700);
+  var d=e.target.closest('.dcard');if(d){d.classList.add('tap');setTimeout(function(){d.classList.remove('tap')},180)}
+ });
+ document.addEventListener('pointerdown',function(e){var d=e.target.closest('.dcard');if(d&&e.pointerType!=='mouse'){d.classList.add('tap');setTimeout(function(){d.classList.remove('tap')},180)}});
+ if(!fine.matches||reduce.matches)return;
+ document.body.classList.add('has-mouse');
+ var glow=$('#glow'),cur=null,magEls=null;
+ document.addEventListener('pointermove',function(e){
+  if(e.pointerType!=='mouse')return;
+  glow.style.transform='translate3d('+e.clientX+'px,'+e.clientY+'px,0)';
+  var t=e.target.closest&&e.target.closest('.tilt');
+  if(cur&&cur!==t){cur.style.transform='';cur=null}
+  if(t){cur=t;var r=t.getBoundingClientRect(),px=(e.clientX-r.left)/r.width,py=(e.clientY-r.top)/r.height;t.style.transform='perspective(800px) rotateX('+((.5-py)*8).toFixed(2)+'deg) rotateY('+((px-.5)*10).toFixed(2)+'deg)';t.style.setProperty('--gx',(px*100)+'%');t.style.setProperty('--gy',(py*100)+'%')}
+  var m=e.target.closest&&e.target.closest('.mag');
+  if(!magEls)magEls=$$('.mag');magEls.forEach(function(x){if(x!==m&&x.style.transform)x.style.transform=''});
+  if(m){var q=m.getBoundingClientRect();m.style.transform='translate('+((e.clientX-q.left-q.width/2)*.22).toFixed(1)+'px,'+((e.clientY-q.top-q.height/2)*.3).toFixed(1)+'px)'}
+ });
+ document.addEventListener('pointerleave',function(){if(cur){cur.style.transform='';cur=null}$$('.mag').forEach(function(x){x.style.transform=''})});
+}
+
+/* ---------- ব্যাকগ্রাউন্ড ক্যানভাস নেটওয়ার্ক ---------- */
+function initBG(){
+ var cv=$('#bgc');if(!cv||reduce.matches)return;
+ var ctx=cv.getContext('2d');if(!ctx)return;
+ var W=0,H=0,dpr=Math.min(window.devicePixelRatio||1,2),pts=[],mx=-9999,my=-9999,raf=0,run=true;
+ function mk(){return{x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.35,vy:(Math.random()-.5)*.35,r:Math.random()*1.7+1,sq:Math.random()<.22,ph:Math.random()*6.28}}
+ function size(){W=window.innerWidth;H=window.innerHeight;cv.width=W*dpr;cv.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);var n=W<768?22:40;while(pts.length<n)pts.push(mk());pts.length=n}
+ size();window.addEventListener('resize',size);
+ window.addEventListener('pointermove',function(e){mx=e.clientX;my=e.clientY},{passive:true});
+ window.addEventListener('pointerdown',function(e){mx=e.clientX;my=e.clientY},{passive:true});
+ window.addEventListener('pointerleave',function(){mx=my=-9999});
+ function frame(t){
+  if(!run)return;
+  if(t-(frame.l||0)<30){raf=requestAnimationFrame(frame);return}frame.l=t;
+  ctx.clearRect(0,0,W,H);
+  var dark=isDark(),a0=dark?.5:.38,rgb=Math.round(acc.r)+','+Math.round(acc.g)+','+Math.round(acc.b),L=W<768?95:120;
+  for(var i=0;i<pts.length;i++){
+   var p=pts[i];p.x+=p.vx;p.y+=p.vy;
+   var dx=p.x-mx,dy=p.y-my,dd=dx*dx+dy*dy;if(dd<14400&&dd>1){var f=(1-Math.sqrt(dd)/120)*.6;p.x+=dx/Math.sqrt(dd)*f;p.y+=dy/Math.sqrt(dd)*f}
+   if(p.x<-10)p.x=W+10;else if(p.x>W+10)p.x=-10;if(p.y<-10)p.y=H+10;else if(p.y>H+10)p.y=-10;
+  }
+  for(var i2=0;i2<pts.length;i2++){
+   var a=pts[i2];
+   for(var j=i2+1;j<pts.length;j++){var b=pts[j],x=a.x-b.x,y=a.y-b.y,d2=x*x+y*y;if(d2<L*L){var al=(1-Math.sqrt(d2)/L)*a0*.55;ctx.strokeStyle='rgba('+rgb+','+al.toFixed(3)+')';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke()}}
+   var mdx=a.x-mx,mdy=a.y-my,md=mdx*mdx+mdy*mdy;if(md<19600){ctx.strokeStyle='rgba('+rgb+','+((1-Math.sqrt(md)/140)*a0).toFixed(3)+')';ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(mx,my);ctx.stroke()}
+   var pul=.6+.4*Math.sin(t/900+a.ph);ctx.fillStyle='rgba('+rgb+','+(a0+.25*pul).toFixed(3)+')';
+   if(a.sq){ctx.fillRect(a.x-a.r*1.6,a.y-a.r,a.r*3.2,a.r*2)}else{ctx.beginPath();ctx.arc(a.x,a.y,a.r*(.8+.4*pul),0,6.283);ctx.fill()}
+  }
+  raf=requestAnimationFrame(frame);
+ }
+ function start(){if(!run){run=true}cancelAnimationFrame(raf);raf=requestAnimationFrame(frame)}
+ document.addEventListener('visibilitychange',function(){if(document.hidden){run=false;cancelAnimationFrame(raf)}else{run=true;start()}});
+ start();
+}
+
+/* ---------- Three.js গ্লোব ---------- */
+function globeFallback(host){
+ host.innerHTML='<div class="gfall"><svg viewBox="0 0 400 400" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" role="img" aria-label="গ্লোবের চিত্র"><circle cx="200" cy="200" r="150" fill="rgba(var(--ar),var(--ag),var(--ab),.12)"/><g class="orb" opacity=".7"><ellipse cx="200" cy="200" rx="150" ry="55"/><ellipse cx="200" cy="200" rx="150" ry="110" opacity=".6"/><ellipse cx="200" cy="200" rx="55" ry="150"/><ellipse cx="200" cy="200" rx="110" ry="150" opacity=".6"/><path d="M50 200h300M200 50v300"/></g><path class="arc" d="M120 150C170 60 270 70 300 140" stroke="#f59e0b"/><path class="arc" d="M110 250C170 340 290 320 305 240" stroke="#6366f1"/><circle cx="120" cy="150" r="7" fill="#f59e0b" stroke="none"/><circle cx="300" cy="140" r="7" fill="#f59e0b" stroke="none"/><circle cx="110" cy="250" r="7" fill="#6366f1" stroke="none"/><circle cx="305" cy="240" r="7" fill="#6366f1" stroke="none"/><rect x="170" y="20" width="26" height="16" rx="3" fill="#f59e0b" stroke="none"/><rect x="204" y="368" width="26" height="16" rx="3" fill="#6366f1" stroke="none"/></svg></div>';
+}
+function initGlobe(){
+ var host=$('#globe');if(!host)return;
+ if(!window.THREE){globeFallback(host);return}
+ var renderer;
+ try{var tc=document.createElement('canvas');if(!(tc.getContext('webgl')||tc.getContext('experimental-webgl')))throw new Error('nogl');renderer=new THREE.WebGLRenderer({antialias:true,alpha:true,powerPreference:'low-power'})}catch(e){globeFallback(host);return}
+ var small=window.innerWidth<768;
+ renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,1.5));
+ renderer.setClearColor(0x000000,0);
+ host.appendChild(renderer.domElement);
+ var scene=new THREE.Scene(),cam=new THREE.PerspectiveCamera(38,1,.1,50);cam.position.set(0,0,4.1);
+ var root=new THREE.Group();scene.add(root);
+ var globe=new THREE.Group();root.add(globe);
+ var core=new THREE.Mesh(new THREE.SphereGeometry(1,48,32),new THREE.MeshBasicMaterial({color:0x0b1d3c,transparent:true,opacity:.93}));globe.add(core);
+ var wire=new THREE.LineSegments(new THREE.WireframeGeometry(new THREE.SphereGeometry(1.004,24,16)),new THREE.LineBasicMaterial({color:0x38bdf8,transparent:true,opacity:.16}));globe.add(wire);
+ var N=small?850:1700,arr=new Float32Array(N*3),ga=Math.PI*(3-Math.sqrt(5));
+ for(var i=0;i<N;i++){var y=1-(i/(N-1))*2,r=Math.sqrt(1-y*y),th=ga*i;arr[i*3]=Math.cos(th)*r*1.012;arr[i*3+1]=y*1.012;arr[i*3+2]=Math.sin(th)*r*1.012}
+ var pg=new THREE.BufferGeometry();pg.setAttribute('position',new THREE.BufferAttribute(arr,3));
+ var dotsM=new THREE.PointsMaterial({color:0x38bdf8,size:small?.022:.017,transparent:true,opacity:.85,sizeAttenuation:true});
+ globe.add(new THREE.Points(pg,dotsM));
+ var glowM=new THREE.ShaderMaterial({uniforms:{c:{value:new THREE.Color(0x38bdf8)},k:{value:1}},vertexShader:'varying vec3 vN;void main(){vN=normalize(normalMatrix*normal);gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);}',fragmentShader:'uniform vec3 c;uniform float k;varying vec3 vN;void main(){float i=pow(max(0.0,0.72-dot(vN,vec3(0.0,0.0,1.0))),3.0)*k;gl_FragColor=vec4(c,i);}',side:THREE.BackSide,transparent:true,blending:THREE.AdditiveBlending,depthWrite:false});
+ root.add(new THREE.Mesh(new THREE.SphereGeometry(1.2,40,28),glowM));
+ function ll(lat,lon,rad){var ph=(90-lat)*Math.PI/180,t=(lon+180)*Math.PI/180;return new THREE.Vector3(-rad*Math.sin(ph)*Math.cos(t),rad*Math.cos(ph),rad*Math.sin(ph)*Math.sin(t))}
+ var hubsD=[[22.33,91.83],[31.23,121.47],[1.35,103.82],[25.2,55.27],[51.92,4.48],[33.74,-118.27],[6.93,79.85],[23.13,113.26]];
+ var hubM=new THREE.MeshBasicMaterial({color:0xf59e0b}),hubs=[];
+ hubsD.forEach(function(h){var m=new THREE.Mesh(new THREE.SphereGeometry(.026,12,12),hubM);m.position.copy(ll(h[0],h[1],1.015));globe.add(m);hubs.push(m)});
+ var routes=[[0,1],[1,2],[2,6],[6,3],[3,4],[1,5],[7,0],[2,7]],arcM=new THREE.LineBasicMaterial({color:0xf59e0b,transparent:true,opacity:.65}),ships=[],shipM=new THREE.MeshBasicMaterial({color:0xffffff});
+ routes.forEach(function(rt,ri){
+  var a=ll(hubsD[rt[0]][0],hubsD[rt[0]][1],1.015),b=ll(hubsD[rt[1]][0],hubsD[rt[1]][1],1.015);
+  var mid=a.clone().add(b).multiplyScalar(.5),dist=a.distanceTo(b);mid.normalize().multiplyScalar(1.015+dist*.38);
+  var curve=new THREE.QuadraticBezierCurve3(a,mid,b);
+  globe.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(curve.getPoints(48)),arcM));
+  var s=new THREE.Mesh(new THREE.SphereGeometry(.02,10,10),shipM);globe.add(s);ships.push({m:s,c:curve,t:ri/routes.length,sp:.0016+ri*.00012});
+ });
+ var ring=new THREE.Group();ring.rotation.x=1.15;ring.rotation.z=.35;root.add(ring);
+ var boxes=[],cc=[0xf59e0b,0x6366f1,0x0ea5e9,0xef4444,0x22c55e,0xec4899];
+ for(var k=0;k<16;k++){var bx=new THREE.Mesh(new THREE.BoxGeometry(.11,.055,.055),new THREE.MeshBasicMaterial({color:cc[k%cc.length]}));var an=k/16*Math.PI*2;bx.position.set(Math.cos(an)*1.55,0,Math.sin(an)*1.55);bx.rotation.y=-an;ring.add(bx);boxes.push(bx)}
+ var ringL=new THREE.Line(new THREE.BufferGeometry().setFromPoints((function(){var p=[];for(var q=0;q<=96;q++){var a=q/96*Math.PI*2;p.push(new THREE.Vector3(Math.cos(a)*1.55,0,Math.sin(a)*1.55))}return p})()),new THREE.LineBasicMaterial({color:0x38bdf8,transparent:true,opacity:.25}));ring.add(ringL);
+ function colors(){
+  var d=isDark(),A=new THREE.Color('rgb('+Math.round(acc.r)+','+Math.round(acc.g)+','+Math.round(acc.b)+')');
+  core.material.color.set(d?0x081833:0xdfeaf8);core.material.opacity=d?.94:.9;
+  wire.material.color.copy(A);wire.material.opacity=d?.18:.22;
+  dotsM.color.copy(A);dotsM.opacity=d?.9:.8;
+  glowM.uniforms.c.value.copy(A);glowM.uniforms.k.value=d?1.1:.55;
+  glowM.blending=d?THREE.AdditiveBlending:THREE.NormalBlending;glowM.needsUpdate=true;
+  ringL.material.color.copy(A);
+  hubM.color.set(d?0xfbbf24:0xd97706);shipM.color.set(d?0xffffff:0x0c1a2e);arcM.color.set(d?0xf59e0b:0xb45309);
+ }
+ colors();window.addEventListener('themechange',function(){colors();kick()});
+ var w=0,h=0;
+ function resize(){var r=host.getBoundingClientRect();w=Math.max(1,r.width);h=Math.max(1,r.height);renderer.setSize(w,h,false);cam.aspect=w/h;cam.updateProjectionMatrix();kick()}
+ if('ResizeObserver' in window)new ResizeObserver(resize).observe(host);else window.addEventListener('resize',resize);
+ var drag=false,lx=0,ly=0,vx=0,vy=0,tiltX=.25,hoverX=0,hoverY=0,auto=!reduce.matches;
+ globe.rotation.y=-1.6;globe.rotation.x=.25;
+ host.addEventListener('pointerdown',function(e){drag=true;lx=e.clientX;ly=e.clientY;vx=vy=0;try{host.setPointerCapture(e.pointerId)}catch(er){}kick()});
+ host.addEventListener('pointermove',function(e){
+  if(drag){var dx=e.clientX-lx,dy=e.clientY-ly;lx=e.clientX;ly=e.clientY;vx=dx*.0065;vy=dy*.0045;globe.rotation.y+=vx;tiltX=Math.max(-1.1,Math.min(1.1,tiltX+vy));kick()}
+  else if(e.pointerType==='mouse'){var r=host.getBoundingClientRect();hoverX=((e.clientX-r.left)/r.width-.5);hoverY=((e.clientY-r.top)/r.height-.5);kick()}
+ });
+ var up=function(){drag=false};host.addEventListener('pointerup',up);host.addEventListener('pointercancel',up);host.addEventListener('pointerleave',function(){hoverX=hoverY=0});
+ var visible=true,running=false,last=0;
+ function step(t){
+  var dt=Math.min(50,t-last||16);last=t;
+  if(!drag){globe.rotation.y+=vx;vx*=.94;tiltX+=vy;vy*=.9;if(auto)globe.rotation.y+=.0022*(dt/16)}
+  globe.rotation.x+=((tiltX+hoverY*.35)-globe.rotation.x)*.08;
+  root.rotation.y+=((hoverX*.45)-root.rotation.y)*.06;
+  colors();
+  if(auto){
+   ships.forEach(function(s){s.t=(s.t+s.sp)%1;s.m.position.copy(s.c.getPoint(s.t))});
+   ring.rotation.y+=.004;
+   var pl=1+.35*Math.sin(t/500);hubs.forEach(function(m,i){var s=1+.3*Math.sin(t/450+i);m.scale.setScalar(s*pl*.85)});
+  }
+  renderer.render(scene,cam);
+ }
+ function loop(t){
+  if(!visible||document.hidden){running=false;return}
+  step(t);
+  if(auto||drag||Math.abs(vx)>.0004||Math.abs(vy)>.0004||Math.abs(globe.rotation.x-(tiltX+hoverY*.35))>.002)requestAnimationFrame(loop);else running=false;
+ }
+ function kick(){if(!running&&visible&&!document.hidden){running=true;requestAnimationFrame(loop)}}
+ if('IntersectionObserver' in window){new IntersectionObserver(function(es){visible=es[0].isIntersecting;if(visible)kick()},{threshold:.02}).observe(host)}
+ document.addEventListener('visibilitychange',function(){if(!document.hidden)kick()});
+ renderer.domElement.addEventListener('webglcontextlost',function(e){e.preventDefault();running=false});
+ renderer.domElement.addEventListener('webglcontextrestored',function(){kick()});
+ resize();kick();
+}
+
+/* ---------- শুরু ---------- */
+function init(){
+ tip=$('#tip');
+ build();
+ safe(initHero);
+ safe(initWidgets);
+ safe(initTabs);
+ safe(initChecks);
+ safe(initCopy);
+ safe(initNav);
+ safe(initScroll);
+ safe(initAnim);
+ safe(initFX);
+ safe(initBG);
+ safe(initGlobe);
+}
+init();
+var hide=function(){setTimeout(function(){document.documentElement.classList.add('ready')},reduce.matches?100:900)};
+if(document.readyState==='complete')hide();else window.addEventListener('load',hide);
+})();
+</script>
+<script src="../shell.js" defer></script>
+</body>
+</html>
